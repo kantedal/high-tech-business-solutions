@@ -1,0 +1,12 @@
+body{
+  background: red;
+}
+
+.portfolioItemBox{
+  background: red;
+}
+
+.portfolioItemImage{
+  width:100%;
+  height: 100%;
+}

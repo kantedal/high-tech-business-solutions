@@ -25,17 +25,11 @@ export class MainSection extends React.Component<MainSection.Props, MainSection.
 
 
     return (
-
-      <div>
-        {portfolioComponents}
-      </div>
+      <Grid fluid className={style.main}>
+        <Row className={style.presentationRow}>
+            {portfolioComponents}
+        </Row>
+      </Grid>
     )
   }
 }
-
-
-//   {tileData.map(tile => (
-    //     <GridListTile key={tile.img} cols={tile.cols || 1}>
-    //       <img src={tile.img} alt={tile.title} />
-    //     </GridListTile>
-    //   ))}

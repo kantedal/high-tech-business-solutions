@@ -15,17 +15,15 @@ export namespace PortfolioItem {
 export class PortfolioItem extends React.Component<PortfolioItem.Props, PortfolioItem.State> {
 
   render() {
-    const {header} = this.props.portfolioItem;
+    const portfolioItem = this.props.portfolioItem;
 
     return (
 
-      <Grid fluid>
-        <Row className={style.presentationRow}>
-          <Col xs={6} md={3}>
-            {header}
+
+          <Col xs={6} md={3} className={style.portfolioItemBox}>
+            {portfolioItem.header}
+            <img className={style.portfolioItemImage} src={portfolioItem.imagePaths[0]}/>
           </Col> 
-        </Row>
-      </Grid>
 
     )
   }
