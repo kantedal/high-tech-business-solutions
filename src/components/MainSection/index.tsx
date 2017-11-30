@@ -1,23 +1,30 @@
 import * as React from 'react'
-import { CSSProperties } from 'react';
+import { CSSProperties } from 'react'
+import * as style from './style.css'
+import { portfolioItems, IPortfolioItem } from '../../portfolio';
 
 export namespace MainSection {
-  export interface Props {}
+  export interface Props {
+    filterOn?: string
+  }
+  export interface State {}
 }
 
-export const MainSection: React.SFC<MainSection.Props> = ({ children }) => {
-  return (
-    <div style={mainSectionStyle}>
-      {children}
-    </div>
-  )
-}
+export class MainSection extends React.Component<MainSection.Props, MainSection.State> {
 
-const mainSectionStyle: CSSProperties = {
-  position: 'absolute',
-  width: '100%',
-  height: 'calc(100% - 100px)',
-  marginTop: '100px'
-  // padding: '10px',
-  // background: '#0f0'
+  render() {
+    const porfolioComponents = portfolioItems
+      .map((portfolioItem: IPortfolioItem) => (
+        <div>
+          {portfolioItem.header}
+          <img src={portfolioItem.imagePaths[0]} />
+        </div>
+      ))
+
+    return (
+      <div>
+        {porfolioComponents}
+      </div>
+    )
+  }
 }

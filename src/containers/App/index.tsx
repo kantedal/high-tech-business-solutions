@@ -32,13 +32,13 @@ class App extends React.Component<App.Props, App.State> {
       <div style={AppContainerStyle}>
         <Header back={() => backToMenu()} />
         <MainSection>
-          <Switch>
+          {/* <Switch>
             <AnimatedSwitch atEnter={{ opacity: 0 }} atLeave={{ opacity: 0 }} atActive={{ opacity: 1 }} className={style.switchWrapper}>
               {<Route path='/host' component={Host}/>}
               {<Route path='/mentometer' component={Mentometer}/>}
               {<Route exact path='/' component={Menu}/>}
             </AnimatedSwitch>
-          </Switch>
+          </Switch> */}
         </MainSection>
       </div>
     )
