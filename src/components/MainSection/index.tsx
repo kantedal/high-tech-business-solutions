@@ -1,34 +1,34 @@
-import * as React from 'react'
+import { PortfolioItem } from '../PortfolioItem';
+import * as React from 'react';
 import { CSSProperties } from 'react'
-import * as style from './style.css'
+import * as style from './style.css';
 import { portfolioItems, IPortfolioItem } from '../../portfolio'
 import { GridList, GridListTile } from 'material-ui/GridList'
+import { Grid, Row, Col } from 'react-flexbox-grid'
 
 export namespace MainSection {
   export interface Props {
     filterOn?: string
   }
-  export interface State {}
+  export interface State { }
 }
 
 export class MainSection extends React.Component<MainSection.Props, MainSection.State> {
 
   render() {
-    // const porfolioComponents = portfolioItems
-    //   .map((portfolioItem: IPortfolioItem) => (
-    //     <div>
-    //       {portfolioItem.header}
-    //       <img src={portfolioItem.imagePaths[0]} />
-    //     </div>
-    //   ))
-      
+
+    const portfolioComponents = portfolioItems
+      .map((portfolioItem: IPortfolioItem) => (
+        <PortfolioItem portfolioItem={portfolioItem} />
+      ))
+
 
 
     return (
 
-      <GridList cellHeight={160} cols={3}>
-        <div > hej</div>
-      </GridList>
+      <div>
+        {portfolioComponents}
+      </div>
     )
   }
 }
@@ -39,4 +39,3 @@ export class MainSection extends React.Component<MainSection.Props, MainSection.
     //       <img src={tile.img} alt={tile.title} />
     //     </GridListTile>
     //   ))}
-    
