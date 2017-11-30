@@ -74,6 +74,11 @@ module.exports = {
           ]
         })
       },
+      // {
+      //   test: /\.css$/,
+      //   loader: 'style-loader!css-loader',
+      //   include: /flexboxgrid/
+      // },
       // static assets
       { test: /\.html$/, use: 'html-loader' },
       { test: /\.png$/, use: 'url-loader?limit=10000' },

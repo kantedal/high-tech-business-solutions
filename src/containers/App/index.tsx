@@ -61,7 +61,6 @@ const AppContainerStyle: React.CSSProperties = {
   position: 'absolute',
   width: '100%',
   height: '100%',
-  background: 'linear-gradient(rgb(116, 79, 154) 30%, rgb(53, 57, 153) 90%)'
   // background: '#353999'
 }
 
