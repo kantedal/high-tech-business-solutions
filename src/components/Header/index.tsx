@@ -13,9 +13,8 @@ export const Header: React.SFC<Header.Props> = () => {
   return (
     <div className={style.headerContent}>
       <Grid fluid>
-        <Row className={style.presentationRow}>
-          <Col xs={3} />
-          <Col xs={6}>
+        <Row center='xs' className={style.presentationRow}>
+          <Col xs={12} sm={12} md={12} lg={6}>
             <Row>
               <Col xs={6}>
                 <PresentationBox name={'Simon Hedlund'} imgUrl={'./images/simon.jpg'} />
@@ -25,7 +24,6 @@ export const Header: React.SFC<Header.Props> = () => {
               </Col>
             </Row>
           </Col>
-          <Col xs={3} />
         </Row>
       </Grid>
     </div>

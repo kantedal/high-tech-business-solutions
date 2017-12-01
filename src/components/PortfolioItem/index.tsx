@@ -13,19 +13,15 @@ export namespace PortfolioItem {
 }
 
 export class PortfolioItem extends React.Component<PortfolioItem.Props, PortfolioItem.State> {
-
   render() {
-    const portfolioItem = this.props.portfolioItem;
+    const portfolioItem = this.props.portfolioItem
 
     return (
-
-
-          <Col xs={6} md={3} className={style.container}>
-            <img className={style.image} src={portfolioItem.imagePaths[0]}/> 
-            <div className={style.header}>{portfolioItem.header}</div>
-            <div className={style.description}>{portfolioItem.description}</div>
-          </Col> 
-
+      <Col xs={6} md={3} className={style.container}>
+        <img className={style.image} src={portfolioItem.imagePaths[0]}/> 
+        <div className={style.header}>{portfolioItem.header}</div>
+        <div className={style.description}>{portfolioItem.description}</div>
+      </Col> 
     )
   }
 }
