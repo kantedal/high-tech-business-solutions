@@ -1,0 +1,13 @@
+
+.presentationContent {
+  width: 100%;
+}
+
+.presentationImage {
+  border-radius: 50%;
+  width: 100px;  
+  height: 100px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
