@@ -2,11 +2,58 @@ body{
   background: red;
 }
 
-.portfolioItemBox{
-  background: red;
+.container{
+  display: flex;
+  float:left;
+	align-items: stretch;
+	align-content: stretch;
+  background: rgb(72, 245, 121);
+  font-family: 'Fugaz One';
+  color: white;
+  text-align: center;
+  position:relative;
+  padding:10px;
+  margin: 0px;
+  justify-content: center;
 }
 
-.portfolioItemImage{
-  width:100%;
-  height: 100%;
+
+.container:hover {
+	transition: background .25s;
+  cursor: pointer;
 }
+.container:focus {outline:0;}
+
+.container:hover > img {
+  opacity: 0.5;
+	transition: opacity .25s;
+}
+
+.container:hover > .description {
+  opacity: 0.8;
+	transition: opacity .35s;
+}
+
+.image{
+  border-radius: 5px;
+  width:100%;
+  height:100%;
+}
+
+.header{
+  top: 35%;
+  font-size: 30px;
+  position:absolute;
+  width: 100%
+  
+}
+.description{
+  top: 45%;
+  font-size: 18px;
+  position:absolute;
+  width: 100%;
+  opacity: 0;
+  
+}
+
+

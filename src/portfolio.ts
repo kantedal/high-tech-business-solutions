@@ -20,7 +20,14 @@ export const portfolioItems: IPortfolioItem[] = [
     header: 'Looking for host',
     description: '3D animated film that was created as a hobby project.',
     tags: [ '3D animation' ],
-    imagePaths: [ 'http://kantedal.se/wp-content/uploads/2015/03/rv.png' ],
+    imagePaths: [ './images/lfh.png' ],
+    mediaType: 'VIDEO'
+  },
+  {
+    header: 'Rob`s Vengeance',
+    description: '3D animated film that was created as a hobby project.',
+    tags: [ '3D animation' ],
+    imagePaths: [ './images/rv.png' ],
     mediaType: 'VIDEO'
   },
   {
@@ -34,42 +41,35 @@ export const portfolioItems: IPortfolioItem[] = [
     header: 'Looking for host',
     description: '3D animated film that was created as a hobby project.',
     tags: [ '3D animation' ],
-    imagePaths: [ './rv.png' ],
+    imagePaths: [ './images/rv.png' ],
     mediaType: 'VIDEO'
   },
   {
     header: 'Looking for host',
     description: '3D animated film that was created as a hobby project.',
     tags: [ '3D animation' ],
-    imagePaths: [ './rv.png' ],
+    imagePaths: [ './images/rv.png' ],
     mediaType: 'VIDEO'
   },
   {
     header: 'Looking for host',
     description: '3D animated film that was created as a hobby project.',
     tags: [ '3D animation' ],
-    imagePaths: [ './rv.png' ],
+    imagePaths: [ './images/rv.png' ],
     mediaType: 'VIDEO'
   },
   {
     header: 'Looking for host',
     description: '3D animated film that was created as a hobby project.',
     tags: [ '3D animation' ],
-    imagePaths: [ './rv.png' ],
+    imagePaths: [ './images/rv.png' ],
     mediaType: 'VIDEO'
   },
   {
     header: 'Looking for host',
     description: '3D animated film that was created as a hobby project.',
     tags: [ '3D animation' ],
-    imagePaths: [ './rv.png' ],
-    mediaType: 'VIDEO'
-  },
-  {
-    header: 'Looking for host',
-    description: '3D animated film that was created as a hobby project.',
-    tags: [ '3D animation' ],
-    imagePaths: [ './rv.png' ],
+    imagePaths: [ './images/rv.png' ],
     mediaType: 'VIDEO'
   },
 ]
