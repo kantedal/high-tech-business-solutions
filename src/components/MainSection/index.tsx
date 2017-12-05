@@ -16,13 +16,7 @@ export namespace MainSection {
 export class MainSection extends React.Component<MainSection.Props, MainSection.State> {
 
   render() {
-
-    const portfolioComponents = portfolioItems
-      .map((portfolioItem: IPortfolioItem) => (
-        <PortfolioItem portfolioItem={portfolioItem} />
-      ))
-
-
+    const portfolioComponents = portfolioItems.map((portfolioItem: IPortfolioItem, index: number) => <PortfolioItem key={index} portfolioItem={portfolioItem} />)
 
     return (
       <Grid fluid className={style.main}>

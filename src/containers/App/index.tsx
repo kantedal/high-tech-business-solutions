@@ -30,7 +30,7 @@ class App extends React.Component<App.Props, App.State> {
     const { todos, actions, children, actions: { backToMenu } } = this.props
     return (
       <div style={AppContainerStyle}>
-        <Header back={() => backToMenu()} />
+        <Header  />
         <MainSection>
           {/* <Switch>
             <AnimatedSwitch atEnter={{ opacity: 0 }} atLeave={{ opacity: 0 }} atActive={{ opacity: 1 }} className={style.switchWrapper}>
