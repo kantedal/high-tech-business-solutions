@@ -18,8 +18,6 @@ export class PortfolioItem extends React.Component<PortfolioItem.Props, Portfoli
     const portfolioItem = this.props.portfolioItem;
 
     return (
-
-
           <Col xs={6} md={3} className={style.container}>
             <img className={style.image} src={portfolioItem.imagePaths[0]}/> 
             <div className={style.header}>{portfolioItem.header}</div>
