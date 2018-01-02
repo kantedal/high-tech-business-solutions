@@ -1,8 +1,9 @@
-import * as React from 'react'
+import { InteractiveBackground } from '../InteractiveBackground';
+import * as React from 'react';
 import { CSSProperties } from 'react'
 import IconButton from 'material-ui/IconButton'
 import { Grid, Row, Col } from 'react-flexbox-grid'
-import * as style from './style.css'
+import * as style from './style.css';
 import { PresentationBox } from '../PresentationBox/index';
 
 export namespace Header {
@@ -26,6 +27,8 @@ export const Header: React.SFC<Header.Props> = () => {
           </Col>
         </Row>
       </Grid>
+
+      <InteractiveBackground/>
     </div>
   )
 }

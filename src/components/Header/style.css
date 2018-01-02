@@ -7,7 +7,9 @@
 
 .headerContent {
   position: relative;
+  /*
   background: linear-gradient(rgb(116, 79, 154) 30%, rgb(53, 57, 153) 90%);
+  */
   width: 100%;
   height: 500px;
   margin-bottom: 20px;
