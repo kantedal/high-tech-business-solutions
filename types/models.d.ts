@@ -1,22 +1,24 @@
-/** TodoMVC model definitions **/
-
 declare interface TodoItemData {
   id?: TodoItemId;
   text?: string;
   completed?: boolean;
 }
 
-declare type TodoItemId = number;
+declare type TodoItemId = number
 
-declare type TodoFilterType = 'SHOW_ALL' | 'SHOW_ACTIVE' | 'SHOW_COMPLETED';
+declare type TodoFilterType = 'SHOW_ALL' | 'SHOW_ACTIVE' | 'SHOW_COMPLETED'
 
-declare type TodoStoreState = TodoItemData[];
+declare type TodoStoreState = TodoItemData[]
 
 declare interface IVoteStatistics {
   voteA: number
   voteB: number
   voteC: number
   userVotes: string[]
+}
+
+declare interface AppState {
+  activePortfolioItem: any
 }
 
 

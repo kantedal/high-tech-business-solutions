@@ -1,3 +1,4 @@
+import { IPortfolioItem } from '../../portfolio'
 import * as React from 'react'
 import * as AppActions from '../../actions/app'
 import * as style from './style.css'
@@ -14,7 +15,7 @@ import { AnimatedSwitch } from 'react-router-transition'
 
 export namespace App {
   export interface Props { // extends RouteComponentProps<void> {
-    todos: TodoItemData[]
+    activePortfolioItem: IPortfolioItem
     actions: typeof AppActions
   }
 
@@ -27,11 +28,11 @@ export namespace App {
 class App extends React.Component<App.Props, App.State> {
 
   render() {
-    const { todos, actions, children, actions: { backToMenu } } = this.props
+    const { activePortfolioItem, actions, children, actions: { backToMenu } } = this.props
     return (
       <div style={AppContainerStyle}>
         <Header  />
-        <MainSection>
+        <MainSection activePortfolioItem={activePortfolioItem} openPortfolioItem={actions.openPortfolioItem} closePortfolioItem={actions.closePortfolioItem}>
           {/* <Switch>
             <AnimatedSwitch atEnter={{ opacity: 0 }} atLeave={{ opacity: 0 }} atActive={{ opacity: 1 }} className={style.switchWrapper}>
               {<Route path='/host' component={Host}/>}
@@ -47,7 +48,8 @@ class App extends React.Component<App.Props, App.State> {
 
 function mapStateToProps(state: RootState) {
   return {
-    todos: state.todos
+    todos: state.todos,
+    activePortfolioItem: state.app.activePortfolioItem
   }
 }
 
