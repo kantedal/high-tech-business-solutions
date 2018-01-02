@@ -21,7 +21,7 @@ export class MainSection extends React.Component<MainSection.Props, MainSection.
     return (
       <Grid fluid className={style.main}>
         <Row className={style.presentationRow}>
-            {portfolioComponents}
+          {portfolioComponents}
         </Row>
       </Grid>
     )

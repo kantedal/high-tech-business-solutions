@@ -1,11 +1,15 @@
-body{
+body {
   background: white;
   padding: 0px;
   margin: 0px;
 }
 
-.main{
+.main {
   margin: 0px;
   padding: 0px;
   overflow: 0px;
+  max-width: 1000px;
+  margin: auto;
+  padding-left: 10px;
+  padding-right: 10px;
 }
