@@ -11,7 +11,6 @@ import App from './containers/App'
 const history = createBrowserHistory()
 const store = configureStore(history)
 
-
 const AppComponent: any = App
 
 const theme = createMuiTheme({

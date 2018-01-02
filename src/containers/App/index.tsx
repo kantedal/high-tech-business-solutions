@@ -23,6 +23,8 @@ export namespace App {
   }
 }
 
+
+
 @connect(mapStateToProps, mapDispatchToProps)
 class App extends React.Component<App.Props, App.State> {
 
