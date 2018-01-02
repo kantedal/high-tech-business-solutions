@@ -37,8 +37,7 @@ export class PortfolioItem extends React.Component<PortfolioItem.Props, Portfoli
     const portfolioItem = this.props.portfolioItem
 
     return (
-
-      <Col xs={6} md={3} className={style.container}>
+      <Col xs={12} sm={6} md={6} lg={4} className={style.container}>
         <img className={style.image} src={portfolioItem.imagePaths[0]}/> 
         <div className={style.header}>{portfolioItem.header}</div>
         <div className={style.description}>{portfolioItem.description}</div>
