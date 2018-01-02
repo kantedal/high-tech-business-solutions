@@ -12,31 +12,23 @@ export namespace PortfolioItem {
   export interface State { }
 }
 
-$(".container").hover( function () {
-  alert("hello");
-}, function() {
-  alert("And we're out");
-});
-
 const onMouseMove = (e) => { 
   const root = document.documentElement
 
-  // var t = $(this);
-  // var offset = t.offset();
-  // var width = t.width();
-  // var height = t.height();
-  
-  // var centerX = offset.left + width / 2;
-  // var centerY = offset.top + height / 2;
 
-  const rotX = 20*((e.pageY - window.innerHeight*0.5)/window.innerHeight);
-  const rotY =  -10*((e.pageX - window.innerWidth*0.5)/window.innerHeight);
+  const parentNode = e.target.parentNode 
+  const centerX = parentNode.offsetLeft + parentNode.offsetWidth / 2.0
+  const centerY = parentNode.offsetTop + parentNode.offsetHeight / 2.0
+  const mouseX = e.pageX 
+  const mouseY = e.pageY
+  const relativeMouseX = centerX - mouseX
+  const relativeMouseY = centerY - mouseY
+
+  const rotX = 10.0*relativeMouseY / parentNode.offsetTop
+  const rotY = -10.0*relativeMouseX / parentNode.offsetWidth
   root.style.setProperty('--rot-x', rotX.toString() + 'deg')
   root.style.setProperty('--rot-y', rotY.toString() + 'deg')
-  // $("." + e.target.className).css({'opacity': '0.3' });
-  console.log(e.target.className);
 }
-
 
 window.addEventListener( 'mousemove', onMouseMove, false );
 
