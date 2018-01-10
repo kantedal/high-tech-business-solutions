@@ -16,7 +16,10 @@ export class InteractiveBackground extends React.Component<InteractiveBackground
   render() {
 
     return (
-     <div className={style.container}> hej </div>
+     <div className={style.container}> 
+    
+     
+      </div>
     )
   }
 }
