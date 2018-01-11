@@ -22,9 +22,16 @@ const onMouseMove = (e) => {
   mouse.y = -e.clientY/(window.innerHeight)
 }
 
+const onWindowResize = () => {
+  camera.aspect = window.innerWidth / window.innerHeight
+  camera.updateProjectionMatrix()
+  renderer.setSize(window.innerWidth, window.innerHeight)
+}
+
 window.addEventListener( 'mousedown', onMouseDown, false )
 window.addEventListener( 'mouseup', onMouseUp, false )
 window.addEventListener( 'mousemove', onMouseMove, false )
+window.addEventListener("resize", onWindowResize, false)
 
 init()
 animate()
@@ -38,7 +45,7 @@ function init() {
   )
   camera.position.z = 1
   scene = new THREE.Scene()
-  let geometry = new THREE.PlaneGeometry(0.35, 0.175, 1)
+  let geometry = new THREE.PlaneGeometry(2.65, 2.375, 1)
 
   uniforms = {
     resolution: {
@@ -66,13 +73,8 @@ function init() {
 
   let container = document.getElementById("container")
   container.appendChild(renderer.domElement)
-  window.addEventListener("resize", onWindowResize, false)
 }
-function onWindowResize() {
-  camera.aspect = window.innerWidth / window.innerHeight
-  camera.updateProjectionMatrix()
-  renderer.setSize(window.innerWidth, window.innerHeight)
-}
+
 
 function animate() {
   requestAnimationFrame(animate)
