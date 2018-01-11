@@ -9,6 +9,7 @@ import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 import { configureStore } from './store'
 import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
 import App from './containers/App'
+import './background'
 
 
 const history = createBrowserHistory();

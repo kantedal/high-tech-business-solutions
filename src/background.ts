@@ -1,4 +1,4 @@
-import * as THREE from "three"
+import * as THREE from 'three'
 
 let camera, scene, renderer
 let clock = new THREE.Clock()
@@ -17,7 +17,6 @@ const onMouseUp = (e) => {
   mouseHold = 0.0
 }
 const onMouseMove = (e) => { 
-
   mouse.x = e.clientX/(window.innerWidth)
   mouse.y = -e.clientY/(window.innerHeight)
 }
@@ -31,7 +30,7 @@ const onWindowResize = () => {
 window.addEventListener( 'mousedown', onMouseDown, false )
 window.addEventListener( 'mouseup', onMouseUp, false )
 window.addEventListener( 'mousemove', onMouseMove, false )
-window.addEventListener("resize", onWindowResize, false)
+window.addEventListener('resize', onWindowResize, false)
 
 init()
 animate()
