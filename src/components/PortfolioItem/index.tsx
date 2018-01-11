@@ -4,20 +4,13 @@ import * as style from './style.css'
 import { portfolioItems, IPortfolioItem } from '../../portfolio'
 import { GridList, GridListTile } from 'material-ui/GridList'
 import { Grid, Row, Col } from 'react-flexbox-grid'
-
 export namespace PortfolioItem {
   export interface Props {
     portfolioItem: IPortfolioItem
   }
   export interface State { }
 }
-const onMouseDown = (e) => { 
-  mouseHold = 1.0
-}
 
-const onMouseUp = (e) => { 
-  mouseHold = 0.0
-}
 const onMouseMove = (e) => { 
   const root = document.documentElement
   const parentNode = e.target.parentNode 
@@ -25,8 +18,6 @@ const onMouseMove = (e) => {
   const centerY = parentNode.offsetTop + parentNode.offsetHeight / 2.0
   const mouseX = e.pageX 
   const mouseY = e.pageY
-  mouse.x = e.clientX/(window.innerWidth)
-  mouse.y = -e.clientY/(window.innerHeight)
   const relativeMouseX = centerX - mouseX
   const relativeMouseY = centerY - mouseY
 
@@ -37,8 +28,7 @@ const onMouseMove = (e) => {
 }
 
 window.addEventListener( 'mousemove', onMouseMove, false )
-window.addEventListener( 'mousedown', onMouseDown, false )
-window.addEventListener( 'mouseup', onMouseUp, false )
+
 
 export class PortfolioItem extends React.Component<PortfolioItem.Props, PortfolioItem.State> {
   render() {

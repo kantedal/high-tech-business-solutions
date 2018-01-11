@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { RouteComponentProps, Switch, Route } from 'react-router'
 import { RootState } from '../../reducers'
-import { Header, MainSection } from '../../components'
+import { Header, MainSection, Footer } from '../../components'
 import { Menu } from '../Menu'
 import { Host } from '../Host'
 import { Mentometer } from '../Mentometer'
@@ -42,6 +42,7 @@ class App extends React.Component<App.Props, App.State> {
             </AnimatedSwitch>
           </Switch> */}
         </MainSection>
+        <Footer  />
       </div>
     )
   }
