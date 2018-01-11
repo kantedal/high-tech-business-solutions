@@ -38,7 +38,8 @@ body{
 .container > .header {
   top: 35%;
   font-size: 30px;
-  transition: font-size .2s;
+  transform: scale(1.0);
+  transition: transform .2s;
   text-shadow: 0 0px 0px rgba(0, 0, 0, 0.3);
   position:absolute;
   width: 100%;
@@ -68,8 +69,8 @@ body{
 }
 
 .container:hover > .header {
-  transition: font-size .2s;
-  font-size: 32px;
+  transition: transform .2s;
+  transform: scale(1.1);
   text-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
 }
 
