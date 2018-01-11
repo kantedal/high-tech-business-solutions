@@ -16,7 +16,6 @@ export namespace PortfolioItem {
 const onMouseMove = (e) => { 
   const root = document.documentElement
 
-
   const parentNode = e.target.parentNode 
   const centerX = parentNode.offsetLeft + parentNode.offsetWidth / 2.0
   const centerY = parentNode.offsetTop + parentNode.offsetHeight / 2.0
