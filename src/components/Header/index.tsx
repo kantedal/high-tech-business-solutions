@@ -1,10 +1,9 @@
-import { InteractiveBackground } from "../InteractiveBackground";
-import * as React from "react";
-import { CSSProperties } from "react";
-import IconButton from "material-ui/IconButton";
-import { Grid, Row, Col } from "react-flexbox-grid";
-import * as style from "./style.css";
-import { PresentationBox } from "../PresentationBox/index";
+import * as React from "react"
+import { CSSProperties } from "react"
+import IconButton from "material-ui/IconButton"
+import { Grid, Row, Col } from "react-flexbox-grid"
+import * as style from "./style.css"
+import { PresentationBox } from "../PresentationBox/index"
 
 export namespace Header {
   export interface Props {}
@@ -36,5 +35,5 @@ export const Header: React.SFC<Header.Props> = () => {
       </Grid>
 
     </div>
-  );
-};
+  )
+}
