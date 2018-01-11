@@ -10,14 +10,16 @@ import { configureStore } from './store'
 import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
 import App from './containers/App'
 
-const history = createBrowserHistory()
-const store = configureStore(history)
 
-const AppComponent: any = App
+const history = createBrowserHistory();
+const store = configureStore(history);
+
+const AppComponent: any = App;
 
 const theme = createMuiTheme({
-  overrides: {},
-})
+  overrides: {}
+});
+
 
 ReactDOM.render(
   <MuiThemeProvider theme={theme}>
@@ -27,5 +29,5 @@ ReactDOM.render(
       </ConnectedRouter>
     </Provider>
   </MuiThemeProvider>,
-  document.getElementById('root')
-)
+  document.getElementById("root")
+);

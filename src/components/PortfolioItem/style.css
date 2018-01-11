@@ -2,6 +2,12 @@ body{
   background: red;
 }
 
+
+:root {
+  --rot-x: 0deg;
+  --rot-y: 0deg;
+}
+
 .container{
   display: flex;
   float:left;
@@ -20,28 +26,47 @@ body{
 .container:focus {outline:0;}
 
 .container > img {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  opacity: 0.8;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  opacity: 0.95;
   transform: perspective(600px) rotateX(0deg) rotateY(0deg) scale(1.0);
+  -webkit-transform: perspective(600px) rotateX(0deg) rotateY(0deg) scale(1.0);
+  -ms-transform: perspective(600px) rotateX(0deg) rotateY(0deg) scale(1.0);
   transition: transform .5s, box-shadow .5s;
   transition-timing-function: cubic-bezier(0.0,0.01,0.0,0.1);
+
+  filter: grayscale(0.0) contrast(0.6) brightness(0.8);
 }
 
-.container:hover{
+.container > .header {
+  top: 35%;
+  font-size: 30px;
+  transition: font-size .2s;
+  text-shadow: 0 0px 0px rgba(0, 0, 0, 0.3);
+  position:absolute;
+  width: 100%;
+}
+
+
+.container > .description{
+  top: 50%;
+  font-size: 18px;
+  position:absolute;
+  width: 100%;
+  opacity: 0;
+  transition: opacity .05s; 
+}
+
+.container:hover {
   cursor: pointer;
-  opacity: 0.8;
 }
 
 .container:hover > img {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
   transform: perspective(500px) rotateX(var(--rot-x)) rotateY(var(--rot-y)) scale(1.04);
+  -webkit-transform: perspective(500px) rotateX(var(--rot-x)) rotateY(var(--rot-y)) scale(1.04);
+  -ms-transform: perspective(500px) rotateX(var(--rot-x)) rotateY(var(--rot-y)) scale(1.04);
 	transition: transform 0.5s, box-shadow 0.6s;
   transition-timing-function: cubic-bezier(0.0,0.1,0.0,1);
-}
-
-:root {
-  --rot-x: 0deg;
-  --rot-y: 0deg;
 }
 
 .container:hover > .header {
@@ -61,17 +86,4 @@ body{
   height:100%;
 }
 
-.header{
-  top: 35%;
-  position:absolute;
-  width: 100%;
-  font-size: 30px;
-  
-}
-.description{
-  top: 45%;
-  font-size: 18px;
-  position:absolute;
-  width: 100%;
-  opacity: 0;
-}
+

@@ -4,7 +4,6 @@ import * as style from './style.css'
 import { portfolioItems, IPortfolioItem } from '../../portfolio'
 import { GridList, GridListTile } from 'material-ui/GridList'
 import { Grid, Row, Col } from 'react-flexbox-grid'
-
 export namespace PortfolioItem {
   export interface Props {
     portfolioItem: IPortfolioItem
@@ -15,7 +14,6 @@ export namespace PortfolioItem {
 
 const onMouseMove = (e) => { 
   const root = document.documentElement
-
   const parentNode = e.target.parentNode 
   const centerX = parentNode.offsetLeft + parentNode.offsetWidth / 2.0
   const centerY = parentNode.offsetTop + parentNode.offsetHeight / 2.0
@@ -30,7 +28,8 @@ const onMouseMove = (e) => {
   root.style.setProperty('--rot-y', rotY.toString() + 'deg')
 }
 
-window.addEventListener( 'mousemove', onMouseMove, false );
+window.addEventListener( 'mousemove', onMouseMove, false )
+
 
 export class PortfolioItem extends React.Component<PortfolioItem.Props, PortfolioItem.State> {
   render() {

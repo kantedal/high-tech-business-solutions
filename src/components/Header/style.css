@@ -1,20 +1,38 @@
+.top{
+  background:#fff;
+  border-bottom: 70px solid rgba(132, 112, 206, 1.0);
+  border-left: 700px solid transparent;
+}
+
 .backButton {
   position: absolute;
   top: 10px;
   left: 10px;
   color: #fff;
+  z-index: 2;
+  
 }
 
 .headerContent {
   position: relative;
-  /*
-  background: linear-gradient(rgb(116, 79, 154) 30%, rgb(53, 57, 153) 90%);
-  */
-  width: 100%;
+  background: linear-gradient(rgba(132, 112, 206, 1.0) 30%, rgba(126, 75, 192, 0.94) 90%);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
   height: 500px;
   margin-bottom: 20px;
 }
 
 .presentationRow {
-  height: 300px;
+  height: 500px;
+}
+
+.presentation{
+  color: #fff;
+  font-family: 'Fugaz One';
+  font-size: 24px;
+}
+
+@media only screen and (max-width: 1026px) {
+  .presentation{
+    display: none;
+  }
 }
