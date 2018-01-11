@@ -7,6 +7,7 @@ import { Grid, Row, Col } from 'react-flexbox-grid'
 export namespace PortfolioItem {
   export interface Props {
     portfolioItem: IPortfolioItem
+    portfolioItemClick: (portfolioItem: IPortfolioItem) => void 
   }
   export interface State { }
 }
@@ -32,13 +33,15 @@ window.addEventListener( 'mousemove', onMouseMove, false )
 
 export class PortfolioItem extends React.Component<PortfolioItem.Props, PortfolioItem.State> {
   render() {
-    const portfolioItem = this.props.portfolioItem
-
+    const { portfolioItem, portfolioItemClick } = this.props
+    const portfolioClick = () => portfolioItemClick(portfolioItem)
     return (
       <Col xs={12} sm={6} md={6} lg={4} className={style.container}>
-        <img className={style.image} src={portfolioItem.imagePaths[0]}/> 
-        <div className={style.header}>{portfolioItem.header}</div>
-        <div className={style.description}>{portfolioItem.description}</div>
+        <div onClick={portfolioClick}>
+          <img className={style.image} src={portfolioItem.imagePaths[0]}/> 
+          <div className={style.header} onClick={portfolioClick}>>{portfolioItem.header}</div>
+          <div className={style.description}>{portfolioItem.description}</div>
+        </div>
       </Col> 
     )
   }
