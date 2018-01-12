@@ -1,3 +1,4 @@
+
 .footerContainer {
   border-top: 1px solid #e6e6e6;
   border-top: 100px solid transparent;
@@ -5,4 +6,10 @@
   position: fixed;
   bottom: 0;
   right: 0;
+}
+
+@media only screen and (max-width: 1000px) {
+  .bottomHolder{
+    border-right: 70vw solid rgb(144, 96, 255);
+}
 }
