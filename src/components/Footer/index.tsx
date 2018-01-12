@@ -24,7 +24,7 @@ export class Footer extends React.Component<Footer.Props, Footer.State> {
   
   render() {
     return (
-      <footer className={style.normal}>
+      <footer className={style.bottomHolder}>
         
         <div className={style.filters}>
 
