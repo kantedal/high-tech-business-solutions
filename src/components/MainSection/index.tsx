@@ -1,12 +1,13 @@
-import { FilterPanel } from '../FilterPanel'
-import { PortfolioItemModal } from '../PortfolioItemModal'
-import { PortfolioItem } from '../PortfolioItem';
 import * as React from 'react'
+// tslint:disable-next-line:no-duplicate-imports
 import { CSSProperties } from 'react'
+import { Grid, Row } from 'react-flexbox-grid'
+
+import { Categories, IPortfolioItem, portfolioItems } from '../../portfolio'
+import { FilterPanel } from '../FilterPanel'
+import { PortfolioItem } from '../PortfolioItem'
+import { PortfolioItemModal } from '../PortfolioItemModal'
 import * as style from './style.css'
-import { portfolioItems, IPortfolioItem } from '../../portfolio'
-import { GridList, GridListTile } from 'material-ui/GridList'
-import { Grid, Row, Col } from 'react-flexbox-grid'
 
 export namespace MainSection {
   export interface Props {
@@ -14,6 +15,7 @@ export namespace MainSection {
     openPortfolioItem: (portfolioItem: IPortfolioItem) => void
     filterByPortfolioCategory: (category: string) => void
     closePortfolioItem: () => void 
+    portfolioFilter: Categories
   }
   export interface State { }
 }
@@ -21,15 +23,15 @@ export namespace MainSection {
 export class MainSection extends React.Component<MainSection.Props, MainSection.State> {
   
   render() {
-    const { activePortfolioItem, openPortfolioItem, closePortfolioItem, filterByPortfolioCategory } = this.props
-    const portfolioComponents = portfolioItems.map((portfolioItem: IPortfolioItem, index: number) => (
-      <PortfolioItem key={index} portfolioItem={portfolioItem} portfolioItemClick={openPortfolioItem}/>
-    ))
+    const { activePortfolioItem, openPortfolioItem, closePortfolioItem, filterByPortfolioCategory, portfolioFilter } = this.props
+    const portfolioComponents = portfolioItems
+      .map((portfolioItem: IPortfolioItem, index: number) => <PortfolioItem key={index} portfolioItem={portfolioItem} portfolioItemClick={openPortfolioItem}/>)
+      // .filter((PortfolioItem: IPortfolioItem, key: any) => )
     return (
       <div>
         <PortfolioItemModal portfolioItem={activePortfolioItem} isOpen={activePortfolioItem != null} closeModal={closePortfolioItem}/>
-        <FilterPanel filterByPortfolioCategory={filterByPortfolioCategory} />
-        <Grid fluid className={style.main}>
+        <FilterPanel portfolioFilter={portfolioFilter} filterByPortfolioCategory={filterByPortfolioCategory} />
+        <Grid fluid={true} className={style.main}>
           <Row className={style.presentationRow}>
             {portfolioComponents}
           </Row>

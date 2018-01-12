@@ -24,7 +24,7 @@ export namespace App {
 class App extends React.Component<App.Props, App.State> {
 
   render() {
-    const { activePortfolioItem, actions, children, actions: { backToMenu } } = this.props
+    const { activePortfolioItem, actions, filterPortfolioItemBy, children, actions: { backToMenu } } = this.props
     return (
       <div style={AppContainerStyle}>
         <Header  />
@@ -33,6 +33,7 @@ class App extends React.Component<App.Props, App.State> {
           openPortfolioItem={actions.openPortfolioItem}
           closePortfolioItem={actions.closePortfolioItem}
           filterByPortfolioCategory={actions.filterByPortfolioCategory}
+          portfolioFilter={filterPortfolioItemBy}
         />
         <Footer />
       </div>
