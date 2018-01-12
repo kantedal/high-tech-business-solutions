@@ -24,9 +24,22 @@ export class MainSection extends React.Component<MainSection.Props, MainSection.
   
   render() {
     const { activePortfolioItem, openPortfolioItem, closePortfolioItem, filterByPortfolioCategory, portfolioFilter } = this.props
+
+    const portfolioFilterHandle = (portfolioItem: IPortfolioItem) => {
+      if (portfolioFilter != null) {
+        for (const portfolioCat of portfolioItem.tags) {
+          if (portfolioCat === Categories[portfolioFilter]) {
+            return true
+          }
+        }
+        return false
+      }
+      return true
+    }
+
     const portfolioComponents = portfolioItems
+      .filter(portfolioFilterHandle)    
       .map((portfolioItem: IPortfolioItem, index: number) => <PortfolioItem key={index} portfolioItem={portfolioItem} portfolioItemClick={openPortfolioItem}/>)
-      // .filter((PortfolioItem: IPortfolioItem, key: any) => )
     return (
       <div>
         <PortfolioItemModal portfolioItem={activePortfolioItem} isOpen={activePortfolioItem != null} closeModal={closePortfolioItem}/>
