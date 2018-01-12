@@ -30,7 +30,7 @@ export const Header: React.SFC<Header.Props> = () => {
                   name={"Simon Hedlund"}
                   imgUrl={"./images/simon.jpg"}
                   linkedInUrl={"https://www.linkedin.com/in/simon-hedlund-a1a656128/"}
-                  emailUrl={"mailto:sermonhedlund@gmail.com"}
+                  emailUrl={"sermonhedlund@gmail.com"}
                   githubUrl={"https://github.com/Hedlundaren"}
                   websiteUrl={"http://simonhedlund.github.io"}
                 />
@@ -40,7 +40,7 @@ export const Header: React.SFC<Header.Props> = () => {
                   name={"Filip Kantedal"}
                   imgUrl={"./images/filip.jpg"}
                   linkedInUrl={"https://www.linkedin.com/in/filip-kantedal-33b84240/"}
-                  emailUrl={"mailto:kantedal@gmail.com"}
+                  emailUrl={"kantedal@gmail.com"}
                   githubUrl={"https://github.com/kantedal"}
                   websiteUrl={"http://kantedal.se"}
                 />

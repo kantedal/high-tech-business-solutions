@@ -20,7 +20,7 @@ export const PresentationBox: React.SFC<PresentationBox.Props> = ({name, imgUrl,
     window.open(linkedInUrl, '_blank')
   }
   const emailClick = () => {
-    window.open(emailUrl, '_blank')
+    window.prompt("Copy to clipboard: Ctrl+C, Enter", emailUrl);
   }
   const githubClick = () => {
     window.open(githubUrl, '_blank')
@@ -39,7 +39,7 @@ export const PresentationBox: React.SFC<PresentationBox.Props> = ({name, imgUrl,
           <div className={style.nameText}>{name}</div>
         </Row>
         <Row center={'xs'} className={style.contactRow}>
-          <Col xs={12} sm={12} md={6}>
+          <Col xs={12} sm={12} md={9}>
             <Row>
               <Col xs={3} className={style.contactCol}>
                 <IconButton aria-label='LinkedIn' onClick={linkedInClick}>
