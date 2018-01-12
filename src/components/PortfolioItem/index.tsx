@@ -39,7 +39,7 @@ export class PortfolioItem extends React.Component<PortfolioItem.Props, Portfoli
       <Col xs={12} sm={6} md={6} lg={4} className={style.container}>
         <img className={style.image} src={portfolioItem.imagePaths[0]} onClick={portfolioClick}/> 
         <div className={style.header} onClick={portfolioClick}>{portfolioItem.header}</div>
-        <div className={style.description}>{portfolioItem.description}</div>
+        <div className={style.description}>{portfolioItem.shortDescription}</div>
       </Col> 
     )
   }

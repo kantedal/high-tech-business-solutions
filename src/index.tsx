@@ -9,18 +9,17 @@ import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 import { configureStore } from './store'
 import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
 import App from './containers/App'
-import './background'
+// import './background'
 
 
-const history = createBrowserHistory();
-const store = configureStore(history);
+const history = createBrowserHistory()
+const store = configureStore(history)
 
-const AppComponent: any = App;
+const AppComponent: any = App
 
 const theme = createMuiTheme({
   overrides: {}
-});
-
+})
 
 ReactDOM.render(
   <MuiThemeProvider theme={theme}>

@@ -7,7 +7,7 @@ body{
   --rot-y: 0deg;
 }
 
-.container{
+.container {
   display: flex;
   float:left;
 	align-items: stretch;
@@ -46,13 +46,14 @@ body{
 }
 
 
-.container > .description{
+.container > .description {
   top: 50%;
   font-size: 18px;
   position:absolute;
   width: 100%;
   opacity: 0;
-  transition: opacity .05s; 
+  transition: opacity .05s;
+  pointer-events: none;
 }
 
 .container:hover {

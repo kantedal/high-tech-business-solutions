@@ -19,8 +19,8 @@ declare interface IVoteStatistics {
 
 declare interface AppState {
   activePortfolioItem: any
+  filterPortfolioItemBy: any
 }
-
 
 declare interface HostState {
   hostStep: number

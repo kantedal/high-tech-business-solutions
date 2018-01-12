@@ -20,16 +20,7 @@ export namespace Footer {
 }
 
 export class Footer extends React.Component<Footer.Props, Footer.State> {
-
-  
   render() {
-    return (
-      <footer className={style.normal}>
-        
-        <div className={style.filters}>
-
-        </div>
-      </footer>
-    )
+    return <div className={style.footerContainer}/>
   }
 }

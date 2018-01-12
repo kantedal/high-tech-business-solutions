@@ -1,5 +1,8 @@
-.normal {
+.footerContainer {
   border-top: 1px solid #e6e6e6;
   border-top: 100px solid transparent;
   border-right: 700px solid rgb(144, 96, 255);
+  position: fixed;
+  bottom: 0;
+  right: 0;
 }

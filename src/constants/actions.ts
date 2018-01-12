@@ -2,7 +2,8 @@ export const BACK_TO_MENU = 'BACK_TO_MENU'
 
 // Portfolio
 export const OPEN_PORTFOLIO_ITEM = 'OPEN_PORTFOLIO_ITEM'
-export const CLOSE_PORTFOLIO_ITEM = 'CLOSE_PORTFOLIO_ITEM' 
+export const CLOSE_PORTFOLIO_ITEM = 'CLOSE_PORTFOLIO_ITEM'
+export const FILTER_PORTFOLIO_BY = 'FILTER_PORTFOLIO_BY'
 
 // Socket
 export const MESSAGE = 'message'
