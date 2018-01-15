@@ -18,7 +18,7 @@ body{
   position:relative;
   justify-content: center;
   opacity: 1;
-  padding:10px;
+  padding:8px;
   margin: 0px;
 }
 
@@ -51,6 +51,7 @@ body{
 
 .container > .description {
   font-family: 'Open Sans';
+  font-family: 'Quicksand';
   top: 50%;
   font-size: 18px;
   position:absolute;
