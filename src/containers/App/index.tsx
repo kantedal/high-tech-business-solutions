@@ -26,7 +26,7 @@ class App extends React.Component<App.Props, App.State> {
   render() {
     const { activePortfolioItem, actions, filterPortfolioItemBy, children, actions: { backToMenu } } = this.props
     return (
-      <div style={AppContainerStyle}>
+      <div id='bodyHolder' style={AppContainerStyle}>
         <Header  />
         <MainSection 
           activePortfolioItem={activePortfolioItem}
@@ -40,6 +40,7 @@ class App extends React.Component<App.Props, App.State> {
     )
   }
 }
+
 
 function mapStateToProps(state: RootState) {
   return {

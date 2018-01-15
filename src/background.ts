@@ -59,7 +59,7 @@ function init() {
   let shaderMaterial = new THREE.ShaderMaterial({
     uniforms: uniforms,
     // Shader is located in index.html
-    fragmentShader: document.getElementById("fragmentShader").textContent,
+    fragmentShader: document.getElementById("fragmentShader3").textContent,
     wireframe: false
   })
 
@@ -76,12 +76,13 @@ function init() {
 
 
 function animate() {
+
   requestAnimationFrame(animate)
   mouseDelayed.x = mouseDelayed.x - 0.09 * (mouseDelayed.x - mouse.x)
   mouseDelayed.y = mouseDelayed.y - 0.09 * (mouseDelayed.y - mouse.y)
   camera.updateMatrixWorld()
-  let delta = 0.2 * clock.getDelta()
-  uniforms.time.value += delta * (1.0 + mouseHold * 30.0)
+  let delta = 0.02 * clock.getDelta()
+  uniforms.time.value += delta * (1.0 + mouseHold * 10.0)
   uniforms.mouse.value = mouse
   uniforms.mouseHold.value = mouseHold
   uniforms.mouseDelayed.value = mouseDelayed

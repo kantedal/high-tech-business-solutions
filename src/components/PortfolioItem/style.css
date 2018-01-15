@@ -22,6 +22,7 @@ body{
   margin: 0px;
 }
 
+
 .container:focus {outline:0;}
 
 .container > img {
@@ -33,21 +34,23 @@ body{
   transition: transform .5s, box-shadow .5s;
   transition-timing-function: cubic-bezier(0.0,0.01,0.0,0.1);
   filter: grayscale(0.0) contrast(0.7) brightness(0.8);
+  border-radius: 5px;
 }
 
 .container > .header {
   top: 35%;
   font-size: 30px;
-  transform: scale(1.0);
-  transition: transform .2s, opacity 0.35;
+  transform: scale(0.9);
   text-shadow: 0 0px 0px rgba(0, 0, 0, 0.3);
   position:absolute;
   width: 100%;
   opacity: 0.0;
+  transition: transform .2s, opacity 0.35;
 }
 
 
 .container > .description {
+  font-family: 'Open Sans';
   top: 50%;
   font-size: 18px;
   position:absolute;
@@ -63,23 +66,23 @@ body{
 
 .container:hover > img {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
-  transform: perspective(500px) rotateX(var(--rot-x)) rotateY(var(--rot-y)) scale(1.04);
-  -webkit-transform: perspective(500px) rotateX(var(--rot-x)) rotateY(var(--rot-y)) scale(1.04);
-  -ms-transform: perspective(500px) rotateX(var(--rot-x)) rotateY(var(--rot-y)) scale(1.04);
+  transform: perspective(500px) rotateX(var(--rot-x)) rotateY(var(--rot-y)) scale(1.02);
+  -webkit-transform: perspective(500px) rotateX(var(--rot-x)) rotateY(var(--rot-y)) scale(1.02);
+  -ms-transform: perspective(500px) rotateX(var(--rot-x)) rotateY(var(--rot-y)) scale(1.02);
 	transition: transform 0.5s, box-shadow 0.6s;
   transition-timing-function: cubic-bezier(0.0,0.1,0.0,1);
 }
 
 .container:hover > .header {
   transition: opacity .35s, transform .2s;
-  transform: scale(1.1);
-  text-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+  transform: scale(1.0);
+  text-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
   opacity: 1.0;
 }
 
 .container:hover > .description {
-  opacity: 0.8;
-	transition: opacity .85s;
+  opacity: 0.9;
+	transition: opacity .5s;
 }
 
 .image{
