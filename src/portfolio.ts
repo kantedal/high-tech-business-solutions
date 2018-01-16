@@ -32,7 +32,7 @@ export const portfolioItems: IPortfolioItem[] = [
     shortDescription: '3D animated film that was created as a hobby project.',
     longDescription: 'Long 3D animated film that was created as a hobby project.',
     tags: [ Categories.Animation ],
-    imagePaths: [ './images/lfh.png' ],
+    imagePaths: [ './images/lfh.png', './images/pathtracer.png' ],
     mediaType: 'VIDEO',
     videoUrl: 'http://simonhedlund.com'
   },

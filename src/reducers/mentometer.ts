@@ -38,4 +38,4 @@ export default handleActions<MentometerState, any>({
   [Actions.CLIENT_CONNECTED]: (state, action) => {
     return { ...state, connectedClients: action.payload }
   },
-}, initialState);
+}, initialState)

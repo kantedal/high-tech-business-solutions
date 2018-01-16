@@ -4,6 +4,7 @@ import Modal from 'material-ui/Modal'
 import { portfolioItems, IPortfolioItem } from '../../portfolio'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import { PortfolioItem } from '../PortfolioItem/index'
+import { MediaCarousel } from '../MediaCarousel/index'
 
 export namespace PortfolioItemModal {
   export interface Props {
@@ -22,9 +23,8 @@ export class PortfolioItemModal extends React.Component<PortfolioItemModal.Props
         <div>
         {portfolioItem && (
           <div className={style.portfolioModalContent}>
-            <div className={style.topImageContent}>
-              <img className={style.topModalImage} src={portfolioItem.imagePaths[0]}/> 
-            </div>  
+    
+              <MediaCarousel images={portfolioItem.imagePaths}/>
             <h1 className={style.portfolioModalHeader}> {portfolioItem.header}</h1>
             <p className={style.modalDescription}>{portfolioItem.longDescription}</p>
           </div>

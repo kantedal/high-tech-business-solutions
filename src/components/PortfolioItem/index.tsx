@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { CSSProperties } from 'react'
 import * as style from './style.css'
 import { portfolioItems, IPortfolioItem } from '../../portfolio'
 import { GridList, GridListTile } from 'material-ui/GridList'
@@ -22,14 +21,13 @@ const onMouseMove = (e) => {
   const relativeMouseX = centerX - mouseX
   const relativeMouseY = centerY - mouseY
 
-  const rotX = 10.0*relativeMouseY / parentNode.offsetTop
-  const rotY = -10.0*relativeMouseX / parentNode.offsetWidth
+  const rotX = 10.0 * relativeMouseY / parentNode.offsetTop
+  const rotY = -10.0 * relativeMouseX / parentNode.offsetWidth
   root.style.setProperty('--rot-x', rotX.toString() + 'deg')
   root.style.setProperty('--rot-y', rotY.toString() + 'deg')
 }
 
 window.addEventListener('mousemove', onMouseMove, false)
-
 
 export class PortfolioItem extends React.Component<PortfolioItem.Props, PortfolioItem.State> {
   render() {

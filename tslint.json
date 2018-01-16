@@ -92,7 +92,9 @@
           "check-operator",
           "check-separator",
           "check-type"
-      ]
+      ],
+      "jsx-no-multiline-js": false,
+      "no-submodule-imports": false
   }
 }
 
