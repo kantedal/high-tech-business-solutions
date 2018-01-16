@@ -8,6 +8,8 @@ import { Footer, Header, MainSection } from '../../components'
 import { Categories, IPortfolioItem } from '../../portfolio'
 import { RootState } from '../../reducers'
 import * as style from './style.css'
+import { Link, DirectLink, Element , Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+const ScrollAnimation = require('react-animate-on-scroll')
 
 export namespace App {
   export interface Props { // extends RouteComponentProps<void> {
@@ -25,8 +27,12 @@ class App extends React.Component<App.Props, App.State> {
 
   render() {
     const { activePortfolioItem, actions, filterPortfolioItemBy, children, actions: { backToMenu } } = this.props
+    console.log(ScrollAnimation)
     return (
       <div id='bodyHolder' style={AppContainerStyle}>
+        <Link activeClass='active' to='test1' spy={true} smooth={true} offset={50} duration={500} onSetActive={() => console.log('now this is active')}>
+          Test 1
+        </Link>
         <Header  />
         <MainSection 
           activePortfolioItem={activePortfolioItem}
@@ -35,12 +41,18 @@ class App extends React.Component<App.Props, App.State> {
           filterByPortfolioCategory={actions.filterByPortfolioCategory}
           portfolioFilter={filterPortfolioItemBy}
         />
+
+        <ScrollAnimation animateIn='fadeIn'>
+          <div style={{ width: '100px', height: '100px', background: '#f0f' }}>
+            Heja blåvitt
+          </div>
+        </ScrollAnimation>
+
         <Footer />
       </div>
     )
   }
 }
-
 
 function mapStateToProps(state: RootState) {
   return {
