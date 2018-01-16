@@ -50,6 +50,13 @@
   padding-left: 40px;
   padding-right: 40px;
 }
+
+.arrowRow {
+  position: absolute;
+  bottom: 10px;
+  width: 100%
+}
+
 @media only screen and (max-width: 1000px) {
   .top{
     border-left: 70vw solid transparent;

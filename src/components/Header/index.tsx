@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { CSSProperties } from 'react'
 import { Col, Grid, Row } from 'react-flexbox-grid'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 import { PresentationBox } from '../PresentationBox/index'
 import * as style from './style.css'
@@ -21,6 +21,18 @@ export const StyledHeaderDiv: any = styled.div`
   height: ${({ isActive }: any) => isActive ? window.innerHeight + 'px' : '0px'};
   overflow: hidden;
   transition: all 0.5s ease;
+`
+
+const StyledArrowAnimation = keyframes`
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+`
+
+const StyledArrow = styled.div`
+  display: inline-block;
+  animation: ${StyledArrowAnimation} 2s linear infinite;
+  padding: 2rem 1rem;
+  font-size: 1.2rem;
 `
 
 export class Header extends React.Component<Header.Props, Header.State> {
@@ -64,6 +76,11 @@ export class Header extends React.Component<Header.Props, Header.State> {
             </Col>
           </Row>
         </Grid>
+        <div className={style.arrowRow}>
+          <StyledArrow>
+            hej
+          </StyledArrow>
+        </div>
       </StyledHeaderDiv>
     )
   }
