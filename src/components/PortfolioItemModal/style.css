@@ -17,10 +17,7 @@
 
 .topImageContent {
   padding: 0px;
-  height: 200px;
-  height: calc(3vw + 120px);  
-  text-align: center;
-  justify-content: center;
+  height: 400px;
 }
 
 .topModalImage {
@@ -29,21 +26,24 @@
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   object-fit: cover;
-  filter: blur(0px) contrast(0.5);
+  filter: blur(0px) contrast(0.8);
   opacity: 1;
 }
 
 .portfolioModalHeader{
   font-family: 'Fugaz One';
-  position: absolute;
-  top: 20px;
-  color: rgb(255, 255, 255);
+  position: relative;
+  top: calc(0.05vw + 7px);
+  color: rgb(78, 78, 78);
   width:100%;
-  font-size: calc(2vw + 22px);
+  padding: 0px;
+  padding-left: 20px;
+  font-size: calc(0.8vw + 22px);
 }
 
 .modalDescription{
   font-family: 'Quicksand', 'Open Sans';
   padding: 20px;
+  padding-top: 0px;
   
 }

@@ -18,6 +18,7 @@ export const portfolioCategories: string[] = [
 export interface IPortfolioItem {
   header: string
   shortDescription: string
+  longDescription: string
   tags: string[]
   imagePaths: string[]
   mediaType: 'IMAGE' | 'VIDEO'
@@ -29,13 +30,16 @@ export const portfolioItems: IPortfolioItem[] = [
   {
     header: 'Looking for host',
     shortDescription: '3D animated film that was created as a hobby project.',
+    longDescription: 'Long 3D animated film that was created as a hobby project.',
     tags: [ Categories.Animation ],
     imagePaths: [ './images/lfh.png' ],
-    mediaType: 'VIDEO'
+    mediaType: 'VIDEO',
+    videoUrl: 'http://simonhedlund.com'
   },
   {
     header: 'Rob`s Vengeance',
     shortDescription: '3D animated film that was created as a hobby project.',
+    longDescription: '3D animated film that was created as a hobby project.',
     tags: [ Categories.Animation ],
     imagePaths: [ './images/rv.png' ],
     mediaType: 'VIDEO'
@@ -43,6 +47,7 @@ export const portfolioItems: IPortfolioItem[] = [
   {
     header: 'Pathtracing in WebGL',
     shortDescription: 'Path tracing rendering engine for the web',
+    longDescription: 'Path tracing rendering engine for the web',
     tags: [ Categories.Web, Categories.GraphicsProgramming ],
     imagePaths: [ './images/pathtracer.png' ],
     mediaType: 'VIDEO'
@@ -50,6 +55,7 @@ export const portfolioItems: IPortfolioItem[] = [
   {
     header: 'Flight visualization',
     shortDescription: 'Visualization of thousands of flights in realtime',
+    longDescription: 'Visualization of thousands of flights in realtime',
     tags: [ Categories.Web, Categories.GraphicsProgramming ],
     imagePaths: [ './images/flight-vis.png' ],
     mediaType: 'VIDEO'
@@ -57,6 +63,7 @@ export const portfolioItems: IPortfolioItem[] = [
   {
     header: 'Heja Blåvitt',
     shortDescription: 'Native Android app collecting and presenting news',
+    longDescription: 'Native Android app collecting and presenting news',
     tags: [ Categories.MobileApp ],
     imagePaths: [ './images/blavitt.png' ],
     mediaType: 'VIDEO'
@@ -64,6 +71,7 @@ export const portfolioItems: IPortfolioItem[] = [
   {
     header: 'Self balancing robot',
     shortDescription: 'Two wheeled Arduino robot balancing using PID',
+    longDescription: 'Two wheeled Arduino robot balancing using PID',
     tags: [ Categories.Hardware ],
     imagePaths: [ './images/pid.png' ],
     mediaType: 'VIDEO'
@@ -71,6 +79,7 @@ export const portfolioItems: IPortfolioItem[] = [
   {
     header: 'micfx',
     shortDescription: 'App for real time modification of input sound',
+    longDescription: 'App for real time modification of input sound',
     tags: [ Categories.MobileApp ],
     imagePaths: [ './images/micfx.png' ],
     mediaType: 'VIDEO'

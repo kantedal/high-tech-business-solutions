@@ -19,9 +19,8 @@ export const Header: React.SFC<Header.Props> = () => {
             <Row>
               <Col xs={0} sm={6}>
                 <p className={style.presentation}>
-                  We are two friends who enjoy coding and creativity. Currently
-                  we are looking for work. If you like what you see here in our
-                  portfolio and are looking for two programmers, please contact
+                  Welcome to our portfolio. We are two friends who enjoy coding and creativity. 
+                  Currently we are looking for work. If you like what you see here and are looking for two programmers, please contact
                   us.
                 </p>
               </Col>
