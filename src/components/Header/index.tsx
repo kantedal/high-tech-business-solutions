@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { CSSProperties } from 'react'
 import { Col, Grid, Row } from 'react-flexbox-grid'
+import { Link } from 'react-scroll'
 import styled, { keyframes } from 'styled-components'
 
 import { PresentationBox } from '../PresentationBox/index'
@@ -9,6 +10,7 @@ import * as style from './style.css'
 export namespace Header {
   export interface Props {
     isActive: boolean
+    scrollY: number
   }
   export interface State {}
 }
@@ -18,26 +20,29 @@ export const StyledHeaderDiv: any = styled.div`
   background: linear-gradient(rgba(132, 112, 206, 1.0) 30%, rgba(126, 75, 192, 0.94) 90%);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
   margin-bottom: 20px;
-  height: ${({ isActive }: any) => isActive ? window.innerHeight + 'px' : '0px'};
+  height: ${({ isActive, scrollY }: any) => (window.innerHeight) + 'px'};
   overflow: hidden;
-  transition: all 0.5s ease;
+  // transition: all 0.5s ease;
 `
 
 const StyledArrowAnimation = keyframes`
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(10px); }
+  100% { transform: translateY(0px); }
 `
 
-const StyledArrow = styled.div`
+const StyledArrow = styled.i`
   display: inline-block;
-  animation: ${StyledArrowAnimation} 2s linear infinite;
-  padding: 2rem 1rem;
-  font-size: 1.2rem;
+  animation: ${StyledArrowAnimation} 1s ease infinite;
+  padding: 1rem 1rem;
+  font-size: 40px;
+  color: #fff;
 `
 
 export class Header extends React.Component<Header.Props, Header.State> {
   render() {
-    const { isActive } = this.props
+    const { isActive, scrollY } = this.props
+    console.log((window.innerHeight - scrollY))
     return (
       <StyledHeaderDiv isActive={isActive}>
         {/* <div className={style.top} /> */}
@@ -77,9 +82,19 @@ export class Header extends React.Component<Header.Props, Header.State> {
           </Row>
         </Grid>
         <div className={style.arrowRow}>
-          <StyledArrow>
-            hej
-          </StyledArrow>
+          <Link 
+            activeClass='active'
+            to='test2'
+            spy={true}
+            smooth={true}
+            offset={0}
+            duration={1000}
+            // onSetActive={() => this.setState({ ...this.state, contentActive: true })}
+            // onSetInactive={() => this.setState({ ...this.state, contentActive: false })}
+          >
+            <StyledArrow className='material-icons'>keyboard_arrow_down</StyledArrow>
+          </Link>
+          
         </div>
       </StyledHeaderDiv>
     )

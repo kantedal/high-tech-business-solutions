@@ -1,7 +1,8 @@
+import IconButton from 'material-ui/IconButton'
 import * as React from 'react'
 import { CSSProperties } from 'react'
-import IconButton from 'material-ui/IconButton'
-import { Grid, Row, Col } from 'react-flexbox-grid'
+import { Col, Grid, Row } from 'react-flexbox-grid'
+
 import * as style from './style.css'
 
 export namespace PresentationBox {
@@ -20,7 +21,7 @@ export const PresentationBox: React.SFC<PresentationBox.Props> = ({name, imgUrl,
     window.open(linkedInUrl, '_blank')
   }
   const emailClick = () => {
-    window.prompt("Copy to clipboard: Ctrl+C, Enter", emailUrl);
+    window.prompt('Copy to clipboard: Ctrl+C, Enter', emailUrl);
   }
   const githubClick = () => {
     window.open(githubUrl, '_blank')
@@ -39,7 +40,7 @@ export const PresentationBox: React.SFC<PresentationBox.Props> = ({name, imgUrl,
           <div className={style.nameText}>{name}</div>
         </Row>
         <Row center={'xs'} className={style.contactRow}>
-          <Col xs={12} sm={12} md={9}>
+          <Col xs={12} sm={12} md={12}>
             <Row>
               <Col xs={3} className={style.contactCol}>
                 <IconButton aria-label='LinkedIn' onClick={linkedInClick}>
