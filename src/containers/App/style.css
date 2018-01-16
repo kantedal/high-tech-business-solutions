@@ -90,3 +90,8 @@ a:-webkit-any-link {
 .switchWrapper > div {
   position: absolute;
 }
+
+.headerActive {
+  height: 1000px;
+  background: #f0f;
+}

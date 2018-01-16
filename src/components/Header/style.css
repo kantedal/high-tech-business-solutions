@@ -1,4 +1,4 @@
-.top{
+.top {
   background:#fff;
   border-bottom: 70px solid rgba(132, 112, 206, 1.0);
   border-left: 700px solid transparent;
@@ -19,14 +19,27 @@
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
   min-height: 500px;
   margin-bottom: 20px;
-  height: fit-content;
+  height: 500px;
+  transition: all 0.5s ease;
+}
+
+.headerContent:active {
+  height: 1000px;
+  transition: all 0.5s ease;
+}
+
+.presentationGrid {
+  position: absolute;
+  height: 100%;
 }
 
 .presentationRow {
-  height: 500px;  
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.presentation{
+.presentation {
   margin-top: 35px;
   color: #fff;
   font-family: 'Quicksand';
