@@ -17,7 +17,7 @@ export namespace MainSection {
     closePortfolioItem: () => void 
     portfolioFilter: Categories
   }
-  export interface State { }
+  export interface State {}
 }
 
 export class MainSection extends React.Component<MainSection.Props, MainSection.State> {

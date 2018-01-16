@@ -1,3 +1,4 @@
+import 'animate.css/animate.min.css'
 /// <reference path="../types/models.d.ts"/>
 
 import * as React from 'react'
@@ -9,8 +10,7 @@ import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 import { configureStore } from './store'
 import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
 import App from './containers/App'
-import './background'
-
+// import './background'
 
 const history = createBrowserHistory()
 const store = configureStore(history)
@@ -29,5 +29,5 @@ ReactDOM.render(
       </ConnectedRouter>
     </Provider>
   </MuiThemeProvider>,
-  document.getElementById("root")
-);
+  document.getElementById('root')
+)
