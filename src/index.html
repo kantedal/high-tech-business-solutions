@@ -98,7 +98,7 @@
     
     
     float waterSDF(vec3 p) {
-      float surface = 0.01*(sin(20.0*p.x + 50.0*time) + sin(20.0*p.z + 30.0*time) + 90.0 * sin(p.x * p.z + 4.0*time));
+      float surface = 0.01*(sin(20.0*p.x + 50.0*time) + sin(20.0*p.z + 30.0*time) + 10.0 * sin(p.x * p.z + 4.0*time));
         return p.y - surface;
     }
     
@@ -146,7 +146,7 @@
       vec3 ray = pixelPos;
       vec3 rayDirection = normalize(pixelPos - camPos);
 
-      const float MAX_MARCHING_STEPS = 6.0;    
+      const float MAX_MARCHING_STEPS = 6.0;
     
       float v = 0.0; 
       for(float i = 0.0; i < MAX_MARCHING_STEPS; i++){
@@ -162,7 +162,7 @@
           vec3 V = normalize(camPos - ray); // View direction
           float specular = pow(max(dot(R, V), 0.0), 5.0);
           float specular2 = pow(max(dot(R, V), 0.0), 100.0);
-          v +=  ambient +  0.14 * diffuse + 0.2 * specular;
+          v +=  ambient +  0.44 * diffuse + 0.2 * specular;
         }
         ray += dist * rayDirection;
         
