@@ -2,7 +2,6 @@ import { StyledHeaderArrow, StyledHeaderDiv, StyledRow } from './styles'
 import * as React from 'react'
 import { CSSProperties } from 'react'
 import { Col, Grid, Row } from 'react-flexbox-grid'
-import { Link } from 'react-scroll'
 import styled, { keyframes } from 'styled-components'
 
 import { PresentationBox } from '../PresentationBox/index'
@@ -60,19 +59,7 @@ export class Header extends React.Component<Header.Props, Header.State> {
           </StyledRow>
         </Grid>   
         <div className={style.arrowRow}>
-          <Link 
-            activeClass='active'
-            to='mainContent'
-            spy={true}
-            smooth={true}
-            offset={0}
-            duration={1000}
-            onSetActive={() => { mainContentActiveChange(true); console.log('content active') }}
-            onSetInactive={() => { mainContentActiveChange(false); console.log('content inactive') }}
-          >
-            <StyledHeaderArrow className='material-icons'>keyboard_arrow_down</StyledHeaderArrow>
-          </Link>
-          
+          <StyledHeaderArrow className='material-icons'>keyboard_arrow_down</StyledHeaderArrow>
         </div>
       </StyledHeaderDiv>
     )

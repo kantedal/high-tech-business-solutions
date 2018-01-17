@@ -9,14 +9,14 @@ const StyledHeaderAnimation = keyframes`
 
 export const StyledHeaderDiv: any = styled.div`
   position: relative;
+  width: 100%;
+  background: transparent;
   background: linear-gradient(rgba(132, 112, 206, 1.0) 30%, rgba(126, 75, 192, 0.94) 90%);
   box-shadow: inset 0 0 200px rgba(0,0,0,0.2);
-  // background: linear-gradient(rgb(216, 216, 216) 30%,rgb(255, 255, 255) 90%);
-  // animation: ${StyledHeaderAnimation} 10s linear infinite;
-  margin-bottom: 20px;
   height: ${({ scrollY }: any) => (window.innerHeight) + 'px'};
   overflow: hidden;
   // transition: all 0.5s ease;
+  z-index: -1;
 `
 
 const StyledArrowAnimation = keyframes`

@@ -18,18 +18,17 @@
   margin: 0px;
 }
 
-
 .portfolioItemContainer:focus {outline:0;}
 
 .portfolioItemContainer > img {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
   opacity: 0.95;
-  transform: perspective(600px) rotateX(0deg) rotateY(0deg) scale(1.0);
+  /* transform: perspective(600px) rotateX(0deg) rotateY(0deg) scale(1.0);
   -webkit-transform: perspective(600px) rotateX(0deg) rotateY(0deg) scale(1.0);
-  -ms-transform: perspective(600px) rotateX(0deg) rotateY(0deg) scale(1.0);
+  -ms-transform: perspective(600px) rotateX(0deg) rotateY(0deg) scale(1.0); */
   transition: transform .5s, box-shadow .5s;
   transition-timing-function: cubic-bezier(0.0,0.01,0.0,0.1);
-  filter: grayscale(0.0) contrast(0.7) brightness(0.8);
+  /* filter: grayscale(0.0) contrast(0.7) brightness(0.8); */
   border-radius: 5px;
 }
 
