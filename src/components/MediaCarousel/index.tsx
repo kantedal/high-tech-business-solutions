@@ -47,4 +47,5 @@ export class MediaCarousel extends React.Component<MediaCarousel.Props, MediaCar
       return <iframe className={style.modalVideo} src={media.src} />
     }
   }
+
 }

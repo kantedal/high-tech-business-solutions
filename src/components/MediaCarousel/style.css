@@ -2,7 +2,6 @@
 .mediaHolder{
   height: 100%;
   width: 100%;
-  background: black;
 }
 
 .modalVideo{
@@ -11,4 +10,7 @@
   padding: 0px;
   width: 100%;
   height: 100%;
+  background-image: url('../../images/test.gif');
+  background-repeat: no-repeat;
+  background-position: center;
 }
