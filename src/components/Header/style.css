@@ -20,7 +20,8 @@
   min-height: 500px;
   margin-bottom: 20px;
   height: 500px;
-  transition: all 0.5s ease;
+  /* transition: all 0.5s ease; */
+  box-shadow: inset 0 0 200px rgba(0,0,0,0.2);
 }
 
 .headerContent:active {
@@ -49,12 +50,20 @@
   text-align: center;
   padding-left: 40px;
   padding-right: 40px;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: hue 60s infinite linear;
 }
 
 .arrowRow {
   position: absolute;
-  bottom: 10px;
-  width: 100%
+  bottom: 5px;
+  width: 100%;
+  text-align: center;
 }
 
 @media only screen and (max-width: 1000px) {

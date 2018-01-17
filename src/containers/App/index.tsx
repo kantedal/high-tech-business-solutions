@@ -12,6 +12,7 @@ import { Link, DirectLink, Element , Events, animateScroll as scroll, scrollSpy,
 
 const ScrollAnimation = require('react-animate-on-scroll')
 // const ScrollAnimation = require('react-animate-on-scroll')
+import * as _ from 'lodash'
 
 export namespace App {
   export interface Props { // extends RouteComponentProps<void> {
@@ -22,6 +23,7 @@ export namespace App {
   export interface State {
     headerActive: boolean
     contentActive: boolean
+    scrollY: number
   }
 }
 
@@ -30,18 +32,17 @@ class App extends React.Component<App.Props, App.State> {
 
   constructor(props: App.Props) {
     super(props)
-    this.state = { headerActive: true, contentActive: false }
+    this.state = { headerActive: true, contentActive: false, scrollY: 0 }
   }
 
   render() {
     const { activePortfolioItem, actions, filterPortfolioItemBy, children, actions: { backToMenu } } = this.props
-    console.log(this.state)
 
     return (
       <div id='bodyHolder' style={AppContainerStyle}>
-        <Element name='test1'><Header isActive={this.state.headerActive}/></Element>
+        <Element name='test1'><Header scrollY={this.state.scrollY} isActive={this.state.headerActive}/></Element>
 
-        <Link 
+        {/* <Link 
           to='test1'
           activeClass='activeHeader'
           spy={true}
@@ -50,7 +51,7 @@ class App extends React.Component<App.Props, App.State> {
           duration={500}
         >
           test
-        </Link>
+        </Link> */}
         
       
         <Element name='test2'>
@@ -63,19 +64,6 @@ class App extends React.Component<App.Props, App.State> {
           />
         </Element>
 
-        <Link 
-          activeClass='active'
-          to='test2'
-          spy={true}
-          smooth={true}
-          offset={0}
-          duration={500}
-          // onSetActive={() => this.setState({ ...this.state, contentActive: true })}
-          // onSetInactive={() => this.setState({ ...this.state, contentActive: false })}
-        >
-          Test 2
-        </Link>
-
         {/* <Footer /> */}
       </div>
     )
@@ -83,7 +71,10 @@ class App extends React.Component<App.Props, App.State> {
 
 
   componentDidMount() {
-    window.addEventListener('scroll', (e) => this.setState({ ...this.state, headerActive: window.pageYOffset === 0 }))
+    // window.addEventListener('scroll', _.throttle((e) => {
+    //   this.setState({ ...this.state, scrollY: window.pageYOffset, headerActive: window.pageYOffset === 0 })
+    // }, 300))
+
     scrollSpy.update()
   }
 }
