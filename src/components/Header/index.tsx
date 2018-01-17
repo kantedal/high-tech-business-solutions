@@ -22,11 +22,9 @@ const StyledHeaderAnimation = keyframes`
 
 export const StyledHeaderDiv: any = styled.div`
   position: relative;
-  // background: linear-gradient(rgba(132, 112, 206, 1.0) 30%, rgba(126, 75, 192, 0.94) 90%);
-  background: linear-gradient(rgb(216, 216, 216) 30%,rgb(255, 255, 255) 90%);
+  background: linear-gradient(rgba(132, 112, 206, 1.0) 30%, rgba(126, 75, 192, 0.94) 90%);
+  // background: linear-gradient(rgb(216, 216, 216) 30%,rgb(255, 255, 255) 90%);
   // animation: ${StyledHeaderAnimation} 10s linear infinite;
-  filter: brightness(100%);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
   margin-bottom: 20px;
   height: ${({ isActive, scrollY }: any) => (window.innerHeight) + 'px'};
   overflow: hidden;
@@ -48,10 +46,10 @@ const StyledArrow = styled.i`
 `
 
 const StyledText = styled.div`
-  text-fill-color: transparent;
-  background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
-  background-clip: text;
-  animation: ${StyledHeaderAnimation} 10s linear infinite;
+  // text-fill-color: transparent;
+  // background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+  // background-clip: text;
+  // animation: ${StyledHeaderAnimation} 10s linear infinite;
 `
 
 export class Header extends React.Component<Header.Props, Header.State> {
