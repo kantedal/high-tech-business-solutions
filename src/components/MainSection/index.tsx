@@ -41,7 +41,7 @@ export class MainSection extends React.Component<MainSection.Props, MainSection.
       .filter(portfolioFilterHandle)    
       .map((portfolioItem: IPortfolioItem, index: number) => <PortfolioItem key={index} portfolioItem={portfolioItem} portfolioItemClick={openPortfolioItem}/>)
     return (
-      <div>
+      <div style={{ paddingTop: '30px' }}>
         <PortfolioItemModal portfolioItem={activePortfolioItem} isOpen={activePortfolioItem != null} closeModal={closePortfolioItem}/>
         <FilterPanel portfolioFilter={portfolioFilter} filterByPortfolioCategory={filterByPortfolioCategory} />
         <Grid fluid={true} className={style.main}>
