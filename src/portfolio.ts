@@ -15,14 +15,19 @@ export const portfolioCategories: string[] = [
   'Hardware'
 ]
 
+export interface IMedia {
+  mediaType: 'IMAGE' | 'VIDEO'
+  src: string
+  description?: string
+}
+
 export interface IPortfolioItem {
   header: string
   shortDescription: string
   longDescription: string
   tags: string[]
-  imagePaths: string[]
-  mediaType: 'IMAGE' | 'VIDEO'
-  videoUrl?: string
+  coverImage: string
+  medias: IMedia[]
   projectUrl?: string
 }
 
@@ -32,56 +37,106 @@ export const portfolioItems: IPortfolioItem[] = [
     shortDescription: '3D animated film that was created as a hobby project.',
     longDescription: 'Long 3D animated film that was created as a hobby project.',
     tags: [ Categories.Animation ],
-    imagePaths: [ './images/lfh.png' ],
-    mediaType: 'VIDEO',
-    videoUrl: 'http://simonhedlund.com'
+    coverImage: './images/lfh.png',
+    medias: [
+      {
+        mediaType: 'VIDEO',
+        src: 'https://www.youtube.com/embed/xwJPhZyZ-6A',
+        description: ''
+      },
+      {
+        mediaType: 'IMAGE',
+        src: './images/lfh.png',
+        description: 'Looking for host'
+      },
+  ]
   },
   {
     header: 'Rob`s Vengeance',
     shortDescription: '3D animated film that was created as a hobby project.',
     longDescription: '3D animated film that was created as a hobby project.',
     tags: [ Categories.Animation ],
-    imagePaths: [ './images/rv.png' ],
-    mediaType: 'VIDEO'
+    coverImage: './images/rv.png',
+    medias: [
+      {
+        mediaType: 'VIDEO',
+        src: 'https://www.youtube.com/embed/Hiiruh8nHKQ',
+        description: ''
+      },
+      {
+        mediaType: 'IMAGE',
+        src: './images/rv.png',
+        description: 'Robs Vengeance'
+      },
+  ]
   },
   {
     header: 'Pathtracing in WebGL',
     shortDescription: 'Path tracing rendering engine for the web',
     longDescription: 'Path tracing rendering engine for the web',
     tags: [ Categories.Web, Categories.GraphicsProgramming ],
-    imagePaths: [ './images/pathtracer.png' ],
-    mediaType: 'VIDEO'
+    coverImage: './images/pathtracer.png',
+    medias: [
+      {
+        mediaType: 'VIDEO',
+        src: 'https://www.youtube.com/embed/AGrCNlCXXfY',
+      },
+      {
+        mediaType: 'IMAGE',
+        src: './images/pathtracer.png',
+      },
+  ]
   },
   {
     header: 'Flight visualization',
     shortDescription: 'Visualization of thousands of flights in realtime',
     longDescription: 'Visualization of thousands of flights in realtime',
     tags: [ Categories.Web, Categories.GraphicsProgramming ],
-    imagePaths: [ './images/flight-vis.png' ],
-    mediaType: 'VIDEO'
+    coverImage: './images/flight-vis.png',
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/flight-vis.png',
+      },
+  ]
   },
   {
     header: 'Heja Blåvitt',
     shortDescription: 'Native Android app collecting and presenting news',
     longDescription: 'Native Android app collecting and presenting news',
     tags: [ Categories.MobileApp ],
-    imagePaths: [ './images/blavitt.png' ],
-    mediaType: 'VIDEO'
+    coverImage: './images/blavitt.png',
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/blavitt.png',
+      },
+  ]
   },
   {
     header: 'Self balancing robot',
     shortDescription: 'Two wheeled Arduino robot balancing using PID',
     longDescription: 'Two wheeled Arduino robot balancing using PID',
     tags: [ Categories.Hardware ],
-    imagePaths: [ './images/pid.png' ],
-    mediaType: 'VIDEO'
+    coverImage: './images/pid.png',
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/pid.png',
+      },
+  ]
   },
   {
     header: 'micfx',
     shortDescription: 'App for real time modification of input sound',
     longDescription: 'App for real time modification of input sound',
     tags: [ Categories.MobileApp ],
-    imagePaths: [ './images/micfx.png' ],
-    mediaType: 'VIDEO'
+    coverImage: './images/micfx.png',
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/micfx.png',
+      },
+  ]
   },
 ]

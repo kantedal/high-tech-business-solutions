@@ -9,6 +9,8 @@ import { Categories, IPortfolioItem } from '../../portfolio'
 import { RootState } from '../../reducers'
 import * as style from './style.css'
 import { Link, DirectLink, Element , Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+
+const ScrollAnimation = require('react-animate-on-scroll')
 // const ScrollAnimation = require('react-animate-on-scroll')
 import * as _ from 'lodash'
 import { SmallHeader } from '../../components/SmallHeader/index';
@@ -87,6 +89,7 @@ class App extends React.Component<App.Props, App.State> {
       </div>
     )
   }
+
 
   componentDidMount() {
     // window.addEventListener('scroll', _.throttle((e) => {

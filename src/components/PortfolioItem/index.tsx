@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { CSSProperties } from 'react'
 import * as style from './style.css'
 import { portfolioItems, IPortfolioItem } from '../../portfolio'
 import { GridList, GridListTile } from 'material-ui/GridList'
@@ -22,8 +21,8 @@ const onMouseMove = (e) => {
   const relativeMouseX = centerX - mouseX
   const relativeMouseY = centerY - mouseY
 
-  const rotX = 10.0*relativeMouseY / parentNode.offsetTop
-  const rotY = -10.0*relativeMouseX / parentNode.offsetWidth
+  const rotX = 10.0 * relativeMouseY / parentNode.offsetTop
+  const rotY = -10.0 * relativeMouseX / parentNode.offsetWidth
   root.style.setProperty('--rot-x', rotX.toString() + 'deg')
   root.style.setProperty('--rot-y', rotY.toString() + 'deg')
 }
@@ -36,7 +35,7 @@ export class PortfolioItem extends React.Component<PortfolioItem.Props, Portfoli
     const portfolioClick = () => portfolioItemClick(portfolioItem)
     return (
       <Col xs={12} sm={6} md={6} lg={4} className={style.container}>
-        <img className={style.image} src={portfolioItem.imagePaths[0]} onClick={portfolioClick}/> 
+        <img className={style.image} src={portfolioItem.coverImage} onClick={portfolioClick}/> 
         <div className={style.header} onClick={portfolioClick}>{portfolioItem.header}</div>
         <div className={style.description}>{portfolioItem.shortDescription}</div>
       </Col> 
