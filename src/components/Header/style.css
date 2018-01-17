@@ -10,7 +10,6 @@
   left: 10px;
   color: #fff;
   z-index: 2;
-  
 }
 
 .headerContent {
@@ -51,12 +50,12 @@
   padding-left: 40px;
   padding-right: 40px;
 
-  -webkit-background-clip: text;
+  /* -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  -webkit-animation: hue 60s infinite linear;
+  -webkit-animation: hue 60s infinite linear; */
 }
 
 .arrowRow {
