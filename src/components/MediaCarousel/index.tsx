@@ -4,10 +4,11 @@ import * as React from 'react'
 import * as style from './style.css'
 import { Carousel } from 'react-responsive-carousel'
 import * as styles from 'react-responsive-carousel/lib/styles/carousel.min.css'
+import { IMedia } from '../../portfolio'
 
 export namespace MediaCarousel {
   export interface Props {
-    images: string[]
+    medias: IMedia[]
     onChange?: () => void
     onClickItem?: () => void
     onClickThumb?: () => void
@@ -17,14 +18,14 @@ export namespace MediaCarousel {
 
 export class MediaCarousel extends React.Component<MediaCarousel.Props, MediaCarousel.State> {
   render() {
-    const { images, onChange, onClickItem, onClickThumb } = this.props
-    console.log(styles)
-    
-    const carouselImages = images.map((imageName: string, index: number) => (
-      <div key={index}>
-        <img src={imageName}/>
-        <p className='legend'>{imageName}</p>
+    const { medias, onChange, onClickItem, onClickThumb } = this.props
+
+    const carouselImages = medias.map((media: IMedia, index: number) => (
+      <div className={style.mediaHolder} key={index}>
+        {this.carouselItem(media)}
+        {this.legendItem(media.description)}
       </div >
+
     ))
     return (
       <Carousel showThumbs={false} useKeyboardArrows={true} showStatus={false} autoPlay={false} emulateTouch={true}>
@@ -32,14 +33,18 @@ export class MediaCarousel extends React.Component<MediaCarousel.Props, MediaCar
       </Carousel>
     )
   }
+
+  private legendItem(description: string) {
+    if (description) {
+      return  <p className='legend'>{description}</p>
+    }
+  }
+
+  private carouselItem(media: IMedia) {
+    if (media.mediaType === 'IMAGE') {
+      return <img src={media.src} />
+    } else {
+      return <iframe className={style.modalVideo} src={media.src} />
+    }
+  }
 }
-
-// ReactDOM.render(<MediaCarousel />, document.querySelector('.demo-carousel'))
-
-// Don't forget to include the css in your page
-
-// Using webpack
-// import styles from 'react-responsive-carousel/lib/styles/carousel.min.css'
-
-// Using html tag:
-// <link rel='stylesheet' href='<NODE_MODULES_FOLDER>/react-responsive-carousel/lib/styles/carousel.min.css'/>
