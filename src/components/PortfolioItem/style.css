@@ -1,13 +1,9 @@
-body{
-  background: red;
-}
-
 :root {
   --rot-x: 0deg;
   --rot-y: 0deg;
 }
 
-.container {
+.portfolioItemContainer {
   display: flex;
   float:left;
 	align-items: stretch;
@@ -15,17 +11,17 @@ body{
   font-family: 'Fugaz One';
   color: white;
   text-align: center;
-  position:relative;
+  position: relative;
   justify-content: center;
   opacity: 1;
-  padding:8px;
+  padding: 8px;
   margin: 0px;
 }
 
 
-.container:focus {outline:0;}
+.portfolioItemContainer:focus {outline:0;}
 
-.container > img {
+.portfolioItemContainer > img {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
   opacity: 0.95;
   transform: perspective(600px) rotateX(0deg) rotateY(0deg) scale(1.0);
@@ -37,7 +33,7 @@ body{
   border-radius: 5px;
 }
 
-.container > .header {
+.portfolioItemContainer > .header {
   top: 35%;
   font-size: 30px;
   transform: scale(0.9);
@@ -49,22 +45,24 @@ body{
 }
 
 
-.container > .description {
+.portfolioItemContainer > .portfolioItemDescription {
   font-family: 'Quicksand';
   top: 50%;
   font-size: 18px;
-  position:absolute;
-  width: 100%;
+  position: absolute;
+  width: calc(100% - 14px);
   opacity: 0;
   transition: opacity .05s;
   pointer-events: none;
+  padding-left: 7px;
+  padding-right: 7px;
 }
 
-.container:hover {
+.contaportfolioItemContaineriner:hover {
   cursor: pointer;
 }
 
-.container:hover > img {
+.portfolioItemContainer:hover > img {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
   transform: perspective(500px) rotateX(var(--rot-x)) rotateY(var(--rot-y)) scale(1.02);
   -webkit-transform: perspective(500px) rotateX(var(--rot-x)) rotateY(var(--rot-y)) scale(1.02);
@@ -73,20 +71,20 @@ body{
   transition-timing-function: cubic-bezier(0.0,0.1,0.0,1);
 }
 
-.container:hover > .header {
+.portfolioItemContainer:hover > .header {
   transition: opacity .35s, transform .2s;
   transform: scale(1.0);
   text-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
   opacity: 1.0;
 }
 
-.container:hover > .description {
+.portfolioItemContainer:hover > .portfolioItemDescription {
   opacity: 0.9;
 	transition: opacity .5s;
 }
 
-.image{
-  width:100%;
-  height:100%;
+.portfolioItemImage {
+  width: 100%;
+  height: 100%;
 }
 

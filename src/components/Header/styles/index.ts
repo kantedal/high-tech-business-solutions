@@ -34,12 +34,6 @@ export const StyledHeaderArrow = styled.i`
   cursor: pointer;
 `
 
-export const StyledHeaderText: any = styled.div`
-  /* opacity: ${({ isActive }: any) => isActive ? 1 : 0};
-  transform: scale(0.5) translateY(-50%);
-  top: 50%;
-  transition: opacity 1.0s; */
-`
 
 export const StyledRow: any = styled(Row)`
   position: relative;

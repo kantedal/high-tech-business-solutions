@@ -1,4 +1,4 @@
-import { StyledHeaderArrow, StyledHeaderDiv, StyledHeaderText, StyledRow } from './styles'
+import { StyledHeaderArrow, StyledHeaderDiv, StyledRow } from './styles'
 import * as React from 'react'
 import { CSSProperties } from 'react'
 import { Col, Grid, Row } from 'react-flexbox-grid'
@@ -21,7 +21,6 @@ export namespace Header {
 export class Header extends React.Component<Header.Props, Header.State> {
   render() {
     const { isActive, scrollY, mainContentActiveChange } = this.props
-    console.log(isActive)
     return (
       <StyledHeaderDiv>
         {/* <div className={style.top} /> */}
