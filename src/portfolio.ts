@@ -376,4 +376,60 @@ export const portfolioItems: IPortfolioItem[] = [
       },
     ]
   },
+  {
+    header: 'TexMesh',
+    shortDescription: 'Drawing tool controlled with android app',
+    longDescription: `TexMesh is a tool developed with OpengL where the user can paint and create textures. 
+    The user can also navigate and choose paint brushes with an external android app.`,
+    tags: [ Categories.GraphicsProgramming, Categories.MobileApp ],
+    coverImage: './images/cloth.jpg',
+    projectSourceUrl: 'https://github.com/Hedlundaren/opengl-remote-server',
+    projectUrl: 'https://vimeo.com/212475647',
+    weight: 2.0,
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/texmesh.png',
+      },
+      {
+        mediaType: 'IMAGE',
+        src: './images/texmesh-controls.gif',
+      },
+      {
+        mediaType: 'IMAGE',
+        src: './images/texmesh-painting.gif',
+      },
+    ]
+  },
+  {
+    header: 'Volume Renderer',
+    shortDescription: 'Visualize pvm data with raymarching in real time',
+    longDescription: `Volume renderer implemented on the GPU using OpenGL. Load pvm data and render them using your own transfer functions.`,
+    tags: [ Categories.GraphicsProgramming ],
+    coverImage: './images/vr1.png',
+    projectSourceUrl: 'https://github.com/Hedlundaren/raymarcher',
+    weight: 1.7,
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/vr1.png',
+      },
+      {
+        mediaType: 'IMAGE',
+        src: './images/vr2.png',
+      },
+      {
+        mediaType: 'IMAGE',
+        src: './images/vr3.png',
+      },
+      {
+        mediaType: 'IMAGE',
+        src: './images/vr4.png',
+      },
+      {
+        mediaType: 'IMAGE',
+        src: './images/vr5.png',
+      },
+    ]
+  },
 ]
