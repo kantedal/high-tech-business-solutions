@@ -4,16 +4,10 @@ export enum Categories {
   GraphicsProgramming = 'Graphics programming',
   Simulation =  'Simulation',
   MobileApp = 'Mobile app',
-  Hardware = 'Hardware'
+  Hardware = 'Hardware',
+  AI = 'AI',
+  Games = 'Games'
 }
-
-export const portfolioCategories: string[] = [
-  'Web',
-  '3D animation',
-  'Graphics programming',
-  'Simulation',
-  'Hardware'
-]
 
 export interface IMedia {
   mediaType: 'IMAGE' | 'VIDEO'
@@ -108,6 +102,7 @@ export const portfolioItems: IPortfolioItem[] = [
     shortDescription: 'Native Android app collecting and presenting news',
     longDescription: 'Native Android app collecting and presenting news',
     tags: [ Categories.MobileApp ],
+    projectSourceUrl: 'https://github.com/kantedal/heja-blavitt',
     coverImage: './images/blavitt.png',
     medias: [
       {
@@ -133,6 +128,7 @@ export const portfolioItems: IPortfolioItem[] = [
     header: 'micfx',
     shortDescription: 'App for real time modification of input sound',
     longDescription: 'App for real time modification of input sound',
+    projectSourceUrl: 'https://github.com/kantedal/MicrophoneModifier',
     tags: [ Categories.MobileApp ],
     coverImage: './images/micfx.png',
     medias: [
@@ -148,7 +144,7 @@ export const portfolioItems: IPortfolioItem[] = [
     longDescription: `During exchange in Singapore Simon created this short 
     animated film about a mosquito donating blood. 
     Blender was used for modelling and animating. Cycles was used for rendering.`,
-    tags: [ Categories.MobileApp ],
+    tags: [ Categories.Animation ],
     coverImage: './images/giveblood.jpg',
     medias: [
       {
@@ -166,7 +162,7 @@ export const portfolioItems: IPortfolioItem[] = [
     shortDescription: 'Displacement water with perlin noise',
     longDescription: `Perlin noise is used to creta displacement, a 
       bumpmap and colors for a grid generated in the browser using three js.`,
-    tags: [ Categories.MobileApp ],
+    tags: [ Categories.Web, Categories.GraphicsProgramming ],
     coverImage: './images/webglwater.jpg',
     medias: [
       {
@@ -180,7 +176,7 @@ export const portfolioItems: IPortfolioItem[] = [
     shortDescription: 'Path finder using the Bell equation',
     longDescription: `Agent recieves points for finding green squares and looses points on red squares. 
       The agent expands a tree of options and calculates the most beneficial.`,
-    tags: [ Categories.MobileApp ],
+    tags: [ Categories.AI, Categories.Web ],
     coverImage: './images/pathfinder.jpg',
     projectUrl: 'https://hedlundaren.github.io/hide-and-seek/',
     projectSourceUrl: 'https://github.com/Hedlundaren/hide-and-seek/',
@@ -196,7 +192,7 @@ export const portfolioItems: IPortfolioItem[] = [
     shortDescription: 'Tower defence in 3d made with Unity',
     longDescription: `Procedurally generated terrain, intelligent bots, physically correct animations, tower defence. 
       Won price for best project in class at Nanyang Technological University, Singapore.`,
-    tags: [ Categories.MobileApp ],
+    tags: [ Categories.Games, Categories.GraphicsProgramming ],
     coverImage: './images/temojano.jpg',
     projectSourceUrl: 'https://github.com/Grahnen92/Temoji',
     medias: [
@@ -210,7 +206,7 @@ export const portfolioItems: IPortfolioItem[] = [
     header: 'Web Clock',
     shortDescription: 'Interactive 3d web clock',
     longDescription: `Clock made in WebGL using three js.`,
-    tags: [ Categories.MobileApp ],
+    tags: [ Categories.Web, Categories.GraphicsProgramming],
     coverImage: './images/webclock.jpg',
     projectUrl: 'http://hedlundaren.github.io/clock/',
     projectSourceUrl: 'https://github.com/Hedlundaren/Clock',
@@ -226,7 +222,7 @@ export const portfolioItems: IPortfolioItem[] = [
     shortDescription: 'Particle based water simulation on the GPU',
     longDescription: `Particle simulation using Navier-stokes smoothed particle hydrodynamics approach. 
       OpenGL is used for graphics and OpenCL for GPU computations.`,
-    tags: [ Categories.MobileApp ],
+    tags: [ Categories.Simulation, Categories.GraphicsProgramming ],
     coverImage: './images/sph.jpg',
     projectSourceUrl: 'https://github.com/Hedlundaren/vattenoverhuvudet',
     medias: [
@@ -242,9 +238,9 @@ export const portfolioItems: IPortfolioItem[] = [
   },
   {
     header: 'Fireworks',
-    shortDescription: 'Interactive 3d web clock',
-    longDescription: `Clock made in WebGL using three js.`,
-    tags: [ Categories.MobileApp ],
+    shortDescription: 'Interactive fireworks in WebGL',
+    longDescription: `Click the screen to send fireworks. Implemented in WebGL using three js. It is basically particles emitting new particles`,
+    tags: [ Categories.Web, Categories.Simulation ],
     coverImage: './images/fireworks.jpg',
     projectUrl: 'http://hedlundaren.github.io/fireworks2/',
     projectSourceUrl: 'https://github.com/Hedlundaren/Fireworks',
@@ -322,6 +318,39 @@ export const portfolioItems: IPortfolioItem[] = [
       {
         mediaType: 'IMAGE',
         src: './images/connected-points-video.gif',
+      },
+    ]
+  },
+  {
+    header: 'The Lake',
+    shortDescription: 'Lake with reflection and refraction in OpenGL',
+    longDescription: `Clock made in WebGL using three js.`,
+    tags: [ Categories.GraphicsProgramming ],
+    coverImage: './images/theLake.jpg',
+    projectUrl: 'http://hedlundaren.github.io/fireworks2/',
+    projectSourceUrl: 'https://github.com/Hedlundaren/Fireworks',
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/theLake.jpg',
+      },
+    ]
+  },
+  {
+    header: 'Cloth Simulation',
+    shortDescription: 'Cloth simulated in OpenGL',
+    longDescription: `Cloth simulated in OpenGL using a mass-spring system.`,
+    tags: [ Categories.Simulation, Categories.GraphicsProgramming ],
+    coverImage: './images/cloth.jpg',
+    projectSourceUrl: 'https://github.com/Hedlundaren/cloth-simulation',
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/cloth.gif',
+      },
+      {
+        mediaType: 'IMAGE',
+        src: './images/cloth.jpg',
       },
     ]
   },
