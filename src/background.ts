@@ -38,15 +38,17 @@ window.addEventListener('resize', onWindowResize, false)
 
 const animate = () => {
   requestAnimationFrame(animate)
-  mouseDelayed.x = mouseDelayed.x - 0.09 * (mouseDelayed.x - mouse.x)
-  mouseDelayed.y = mouseDelayed.y - 0.09 * (mouseDelayed.y - mouse.y)
-  camera.updateMatrixWorld()
-  const delta = 0.02 * clock.getDelta()
-  uniforms.time.value += delta * (1.0 + mouseHold * 10.0)
-  uniforms.mouse.value = mouse
-  uniforms.mouseHold.value = mouseHold
-  uniforms.mouseDelayed.value = mouseDelayed
-  renderer.render(scene, camera)
+  if (window.pageYOffset < initHeight) {
+    mouseDelayed.x = mouseDelayed.x - 0.09 * (mouseDelayed.x - mouse.x)
+    mouseDelayed.y = mouseDelayed.y - 0.09 * (mouseDelayed.y - mouse.y)
+    camera.updateMatrixWorld()
+    const delta = 0.02 * clock.getDelta()
+    uniforms.time.value += delta * (1.0 + mouseHold * 10.0)
+    uniforms.mouse.value = mouse
+    uniforms.mouseHold.value = mouseHold
+    uniforms.mouseDelayed.value = mouseDelayed
+    renderer.render(scene, camera)
+  } 
 }
 
 export const initThreeBackground = (threeContainer: any) => {
