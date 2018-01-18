@@ -23,7 +23,7 @@ button {
 body {
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.4em;
-  background: linear-gradient(rgba(132, 112, 206, 1.0) 30%, rgba(126, 75, 192, 0.94) 90%);
+  background: linear-gradient(to top, rgba(0, 153, 142, 0.7), rgba(0, 238, 133, 0.1));
   color: #4d4d4d;
   min-width: 230px;
   max-width: 550px;

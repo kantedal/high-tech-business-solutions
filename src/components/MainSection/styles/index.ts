@@ -7,4 +7,5 @@ export const StyledMainSectionDiv: any = styled.div`
   background-color: #fff;
   box-shadow: 0px 0px 50px rgba(0,0,0,0.4);
   cursor: pointer;
+  min-height: 900px;
 `

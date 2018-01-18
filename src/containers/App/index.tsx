@@ -90,7 +90,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 const AppContainerStyle: React.CSSProperties = {
-  background: 'linear-gradient(rgba(132, 112, 206, 1.0) 30%, rgba(126, 75, 192, 0.94) 90%)',
+  background: 'rgb(107, 224, 163)',
   position: 'absolute',
   width: '100%',
   minHeight: '100%'

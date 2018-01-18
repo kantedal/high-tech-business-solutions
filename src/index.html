@@ -64,8 +64,6 @@
   </script>
 
   <script type="x-shader/x-fragment" id="fragmentShader3">  
-
-
 		uniform vec2 mouseDelayed;
     uniform vec2 resolution;
     uniform float time;
@@ -93,7 +91,7 @@
     }
     
     float sphereSDF(vec3 p) {
-        return length(p) - 1.0;
+      return length(p) - 1.0;
     }
     
     float cubeSDF( vec3 p, vec3 b, float r )
@@ -101,14 +99,13 @@
       return length(max(abs(p)-b,0.0))-r;
     }
     
-    
     float waterSDF(vec3 p) {
       float surface = 0.01*(sin(20.0*p.x + 50.0*time) + sin(20.0*p.z + 30.0*time) + 10.0 * sin(p.x * p.z + 4.0*time));
-        return p.y - surface;
+      return p.y - surface;
     }
     
     float sceneSDF(vec3 p) {
-        return waterSDF(p);
+      return waterSDF(p);
     }
     
     vec3 estimateNormal(vec3 p) {

@@ -10,6 +10,8 @@ const mouseDelayed = new THREE.Vector2(0, 0)
 let mesh
 let uniforms
 
+let initHeight: number = 0
+
 const onMouseDown = (e) => { 
   if (!e.target.className) {
     mouseHold = 1.0
@@ -24,9 +26,9 @@ const onMouseMove = (e) => {
 }
 
 const onWindowResize = () => {
-  camera.aspect = window.innerWidth / window.innerHeight
+  camera.aspect = window.innerWidth / initHeight
   camera.updateProjectionMatrix()
-  renderer.setSize(window.innerWidth, window.innerHeight)
+  renderer.setSize(window.innerWidth, initHeight)
 }
 
 window.addEventListener('mousedown', onMouseDown, false)
@@ -83,6 +85,8 @@ export const initThreeBackground = (threeContainer: any) => {
   renderer.setSize(window.innerWidth, window.innerHeight)
 
   threeContainer.appendChild(renderer.domElement)
+
+  initHeight = window.innerHeight
 
   animate()
 }

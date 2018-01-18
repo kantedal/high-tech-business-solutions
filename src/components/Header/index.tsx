@@ -25,13 +25,13 @@ export class Header extends React.Component<Header.Props, Header.State> {
     const { isActive, scrollY, mainContentActiveChange } = this.props
     return (
       <StyledHeaderDiv>
-        <Parallax
+        {/* <Parallax
           offsetYMin={-50}
           offsetYMax={50}
           slowerScrollRate={true}
-        >
+        > */}
           <div ref={(element) => this.threeContainer = element}/>
-        </Parallax>
+        {/* </Parallax> */}
 
         {/* <div className={style.top} /> */}
         <Grid className={style.presentationGrid} fluid={true}>
