@@ -61,7 +61,7 @@ function init() {
   const shaderMaterial = new THREE.ShaderMaterial({
     uniforms: {uniforms},
     // Shader is located in index.html
-    fragmentShader: document.getElementById('fragmentShader3').textContent,
+    fragmentShader: document.getElementById('fragmentShader').textContent,
     wireframe: false
   })
 
