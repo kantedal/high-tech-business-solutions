@@ -29,6 +29,7 @@ export interface IPortfolioItem {
   coverImage: string
   medias: IMedia[]
   projectUrl?: string
+  projectSourceUrl?: string
 }
 
 export const portfolioItems: IPortfolioItem[] = [
@@ -76,6 +77,8 @@ export const portfolioItems: IPortfolioItem[] = [
     longDescription: 'Path tracing rendering engine for the web',
     tags: [ Categories.Web, Categories.GraphicsProgramming ],
     coverImage: './images/pathtracer.png',
+    projectUrl: 'https://kantedal.github.io/pathtracer-webgl2/',
+    projectSourceUrl: 'https://github.com/kantedal/pathtracer-webgl2',
     medias: [
       {
         mediaType: 'VIDEO',
