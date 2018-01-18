@@ -24,6 +24,7 @@ export interface IPortfolioItem {
   medias: IMedia[]
   projectUrl?: string
   projectSourceUrl?: string
+  weight: number
 }
 
 export const portfolioItems: IPortfolioItem[] = [
@@ -33,6 +34,7 @@ export const portfolioItems: IPortfolioItem[] = [
     longDescription: 'Long 3D animated film that was created as a hobby project.',
     tags: [ Categories.Animation ],
     coverImage: './images/lfh.png',
+    weight: 1.0,
     medias: [
       {
         mediaType: 'VIDEO',
@@ -44,7 +46,7 @@ export const portfolioItems: IPortfolioItem[] = [
         src: './images/lfh.png',
         description: 'Looking for host'
       },
-  ]
+    ]
   },
   {
     header: 'Rob`s Vengeance',
@@ -52,6 +54,7 @@ export const portfolioItems: IPortfolioItem[] = [
     longDescription: '3D animated film that was created as a hobby project.',
     tags: [ Categories.Animation ],
     coverImage: './images/rv.png',
+    weight: 1.0,
     medias: [
       {
         mediaType: 'VIDEO',
@@ -63,7 +66,7 @@ export const portfolioItems: IPortfolioItem[] = [
         src: './images/rv.png',
         description: 'Robs Vengeance'
       },
-  ]
+    ]
   },
   {
     header: 'Pathtracing in WebGL',
@@ -73,6 +76,7 @@ export const portfolioItems: IPortfolioItem[] = [
     coverImage: './images/pathtracer.png',
     projectUrl: 'https://kantedal.github.io/pathtracer-webgl2/',
     projectSourceUrl: 'https://github.com/kantedal/pathtracer-webgl2',
+    weight: 2.0,
     medias: [
       {
         mediaType: 'VIDEO',
@@ -82,7 +86,7 @@ export const portfolioItems: IPortfolioItem[] = [
         mediaType: 'IMAGE',
         src: './images/pathtracer.png',
       },
-  ]
+    ]
   },
   {
     header: 'Flight visualization',
@@ -90,12 +94,13 @@ export const portfolioItems: IPortfolioItem[] = [
     longDescription: 'Visualization of thousands of flights in realtime',
     tags: [ Categories.Web, Categories.GraphicsProgramming ],
     coverImage: './images/flight-vis.png',
+    weight: 1.5,
     medias: [
       {
         mediaType: 'IMAGE',
         src: './images/flight-vis.png',
       },
-  ]
+    ]
   },
   {
     header: 'Heja Blåvitt',
@@ -104,12 +109,13 @@ export const portfolioItems: IPortfolioItem[] = [
     tags: [ Categories.MobileApp ],
     projectSourceUrl: 'https://github.com/kantedal/heja-blavitt',
     coverImage: './images/blavitt.png',
+    weight: 1.4,
     medias: [
       {
         mediaType: 'IMAGE',
         src: './images/blavitt.png',
       },
-  ]
+    ]
   },
   {
     header: 'Self balancing robot',
@@ -117,12 +123,13 @@ export const portfolioItems: IPortfolioItem[] = [
     longDescription: 'Two wheeled Arduino robot balancing using PID',
     tags: [ Categories.Hardware ],
     coverImage: './images/pid.png',
+    weight: 1.45,
     medias: [
       {
         mediaType: 'IMAGE',
         src: './images/pid.png',
       },
-  ]
+    ]
   },
   {
     header: 'micfx',
@@ -131,12 +138,13 @@ export const portfolioItems: IPortfolioItem[] = [
     projectSourceUrl: 'https://github.com/kantedal/MicrophoneModifier',
     tags: [ Categories.MobileApp ],
     coverImage: './images/micfx.png',
+    weight: 1.1,
     medias: [
       {
         mediaType: 'IMAGE',
         src: './images/micfx.png',
       },
-  ]
+    ]
   },
   {
     header: 'Give Blood',
@@ -146,6 +154,7 @@ export const portfolioItems: IPortfolioItem[] = [
     Blender was used for modelling and animating. Cycles was used for rendering.`,
     tags: [ Categories.Animation ],
     coverImage: './images/giveblood.jpg',
+    weight: 1.2,
     medias: [
       {
         mediaType: 'VIDEO',
@@ -155,7 +164,7 @@ export const portfolioItems: IPortfolioItem[] = [
         mediaType: 'IMAGE',
         src: './images/giveblood.jpg',
       },
-  ]
+    ]
   },
   {
     header: 'WebGL Water',
@@ -164,12 +173,13 @@ export const portfolioItems: IPortfolioItem[] = [
       bumpmap and colors for a grid generated in the browser using three js.`,
     tags: [ Categories.Web, Categories.GraphicsProgramming ],
     coverImage: './images/webglwater.jpg',
+    weight: 1.4,
     medias: [
       {
         mediaType: 'IMAGE',
         src: './images/webglwater.jpg',
       },
-  ]
+    ]
   },
   {
     header: 'Intelligent Agent',
@@ -180,12 +190,13 @@ export const portfolioItems: IPortfolioItem[] = [
     coverImage: './images/pathfinder.jpg',
     projectUrl: 'https://hedlundaren.github.io/hide-and-seek/',
     projectSourceUrl: 'https://github.com/Hedlundaren/hide-and-seek/',
+    weight: 1.0,
     medias: [
       {
         mediaType: 'IMAGE',
         src: './images/pathfinder.jpg',
       },
-  ]
+    ]
   },
   {
     header: 'Temojano',
@@ -195,12 +206,13 @@ export const portfolioItems: IPortfolioItem[] = [
     tags: [ Categories.Games, Categories.GraphicsProgramming ],
     coverImage: './images/temojano.jpg',
     projectSourceUrl: 'https://github.com/Grahnen92/Temoji',
+    weight: 1.0,
     medias: [
       {
         mediaType: 'IMAGE',
         src: './images/temojano.jpg',
       },
-  ]
+    ]
   },
   {
     header: 'Web Clock',
@@ -210,12 +222,13 @@ export const portfolioItems: IPortfolioItem[] = [
     coverImage: './images/webclock.jpg',
     projectUrl: 'http://hedlundaren.github.io/clock/',
     projectSourceUrl: 'https://github.com/Hedlundaren/Clock',
+    weight: 1.38,
     medias: [
       {
         mediaType: 'IMAGE',
         src: './images/webclock.jpg',
       },
-  ]
+    ]
   },
   {
     header: 'SPH Simulation',
@@ -225,6 +238,7 @@ export const portfolioItems: IPortfolioItem[] = [
     tags: [ Categories.Simulation, Categories.GraphicsProgramming ],
     coverImage: './images/sph.jpg',
     projectSourceUrl: 'https://github.com/Hedlundaren/vattenoverhuvudet',
+    weight: 1.6,
     medias: [
       {
         mediaType: 'VIDEO',
@@ -234,7 +248,7 @@ export const portfolioItems: IPortfolioItem[] = [
         mediaType: 'IMAGE',
         src: './images/sph.jpg',
       },
-  ]
+    ]
   },
   {
     header: 'Fireworks',
@@ -244,12 +258,88 @@ export const portfolioItems: IPortfolioItem[] = [
     coverImage: './images/fireworks.jpg',
     projectUrl: 'http://hedlundaren.github.io/fireworks2/',
     projectSourceUrl: 'https://github.com/Hedlundaren/Fireworks',
+    weight: 1.3,
     medias: [
       {
         mediaType: 'IMAGE',
         src: './images/fireworks.jpg',
       },
-  ]
+    ]
+  },
+  {
+    header: 'Soft body physics',
+    shortDescription: 'Soft body phyisics in WebGL',
+    longDescription: `Simulation of soft body physics written in Typescript and WebGL. The integration method used is position based and fits the purpose well.`,
+    tags: [ Categories.GraphicsProgramming, Categories.Simulation, Categories.Web ],
+    coverImage: './images/softbody_small.jpg',
+    projectUrl: 'http://kantedal.github.io/soft-body-app/',
+    weight: 1.3,
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/softbody_small.jpg',
+      },
+    ]
+  },
+  {
+    header: 'Mandelbrot visualization',
+    shortDescription: 'Mandelbrot visualization in WebGL 2',
+    longDescription: `Mandelbrot visualziation run on the GPU. Works well as long as the 32 bit precision float in enough.`,
+    tags: [ Categories.GraphicsProgramming, Categories.Web ],
+    coverImage: './images/mandelbrot.png',
+    projectUrl: 'https://kantedal.github.io/mandelbrot-webgl2/',
+    weight: 1.1,
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/mandelbrot.png',
+      },
+    ]
+  },
+  {
+    header: 'Car simulation',
+    shortDescription: 'Car simulation with self written physics engine',
+    longDescription: `Car simulation with self written physics engine.`,
+    tags: [ Categories.GraphicsProgramming, Categories.Web ],
+    coverImage: './images/carsim.png',
+    projectUrl: 'http://kantedal.github.io/car-simulator/',
+    weight: 1.0,
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/carsim.png',
+      },
+    ]
+  },
+  {
+    header: 'Cloth simulation',
+    shortDescription: 'Cloth simulation with verlet integration',
+    longDescription: `Cloth simulation with verlet integration.`,
+    tags: [ Categories.GraphicsProgramming, Categories.Web, Categories.Simulation ],
+    coverImage: './images/cloth.png',
+    projectUrl: 'http://kantedal.github.io/cloth-simulation/',
+    weight: 1.0,
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/cloth.png',
+      },
+    ]
+  },
+  {
+    header: 'Connected points',
+    shortDescription: 'Weird WebGL visualization/simulation',
+    longDescription: `Weird WebGL visualization similar to particles.js, but with physics. On the GPU.`,
+    tags: [ Categories.GraphicsProgramming, Categories.Web, Categories.Simulation ],
+    coverImage: './images/connected-particles.jpg',
+    projectSourceUrl: 'https://github.com/kantedal/connected-particles-webgl',
+    weight: 1.3,
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/connected-points-video.gif',
+      },
+    ]
   },
   {
     header: 'The Lake',
@@ -259,12 +349,13 @@ export const portfolioItems: IPortfolioItem[] = [
     coverImage: './images/theLake.jpg',
     projectUrl: 'http://hedlundaren.github.io/fireworks2/',
     projectSourceUrl: 'https://github.com/Hedlundaren/Fireworks',
+    weight: 1.0,
     medias: [
       {
         mediaType: 'IMAGE',
         src: './images/theLake.jpg',
       },
-  ]
+    ]
   },
   {
     header: 'Cloth Simulation',
@@ -273,6 +364,7 @@ export const portfolioItems: IPortfolioItem[] = [
     tags: [ Categories.Simulation, Categories.GraphicsProgramming ],
     coverImage: './images/cloth.jpg',
     projectSourceUrl: 'https://github.com/Hedlundaren/cloth-simulation',
+    weight: 1.0,
     medias: [
       {
         mediaType: 'IMAGE',
@@ -282,7 +374,6 @@ export const portfolioItems: IPortfolioItem[] = [
         mediaType: 'IMAGE',
         src: './images/cloth.jpg',
       },
-  ]
+    ]
   },
-
 ]
