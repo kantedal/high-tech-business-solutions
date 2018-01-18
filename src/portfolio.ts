@@ -6,7 +6,7 @@ export enum Categories {
   MobileApp = 'Mobile app',
   Hardware = 'Hardware',
   AI = 'AI',
-  Game = 'Game'
+  Games = 'Games'
 }
 
 export interface IMedia {
@@ -102,6 +102,7 @@ export const portfolioItems: IPortfolioItem[] = [
     shortDescription: 'Native Android app collecting and presenting news',
     longDescription: 'Native Android app collecting and presenting news',
     tags: [ Categories.MobileApp ],
+    projectSourceUrl: 'https://github.com/kantedal/heja-blavitt',
     coverImage: './images/blavitt.png',
     medias: [
       {
@@ -127,6 +128,7 @@ export const portfolioItems: IPortfolioItem[] = [
     header: 'micfx',
     shortDescription: 'App for real time modification of input sound',
     longDescription: 'App for real time modification of input sound',
+    projectSourceUrl: 'https://github.com/kantedal/MicrophoneModifier',
     tags: [ Categories.MobileApp ],
     coverImage: './images/micfx.png',
     medias: [
@@ -190,7 +192,7 @@ export const portfolioItems: IPortfolioItem[] = [
     shortDescription: 'Tower defence in 3d made with Unity',
     longDescription: `Procedurally generated terrain, intelligent bots, physically correct animations, tower defence. 
       Won price for best project in class at Nanyang Technological University, Singapore.`,
-    tags: [ Categories.MobileApp ],
+    tags: [ Categories.Games, Categories.GraphicsProgramming ],
     coverImage: './images/temojano.jpg',
     projectSourceUrl: 'https://github.com/Grahnen92/Temoji',
     medias: [
@@ -204,7 +206,7 @@ export const portfolioItems: IPortfolioItem[] = [
     header: 'Web Clock',
     shortDescription: 'Interactive 3d web clock',
     longDescription: `Clock made in WebGL using three js.`,
-    tags: [ Categories.MobileApp ],
+    tags: [ Categories.Web, Categories.GraphicsProgramming],
     coverImage: './images/webclock.jpg',
     projectUrl: 'http://hedlundaren.github.io/clock/',
     projectSourceUrl: 'https://github.com/Hedlundaren/Clock',
@@ -220,7 +222,7 @@ export const portfolioItems: IPortfolioItem[] = [
     shortDescription: 'Particle based water simulation on the GPU',
     longDescription: `Particle simulation using Navier-stokes smoothed particle hydrodynamics approach. 
       OpenGL is used for graphics and OpenCL for GPU computations.`,
-    tags: [ Categories.MobileApp ],
+    tags: [ Categories.Simulation, Categories.GraphicsProgramming ],
     coverImage: './images/sph.jpg',
     projectSourceUrl: 'https://github.com/Hedlundaren/vattenoverhuvudet',
     medias: [
@@ -238,7 +240,7 @@ export const portfolioItems: IPortfolioItem[] = [
     header: 'Fireworks',
     shortDescription: 'Interactive fireworks in WebGL',
     longDescription: `Click the screen to send fireworks. Implemented in WebGL using three js. It is basically particles emitting new particles`,
-    tags: [ Categories.MobileApp ],
+    tags: [ Categories.Web, Categories.Simulation ],
     coverImage: './images/fireworks.jpg',
     projectUrl: 'http://hedlundaren.github.io/fireworks2/',
     projectSourceUrl: 'https://github.com/Hedlundaren/Fireworks',
@@ -253,14 +255,32 @@ export const portfolioItems: IPortfolioItem[] = [
     header: 'The Lake',
     shortDescription: 'Lake with reflection and refraction in OpenGL',
     longDescription: `Clock made in WebGL using three js.`,
-    tags: [ Categories.MobileApp ],
-    coverImage: './images/fireworks.jpg',
+    tags: [ Categories.GraphicsProgramming ],
+    coverImage: './images/theLake.jpg',
     projectUrl: 'http://hedlundaren.github.io/fireworks2/',
     projectSourceUrl: 'https://github.com/Hedlundaren/Fireworks',
     medias: [
       {
         mediaType: 'IMAGE',
-        src: './images/fireworks.jpg',
+        src: './images/theLake.jpg',
+      },
+  ]
+  },
+  {
+    header: 'Cloth Simulation',
+    shortDescription: 'Cloth simulated in OpenGL',
+    longDescription: `Cloth simulated in OpenGL using a mass-spring system.`,
+    tags: [ Categories.Simulation, Categories.GraphicsProgramming ],
+    coverImage: './images/cloth.jpg',
+    projectSourceUrl: 'https://github.com/Hedlundaren/cloth-simulation',
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/cloth.gif',
+      },
+      {
+        mediaType: 'IMAGE',
+        src: './images/cloth.jpg',
       },
   ]
   },

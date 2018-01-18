@@ -40,9 +40,15 @@ export class Header extends React.Component<Header.Props, Header.State> {
               <Row>
                 <Col sm={0} md={6}>
                   <p className={style.presentation}>
-                    Welcome to our portfolio. We are two friends who enjoy coding and creativity. 
+                    {/* Welcome to our portfolio. We are two friends who enjoy coding and creativity. 
                     Currently we are looking for work. If you like what you see here and are looking for two programmers, please contact
-                    us.
+                    us. */}
+
+                    Welcome to our portfolio. We are two programmers and computer-graphics enthusiasts running our own company. 
+                    Our company is a start-up with a too low income for us to make a living. 
+                    Therefore we are looking for freelance projects on half-time. 
+                    Do you need help with anything you think we can help you with, please contact us.
+                    
                   </p>
                 </Col>
                 <Col sm={6} md={3}>
@@ -78,7 +84,6 @@ export class Header extends React.Component<Header.Props, Header.State> {
   }
 
   componentDidMount() {
-    console.log(this.threeContainer)
     initThreeBackground(this.threeContainer)
   }
 }

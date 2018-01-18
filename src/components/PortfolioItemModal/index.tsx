@@ -56,13 +56,13 @@ export class PortfolioItemModal extends React.Component<PortfolioItemModal.Props
 
   private renderProjectSourceUrlButton(portfolioItem: IPortfolioItem) {
     if (portfolioItem.projectSourceUrl) {
-      return <Button className={style.modalButton} raised={true} color='primary' onClick={this.openProjectSourceUrl}> Source <Code /> </Button>
+      return <Button className={style.modalButton} raised={true} color='primary' onClick={this.openProjectSourceUrl}> <Code />  Source </Button>
     }
   }
 
   private renderProjectUrlButton(portfolioItem: IPortfolioItem) {
     if (portfolioItem.projectUrl) {
-      return <Button className={style.modalButton} raised={true} color='accent' onClick={this.openProjectUrl}> Project <Run /> </Button>
+      return <Button className={style.modalButton} raised={true} color='accent' onClick={this.openProjectUrl}> <Run /> Project  </Button>
     }
   }
   

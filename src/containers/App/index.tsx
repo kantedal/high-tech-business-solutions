@@ -8,12 +8,13 @@ import { Footer, Header, MainSection } from '../../components'
 import { Categories, IPortfolioItem } from '../../portfolio'
 import { RootState } from '../../reducers'
 import * as style from './style.css'
+import styled, { keyframes } from 'styled-components'
 
 const ScrollAnimation = require('react-animate-on-scroll')
 // const ScrollAnimation = require('react-animate-on-scroll')
 import * as _ from 'lodash'
 import { SmallHeader } from '../../components/SmallHeader/index'
-import { initThreeBackground } from '../../background';
+import { initThreeBackground } from '../../background'
 
 export namespace App {
   export interface Props { // extends RouteComponentProps<void> {
@@ -25,25 +26,52 @@ export namespace App {
     headerActive: boolean
     contentActive: boolean
     scrollY: number
+    isLoading: boolean
   }
 }
+
+const LoadingTextAnimation = keyframes`
+  0% { transform: scale(1.0); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1.0); }
+`
+
+const LoadingComponent: any = styled.div`
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  opacity: ${({isLoading}: any) => isLoading ? 1 : 0};
+  pointer-events: ${({isLoading}: any) => isLoading ? 'auto' : 'none'};
+
+  transition: opacity 0.5s;
+  z-index: 1000;
+`
+
+const LoadingText: any = styled.div`
+  font-family: 'Fugaz One';
+  font-size: 5vw;
+  text-align: center;
+  margin-top: 45vh;
+  color: rgb(70, 231, 153);
+  animation: ${LoadingTextAnimation} 1s ease infinite;
+`
 
 @connect(mapStateToProps, mapDispatchToProps)
 class App extends React.Component<App.Props, App.State> {
 
   constructor(props: App.Props) {
     super(props)
-    this.state = { headerActive: true, contentActive: false, scrollY: 0 }
+    this.state = { headerActive: true, contentActive: false, scrollY: 0, isLoading: true }
   }
 
   render() {
     const { activePortfolioItem, actions, filterPortfolioItemBy, children, actions: { backToMenu } } = this.props
-
     return (
       <ParallaxProvider>
         <div id='bodyHolder' style={AppContainerStyle}>
+          <LoadingComponent isLoading={this.state.isLoading} > <LoadingText> LOADING </LoadingText> </LoadingComponent>
           {/* <SmallHeader isActive={this.state.contentActive} /> */}
-
 
           <Parallax
             offsetYMin={-100}
@@ -67,11 +95,14 @@ class App extends React.Component<App.Props, App.State> {
             />
           </Parallax>
   
-
           {/* <Footer /> */}
         </div>
       </ParallaxProvider>
     )
+  }
+
+  componentDidMount() {
+    setTimeout(() => this.setState({ ...this.state, isLoading: false }), 2000)
   }
 }
 
