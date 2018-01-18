@@ -142,4 +142,118 @@ export const portfolioItems: IPortfolioItem[] = [
       },
   ]
   },
+  {
+    header: 'Give Blood',
+    shortDescription: '3d animation created as school project',
+    longDescription: `During exchange in Singapore Simon created this short 
+    animated film about a mosquito donating blood. 
+    Blender was used for modelling and animating. Cycles was used for rendering.`,
+    tags: [ Categories.MobileApp ],
+    coverImage: './images/giveblood.jpg',
+    medias: [
+      {
+        mediaType: 'VIDEO',
+        src: 'https://www.youtube.com/embed/F3LkmUsgyb4',
+      },
+      {
+        mediaType: 'IMAGE',
+        src: './images/giveblood.jpg',
+      },
+  ]
+  },
+  {
+    header: 'WebGL Water',
+    shortDescription: 'Displacement water with perlin noise',
+    longDescription: `Perlin noise is used to creta displacement, a 
+      bumpmap and colors for a grid generated in the browser using three js.`,
+    tags: [ Categories.MobileApp ],
+    coverImage: './images/webglwater.jpg',
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/webglwater.jpg',
+      },
+  ]
+  },
+  {
+    header: 'Intelligent Agent',
+    shortDescription: 'Path finder using the Bell equation',
+    longDescription: `Agent recieves points for finding green squares and looses points on red squares. 
+      The agent expands a tree of options and calculates the most beneficial.`,
+    tags: [ Categories.MobileApp ],
+    coverImage: './images/pathfinder.jpg',
+    projectUrl: 'https://hedlundaren.github.io/hide-and-seek/',
+    projectSourceUrl: 'https://github.com/Hedlundaren/hide-and-seek/',
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/pathfinder.jpg',
+      },
+  ]
+  },
+  {
+    header: 'Temojano',
+    shortDescription: 'Tower defence in 3d made with Unity',
+    longDescription: `Procedurally generated terrain, intelligent bots, physically correct animations, tower defence. 
+      Won price for best project in class at Nanyang Technological University, Singapore.`,
+    tags: [ Categories.MobileApp ],
+    coverImage: './images/temojano.jpg',
+    projectSourceUrl: 'https://github.com/Grahnen92/Temoji',
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/temojano.jpg',
+      },
+  ]
+  },
+  {
+    header: 'Web Clock',
+    shortDescription: 'Interactive 3d web clock',
+    longDescription: `Clock made in WebGL using three js.`,
+    tags: [ Categories.MobileApp ],
+    coverImage: './images/webclock.jpg',
+    projectUrl: 'http://hedlundaren.github.io/clock/',
+    projectSourceUrl: 'https://github.com/Hedlundaren/Clock',
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/webclock.jpg',
+      },
+  ]
+  },
+  {
+    header: 'SPH Simulation',
+    shortDescription: 'Particle based water simulation on the GPU',
+    longDescription: `Particle simulation using Navier-stokes smoothed particle hydrodynamics approach. 
+      OpenGL is used for graphics and OpenCL for GPU computations.`,
+    tags: [ Categories.MobileApp ],
+    coverImage: './images/sph.jpg',
+    projectSourceUrl: 'https://github.com/Hedlundaren/vattenoverhuvudet',
+    medias: [
+      {
+        mediaType: 'VIDEO',
+        src: 'https://www.youtube.com/watch?v=15oeGll4-80',
+      },
+      {
+        mediaType: 'IMAGE',
+        src: './images/sph.jpg',
+      },
+  ]
+  },
+  {
+    header: 'Fireworks',
+    shortDescription: 'Interactive 3d web clock',
+    longDescription: `Clock made in WebGL using three js.`,
+    tags: [ Categories.MobileApp ],
+    coverImage: './images/fireworks.jpg',
+    projectUrl: 'http://hedlundaren.github.io/fireworks2/',
+    projectSourceUrl: 'https://github.com/Hedlundaren/Fireworks',
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/fireworks.jpg',
+      },
+  ]
+  },
+
 ]

@@ -6,7 +6,6 @@ const StyledHeaderAnimation = keyframes`
   from { filter: hue-rotate(0deg) grayscale(50%); }
   to { filter: hue-rotate(360deg) grayscale(50%); }
 `
-
 export const StyledHeaderDiv: any = styled.div`
   position: relative;
   width: 100%;
@@ -19,23 +18,19 @@ export const StyledHeaderDiv: any = styled.div`
   // transition: all 0.5s ease;
   z-index: -1;
 `
-
 const StyledArrowAnimation = keyframes`
   0% { transform: translateY(0px); }
   50% { transform: translateY(10px); }
   100% { transform: translateY(0px); }
 `
-
 export const StyledHeaderArrow = styled.i`
   display: inline-block;
   animation: ${StyledArrowAnimation} 1s ease infinite;
   padding: 1rem 1rem;
   font-size: 40px;
   color: #fff;
-  cursor: pointer;
+  cursor: default;
 `
-
-
 export const StyledRow: any = styled(Row)`
   position: relative;
   top: 50%;
