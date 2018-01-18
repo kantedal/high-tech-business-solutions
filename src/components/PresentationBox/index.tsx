@@ -16,6 +16,8 @@ export namespace PresentationBox {
   }
 }
 
+const GridComponent: any = Grid as any
+
 export const PresentationBox: React.SFC<PresentationBox.Props> = ({name, imgUrl, linkedInUrl, emailUrl, githubUrl, websiteUrl}) => {
   const linkedInClick = () => {
     window.open(linkedInUrl, '_blank')
@@ -32,7 +34,7 @@ export const PresentationBox: React.SFC<PresentationBox.Props> = ({name, imgUrl,
 
   return (
     <div className={style.presentationContent}>
-      <Grid fluid>
+      <GridComponent fluid>
         <Row className={style.presentationImageContainer}>
           <div className={style.presentationImage} style={{ backgroundImage: 'url(' + imgUrl + ')' }} />
         </Row>
@@ -65,7 +67,7 @@ export const PresentationBox: React.SFC<PresentationBox.Props> = ({name, imgUrl,
             </Row>
           </Col>
         </Row>
-      </Grid>
+      </GridComponent>
     </div>
   )
 }

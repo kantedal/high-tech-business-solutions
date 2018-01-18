@@ -39,6 +39,7 @@ export class MainSection extends React.Component<MainSection.Props, MainSection.
 
     const portfolioComponents = portfolioItems
       .filter(portfolioFilterHandle)    
+      .sort((a: IPortfolioItem, b: IPortfolioItem) => a.weight > b.weight ? -1.0 : 1.0)      
       .map((portfolioItem: IPortfolioItem, index: number) => <PortfolioItem key={index} portfolioItem={portfolioItem} portfolioItemClick={openPortfolioItem}/>)
       
     return (
