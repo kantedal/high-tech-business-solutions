@@ -300,7 +300,7 @@ export const portfolioItems: IPortfolioItem[] = [
     header: 'Car simulation',
     shortDescription: 'Car simulation with self written physics engine',
     longDescription: `Car simulation with self written physics engine.`,
-    tags: [ Categories.GraphicsProgramming, Categories.Web ],
+    tags: [ Categories.GraphicsProgramming, Categories.Web, Categories.Games ],
     coverImage: './images/carsim.png',
     projectUrl: 'http://kantedal.github.io/car-simulator/',
     weight: 1.0,
@@ -373,6 +373,34 @@ export const portfolioItems: IPortfolioItem[] = [
       {
         mediaType: 'IMAGE',
         src: './images/cloth.jpg',
+      },
+    ]
+  },
+  {
+    header: 'Key Quest',
+    shortDescription: 'App for the board game Key Quest',
+    longDescription: `App for Iphone and Android made for the popular board game Key Quest`,
+    tags: [ Categories.MobileApp, Categories.Games ],
+    coverImage: './images/kq.png',
+    weight: 1.35,
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/kq.png',
+      },
+    ]
+  },
+  {
+    header: 'Listig',
+    shortDescription: 'List app for Android',
+    longDescription: `List app for Android.`,
+    tags: [ Categories.MobileApp ],
+    coverImage: './images/listig.png',
+    weight: 1.1,
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/listig.png',
       },
     ]
   },

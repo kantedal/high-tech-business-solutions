@@ -38,7 +38,7 @@ export class Header extends React.Component<Header.Props, Header.State> {
           <StyledRow center='xs' isActive={isActive}>
             <Col xs={12} sm={12} md={12} lg={9}>
               <Row center='xs'>
-                <Col sm={0} md={6}>
+                <Col xs={0}>
                   <p className={style.presentation}>
                     {/* Welcome to our portfolio. We are two friends who enjoy coding and creativity. 
                     Currently we are looking for work. If you like what you see here and are looking for two programmers, please contact
@@ -51,6 +51,8 @@ export class Header extends React.Component<Header.Props, Header.State> {
                     
                   </p>
                 </Col>
+              </Row>
+              <Row around='xs'>
                 <Col sm={6} md={3}>
                   <PresentationBox
                     name={'Simon Hedlund'}
