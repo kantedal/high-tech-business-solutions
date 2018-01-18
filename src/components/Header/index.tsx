@@ -3,9 +3,10 @@ import * as React from 'react'
 import { CSSProperties } from 'react'
 import { Col, Grid, Row } from 'react-flexbox-grid'
 import styled, { keyframes } from 'styled-components'
-
+import { Parallax } from 'react-scroll-parallax'
 import { PresentationBox } from '../PresentationBox/index'
 import * as style from './styles/style.css'
+import { initThreeBackground } from '../../background';
 
 export namespace Header {
   export interface Props {
@@ -18,10 +19,20 @@ export namespace Header {
 }
 
 export class Header extends React.Component<Header.Props, Header.State> {
+  private threeContainer: any
+  
   render() {
     const { isActive, scrollY, mainContentActiveChange } = this.props
     return (
       <StyledHeaderDiv>
+        <Parallax
+          offsetYMin={-50}
+          offsetYMax={50}
+          slowerScrollRate={true}
+        >
+          <div ref={(element) => this.threeContainer = element}/>
+        </Parallax>
+
         {/* <div className={style.top} /> */}
         <Grid className={style.presentationGrid} fluid={true}>
           <StyledRow center='xs' isActive={isActive}>
@@ -61,7 +72,14 @@ export class Header extends React.Component<Header.Props, Header.State> {
         <div className={style.arrowRow}>
           <StyledHeaderArrow className='material-icons'>keyboard_arrow_down</StyledHeaderArrow>
         </div>
+
+        
       </StyledHeaderDiv>
     )
+  }
+
+  componentDidMount() {
+    console.log(this.threeContainer)
+    initThreeBackground(this.threeContainer)
   }
 }

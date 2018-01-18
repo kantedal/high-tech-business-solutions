@@ -40,6 +40,7 @@ export class MainSection extends React.Component<MainSection.Props, MainSection.
     const portfolioComponents = portfolioItems
       .filter(portfolioFilterHandle)    
       .map((portfolioItem: IPortfolioItem, index: number) => <PortfolioItem key={index} portfolioItem={portfolioItem} portfolioItemClick={openPortfolioItem}/>)
+      
     return (
       <StyledMainSectionDiv>
         <PortfolioItemModal portfolioItem={activePortfolioItem} isOpen={activePortfolioItem != null} closeModal={closePortfolioItem}/>

@@ -13,6 +13,7 @@ const ScrollAnimation = require('react-animate-on-scroll')
 // const ScrollAnimation = require('react-animate-on-scroll')
 import * as _ from 'lodash'
 import { SmallHeader } from '../../components/SmallHeader/index'
+import { initThreeBackground } from '../../background';
 
 export namespace App {
   export interface Props { // extends RouteComponentProps<void> {
@@ -71,13 +72,6 @@ class App extends React.Component<App.Props, App.State> {
         </div>
       </ParallaxProvider>
     )
-  }
-
-
-  componentDidMount() {
-    // window.addEventListener('scroll', _.throttle((e) => {
-    //   this.setState({ ...this.state, scrollY: window.pageYOffset, headerActive: window.pageYOffset === 0 })
-    // }, 300))
   }
 }
 

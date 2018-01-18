@@ -34,10 +34,20 @@ window.addEventListener('mouseup', onMouseUp, false)
 window.addEventListener('mousemove', onMouseMove, false)
 window.addEventListener('resize', onWindowResize, false)
 
-init()
-animate()
+const animate = () => {
+  requestAnimationFrame(animate)
+  mouseDelayed.x = mouseDelayed.x - 0.09 * (mouseDelayed.x - mouse.x)
+  mouseDelayed.y = mouseDelayed.y - 0.09 * (mouseDelayed.y - mouse.y)
+  camera.updateMatrixWorld()
+  const delta = 0.02 * clock.getDelta()
+  uniforms.time.value += delta * (1.0 + mouseHold * 10.0)
+  uniforms.mouse.value = mouse
+  uniforms.mouseHold.value = mouseHold
+  uniforms.mouseDelayed.value = mouseDelayed
+  renderer.render(scene, camera)
+}
 
-function init() {
+export const initThreeBackground = (threeContainer: any) => {
   camera = new THREE.PerspectiveCamera(
     10,
     window.innerWidth / window.innerHeight,
@@ -59,9 +69,9 @@ function init() {
   }
 
   const shaderMaterial = new THREE.ShaderMaterial({
-    uniforms: {uniforms},
+    uniforms,
     // Shader is located in index.html
-    fragmentShader: document.getElementById('fragmentShader').textContent,
+    fragmentShader: document.getElementById('fragmentShader3').textContent,
     wireframe: false
   })
 
@@ -72,20 +82,7 @@ function init() {
   renderer.setPixelRatio(window.devicePixelRatio)
   renderer.setSize(window.innerWidth, window.innerHeight)
 
-  const container = document.getElementById('container')
-  container.appendChild(renderer.domElement)
-}
+  threeContainer.appendChild(renderer.domElement)
 
-function animate() {
-
-  requestAnimationFrame(animate)
-  mouseDelayed.x = mouseDelayed.x - 0.09 * (mouseDelayed.x - mouse.x)
-  mouseDelayed.y = mouseDelayed.y - 0.09 * (mouseDelayed.y - mouse.y)
-  camera.updateMatrixWorld()
-  const delta = 0.02 * clock.getDelta()
-  uniforms.time.value += delta * (1.0 + mouseHold * 10.0)
-  uniforms.mouse.value = mouse
-  uniforms.mouseHold.value = mouseHold
-  uniforms.mouseDelayed.value = mouseDelayed
-  renderer.render(scene, camera)
+  animate()
 }

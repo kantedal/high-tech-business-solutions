@@ -17,6 +17,8 @@
 .presentationGrid {
   position: absolute;
   height: 100%;
+  top: 0px;
+  background: linear-gradient(to top, rgba(0, 153, 142, 0.6), rgba(0, 238, 133, 0.6));
 }
 
 .presentationRow {
