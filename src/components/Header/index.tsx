@@ -38,14 +38,14 @@ export class Header extends React.Component<Header.Props, Header.State> {
           <StyledRow center='xs' isActive={isActive}>
             <Col xs={12} sm={12} md={12} lg={9}>
               <Row>
-                <Col xs={0} sm={6}>
+                <Col sm={0} md={6}>
                   <p className={style.presentation}>
                     Welcome to our portfolio. We are two friends who enjoy coding and creativity. 
                     Currently we are looking for work. If you like what you see here and are looking for two programmers, please contact
                     us.
                   </p>
                 </Col>
-                <Col xs={6} sm={3}>
+                <Col sm={6} md={3}>
                   <PresentationBox
                     name={'Simon Hedlund'}
                     imgUrl={'./images/simon.jpg'}
@@ -55,7 +55,7 @@ export class Header extends React.Component<Header.Props, Header.State> {
                     websiteUrl={'http://simonhedlund.github.io'}
                   />
                 </Col>
-                <Col xs={6} sm={3}>
+                <Col sm={6} md={3}>
                   <PresentationBox
                     name={'Filip Kantedal'}
                     imgUrl={'./images/filip.jpg'}
