@@ -50,7 +50,7 @@ export const portfolioItems: IPortfolioItem[] = [
         src: './images/lfh.png',
         description: 'Looking for host'
       },
-  ]
+    ]
   },
   {
     header: 'Rob`s Vengeance',
@@ -69,7 +69,7 @@ export const portfolioItems: IPortfolioItem[] = [
         src: './images/rv.png',
         description: 'Robs Vengeance'
       },
-  ]
+    ]
   },
   {
     header: 'Pathtracing in WebGL',
@@ -88,7 +88,7 @@ export const portfolioItems: IPortfolioItem[] = [
         mediaType: 'IMAGE',
         src: './images/pathtracer.png',
       },
-  ]
+    ]
   },
   {
     header: 'Flight visualization',
@@ -101,7 +101,7 @@ export const portfolioItems: IPortfolioItem[] = [
         mediaType: 'IMAGE',
         src: './images/flight-vis.png',
       },
-  ]
+    ]
   },
   {
     header: 'Heja Blåvitt',
@@ -114,7 +114,7 @@ export const portfolioItems: IPortfolioItem[] = [
         mediaType: 'IMAGE',
         src: './images/blavitt.png',
       },
-  ]
+    ]
   },
   {
     header: 'Self balancing robot',
@@ -127,7 +127,7 @@ export const portfolioItems: IPortfolioItem[] = [
         mediaType: 'IMAGE',
         src: './images/pid.png',
       },
-  ]
+    ]
   },
   {
     header: 'micfx',
@@ -140,7 +140,7 @@ export const portfolioItems: IPortfolioItem[] = [
         mediaType: 'IMAGE',
         src: './images/micfx.png',
       },
-  ]
+    ]
   },
   {
     header: 'Give Blood',
@@ -159,7 +159,7 @@ export const portfolioItems: IPortfolioItem[] = [
         mediaType: 'IMAGE',
         src: './images/giveblood.jpg',
       },
-  ]
+    ]
   },
   {
     header: 'WebGL Water',
@@ -173,7 +173,7 @@ export const portfolioItems: IPortfolioItem[] = [
         mediaType: 'IMAGE',
         src: './images/webglwater.jpg',
       },
-  ]
+    ]
   },
   {
     header: 'Intelligent Agent',
@@ -189,7 +189,7 @@ export const portfolioItems: IPortfolioItem[] = [
         mediaType: 'IMAGE',
         src: './images/pathfinder.jpg',
       },
-  ]
+    ]
   },
   {
     header: 'Temojano',
@@ -204,7 +204,7 @@ export const portfolioItems: IPortfolioItem[] = [
         mediaType: 'IMAGE',
         src: './images/temojano.jpg',
       },
-  ]
+    ]
   },
   {
     header: 'Web Clock',
@@ -219,7 +219,7 @@ export const portfolioItems: IPortfolioItem[] = [
         mediaType: 'IMAGE',
         src: './images/webclock.jpg',
       },
-  ]
+    ]
   },
   {
     header: 'SPH Simulation',
@@ -238,7 +238,7 @@ export const portfolioItems: IPortfolioItem[] = [
         mediaType: 'IMAGE',
         src: './images/sph.jpg',
       },
-  ]
+    ]
   },
   {
     header: 'Fireworks',
@@ -253,7 +253,76 @@ export const portfolioItems: IPortfolioItem[] = [
         mediaType: 'IMAGE',
         src: './images/fireworks.jpg',
       },
-  ]
+    ]
   },
-
+  {
+    header: 'Soft body physics',
+    shortDescription: 'Soft body phyisics in WebGL',
+    longDescription: `Simulation of soft body physics written in Typescript and WebGL. The integration method used is position based and fits the purpose well.`,
+    tags: [ Categories.GraphicsProgramming, Categories.Simulation, Categories.Web ],
+    coverImage: './images/softbody_small.jpg',
+    projectUrl: 'http://kantedal.github.io/soft-body-app/',
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/softbody_small.jpg',
+      },
+    ]
+  },
+  {
+    header: 'Mandelbrot visualization',
+    shortDescription: 'Mandelbrot visualization in WebGL 2',
+    longDescription: `Mandelbrot visualziation run on the GPU. Works well as long as the 32 bit precision float in enough.`,
+    tags: [ Categories.GraphicsProgramming, Categories.Web ],
+    coverImage: './images/mandelbrot.png',
+    projectUrl: 'https://kantedal.github.io/mandelbrot-webgl2/',
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/mandelbrot.png',
+      },
+    ]
+  },
+  {
+    header: 'Car simulation',
+    shortDescription: 'Car simulation with self written physics engine',
+    longDescription: `Car simulation with self written physics engine.`,
+    tags: [ Categories.GraphicsProgramming, Categories.Web ],
+    coverImage: './images/carsim.png',
+    projectUrl: 'http://kantedal.github.io/car-simulator/',
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/carsim.png',
+      },
+    ]
+  },
+  {
+    header: 'Cloth simulation',
+    shortDescription: 'Cloth simulation with verlet integration',
+    longDescription: `Cloth simulation with verlet integration.`,
+    tags: [ Categories.GraphicsProgramming, Categories.Web, Categories.Simulation ],
+    coverImage: './images/cloth.png',
+    projectUrl: 'http://kantedal.github.io/cloth-simulation/',
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/cloth.png',
+      },
+    ]
+  },
+  {
+    header: 'Connected points',
+    shortDescription: 'Weird WebGL visualization/simulation',
+    longDescription: `Weird WebGL visualization similar to particles.js, but with physics. On the GPU.`,
+    tags: [ Categories.GraphicsProgramming, Categories.Web, Categories.Simulation ],
+    coverImage: './images/connected-particles.jpg',
+    projectSourceUrl: 'https://github.com/kantedal/connected-particles-webgl',
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/connected-points-video.gif',
+      },
+    ]
+  },
 ]
