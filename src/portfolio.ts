@@ -4,16 +4,10 @@ export enum Categories {
   GraphicsProgramming = 'Graphics programming',
   Simulation =  'Simulation',
   MobileApp = 'Mobile app',
-  Hardware = 'Hardware'
+  Hardware = 'Hardware',
+  AI = 'AI',
+  Game = 'Game'
 }
-
-export const portfolioCategories: string[] = [
-  'Web',
-  '3D animation',
-  'Graphics programming',
-  'Simulation',
-  'Hardware'
-]
 
 export interface IMedia {
   mediaType: 'IMAGE' | 'VIDEO'
@@ -148,7 +142,7 @@ export const portfolioItems: IPortfolioItem[] = [
     longDescription: `During exchange in Singapore Simon created this short 
     animated film about a mosquito donating blood. 
     Blender was used for modelling and animating. Cycles was used for rendering.`,
-    tags: [ Categories.MobileApp ],
+    tags: [ Categories.Animation ],
     coverImage: './images/giveblood.jpg',
     medias: [
       {
@@ -166,7 +160,7 @@ export const portfolioItems: IPortfolioItem[] = [
     shortDescription: 'Displacement water with perlin noise',
     longDescription: `Perlin noise is used to creta displacement, a 
       bumpmap and colors for a grid generated in the browser using three js.`,
-    tags: [ Categories.MobileApp ],
+    tags: [ Categories.Web, Categories.GraphicsProgramming ],
     coverImage: './images/webglwater.jpg',
     medias: [
       {
@@ -180,7 +174,7 @@ export const portfolioItems: IPortfolioItem[] = [
     shortDescription: 'Path finder using the Bell equation',
     longDescription: `Agent recieves points for finding green squares and looses points on red squares. 
       The agent expands a tree of options and calculates the most beneficial.`,
-    tags: [ Categories.MobileApp ],
+    tags: [ Categories.AI, Categories.Web ],
     coverImage: './images/pathfinder.jpg',
     projectUrl: 'https://hedlundaren.github.io/hide-and-seek/',
     projectSourceUrl: 'https://github.com/Hedlundaren/hide-and-seek/',
@@ -242,7 +236,22 @@ export const portfolioItems: IPortfolioItem[] = [
   },
   {
     header: 'Fireworks',
-    shortDescription: 'Interactive 3d web clock',
+    shortDescription: 'Interactive fireworks in WebGL',
+    longDescription: `Click the screen to send fireworks. Implemented in WebGL using three js. It is basically particles emitting new particles`,
+    tags: [ Categories.MobileApp ],
+    coverImage: './images/fireworks.jpg',
+    projectUrl: 'http://hedlundaren.github.io/fireworks2/',
+    projectSourceUrl: 'https://github.com/Hedlundaren/Fireworks',
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/fireworks.jpg',
+      },
+  ]
+  },
+  {
+    header: 'The Lake',
+    shortDescription: 'Lake with reflection and refraction in OpenGL',
     longDescription: `Clock made in WebGL using three js.`,
     tags: [ Categories.MobileApp ],
     coverImage: './images/fireworks.jpg',
