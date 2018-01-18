@@ -2,17 +2,17 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
-
+import { ParallaxProvider, Parallax } from 'react-scroll-parallax'
 import * as AppActions from '../../actions/app'
 import { Footer, Header, MainSection } from '../../components'
 import { Categories, IPortfolioItem } from '../../portfolio'
 import { RootState } from '../../reducers'
 import * as style from './style.css'
-import { Link, DirectLink, Element , Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 
 const ScrollAnimation = require('react-animate-on-scroll')
 // const ScrollAnimation = require('react-animate-on-scroll')
 import * as _ from 'lodash'
+import { SmallHeader } from '../../components/SmallHeader/index'
 
 export namespace App {
   export interface Props { // extends RouteComponentProps<void> {
@@ -39,33 +39,37 @@ class App extends React.Component<App.Props, App.State> {
     const { activePortfolioItem, actions, filterPortfolioItemBy, children, actions: { backToMenu } } = this.props
 
     return (
-      <div id='bodyHolder' style={AppContainerStyle}>
-        <Element name='test1'><Header scrollY={this.state.scrollY} isActive={this.state.headerActive}/></Element>
+      <ParallaxProvider>
+        <div id='bodyHolder' style={AppContainerStyle}>
+          {/* <SmallHeader isActive={this.state.contentActive} /> */}
 
-        {/* <Link 
-          to='test1'
-          activeClass='activeHeader'
-          spy={true}
-          smooth={true}
-          offset={0}
-          duration={500}
-        >
-          test
-        </Link> */}
-        
-      
-        <Element name='test2'>
-          <MainSection 
-            activePortfolioItem={activePortfolioItem}
-            openPortfolioItem={actions.openPortfolioItem}
-            closePortfolioItem={actions.closePortfolioItem}
-            filterByPortfolioCategory={actions.filterByPortfolioCategory}
-            portfolioFilter={filterPortfolioItemBy}
-          />
-        </Element>
 
-        {/* <Footer /> */}
-      </div>
+          <Parallax
+            offsetYMin={-100}
+            offsetYMax={100}
+            slowerScrollRate={true}
+          >
+            <Header 
+              mainContentActiveChange={(isActive: boolean) => this.setState({ ...this.state, contentActive: isActive})}
+              scrollY={this.state.scrollY}
+              isActive={this.state.headerActive}
+            />
+          </Parallax>
+
+          <Parallax>
+            <MainSection 
+              activePortfolioItem={activePortfolioItem}
+              openPortfolioItem={actions.openPortfolioItem}
+              closePortfolioItem={actions.closePortfolioItem}
+              filterByPortfolioCategory={actions.filterByPortfolioCategory}
+              portfolioFilter={filterPortfolioItemBy}
+            />
+          </Parallax>
+  
+
+          {/* <Footer /> */}
+        </div>
+      </ParallaxProvider>
     )
   }
 
@@ -74,8 +78,6 @@ class App extends React.Component<App.Props, App.State> {
     // window.addEventListener('scroll', _.throttle((e) => {
     //   this.setState({ ...this.state, scrollY: window.pageYOffset, headerActive: window.pageYOffset === 0 })
     // }, 300))
-
-    scrollSpy.update()
   }
 }
 
@@ -94,10 +96,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 const AppContainerStyle: React.CSSProperties = {
+  background: 'linear-gradient(rgba(132, 112, 206, 1.0) 30%, rgba(126, 75, 192, 0.94) 90%)',
   position: 'absolute',
   width: '100%',
-  minHeight: '100%',
-  // background: '#353999'
+  minHeight: '100%'
 }
 
 export default withRouter(App)

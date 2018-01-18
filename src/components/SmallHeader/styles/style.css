@@ -1,0 +1,7 @@
+.smallHeaderContent {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(rgba(132, 112, 206, 1.0) 30%, rgba(126, 75, 192, 1.0) 90%);
+}

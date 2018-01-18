@@ -1,5 +1,5 @@
+import { StyledMainSectionDiv } from './styles'
 import * as React from 'react'
-// tslint:disable-next-line:no-duplicate-imports
 import { CSSProperties } from 'react'
 import { Grid, Row } from 'react-flexbox-grid'
 
@@ -41,7 +41,7 @@ export class MainSection extends React.Component<MainSection.Props, MainSection.
       .filter(portfolioFilterHandle)    
       .map((portfolioItem: IPortfolioItem, index: number) => <PortfolioItem key={index} portfolioItem={portfolioItem} portfolioItemClick={openPortfolioItem}/>)
     return (
-      <div>
+      <StyledMainSectionDiv>
         <PortfolioItemModal portfolioItem={activePortfolioItem} isOpen={activePortfolioItem != null} closeModal={closePortfolioItem}/>
         <FilterPanel portfolioFilter={portfolioFilter} filterByPortfolioCategory={filterByPortfolioCategory} />
         <Grid fluid={true} className={style.main}>
@@ -49,7 +49,7 @@ export class MainSection extends React.Component<MainSection.Props, MainSection.
             {portfolioComponents}
           </Row>
         </Grid>
-      </div>
+      </StyledMainSectionDiv>
     )
   }
 }
