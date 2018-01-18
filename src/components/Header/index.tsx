@@ -6,7 +6,7 @@ import styled, { keyframes } from 'styled-components'
 import { Parallax } from 'react-scroll-parallax'
 import { PresentationBox } from '../PresentationBox/index'
 import * as style from './styles/style.css'
-import { initThreeBackground } from '../../background';
+import { initThreeBackground } from '../../background'
 
 export namespace Header {
   export interface Props {
@@ -73,7 +73,6 @@ export class Header extends React.Component<Header.Props, Header.State> {
           <StyledHeaderArrow className='material-icons'>keyboard_arrow_down</StyledHeaderArrow>
         </div>
 
-        
       </StyledHeaderDiv>
     )
   }
