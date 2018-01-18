@@ -10,8 +10,8 @@
 
 .presentationImage {
   border-radius: 50%;
-  width: 150px;  
-  height: 150px;
+  min-width: 150px;  
+  min-height: 150px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
