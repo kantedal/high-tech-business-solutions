@@ -28,8 +28,6 @@ export namespace PortfolioItem {
   export interface State { }
 }
 
-// window.addEventListener('mousemove', onMouseMove, false)
-
 export class PortfolioItem extends React.Component<PortfolioItem.Props, PortfolioItem.State> {
   render() {
     const { portfolioItem, portfolioItemClick } = this.props

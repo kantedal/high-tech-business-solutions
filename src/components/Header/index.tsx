@@ -37,7 +37,7 @@ export class Header extends React.Component<Header.Props, Header.State> {
         <Grid className={style.presentationGrid} fluid={true}>
           <StyledRow center='xs' isActive={isActive}>
             <Col xs={12} sm={12} md={12} lg={9}>
-              <Row>
+              <Row center='xs'>
                 <Col sm={0} md={6}>
                   <p className={style.presentation}>
                     {/* Welcome to our portfolio. We are two friends who enjoy coding and creativity. 
