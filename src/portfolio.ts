@@ -302,7 +302,7 @@ export const portfolioItems: IPortfolioItem[] = [
     header: 'Car simulation',
     shortDescription: 'Car simulation with self written physics engine',
     longDescription: `Car simulation with self written physics engine.`,
-    tags: [ Categories.GraphicsProgramming, Categories.Web, Categories.Games ],
+    tags: [ Categories.GraphicsProgramming, Categories.Web, Categories.Games, Categories.Simulation ],
     coverImage: './images/carsim.png',
     projectUrl: 'http://kantedal.github.io/car-simulator/',
     weight: 1.0,
