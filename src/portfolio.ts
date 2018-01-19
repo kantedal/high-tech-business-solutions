@@ -418,7 +418,7 @@ export const portfolioItems: IPortfolioItem[] = [
     header: 'Unemployment Vis',
     shortDescription: 'Web app for visualizing unemployment',
     longDescription: `Web app for visualizing unemployment using WebGL.`,
-    tags: [ Categories.MobileApp, Categories.Games ],
+    tags: [ Categories.Web, Categories.GraphicsProgramming ],
     coverImage: './images/swevis.jpg',
     projectUrl: 'http://sofiekhullar.github.io/hack4swe/',
     projectSourceUrl: 'https://github.com/sofiekhullar/hack4swe',
