@@ -92,6 +92,8 @@ export const portfolioItems: IPortfolioItem[] = [
     header: 'Flight visualization',
     shortDescription: 'Visualization of thousands of flights in realtime',
     longDescription: 'Visualization of thousands of flights in realtime',
+    projectUrl: 'https://kantedal.github.io/flight-visualization-gpu/',
+    projectSourceUrl: 'https://github.com/kantedal/flight-visualization-gpu',
     tags: [ Categories.Web, Categories.GraphicsProgramming ],
     coverImage: './images/flight-vis.png',
     weight: 1.5,
