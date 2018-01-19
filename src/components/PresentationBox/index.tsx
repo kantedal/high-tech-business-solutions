@@ -34,7 +34,7 @@ export const PresentationBox: React.SFC<PresentationBox.Props> = ({name, imgUrl,
 
   return (
     <div className={style.presentationContent}>
-      <GridComponent fluid>
+      <GridComponent fluid >
         <Row className={style.presentationImageContainer}>
           <div className={style.presentationImage} style={{ backgroundImage: 'url(' + imgUrl + ')' }} />
         </Row>

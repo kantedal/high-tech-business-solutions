@@ -33,7 +33,7 @@ export class PortfolioItem extends React.Component<PortfolioItem.Props, Portfoli
     const { portfolioItem, portfolioItemClick } = this.props
     const portfolioClick = () => portfolioItemClick(portfolioItem)
     return (
-      <Col xs={12} sm={6} md={6} lg={4} className={style.portfolioItemContainer}>
+      <Col xs={12} sm={6} md={6} lg={6} xl={4} className={style.portfolioItemContainer}>
         <div className={style.portfolioItemForeground} />
         <img className={style.portfolioItemImage} src={portfolioItem.coverImage} onClick={portfolioClick}/> 
         <div className={style.header} onClick={portfolioClick}>{portfolioItem.header}</div>

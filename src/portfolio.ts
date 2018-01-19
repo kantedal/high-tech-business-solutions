@@ -300,7 +300,7 @@ export const portfolioItems: IPortfolioItem[] = [
     header: 'Car simulation',
     shortDescription: 'Car simulation with self written physics engine',
     longDescription: `Car simulation with self written physics engine.`,
-    tags: [ Categories.GraphicsProgramming, Categories.Web ],
+    tags: [ Categories.GraphicsProgramming, Categories.Web, Categories.Games ],
     coverImage: './images/carsim.png',
     projectUrl: 'http://kantedal.github.io/car-simulator/',
     weight: 1.0,
@@ -382,15 +382,11 @@ export const portfolioItems: IPortfolioItem[] = [
     longDescription: `TexMesh is a tool developed with OpengL where the user can paint and create textures. 
     The user can also navigate and choose paint brushes with an external android app.`,
     tags: [ Categories.GraphicsProgramming, Categories.MobileApp ],
-    coverImage: './images/cloth.jpg',
+    coverImage: './images/texmesh.png',
     projectSourceUrl: 'https://github.com/Hedlundaren/opengl-remote-server',
     projectUrl: 'https://vimeo.com/212475647',
     weight: 2.0,
     medias: [
-      {
-        mediaType: 'IMAGE',
-        src: './images/texmesh.png',
-      },
       {
         mediaType: 'IMAGE',
         src: './images/texmesh-controls.gif',
@@ -398,6 +394,38 @@ export const portfolioItems: IPortfolioItem[] = [
       {
         mediaType: 'IMAGE',
         src: './images/texmesh-painting.gif',
+      }
+    ]
+  },
+  {
+    header: 'Key Quest',
+    shortDescription: 'App for the board game Key Quest',
+    longDescription: `App for Iphone and Android made for the popular board game Key Quest`,
+    tags: [ Categories.MobileApp, Categories.Games ],
+    coverImage: './images/kq.png',
+    weight: 1.35,
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/kq.png',
+
+      },
+    ]
+  },
+  {
+    header: 'Unemployment Vis',
+    shortDescription: 'Web app for visualizing unemployment',
+    longDescription: `Web app for visualizing unemployment using WebGL.`,
+    tags: [ Categories.MobileApp, Categories.Games ],
+    coverImage: './images/swevis.jpg',
+    projectUrl: 'http://sofiekhullar.github.io/hack4swe/',
+    projectSourceUrl: 'https://github.com/sofiekhullar/hack4swe',
+    weight: 0.95,
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/swevis.jpg',
+
       },
     ]
   },
@@ -429,6 +457,20 @@ export const portfolioItems: IPortfolioItem[] = [
       {
         mediaType: 'IMAGE',
         src: './images/vr5.png',
+      }
+    ]
+  },
+  {
+    header: 'Listig',
+    shortDescription: 'List app for Android',
+    longDescription: `List app for Android.`,
+    tags: [ Categories.MobileApp ],
+    coverImage: './images/listig.png',
+    weight: 1.1,
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/listig.png',
       },
     ]
   },
