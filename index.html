@@ -1,44 +1,4 @@
-<!doctype html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <title>Filip & Simon</title>
-  <!-- Dynamic background -->
-  <script src="http://threejs.org/build/three.min.js"></script>
-  <link href="style.css" rel="stylesheet">
-
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="shortcut icon" href="logo3.ico" type="image/x-icon">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Bungee Inline">
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Fugaz One">
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open Sans">
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu">
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Quicksand">
-
-  <!-- Carousel -->
-  <link rel='stylesheet' href='./carousel.min.css'/>
-
-  <!-- Scaling -->  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-</head>
-
-<body>
-  <div id="container"></div>
-  <div id="root"></div>
-
-
-  <script type="x-shader/x-fragment" id="fragmentShader">  
-
-		uniform vec2 resolution;
+<!DOCTYPE html> <html> <head> <meta charset=utf-8> <title>Filip & Simon</title> <script src=http://threejs.org/build/three.min.js></script> <link href=style.css rel=stylesheet> <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css> <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css> <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel=stylesheet> <link rel="shortcut icon" href=logo3.ico type=image/x-icon> <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel=stylesheet> <link href="https://fonts.googleapis.com/css?family=Roboto" rel=stylesheet> <link rel=stylesheet type=text/css href="https://fonts.googleapis.com/css?family=Bungee Inline"> <link rel=stylesheet type=text/css href="https://fonts.googleapis.com/css?family=Fugaz One"> <link rel=stylesheet type=text/css href="https://fonts.googleapis.com/css?family=Open Sans"> <link rel=stylesheet type=text/css href="https://fonts.googleapis.com/css?family=Ubuntu"> <link rel=stylesheet type=text/css href="https://fonts.googleapis.com/css?family=Quicksand"> <link rel=stylesheet href=./carousel.min.css /> <meta name=viewport content="width=device-width,initial-scale=1"> <link href="/styles.css" rel="stylesheet"></head> <body> <div id=container></div> <div id=root></div> <script type=x-shader/x-fragment id=fragmentShader> uniform vec2 resolution;
 		uniform vec2 mouse;
 		uniform vec2 mouseDelayed;
 		uniform float mouseHold;
@@ -60,11 +20,7 @@
 
       gl_FragColor = vec4(vec3(color) + vec3(0.3), 1.0 );
       
-		}
-  </script>
-
-  <script type="x-shader/x-fragment" id="fragmentShader3">  
-		uniform vec2 mouseDelayed;
+		} </script> <script type=x-shader/x-fragment id=fragmentShader3> uniform vec2 mouseDelayed;
     uniform vec2 resolution;
     uniform float time;
     //uniform vec3 camPos;
@@ -171,11 +127,7 @@
       }
       
       gl_FragColor = vec4(vec3(0.8) - 0.08 * vec3(1.3 * v, 1.3 * v, v), 1.0);
-    }
-  </script>
-
-  <script type="x-shader/x-fragment" id="fragmentShader2">  
-    uniform vec2 resolution;
+    } </script> <script type=x-shader/x-fragment id=fragmentShader2> uniform vec2 resolution;
     uniform vec2 mouse;
     uniform vec2 mouseDelayed;
     uniform float time;
@@ -260,10 +212,4 @@
       noise += (0.05*abs(sin(gl_FragCoord.y)));
       noise += (0.1*abs(sin(gl_FragCoord.x)));
       gl_FragColor = vec4(vec3(2.0*noise + 0.0) + 0.2*vec3(0.2, 0.6, 0.9), 1.0 );
-    }
-   
-  </script>
-
-</body>
-
-</html>
+    } </script> <script type="text/javascript" src="/vendor.bundle.js"></script><script type="text/javascript" src="/bundle.js"></script></body> </html>
