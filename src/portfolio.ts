@@ -92,6 +92,8 @@ export const portfolioItems: IPortfolioItem[] = [
     header: 'Flight visualization',
     shortDescription: 'Visualization of thousands of flights in realtime',
     longDescription: 'Visualization of thousands of flights in realtime',
+    projectUrl: 'https://kantedal.github.io/flight-visualization-gpu/',
+    projectSourceUrl: 'https://github.com/kantedal/flight-visualization-gpu',
     tags: [ Categories.Web, Categories.GraphicsProgramming ],
     coverImage: './images/flight-vis.png',
     weight: 1.5,
@@ -377,6 +379,27 @@ export const portfolioItems: IPortfolioItem[] = [
     ]
   },
   {
+    header: 'TexMesh',
+    shortDescription: 'Drawing tool controlled with android app',
+    longDescription: `TexMesh is a tool developed with OpengL where the user can paint and create textures. 
+    The user can also navigate and choose paint brushes with an external android app.`,
+    tags: [ Categories.GraphicsProgramming, Categories.MobileApp ],
+    coverImage: './images/texmesh.png',
+    projectSourceUrl: 'https://github.com/Hedlundaren/opengl-remote-server',
+    projectUrl: 'https://vimeo.com/212475647',
+    weight: 2.0,
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/texmesh-controls.gif',
+      },
+      {
+        mediaType: 'IMAGE',
+        src: './images/texmesh-painting.gif',
+      }
+    ]
+  },
+  {
     header: 'Key Quest',
     shortDescription: 'App for the board game Key Quest',
     longDescription: `App for Iphone and Android made for the popular board game Key Quest`,
@@ -387,7 +410,56 @@ export const portfolioItems: IPortfolioItem[] = [
       {
         mediaType: 'IMAGE',
         src: './images/kq.png',
+
       },
+    ]
+  },
+  {
+    header: 'Unemployment Vis',
+    shortDescription: 'Web app for visualizing unemployment',
+    longDescription: `Web app for visualizing unemployment using WebGL.`,
+    tags: [ Categories.MobileApp, Categories.Games ],
+    coverImage: './images/swevis.jpg',
+    projectUrl: 'http://sofiekhullar.github.io/hack4swe/',
+    projectSourceUrl: 'https://github.com/sofiekhullar/hack4swe',
+    weight: 0.95,
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/swevis.jpg',
+
+      },
+    ]
+  },
+  {
+    header: 'Volume Renderer',
+    shortDescription: 'Visualize pvm data with raymarching in real time',
+    longDescription: `Volume renderer implemented on the GPU using OpenGL. Load pvm data and render them using your own transfer functions.`,
+    tags: [ Categories.GraphicsProgramming ],
+    coverImage: './images/vr1.png',
+    projectSourceUrl: 'https://github.com/Hedlundaren/raymarcher',
+    weight: 1.7,
+    medias: [
+      {
+        mediaType: 'IMAGE',
+        src: './images/vr1.png',
+      },
+      {
+        mediaType: 'IMAGE',
+        src: './images/vr2.png',
+      },
+      {
+        mediaType: 'IMAGE',
+        src: './images/vr3.png',
+      },
+      {
+        mediaType: 'IMAGE',
+        src: './images/vr4.png',
+      },
+      {
+        mediaType: 'IMAGE',
+        src: './images/vr5.png',
+      }
     ]
   },
   {
