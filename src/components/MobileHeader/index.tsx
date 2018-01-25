@@ -70,7 +70,7 @@ export class MobileHeader extends React.Component<MobileHeader.Props, MobileHead
               <Row center='xs'>
                 <Col xs={3}>
                   <IconButton aria-label='Email' onClick={() => {}}>
-                    <i style={{ fontSize: '30px', color: '#fff' }} className='material-icons'>mail_outline</i>
+                    <i style={{ fontSize: '30px', color: '#fff' }} className='material-icons' onClick={this.openFilipsMail}>mail_outline</i>
                   </IconButton>
                 </Col>
               </Row>
@@ -78,11 +78,15 @@ export class MobileHeader extends React.Component<MobileHeader.Props, MobileHead
           </StyledRow>
         </Grid>   
         <div className={style.arrowRow}>
-          <StyledHeaderArrow className='material-icons'>keyboard_arrow_down</StyledHeaderArrow>
+          <StyledHeaderArrow className='material-icons' > keyboard_arrow_down</StyledHeaderArrow>
         </div>
 
       </StyledHeaderDiv>
     )
+  }
+
+  private openFilipsMail = () => {
+    window.open('mailto:kantedal@gmail.com', '_blank')
   }
 
   componentDidMount() {
