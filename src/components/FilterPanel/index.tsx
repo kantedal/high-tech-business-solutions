@@ -40,7 +40,7 @@ export class FilterPanel extends React.Component<FilterPanel.Props, FilterPanel.
               key={cat} 
               onClick={filterHandle}
             >
-              {Categories[cat]}
+              {' ' + Categories[cat] + ' '}
             </span>
           )
         )
