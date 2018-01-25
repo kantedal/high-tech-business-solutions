@@ -9,12 +9,16 @@ import { Categories, IPortfolioItem } from '../../portfolio'
 import { RootState } from '../../reducers'
 import * as style from './style.css'
 import styled, { keyframes } from 'styled-components'
+import {BrowserView, MobileView, isBrowser, isMobile} from 'react-device-detect'
+import AddIcon from 'material-ui-icons/Add'
 
 const ScrollAnimation = require('react-animate-on-scroll')
 // const ScrollAnimation = require('react-animate-on-scroll')
 import * as _ from 'lodash'
 import { SmallHeader } from '../../components/SmallHeader/index'
 import { initThreeBackground } from '../../background'
+import { MobileHeader } from '../../components/MobileHeader/index';
+import { Button } from 'material-ui';
 
 export namespace App {
   export interface Props { // extends RouteComponentProps<void> {
@@ -73,27 +77,45 @@ class App extends React.Component<App.Props, App.State> {
           <LoadingComponent isLoading={this.state.isLoading} > <LoadingText> LOADING </LoadingText> </LoadingComponent>
           {/* <SmallHeader isActive={this.state.contentActive} /> */}
 
-          <Parallax
-            offsetYMin={-100}
-            offsetYMax={100}
-            slowerScrollRate={true}
-          >
-            <Header 
-              mainContentActiveChange={(isActive: boolean) => this.setState({ ...this.state, contentActive: isActive})}
-              scrollY={this.state.scrollY}
-              isActive={this.state.headerActive}
-            />
-          </Parallax>
-
-          <Parallax>
-            <MainSection 
-              activePortfolioItem={activePortfolioItem}
-              openPortfolioItem={actions.openPortfolioItem}
-              closePortfolioItem={actions.closePortfolioItem}
-              filterByPortfolioCategory={actions.filterByPortfolioCategory}
-              portfolioFilter={filterPortfolioItemBy}
-            />
-          </Parallax>
+          {!isMobile && (
+            <div>
+              <Parallax
+                offsetYMin={-100}
+                offsetYMax={100}
+                slowerScrollRate={true}
+              >
+                <Header 
+                  active={this.state.headerActive}
+                  isMobile={isMobile}
+                />
+              </Parallax>
+              <Parallax>
+                <MainSection 
+                  activePortfolioItem={activePortfolioItem}
+                  openPortfolioItem={actions.openPortfolioItem}
+                  closePortfolioItem={actions.closePortfolioItem}
+                  filterByPortfolioCategory={actions.filterByPortfolioCategory}
+                  portfolioFilter={filterPortfolioItemBy}
+                />
+              </Parallax>
+            </div>            
+          )}
+          
+          {isMobile && (
+            <div>
+              <MobileHeader 
+                active={this.state.headerActive}
+                isMobile={isMobile}
+              />
+              <MainSection 
+                activePortfolioItem={activePortfolioItem}
+                openPortfolioItem={actions.openPortfolioItem}
+                closePortfolioItem={actions.closePortfolioItem}
+                filterByPortfolioCategory={actions.filterByPortfolioCategory}
+                portfolioFilter={filterPortfolioItemBy}
+              />
+            </div>            
+          )}
   
           {/* <Footer /> */}
         </div>

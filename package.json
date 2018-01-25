@@ -59,6 +59,7 @@
     "npm": "^5.5.1",
     "react": "^16.0.0",
     "react-animate-on-scroll": "^1.6.0",
+    "react-device-detect": "^0.1.0",
     "react-dom": "^16.0.0",
     "react-flexbox-grid": "^2.0.0",
     "react-redux": "^5.0.6",

@@ -7,8 +7,10 @@ const clock = new THREE.Clock()
 const mouse = new THREE.Vector2(0, 0)
 let mouseHold = 0.0
 const mouseDelayed = new THREE.Vector2(0, 0)
+let isMobile = false
 let mesh
 let uniforms
+let firstRender = true
 
 let initHeight: number = 0
 
@@ -21,14 +23,16 @@ const onMouseUp = (e) => {
   mouseHold = 0.0
 }
 const onMouseMove = (e) => { 
-  mouse.x = e.clientX / (window.innerWidth)
+  mouse.x = -e.clientX / (window.innerWidth)
   mouse.y = -e.clientY / (window.innerHeight)
 }
 
 const onWindowResize = () => {
-  camera.aspect = window.innerWidth / initHeight
-  camera.updateProjectionMatrix()
-  renderer.setSize(window.innerWidth, initHeight)
+  if (camera) {
+    camera.aspect = window.innerWidth / initHeight
+    camera.updateProjectionMatrix()
+    renderer.setSize(window.innerWidth, initHeight)
+  }
 }
 
 window.addEventListener('mousedown', onMouseDown, false)
@@ -37,8 +41,11 @@ window.addEventListener('mousemove', onMouseMove, false)
 window.addEventListener('resize', onWindowResize, false)
 
 const animate = () => {
-  requestAnimationFrame(animate)
-  if (window.pageYOffset < initHeight) {
+  if (!isMobile) {
+    requestAnimationFrame(animate)
+  }
+
+  if (window.pageYOffset === 0 || firstRender) {
     mouseDelayed.x = mouseDelayed.x - 0.09 * (mouseDelayed.x - mouse.x)
     mouseDelayed.y = mouseDelayed.y - 0.09 * (mouseDelayed.y - mouse.y)
     camera.updateMatrixWorld()
@@ -48,16 +55,13 @@ const animate = () => {
     uniforms.mouseHold.value = mouseHold
     uniforms.mouseDelayed.value = mouseDelayed
     renderer.render(scene, camera)
+    firstRender = false
   } 
 }
 
-export const initThreeBackground = (threeContainer: any) => {
-  camera = new THREE.PerspectiveCamera(
-    10,
-    window.innerWidth / window.innerHeight,
-    1,
-    1000
-  )
+export const initThreeBackground = (threeContainer: any, mobile: boolean) => {
+  isMobile = mobile
+  camera = new THREE.PerspectiveCamera(10, window.innerWidth / window.innerHeight, 1, 1000 )
   camera.position.z = 1
   scene = new THREE.Scene()
   const geometry = new THREE.PlaneGeometry(2.65, 2.375, 1)

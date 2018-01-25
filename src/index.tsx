@@ -20,10 +20,6 @@ const AppComponent: any = App
 const theme = createMuiTheme({
   overrides: {}
 })
-
-setTimeout(() => {
-            
-    }, 5000)
     
 ReactDOM.render(
   <MuiThemeProvider theme={theme}>
