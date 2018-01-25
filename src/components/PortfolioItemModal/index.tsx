@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as style from './style.css'
-import Modal from 'material-ui/Modal'
+import {Modal} from 'material-ui'
 import { portfolioItems, IPortfolioItem } from '../../portfolio'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import { PortfolioItem } from '../PortfolioItem/index'
@@ -28,7 +28,7 @@ export class PortfolioItemModal extends React.Component<PortfolioItemModal.Props
  
     const { portfolioItem, isOpen, closeModal } = this.props
     return (
-      <Modal aria-labelledby='simple-modal-title' aria-describedby='simple-modal-description' show={isOpen} onRequestClose={closeModal}>
+      <Modal aria-labelledby='simple-modal-title' aria-describedby='simple-modal-description' open={isOpen} onClose={closeModal}>
         <div>
           {portfolioItem && (
             <div className={style.portfolioModalContent}>
@@ -62,7 +62,7 @@ export class PortfolioItemModal extends React.Component<PortfolioItemModal.Props
 
   private renderProjectUrlButton(portfolioItem: IPortfolioItem) {
     if (portfolioItem.projectUrl) {
-      return <Button className={style.modalButton} raised={true} color='accent' onClick={this.openProjectUrl}> <Run style={{ marginRight: '3px' }} /> Project  </Button>
+      return <Button className={style.modalButton} raised={true} color='secondary' onClick={this.openProjectUrl}> <Run style={{ marginRight: '3px' }} /> Project  </Button>
     }
   }
   

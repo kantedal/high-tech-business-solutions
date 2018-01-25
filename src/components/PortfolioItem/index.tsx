@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as style from './style.css'
 import { portfolioItems, IPortfolioItem } from '../../portfolio'
-import { GridList, GridListTile } from 'material-ui/GridList'
+import { GridList, GridListTile } from 'material-ui'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 
 const onMouseMove = (e) => { 
