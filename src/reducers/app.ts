@@ -3,7 +3,9 @@ import * as Actions from '../constants/actions'
 
 const initialState: AppState = {
   activePortfolioItem: null,
-  filterPortfolioItemBy: null
+  filterPortfolioItemBy: null,
+  pageLoading: true,
+  portfolioItemsLoading: false,
 }
 
 export default handleActions<AppState, any>({
@@ -11,10 +13,18 @@ export default handleActions<AppState, any>({
     return { ...state, activePortfolioItem: action.payload }
   },
   [Actions.FILTER_PORTFOLIO_BY]: (state, action) => {
-    console.log(action.payload)
     return { ...state, filterPortfolioItemBy: action.payload }
   },
   [Actions.CLOSE_PORTFOLIO_ITEM]: (state, action) => {
     return { ...state, activePortfolioItem: null }
   },
+  [Actions.CLOSE_PORTFOLIO_ITEM]: (state, action) => {
+    return { ...state, activePortfolioItem: null }
+  },
+  [Actions.LOAD_PAGE]: (state, action) => {
+    return { ...state, pageLoading: action.payload }
+  }, 
+  [Actions.LOAD_PORTFOLIO_ITEMS]: (state, action) => {
+    return { ...state, portfolioItemsLoading: action.payload }
+  }, 
 }, initialState)

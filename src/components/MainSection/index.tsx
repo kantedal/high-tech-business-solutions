@@ -16,6 +16,7 @@ export namespace MainSection {
     filterByPortfolioCategory: (category: string) => void
     closePortfolioItem: () => void 
     portfolioFilter: Categories
+    allowedPortfolioItems: number
   }
   export interface State {}
 }
@@ -23,23 +24,29 @@ export namespace MainSection {
 export class MainSection extends React.Component<MainSection.Props, MainSection.State> {
   
   render() {
-    const { activePortfolioItem, openPortfolioItem, closePortfolioItem, filterByPortfolioCategory, portfolioFilter } = this.props
+    const { activePortfolioItem, openPortfolioItem, closePortfolioItem, filterByPortfolioCategory, portfolioFilter, allowedPortfolioItems } = this.props
 
+    let itemCount = 0
     const portfolioFilterHandle = (portfolioItem: IPortfolioItem) => {
+      if (itemCount >= allowedPortfolioItems) {
+        return false
+      }
       if (portfolioFilter != null) {
         for (const portfolioCat of portfolioItem.tags) {
           if (portfolioCat === Categories[portfolioFilter]) {
+            itemCount++
             return true
           }
         }
         return false
       }
+      itemCount++
       return true
     }
 
     const portfolioComponents = portfolioItems
+      .sort((a: IPortfolioItem, b: IPortfolioItem) => a.weight > b.weight ? -1.0 : 1.0)            
       .filter(portfolioFilterHandle)    
-      .sort((a: IPortfolioItem, b: IPortfolioItem) => a.weight > b.weight ? -1.0 : 1.0)      
       .map((portfolioItem: IPortfolioItem, index: number) => <PortfolioItem key={index} portfolioItem={portfolioItem} portfolioItemClick={openPortfolioItem}/>)
       
     return (
