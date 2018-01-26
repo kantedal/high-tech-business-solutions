@@ -1,9 +1,9 @@
 export enum Categories {
   Web = 'Web',
-  Animation = '3d animation',
-  GraphicsProgramming = 'Graphics programming',
+  Animation = '3d\xa0animation',
+  GraphicsProgramming = 'Graphics\xa0programming',
   Simulation =  'Simulation',
-  MobileApp = 'Mobile app',
+  MobileApp = 'Mobile\xa0app',
   Hardware = 'Hardware',
   AI = 'AI',
   Games = 'Games'

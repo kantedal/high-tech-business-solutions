@@ -20,6 +20,7 @@
     "@types/react-dom": "16.0.1",
     "@types/react-redux": "5.0.10",
     "@types/react-router": "4.0.15",
+    "@types/react-transition-group": "^2.0.6",
     "@types/redux-actions": "2.2.2",
     "@types/socket.io-client": "^1.4.32",
     "@types/three": "^0.84.37",

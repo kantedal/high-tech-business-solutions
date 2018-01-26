@@ -47,7 +47,10 @@ export class MainSection extends React.Component<MainSection.Props, MainSection.
     const portfolioComponents = portfolioItems
       .sort((a: IPortfolioItem, b: IPortfolioItem) => a.weight > b.weight ? -1.0 : 1.0)            
       .filter(portfolioFilterHandle)    
-      .map((portfolioItem: IPortfolioItem, index: number) => <PortfolioItem key={index} portfolioItem={portfolioItem} portfolioItemClick={openPortfolioItem}/>)
+      .map((portfolioItem: IPortfolioItem, index: number) => {
+        const animationDelay = 200 + (index) * 50
+        return <PortfolioItem key={index} delay={animationDelay} portfolioItem={portfolioItem} portfolioItemClick={openPortfolioItem}/>
+      })
       
     return (
       <StyledMainSectionDiv>
@@ -57,6 +60,7 @@ export class MainSection extends React.Component<MainSection.Props, MainSection.
           <Row className={style.presentationRow}>
             {portfolioComponents}
           </Row>
+          {/* <Row>Loading</Row> */}
         </Grid>
       </StyledMainSectionDiv>
     )

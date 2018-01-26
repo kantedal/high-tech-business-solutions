@@ -6,6 +6,7 @@ const initialState: AppState = {
   filterPortfolioItemBy: null,
   pageLoading: true,
   portfolioItemsLoading: false,
+  maxPortfolioItems: 0
 }
 
 export default handleActions<AppState, any>({
@@ -25,6 +26,6 @@ export default handleActions<AppState, any>({
     return { ...state, pageLoading: action.payload }
   }, 
   [Actions.LOAD_PORTFOLIO_ITEMS]: (state, action) => {
-    return { ...state, portfolioItemsLoading: action.payload }
+    return { ...state, portfolioItemsLoading: action.payload, maxPortfolioItems: state.maxPortfolioItems + 3 }
   }, 
 }, initialState)
