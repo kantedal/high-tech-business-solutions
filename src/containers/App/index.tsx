@@ -27,6 +27,7 @@ export namespace App {
     pageLoading: boolean
     portfolioItemsLoading: boolean
     maxPortfolioItems: number
+    activePortfolioItems: IPortfolioItem[]
     actions: typeof AppActions
    }
   export interface State {}
@@ -36,7 +37,10 @@ export namespace App {
 export default class App extends React.Component<App.Props, App.State> {
 
   render() {
-    const { pageLoading, maxPortfolioItems, activePortfolioItem, actions, filterPortfolioItemBy, children, actions: { loadPage } } = this.props
+    const { 
+      pageLoading, maxPortfolioItems, activePortfolioItem, actions, 
+      filterPortfolioItemBy, children, activePortfolioItems, actions: { loadPage } 
+    } = this.props
 
     const mainSection = (
       <MainSection 
@@ -45,6 +49,7 @@ export default class App extends React.Component<App.Props, App.State> {
         closePortfolioItem={actions.closePortfolioItem}
         filterByPortfolioCategory={actions.filterByPortfolioCategory}
         portfolioFilter={filterPortfolioItemBy}
+        activePortfolioItems={activePortfolioItems}
         allowedPortfolioItems={maxPortfolioItems}
       />
     )
@@ -87,7 +92,7 @@ export default class App extends React.Component<App.Props, App.State> {
       const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight)
       const windowBottom = windowHeight + window.pageYOffset
       if (windowBottom >= docHeight) {
-        setTimeout(() => this.props.actions.loadPortfolioItems(true), 400)
+        this.props.actions.loadPortfolioItems(true)
       }
     })
   }
@@ -100,6 +105,7 @@ function mapStateToProps(state: RootState) {
     portfolioItemsLoading: state.app.portfolioItemsLoading,
     pageLoading: state.app.pageLoading,
     maxPortfolioItems: state.app.maxPortfolioItems,
+    activePortfolioItems: state.app.activePortfolioItems
   }
 }
 

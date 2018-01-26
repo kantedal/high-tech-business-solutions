@@ -1,6 +1,6 @@
 .portfolioModalContent {
   position: absolute;
-  width: calc(100% - 140px);
+  width: calc(100%);
   height: fit-content;
   margin: 50px;
   background: #fff;

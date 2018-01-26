@@ -23,6 +23,7 @@ declare interface AppState {
   pageLoading: boolean
   portfolioItemsLoading: boolean
   maxPortfolioItems: number
+  activePortfolioItems: any[]
 }
 
 declare interface HostState {

@@ -40,20 +40,20 @@ export class PortfolioItem extends React.Component<PortfolioItem.Props, Portfoli
     const { portfolioItem, portfolioItemClick, delay } = this.props
     const portfolioClick = () => portfolioItemClick(portfolioItem)
     return (
-      <Transition in={this.state.show} timeout={delay}>
+      <Transition in={this.state.show} timeout={100}>
         {(state) => (
-            <Column xs={12} sm={6} md={6} lg={6} xl={4} className={style.portfolioItemContainer} style={{ ...defaultStyle, ...transitionStyles[state] }}>
-              <div className={style.portfolioItemForeground} />
-              <img className={style.portfolioItemImage} src={portfolioItem.coverImage} onClick={portfolioClick}/> 
-              <div className={style.header} onClick={portfolioClick}>{portfolioItem.header}</div>
-              <div className={style.portfolioItemDescription}>{portfolioItem.shortDescription}</div>
-            </Column>
+          <Column xs={12} sm={6} md={6} lg={6} xl={4} className={style.portfolioItemContainer} style={{ ...defaultStyle, ...transitionStyles[state] }}>
+            <div className={style.portfolioItemForeground} />
+            <img className={style.portfolioItemImage} src={portfolioItem.coverImage} onClick={portfolioClick}/> 
+            <div className={style.header} onClick={portfolioClick}>{portfolioItem.header}</div>
+            <div className={style.portfolioItemDescription}>{portfolioItem.shortDescription}</div>
+          </Column>
         )}
       </Transition>
     )
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({ ...this.state, show: true }), 500)
+    this.setState({ ...this.state, show: true })
   }
 }
