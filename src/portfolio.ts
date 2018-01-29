@@ -176,6 +176,8 @@ export const portfolioItems: IPortfolioItem[] = [
     tags: [ Categories.Web, Categories.GraphicsProgramming ],
     coverImage: './images/webglwater.jpg',
     weight: 1.4,
+    projectUrl: 'http://hedlundaren.github.io/displacementWater/',
+    projectSourceUrl: 'https://github.com/Hedlundaren/displacementWater',
     medias: [
       {
         mediaType: 'IMAGE',
@@ -205,7 +207,7 @@ export const portfolioItems: IPortfolioItem[] = [
     shortDescription: 'Tower defence in 3d made with Unity',
     longDescription: `Procedurally generated terrain, intelligent bots, physically correct animations, tower defence. 
       Won price for best project in class at Nanyang Technological University, Singapore.`,
-    tags: [ Categories.Games, Categories.GraphicsProgramming ],
+    tags: [ Categories.Games, Categories.GraphicsProgramming, Categories.AI ],
     coverImage: './images/temojano.jpg',
     projectSourceUrl: 'https://github.com/Grahnen92/Temoji',
     weight: 1.0,
