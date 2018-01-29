@@ -75,6 +75,6 @@ export class Header extends React.Component<Header.Props, Header.State> {
   }
 
   componentDidMount() {
-    initThreeBackground(this.threeContainer, this.props.isMobile)
+    setTimeout(() => initThreeBackground(this.threeContainer, this.props.isMobile), 2000)
   }
 }
