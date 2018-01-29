@@ -96,6 +96,7 @@ class App extends React.Component<App.Props, App.State> {
                   closePortfolioItem={actions.closePortfolioItem}
                   filterByPortfolioCategory={actions.filterByPortfolioCategory}
                   portfolioFilter={filterPortfolioItemBy}
+                  isMobile={isMobile}
                 />
               </Parallax>
             </div>            
@@ -113,7 +114,8 @@ class App extends React.Component<App.Props, App.State> {
                 closePortfolioItem={actions.closePortfolioItem}
                 filterByPortfolioCategory={actions.filterByPortfolioCategory}
                 portfolioFilter={filterPortfolioItemBy}
-              />
+                isMobile={isMobile}
+                />
             </div>            
           )}
   

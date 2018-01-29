@@ -34,8 +34,7 @@ export class Header extends React.Component<Header.Props, Header.State> {
                 <Col xs={0}>
                   <p className={style.presentation}>
                     Welcome to our portfolio. We are two programmers and computer-graphics enthusiasts running our own company. 
-                    Our company is a start-up with a too low income for us to make a living. 
-                    Therefore we are looking for freelance projects on half-time. 
+                    We are looking for freelance projects on half-time. 
                     Do you need help with anything you think we can help you with, please contact us.
                   </p>
                 </Col>

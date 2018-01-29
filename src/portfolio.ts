@@ -346,7 +346,8 @@ export const portfolioItems: IPortfolioItem[] = [
   {
     header: 'The Lake',
     shortDescription: 'Lake with reflection and refraction in OpenGL',
-    longDescription: `Clock made in WebGL using three js.`,
+    longDescription: `Refraction and reflection implemented along with caustics using 
+      animated textures. Everything is implemented using OpenGL.`,
     tags: [ Categories.GraphicsProgramming ],
     coverImage: './images/theLake.jpg',
     projectUrl: 'http://hedlundaren.github.io/fireworks2/',

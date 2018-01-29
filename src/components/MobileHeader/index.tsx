@@ -70,7 +70,7 @@ export class MobileHeader extends React.Component<MobileHeader.Props, MobileHead
               <Row center='xs'>
                 <Col xs={3}>
                   <IconButton aria-label='Email' onClick={() => {}}>
-                    <i style={{ fontSize: '30px', color: '#fff' }} className='material-icons' onClick={this.openFilipsMail}>mail_outline</i>
+                    <i style={{ fontSize: '30px', color: '#fff' }} className='material-icons' onClick={this.linkOurMails}>mail_outline</i>
                   </IconButton>
                 </Col>
               </Row>
@@ -84,12 +84,10 @@ export class MobileHeader extends React.Component<MobileHeader.Props, MobileHead
       </StyledHeaderDiv>
     )
   }
-
-  private openFilipsMail = () => {
-    window.open('mailto:kantedal@gmail.com', '_blank')
-  }
-
   componentDidMount() {
     initThreeBackground(this.threeContainer, this.props.isMobile)
+  }
+  private linkOurMails = () => {
+    window.open('mailto:kantedal@gmail.com,sermonhedlund@gmail.com', '_blank')
   }
 }

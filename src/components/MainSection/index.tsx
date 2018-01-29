@@ -16,6 +16,7 @@ export namespace MainSection {
     filterByPortfolioCategory: (category: string) => void
     closePortfolioItem: () => void 
     portfolioFilter: Categories
+    isMobile: boolean
   }
   export interface State {}
 }
@@ -23,7 +24,7 @@ export namespace MainSection {
 export class MainSection extends React.Component<MainSection.Props, MainSection.State> {
   
   render() {
-    const { activePortfolioItem, openPortfolioItem, closePortfolioItem, filterByPortfolioCategory, portfolioFilter } = this.props
+    const { activePortfolioItem, openPortfolioItem, closePortfolioItem, filterByPortfolioCategory, portfolioFilter, isMobile } = this.props
 
     const portfolioFilterHandle = (portfolioItem: IPortfolioItem) => {
       if (portfolioFilter != null) {
@@ -40,11 +41,11 @@ export class MainSection extends React.Component<MainSection.Props, MainSection.
     const portfolioComponents = portfolioItems
       .filter(portfolioFilterHandle)    
       .sort((a: IPortfolioItem, b: IPortfolioItem) => a.weight > b.weight ? -1.0 : 1.0)      
-      .map((portfolioItem: IPortfolioItem, index: number) => <PortfolioItem key={index} portfolioItem={portfolioItem} portfolioItemClick={openPortfolioItem}/>)
+      .map((portfolioItem: IPortfolioItem, index: number) => <PortfolioItem key={index} portfolioItem={portfolioItem} isMobile={isMobile} portfolioItemClick={openPortfolioItem}/>)
       
     return (
       <StyledMainSectionDiv>
-        <PortfolioItemModal portfolioItem={activePortfolioItem} isOpen={activePortfolioItem != null} closeModal={closePortfolioItem}/>
+        <PortfolioItemModal portfolioItem={activePortfolioItem} isOpen={activePortfolioItem != null} closeModal={closePortfolioItem} isMobile={isMobile}/>
         <FilterPanel portfolioFilter={portfolioFilter} filterByPortfolioCategory={filterByPortfolioCategory} />
         <Grid fluid={true} className={style.main}>
           <Row className={style.presentationRow}>

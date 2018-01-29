@@ -23,6 +23,7 @@ const onMouseMove = (e) => {
 export namespace PortfolioItem {
   export interface Props {
     portfolioItem: IPortfolioItem
+    isMobile: boolean
     portfolioItemClick: (portfolioItem: IPortfolioItem) => void 
   }
   export interface State { }
@@ -30,10 +31,10 @@ export namespace PortfolioItem {
 
 export class PortfolioItem extends React.Component<PortfolioItem.Props, PortfolioItem.State> {
   render() {
-    const { portfolioItem, portfolioItemClick } = this.props
+    const { portfolioItem, isMobile, portfolioItemClick } = this.props
     const portfolioClick = () => portfolioItemClick(portfolioItem)
     return (
-      <Col xs={12} sm={6} md={6} lg={6} xl={4} className={style.portfolioItemContainer}>
+      <Col xs={12} sm={6} md={6} lg={6} xl={4} className={isMobile ? style.portfolioItemContainerMobile : style.portfolioItemContainer}>
         <div className={style.portfolioItemForeground} />
         <img className={style.portfolioItemImage} src={portfolioItem.coverImage} onClick={portfolioClick}/> 
         <div className={style.header} onClick={portfolioClick}>{portfolioItem.header}</div>

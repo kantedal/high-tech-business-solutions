@@ -1,8 +1,7 @@
 .portfolioModalContent {
   position: absolute;
-  width: calc(100% - 140px);
+  width: calc(100%);
   height: fit-content;
-  margin: 50px;
   background: #fff;
   outline:0;
   border-radius: 5px;
@@ -49,5 +48,19 @@
 
 .modalButton{
   margin-left: 10px;
+}
+
+.closeButtonHolder {
+ width: 100%;
+ bottom: 0;
+ height: fit-content;
+}
+
+.modalCloseButton {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 10vh;
+  border-width: 50px;
 }
 
