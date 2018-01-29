@@ -21,47 +21,31 @@ const transitionStyles = {
 export namespace PortfolioItem {
   export interface Props {
     portfolioItem: IPortfolioItem
+    isMobile: boolean
     delay: number
-    show: boolean
     portfolioItemClick: (portfolioItem: IPortfolioItem) => void 
-    key: any
   }
-  export interface State {
-    show: boolean
-  }
+  export interface State {}
 }
 
 const Column: any = Col
 
 export class PortfolioItem extends React.Component<PortfolioItem.Props, PortfolioItem.State> {
-
-  constructor(props: PortfolioItem.Props) {
-    super(props)
-    this.state = { show: false }
-  }
-
-  // style={{ ...defaultStyle, ...transitionStyles[state] }}
-
   render() {
-    const { portfolioItem, portfolioItemClick, delay, key } = this.props
+    const { portfolioItem, portfolioItemClick, delay, isMobile } = this.props
     const portfolioClick = () => portfolioItemClick(portfolioItem)
     return (
-      <Transition timeout={delay} {...this.props}>
-        {(state) => {
-          return (
-            <Column xs={12} sm={6} md={6} lg={6} xl={4} className={style.portfolioItemContainer} style={{ ...defaultStyle, ...transitionStyles[state] }}>
-              <div className={style.portfolioItemForeground} />
-              <img className={style.portfolioItemImage} src={portfolioItem.coverImage} onClick={portfolioClick}/> 
-              <div className={style.header} onClick={portfolioClick}>{portfolioItem.header}</div>
-              <div className={style.portfolioItemDescription}>{portfolioItem.shortDescription}</div>
-            </Column>
-          )
-        }}
+      <Transition timeout={delay} {...this.props} style={{ width: '100%' }}>
+        {(state) => (
+          <Column xs={12} sm={6} md={6} lg={6} xl={4} className={isMobile ? style.portfolioItemContainerMobile : style.portfolioItemContainer}
+            style={{ ...defaultStyle, ...transitionStyles[state] }}>
+            <div className={style.portfolioItemForeground} />
+            <img className={style.portfolioItemImage} src={portfolioItem.coverImage} onClick={portfolioClick} />
+            <div className={style.header} onClick={portfolioClick}>{portfolioItem.header}</div>
+            <div className={style.portfolioItemDescription}>{portfolioItem.shortDescription}</div>
+          </Column>
+        )}
       </Transition>
     )
-  }
-
-  componentDidMount() {
-    this.setState({ ...this.state, show: true })
   }
 }

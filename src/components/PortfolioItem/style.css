@@ -58,7 +58,7 @@
   padding-right: 7px;
 }
 
-.contaportfolioItemContaineriner:hover {
+.portfolioItemContainer:hover {
   cursor: pointer;
 }
 
@@ -84,12 +84,17 @@
 	transition: opacity .25s;
 }
 
+
+
+.portfolioItemContainer:hover > .portfolioItemForeground {
+  opacity: 0.0;
+}
+
 .portfolioItemImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
 
 .portfolioItemForeground {
   width: calc(100% - 16px);
@@ -104,24 +109,66 @@
   pointer-events: none;
 }
 
-.portfolioItemContainer:hover > .portfolioItemForeground {
-  opacity: 0.0;
-}
 
-.fade-enter {
-  opacity: 0.01;
-}
+/*======*/
 
-.fade-enter.fade-enter-active {
+
+.portfolioItemContainerMobile {
+  display: flex;
+  float:left;
+	align-items: stretch;
+	align-content: stretch;
+  font-family: 'Fugaz One';
+  color: white;
+  text-align: center;
+  position: relative;
+  justify-content: center;
   opacity: 1;
-  transition: opacity 1000ms ease-in;
+  padding: 8px;
+  margin: 0px;
+  height: 320px;
 }
 
-.fade-exit {
+.portfolioItemContainerMobile:focus {outline:0;}
+
+.portfolioItemContainerMobile > img {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
   opacity: 1;
+  /* transform: perspective(600px) rotateX(0deg) rotateY(0deg) scale(1.0);
+  -webkit-transform: perspective(600px) rotateX(0deg) rotateY(0deg) scale(1.0);
+  -ms-transform: perspective(600px) rotateX(0deg) rotateY(0deg) scale(1.0); */
+  transition: transform .25s, box-shadow .25s;
+  transition-timing-function: cubic-bezier(0.0,0.01,0.0,0.1);
+  /* filter: grayscale(0.0) contrast(0.7) brightness(0.8); */
+  border-radius: 5px;
 }
 
-.fade-exit.fade-exit-active {
-  opacity: 0.01;
-  transition: opacity 800ms ease-in;
+.portfolioItemContainerMobile > .header {
+  top: 35%;
+  font-size: 30px;
+  transform: scale(0.9);
+  text-shadow: 0 0px 0px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 0px 3px rgba(0, 0, 0, 1.0);
+  position:absolute;
+  width: 100%;
+  opacity: 1.0;
+}
+
+
+.portfolioItemContainerMobile > .portfolioItemDescription {
+  font-family: 'Quicksand';
+  top: 50%;
+  font-size: 18px;
+  position: absolute;
+  width: calc(100% - 14px);
+  opacity: 0.8;
+  transition: opacity .05s;
+  pointer-events: none;
+  text-shadow: 0 0px 3px rgba(0, 0, 0, 1.0);
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.portfolioItemContainerMobile > .portfolioItemForeground {
+  display: none;
 }

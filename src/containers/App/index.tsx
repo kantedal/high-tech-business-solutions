@@ -56,6 +56,7 @@ export default class App extends React.Component<App.Props, App.State> {
         portfolioFilter={filterPortfolioItemBy}
         activePortfolioItems={activePortfolioItems}
         allowedPortfolioItems={maxPortfolioItems}
+        isMobile={isMobile}
       />
     )
 
@@ -119,7 +120,7 @@ function mapStateToProps(state: RootState) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: any) {
   return {
     actions: bindActionCreators(AppActions as any, dispatch)
   }

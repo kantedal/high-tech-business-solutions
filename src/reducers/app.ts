@@ -49,7 +49,7 @@ export default handleActions<AppState, any>({
 
     const portfolioSort = (a: IPortfolioItem, b: IPortfolioItem) => {
       if (a.weight === b.weight) {
-        return a.header > b.header ? -1.0 : 1.0
+        return a.header < b.header ? -1.0 : 1.0
       }
       return a.weight > b.weight ? -1.0 : 1.0
     }

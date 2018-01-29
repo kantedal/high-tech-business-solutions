@@ -18,6 +18,7 @@ export namespace MainSection {
     filterByPortfolioCategory: (category: string) => void
     closePortfolioItem: () => void 
     portfolioFilter: Categories
+    isMobile: boolean
     allowedPortfolioItems: number
   }
   export interface State {}
@@ -26,7 +27,8 @@ export namespace MainSection {
 export class MainSection extends React.Component<MainSection.Props, MainSection.State> {
   
   render() {
-    const { activePortfolioItem, activePortfolioItems, openPortfolioItem, closePortfolioItem, filterByPortfolioCategory, portfolioFilter, allowedPortfolioItems } = this.props
+    const { activePortfolioItem, activePortfolioItems, openPortfolioItem, closePortfolioItem, filterByPortfolioCategory, 
+      portfolioFilter, allowedPortfolioItems, isMobile } = this.props
 
     // let itemCount = 0
     // const portfolioFilterHandle = (portfolioItem: IPortfolioItem) => {
@@ -60,20 +62,12 @@ export class MainSection extends React.Component<MainSection.Props, MainSection.
     const portfolioComponents = activePortfolioItems
       .map((portfolioItem: IPortfolioItem, index: number) => {
         const animationDelay = (index) * 150
-        return (
-          <PortfolioItem 
-            key={portfolioItem.header + index}
-            show={true}
-            delay={animationDelay}
-            portfolioItem={portfolioItem}
-            portfolioItemClick={openPortfolioItem}
-          />
-        )
+        return <PortfolioItem key={portfolioItem.header + index} delay={animationDelay} portfolioItem={portfolioItem} isMobile={isMobile} portfolioItemClick={openPortfolioItem}/>
       })
       
     return (
       <StyledMainSectionDiv>
-        <PortfolioItemModal portfolioItem={activePortfolioItem} isOpen={activePortfolioItem != null} closeModal={closePortfolioItem}/>
+        <PortfolioItemModal portfolioItem={activePortfolioItem} isOpen={activePortfolioItem != null} closeModal={closePortfolioItem} isMobile={isMobile}/>
         <FilterPanel portfolioFilter={portfolioFilter} filterByPortfolioCategory={filterByPortfolioCategory} />
         <Grid fluid={true} className={style.main}>
           <Row className={style.presentationRow}>
