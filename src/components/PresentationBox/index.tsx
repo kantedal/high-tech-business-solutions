@@ -4,7 +4,7 @@ import { CSSProperties } from 'react'
 import { Col, Grid, Row } from 'react-flexbox-grid'
 
 import * as style from './styles/style.css'
-import { StyledPresentationImage, StyledPresentationImageContainer } from './styles/index';
+import { StyledPresentationImage, StyledPresentationImageContainer } from './styles/index'
 
 export namespace PresentationBox {
   export interface Props {
@@ -26,7 +26,7 @@ export const PresentationBox: React.SFC<PresentationBox.Props> = ({name, imgUrl,
   }
 
   const emailClick = () => {
-    window.prompt('Copy to clipboard: Ctrl+C, Enter', emailUrl);
+    window.prompt('Email address of ' + name, emailUrl)
   }
 
   const githubClick = () => {
