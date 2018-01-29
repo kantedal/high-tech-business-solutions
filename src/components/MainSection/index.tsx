@@ -71,7 +71,7 @@ export class MainSection extends React.Component<MainSection.Props, MainSection.
         <FilterPanel portfolioFilter={portfolioFilter} filterByPortfolioCategory={filterByPortfolioCategory} />
         <Grid fluid={true} className={style.main}>
           <Row className={style.presentationRow}>
-            <TransitionGroup appear={true}>
+            <TransitionGroup appear={true} style={{ width: '100%'}}>
               {portfolioComponents}
             </TransitionGroup>
           </Row>
