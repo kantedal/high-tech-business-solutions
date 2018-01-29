@@ -24,6 +24,8 @@ export namespace PortfolioItemModal {
   export interface State { }
 }
 
+const comp = <div> hej </div>
+
 export class PortfolioItemModal extends React.Component<PortfolioItemModal.Props, PortfolioItemModal.State> {
 
   render() {

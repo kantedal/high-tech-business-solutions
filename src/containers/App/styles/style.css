@@ -96,3 +96,11 @@ a:-webkit-any-link {
   height: 1000px;
   background: #f0f;
 }
+
+.appContainerStyle {
+  background: rgb(107, 224, 163);
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+  left: 0;
+}

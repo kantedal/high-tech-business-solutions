@@ -1,13 +1,12 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { ParallaxProvider, Parallax } from 'react-scroll-parallax'
 import * as AppActions from '../../actions/app'
 import { Footer, Header, MainSection } from '../../components'
 import { Categories, IPortfolioItem } from '../../portfolio'
 import { RootState } from '../../reducers'
-import * as style from './style.css'
+import * as style from './styles/style.css'
 import styled, { keyframes } from 'styled-components'
 import {BrowserView, MobileView, isBrowser, isMobile} from 'react-device-detect'
 import AddIcon from 'material-ui-icons/Add'
@@ -17,105 +16,65 @@ const ScrollAnimation = require('react-animate-on-scroll')
 import * as _ from 'lodash'
 import { SmallHeader } from '../../components/SmallHeader/index'
 import { initThreeBackground } from '../../background'
-import { MobileHeader } from '../../components/MobileHeader/index';
-import { Button } from 'material-ui';
+import { MobileHeader } from '../../components/MobileHeader/index'
+import { Button } from 'material-ui'
+import { StyledLoadingComponent, StyledLoadingText } from './styles/index'
 
 export namespace App {
   export interface Props { // extends RouteComponentProps<void> {
     activePortfolioItem: IPortfolioItem
     filterPortfolioItemBy: Categories
+    pageLoading: boolean
+    portfolioItemsLoading: boolean
+    maxPortfolioItems: number
+    activePortfolioItems: IPortfolioItem[]
     actions: typeof AppActions
    }
-  export interface State {
-    headerActive: boolean
-    contentActive: boolean
-    scrollY: number
-    isLoading: boolean
-  }
+  export interface State {}
 }
 
-const LoadingTextAnimation = keyframes`
-  0% { transform: scale(1.0); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1.0); }
-`
-
-const LoadingComponent: any = styled.div`
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  opacity: ${({isLoading}: any) => isLoading ? 1 : 0};
-  pointer-events: ${({isLoading}: any) => isLoading ? 'auto' : 'none'};
-
-  transition: opacity 0.5s;
-  z-index: 1000;
-`
-
-const LoadingText: any = styled.div`
-  font-family: 'Fugaz One';
-  font-size: 5vw;
-  text-align: center;
-  margin-top: 45vh;
-  color: rgb(70, 231, 153);
-  animation: ${LoadingTextAnimation} 1s ease infinite;
-`
-
 @connect(mapStateToProps, mapDispatchToProps)
-class App extends React.Component<App.Props, App.State> {
-
-  constructor(props: App.Props) {
-    super(props)
-    this.state = { headerActive: true, contentActive: false, scrollY: 0, isLoading: true }
-  }
+export default class App extends React.Component<App.Props, App.State> {
 
   render() {
-    const { activePortfolioItem, actions, filterPortfolioItemBy, children, actions: { backToMenu } } = this.props
+    const { 
+      pageLoading, maxPortfolioItems, activePortfolioItem, actions, 
+      filterPortfolioItemBy, children, activePortfolioItems, actions: { loadPage } 
+    } = this.props
+
+    const mainSection = (
+      <MainSection 
+        activePortfolioItem={activePortfolioItem}
+        openPortfolioItem={actions.openPortfolioItem}
+        closePortfolioItem={actions.closePortfolioItem}
+        filterByPortfolioCategory={actions.filterByPortfolioCategory}
+        portfolioFilter={filterPortfolioItemBy}
+        activePortfolioItems={activePortfolioItems}
+        allowedPortfolioItems={maxPortfolioItems}
+        isMobile={isMobile}
+      />
+    )
+
     return (
       <ParallaxProvider>
-        <div id='bodyHolder' style={AppContainerStyle}>
-          <LoadingComponent isLoading={this.state.isLoading} > <LoadingText> LOADING </LoadingText> </LoadingComponent>
-          {/* <SmallHeader isActive={this.state.contentActive} /> */}
+        <div id='bodyHolder' className={style.appContainerStyle}>
+          <StyledLoadingComponent isLoading={pageLoading} > <StyledLoadingText> LOADING </StyledLoadingText> </StyledLoadingComponent>
 
           {!isMobile && (
             <div>
-              <Parallax
-                offsetYMin={-100}
-                offsetYMax={100}
-                slowerScrollRate={true}
-              >
-                <Header 
-                  active={this.state.headerActive}
-                  isMobile={isMobile}
-                />
+              <Parallax offsetYMin={-100} offsetYMax={100} slowerScrollRate={true}>
+                <Header active={true} isMobile={isMobile} />
               </Parallax>
               <Parallax>
-                <MainSection 
-                  activePortfolioItem={activePortfolioItem}
-                  openPortfolioItem={actions.openPortfolioItem}
-                  closePortfolioItem={actions.closePortfolioItem}
-                  filterByPortfolioCategory={actions.filterByPortfolioCategory}
-                  portfolioFilter={filterPortfolioItemBy}
-                  isMobile={isMobile}
-                />
+                {mainSection}
               </Parallax>
             </div>            
           )}
           
           {isMobile && (
             <div>
-              <MobileHeader 
-                active={this.state.headerActive}
-                isMobile={isMobile}
-              />
-              <MainSection 
-                activePortfolioItem={activePortfolioItem}
-                openPortfolioItem={actions.openPortfolioItem}
-                closePortfolioItem={actions.closePortfolioItem}
-                filterByPortfolioCategory={actions.filterByPortfolioCategory}
-                portfolioFilter={filterPortfolioItemBy}
-                isMobile={isMobile}
-                />
+              <MobileHeader active={true} isMobile={isMobile}/>
+              {mainSection}
             </div>            
           )}
   
@@ -126,19 +85,32 @@ class App extends React.Component<App.Props, App.State> {
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({ ...this.state, isLoading: false }), 2000)
+    setTimeout(() => this.props.actions.loadPage(false), 2000)
+    window.addEventListener('scroll', () => {
+      const windowHeight = 'innerHeight' in window ? window.innerHeight : document.documentElement.offsetHeight
+      const body = document.body
+      const html = document.documentElement
+      const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight)
+      const windowBottom = windowHeight + window.pageYOffset
+      if (windowBottom >= docHeight) {
+        this.props.actions.loadPortfolioItems(true)
+      }
+    })
   }
 }
 
 function mapStateToProps(state: RootState) {
   return {
-    todos: state.todos,
     activePortfolioItem: state.app.activePortfolioItem,
-    filterPortfolioItemBy: state.app.filterPortfolioItemBy
+    filterPortfolioItemBy: state.app.filterPortfolioItemBy,
+    portfolioItemsLoading: state.app.portfolioItemsLoading,
+    pageLoading: state.app.pageLoading,
+    maxPortfolioItems: state.app.maxPortfolioItems,
+    activePortfolioItems: state.app.activePortfolioItems
   }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: any) {
   return {
     actions: bindActionCreators(AppActions as any, dispatch)
   }
@@ -150,5 +122,3 @@ const AppContainerStyle: React.CSSProperties = {
   width: '100%',
   minHeight: '100%'
 }
-
-export default withRouter(App)

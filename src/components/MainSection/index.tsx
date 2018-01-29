@@ -12,11 +12,13 @@ import * as style from './style.css'
 export namespace MainSection {
   export interface Props {
     activePortfolioItem: IPortfolioItem
+    activePortfolioItems: IPortfolioItem[]
     openPortfolioItem: (portfolioItem: IPortfolioItem) => void
     filterByPortfolioCategory: (category: string) => void
     closePortfolioItem: () => void 
     portfolioFilter: Categories
     isMobile: boolean
+    allowedPortfolioItems: number
   }
   export interface State {}
 }
@@ -24,24 +26,15 @@ export namespace MainSection {
 export class MainSection extends React.Component<MainSection.Props, MainSection.State> {
   
   render() {
-    const { activePortfolioItem, openPortfolioItem, closePortfolioItem, filterByPortfolioCategory, portfolioFilter, isMobile } = this.props
+    const { activePortfolioItem, activePortfolioItems, openPortfolioItem, closePortfolioItem, filterByPortfolioCategory, 
+      portfolioFilter, allowedPortfolioItems, isMobile } = this.props
 
-    const portfolioFilterHandle = (portfolioItem: IPortfolioItem) => {
-      if (portfolioFilter != null) {
-        for (const portfolioCat of portfolioItem.tags) {
-          if (portfolioCat === Categories[portfolioFilter]) {
-            return true
-          }
-        }
-        return false
-      }
-      return true
-    }
-
-    const portfolioComponents = portfolioItems
-      .filter(portfolioFilterHandle)    
-      .sort((a: IPortfolioItem, b: IPortfolioItem) => a.weight > b.weight ? -1.0 : 1.0)      
-      .map((portfolioItem: IPortfolioItem, index: number) => <PortfolioItem key={index} portfolioItem={portfolioItem} isMobile={isMobile} portfolioItemClick={openPortfolioItem}/>)
+    console.log(activePortfolioItems)
+    const portfolioComponents = activePortfolioItems
+      .map((portfolioItem: IPortfolioItem, index: number) => {
+        const animationDelay = (index) * 200
+        return <PortfolioItem key={index} delay={animationDelay} portfolioItem={portfolioItem} isMobile={isMobile} portfolioItemClick={openPortfolioItem}/>
+      })
       
     return (
       <StyledMainSectionDiv>
@@ -51,6 +44,7 @@ export class MainSection extends React.Component<MainSection.Props, MainSection.
           <Row className={style.presentationRow}>
             {portfolioComponents}
           </Row>
+          {/* <Row>Loading</Row> */}
         </Grid>
       </StyledMainSectionDiv>
     )

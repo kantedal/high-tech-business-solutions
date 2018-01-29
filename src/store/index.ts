@@ -1,19 +1,15 @@
 import { createStore, applyMiddleware, Store } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import rootReducer, { RootState } from '../reducers'
-import { routerMiddleware, push } from 'react-router-redux'
 
 export function configureStore(history: any) {
-  // let middleware = applyMiddleware(logger
-
-  let middleware = applyMiddleware(routerMiddleware(history))
-
-
+  let middleware = applyMiddleware(history)
   if (process.env.NODE_ENV === 'development') {
-    middleware = composeWithDevTools(middleware)
+    console.log(middleware)    
+    // middleware = composeWithDevTools(middleware)
   }
 
-  const store = createStore(rootReducer, {}, middleware) as Store<RootState>
+  const store = createStore(rootReducer, {}) as Store<RootState>
 
   if (module.hot) {
     module.hot.accept('../reducers', () => {

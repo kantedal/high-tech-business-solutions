@@ -96,7 +96,8 @@
           "check-type"
       ],
       "jsx-no-multiline-js": false,
-      "no-submodule-imports": false
+      "no-submodule-imports": false,
+      "jsx-alignment": false
   }
 }
 

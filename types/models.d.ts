@@ -20,6 +20,10 @@ declare interface IVoteStatistics {
 declare interface AppState {
   activePortfolioItem: any
   filterPortfolioItemBy: any
+  pageLoading: boolean
+  portfolioItemsLoading: boolean
+  maxPortfolioItems: number
+  activePortfolioItems: any[]
 }
 
 declare interface HostState {
