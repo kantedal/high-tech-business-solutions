@@ -2,6 +2,7 @@ import { StyledMainSectionDiv } from './styles'
 import * as React from 'react'
 import { CSSProperties } from 'react'
 import { Grid, Row } from 'react-flexbox-grid'
+import { TransitionGroup } from 'react-transition-group'
 
 import { Categories, IPortfolioItem, portfolioItems } from '../../portfolio'
 import { FilterPanel } from '../FilterPanel'
@@ -27,11 +28,47 @@ export class MainSection extends React.Component<MainSection.Props, MainSection.
   render() {
     const { activePortfolioItem, activePortfolioItems, openPortfolioItem, closePortfolioItem, filterByPortfolioCategory, portfolioFilter, allowedPortfolioItems } = this.props
 
-    console.log(activePortfolioItems)
+    // let itemCount = 0
+    // const portfolioFilterHandle = (portfolioItem: IPortfolioItem) => {
+    //   if (itemCount >= allowedPortfolioItems) {
+    //     return false
+    //   }
+    //   if (portfolioFilter != null) {
+    //     for (const portfolioCat of portfolioItem.tags) {
+    //       if (portfolioCat === Categories[portfolioFilter]) {
+    //         itemCount++
+    //         return true
+    //       }
+    //     }
+    //     return false
+    //   }
+    //   itemCount++
+    //   return true
+    // }
+
+    // const portfolioSort = (a: IPortfolioItem, b: IPortfolioItem) => {
+    //   if (a.weight === b.weight) {
+    //     return a.header > b.header ? -1.0 : 1.0
+    //   }
+    //   return a.weight > b.weight ? -1.0 : 1.0
+    // }
+
+    // const items = portfolioItems.sort(portfolioSort).filter(portfolioFilterHandle)
+
+    console.log(activePortfolioItems.length)
+    
     const portfolioComponents = activePortfolioItems
       .map((portfolioItem: IPortfolioItem, index: number) => {
-        const animationDelay = (index) * 200
-        return <PortfolioItem key={index} delay={animationDelay} portfolioItem={portfolioItem} portfolioItemClick={openPortfolioItem}/>
+        const animationDelay = (index) * 150
+        return (
+          <PortfolioItem 
+            key={portfolioItem.header + index}
+            show={true}
+            delay={animationDelay}
+            portfolioItem={portfolioItem}
+            portfolioItemClick={openPortfolioItem}
+          />
+        )
       })
       
     return (
@@ -40,7 +77,9 @@ export class MainSection extends React.Component<MainSection.Props, MainSection.
         <FilterPanel portfolioFilter={portfolioFilter} filterByPortfolioCategory={filterByPortfolioCategory} />
         <Grid fluid={true} className={style.main}>
           <Row className={style.presentationRow}>
-            {portfolioComponents}
+            <TransitionGroup appear={true}>
+              {portfolioComponents}
+            </TransitionGroup>
           </Row>
           {/* <Row>Loading</Row> */}
         </Grid>

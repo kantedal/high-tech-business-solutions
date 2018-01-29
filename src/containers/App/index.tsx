@@ -42,12 +42,17 @@ export default class App extends React.Component<App.Props, App.State> {
       filterPortfolioItemBy, children, activePortfolioItems, actions: { loadPage } 
     } = this.props
 
+    const filterHandle = (category: string) => {
+      actions.filterByPortfolioCategory(category)
+      actions.loadPortfolioItems(true)      
+    }
+
     const mainSection = (
       <MainSection 
         activePortfolioItem={activePortfolioItem}
         openPortfolioItem={actions.openPortfolioItem}
         closePortfolioItem={actions.closePortfolioItem}
-        filterByPortfolioCategory={actions.filterByPortfolioCategory}
+        filterByPortfolioCategory={filterHandle}
         portfolioFilter={filterPortfolioItemBy}
         activePortfolioItems={activePortfolioItems}
         allowedPortfolioItems={maxPortfolioItems}
@@ -85,7 +90,8 @@ export default class App extends React.Component<App.Props, App.State> {
 
   componentDidMount() {
     setTimeout(() => this.props.actions.loadPage(false), 2000)
-    window.addEventListener('scroll', () => {
+
+    const checkScroll = () => {
       const windowHeight = 'innerHeight' in window ? window.innerHeight : document.documentElement.offsetHeight
       const body = document.body
       const html = document.documentElement
@@ -94,7 +100,11 @@ export default class App extends React.Component<App.Props, App.State> {
       if (windowBottom >= docHeight) {
         this.props.actions.loadPortfolioItems(true)
       }
-    })
+    }
+
+    window.addEventListener('scroll', _.throttle(checkScroll, 200))
+
+    this.props.actions.loadPortfolioItems(true)
   }
 }
 

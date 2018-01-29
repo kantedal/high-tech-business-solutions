@@ -7,7 +7,7 @@ const initialState: AppState = {
   filterPortfolioItemBy: null,
   pageLoading: true,
   portfolioItemsLoading: false,
-  maxPortfolioItems: 0,
+  maxPortfolioItems: 6,
   activePortfolioItems: [],
 }
 
@@ -59,7 +59,7 @@ export default handleActions<AppState, any>({
     return { 
       ...state,
       portfolioItemsLoading: action.payload,
-      maxPortfolioItems: state.maxPortfolioItems + 3,
+      maxPortfolioItems: Math.min(state.maxPortfolioItems + 3, portfolioItems.length),
       activePortfolioItems: items
     }
   }, 
