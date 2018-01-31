@@ -758,6 +758,10 @@ clean-css@4.1.x:
   dependencies:
     source-map "0.5.x"
 
+clean-react-props@^0.1.1:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/clean-react-props/-/clean-react-props-0.1.2.tgz#b237a6b206b5bff916cbb6260b35258553f064b9"
+
 cliui@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/cliui/-/cliui-2.1.0.tgz#4b475760ff80264c762c3a1719032e91c7fea0d1"
@@ -2791,6 +2795,10 @@ lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
 
+lodash.omit@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.omit/-/lodash.omit-4.5.0.tgz#6eb19ae5a1ee1dd9df0b969e66ce0b7fa30b5e60"
+
 lodash.template@^4.2.4:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/lodash.template/-/lodash.template-4.4.0.tgz#e73a0385c8355591746e020b99679c690e68fba0"
@@ -2803,6 +2811,10 @@ lodash.templatesettings@^4.0.0:
   resolved "https://registry.yarnpkg.com/lodash.templatesettings/-/lodash.templatesettings-4.1.0.tgz#2b4d4e95ba440d915ff08bc899e4553666713316"
   dependencies:
     lodash._reinterpolate "~3.0.0"
+
+lodash.throttle@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
 
 lodash.uniq@^4.5.0:
   version "4.5.0"
@@ -4315,6 +4327,15 @@ react-scroll-parallax@^1.1.2:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/react-scroll-parallax/-/react-scroll-parallax-1.2.1.tgz#d31776cbe5279d08d158aa82db01c5e49aa145e3"
   dependencies:
+    prop-types "^15.5.10"
+
+react-scroll-trigger@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/react-scroll-trigger/-/react-scroll-trigger-0.2.1.tgz#7461450d47e0aebd86d2053ed360786b4074ad61"
+  dependencies:
+    clean-react-props "^0.1.1"
+    lodash.omit "^4.5.0"
+    lodash.throttle "^4.1.1"
     prop-types "^15.5.10"
 
 react-scrollbar-size@^2.0.2:

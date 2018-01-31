@@ -31,7 +31,7 @@ export default class App extends React.Component<App.Props, App.State> {
       filterPortfolioItemBy: null,
       pageLoading: true,
       portfolioItemsLoading: false,
-      maxPortfolioItems: 6,
+      maxPortfolioItems: 26,
       activePortfolioItems: [],
     }
   }
