@@ -25,7 +25,14 @@ export class MobileHeader extends React.Component<MobileHeader.Props, MobileHead
     const { active, isMobile } = this.props
     return (
       <StyledHeaderDiv isMobile={isMobile}>
-        <div ref={(element) => this.threeContainer = element}/>
+        <div>
+          <canvas
+            style={{position: 'absolute', width: '100%', height: '100%'}}
+            width={window.innerWidth} height={window.innerHeight}
+            ref={(element) => this.threeContainer = element}
+          />
+        </div>
+        
 
         {/* <div className={style.top} /> */}
         <Grid className={style.presentationGrid} fluid={true}>
@@ -59,18 +66,16 @@ export class MobileHeader extends React.Component<MobileHeader.Props, MobileHead
               <Row center='xs'>
                 <Col xs={0}>
                   <p className={style.mobilePresentation}>
-                    Welcome to our portfolio. We are two programmers and computer-graphics enthusiasts running our own company. 
-                    Our company is a start-up with a too low income for us to make a living. 
-                    Therefore we are looking for freelance projects on half-time. 
-                    Do you need help with anything you think we can help you with, please contact us.
+                    Welcome to our portfolio. We are two programmers and computer-graphics enthusiasts running our own company.
+                    We are looking for freelance projects on half-time. Do you need help with anything you think we can help you with, please contact us.
                   </p>
                 </Col>
               </Row>
 
               <Row center='xs'>
                 <Col xs={3}>
-                  <IconButton aria-label='Email' onClick={() => {}}>
-                    <i style={{ fontSize: '30px', color: '#fff' }} className='material-icons' onClick={this.linkOurMails}>mail_outline</i>
+                  <IconButton aria-label='Email'>
+                    <i style={{ fontSize: '30px', color: '#fff' }} className='zmdi zmdi-email' onClick={this.linkOurMails} />
                   </IconButton>
                 </Col>
               </Row>
@@ -78,14 +83,14 @@ export class MobileHeader extends React.Component<MobileHeader.Props, MobileHead
           </StyledRow>
         </Grid>   
         <div className={style.arrowRow}>
-          <StyledHeaderArrow className='material-icons' > keyboard_arrow_down</StyledHeaderArrow>
+          <StyledHeaderArrow className='zmdi zmdi-chevron-down' />
         </div>
 
       </StyledHeaderDiv>
     )
   }
   componentDidMount() {
-    initThreeBackground(this.threeContainer, this.props.isMobile)
+    setTimeout(() => initThreeBackground(this.threeContainer, this.props.isMobile), 2000)
   }
   private linkOurMails = () => {
     window.open('mailto:kantedal@gmail.com,sermonhedlund@gmail.com', '_blank')

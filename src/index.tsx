@@ -1,5 +1,4 @@
-import 'animate.css/animate.min.css'
-/// <reference path="../types/models.d.ts"/>
+/// <reference path='../types/models.d.ts'/>
 
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'

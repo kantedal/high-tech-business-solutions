@@ -1,24 +1,17 @@
+import * as _ from 'lodash'
 import * as React from 'react'
+import { isMobile } from 'react-device-detect'
 import { connect } from 'react-redux'
+import { Parallax, ParallaxProvider } from 'react-scroll-parallax'
 import { bindActionCreators } from 'redux'
-import { ParallaxProvider, Parallax } from 'react-scroll-parallax'
+
 import * as AppActions from '../../actions/app'
-import { Footer, Header, MainSection } from '../../components'
+import { Header, MainSection } from '../../components'
+import { MobileHeader } from '../../components/MobileHeader'
 import { Categories, IPortfolioItem } from '../../portfolio'
 import { RootState } from '../../reducers'
+import { StyledLoadingComponent, StyledLoadingText } from './styles'
 import * as style from './styles/style.css'
-import styled, { keyframes } from 'styled-components'
-import {BrowserView, MobileView, isBrowser, isMobile} from 'react-device-detect'
-import AddIcon from 'material-ui-icons/Add'
-
-const ScrollAnimation = require('react-animate-on-scroll')
-// const ScrollAnimation = require('react-animate-on-scroll')
-import * as _ from 'lodash'
-import { SmallHeader } from '../../components/SmallHeader/index'
-import { initThreeBackground } from '../../background'
-import { MobileHeader } from '../../components/MobileHeader/index'
-import { Button } from 'material-ui'
-import { StyledLoadingComponent, StyledLoadingText } from './styles/index'
 
 export namespace App {
   export interface Props { // extends RouteComponentProps<void> {

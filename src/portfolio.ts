@@ -33,7 +33,7 @@ export const portfolioItems: IPortfolioItem[] = [
     shortDescription: '3D animated film that was created as a hobby project.',
     longDescription: 'Long 3D animated film that was created as a hobby project.',
     tags: [ Categories.Animation ],
-    coverImage: './images/lfh.png',
+    coverImage: './images/lfh.jpg',
     weight: 1.0,
     medias: [
       {
@@ -43,7 +43,7 @@ export const portfolioItems: IPortfolioItem[] = [
       },
       {
         mediaType: 'IMAGE',
-        src: './images/lfh.png',
+        src: './images/lfh.jpg',
         description: 'Looking for host'
       },
     ]
@@ -53,7 +53,7 @@ export const portfolioItems: IPortfolioItem[] = [
     shortDescription: '3D animated film that was created as a hobby project.',
     longDescription: '3D animated film that was created as a hobby project.',
     tags: [ Categories.Animation ],
-    coverImage: './images/rv.png',
+    coverImage: './images/rv.jpg',
     weight: 1.0,
     medias: [
       {
@@ -63,7 +63,7 @@ export const portfolioItems: IPortfolioItem[] = [
       },
       {
         mediaType: 'IMAGE',
-        src: './images/rv.png',
+        src: './images/rv.jpg',
         description: 'Robs Vengeance'
       },
     ]
@@ -73,7 +73,7 @@ export const portfolioItems: IPortfolioItem[] = [
     shortDescription: 'Path tracing rendering engine for the web',
     longDescription: 'Path tracing rendering engine for the web',
     tags: [ Categories.Web, Categories.GraphicsProgramming ],
-    coverImage: './images/pathtracer.png',
+    coverImage: './images/pathtracer.jpg',
     projectUrl: 'https://kantedal.github.io/pathtracer-webgl2/',
     projectSourceUrl: 'https://github.com/kantedal/pathtracer-webgl2',
     weight: 2.0,
@@ -84,7 +84,7 @@ export const portfolioItems: IPortfolioItem[] = [
       },
       {
         mediaType: 'IMAGE',
-        src: './images/pathtracer.png',
+        src: './images/pathtracer.jpg',
       },
     ]
   },
@@ -95,12 +95,12 @@ export const portfolioItems: IPortfolioItem[] = [
     projectUrl: 'https://kantedal.github.io/flight-visualization-gpu/',
     projectSourceUrl: 'https://github.com/kantedal/flight-visualization-gpu',
     tags: [ Categories.Web, Categories.GraphicsProgramming ],
-    coverImage: './images/flight-vis.png',
+    coverImage: './images/flight-vis.jpg',
     weight: 1.5,
     medias: [
       {
         mediaType: 'IMAGE',
-        src: './images/flight-vis.png',
+        src: './images/flight-vis.jpg',
       },
     ]
   },
@@ -110,12 +110,12 @@ export const portfolioItems: IPortfolioItem[] = [
     longDescription: 'Native Android app collecting and presenting news',
     tags: [ Categories.MobileApp ],
     projectSourceUrl: 'https://github.com/kantedal/heja-blavitt',
-    coverImage: './images/blavitt.png',
+    coverImage: './images/blavitt.jpg',
     weight: 1.4,
     medias: [
       {
         mediaType: 'IMAGE',
-        src: './images/blavitt.png',
+        src: './images/blavitt.jpg',
       },
     ]
   },
@@ -124,12 +124,12 @@ export const portfolioItems: IPortfolioItem[] = [
     shortDescription: 'Two wheeled Arduino robot balancing using PID',
     longDescription: 'Two wheeled Arduino robot balancing using PID',
     tags: [ Categories.Hardware ],
-    coverImage: './images/pid.png',
+    coverImage: './images/pid.jpg',
     weight: 1.45,
     medias: [
       {
         mediaType: 'IMAGE',
-        src: './images/pid.png',
+        src: './images/pid.jpg',
       },
     ]
   },
@@ -139,12 +139,12 @@ export const portfolioItems: IPortfolioItem[] = [
     longDescription: 'App for real time modification of input sound',
     projectSourceUrl: 'https://github.com/kantedal/MicrophoneModifier',
     tags: [ Categories.MobileApp ],
-    coverImage: './images/micfx.png',
+    coverImage: './images/micfx.jpg',
     weight: 1.1,
     medias: [
       {
         mediaType: 'IMAGE',
-        src: './images/micfx.png',
+        src: './images/micfx.jpg',
       },
     ]
   },
@@ -290,13 +290,13 @@ export const portfolioItems: IPortfolioItem[] = [
     shortDescription: 'Mandelbrot visualization in WebGL 2',
     longDescription: `Mandelbrot visualziation run on the GPU. Works well as long as the 32 bit precision float in enough.`,
     tags: [ Categories.GraphicsProgramming, Categories.Web ],
-    coverImage: './images/mandelbrot.png',
+    coverImage: './images/mandelbrot.jpg',
     projectUrl: 'https://kantedal.github.io/mandelbrot-webgl2/',
     weight: 1.1,
     medias: [
       {
         mediaType: 'IMAGE',
-        src: './images/mandelbrot.png',
+        src: './images/mandelbrot.jpg',
       },
     ]
   },
@@ -305,13 +305,13 @@ export const portfolioItems: IPortfolioItem[] = [
     shortDescription: 'Car simulation with self written physics engine',
     longDescription: `Car simulation with self written physics engine.`,
     tags: [ Categories.GraphicsProgramming, Categories.Web, Categories.Games, Categories.Simulation ],
-    coverImage: './images/carsim.png',
+    coverImage: './images/carsim.jpg',
     projectUrl: 'http://kantedal.github.io/car-simulator/',
     weight: 1.0,
     medias: [
       {
         mediaType: 'IMAGE',
-        src: './images/carsim.png',
+        src: './images/carsim.jpg',
       },
     ]
   },
@@ -320,13 +320,13 @@ export const portfolioItems: IPortfolioItem[] = [
     shortDescription: 'Cloth simulation with verlet integration',
     longDescription: `Cloth simulation with verlet integration.`,
     tags: [ Categories.GraphicsProgramming, Categories.Web, Categories.Simulation ],
-    coverImage: './images/cloth.png',
+    coverImage: './images/cloth2.jpg',
     projectUrl: 'http://kantedal.github.io/cloth-simulation/',
     weight: 1.0,
     medias: [
       {
         mediaType: 'IMAGE',
-        src: './images/cloth.png',
+        src: './images/cloth2.jpg',
       },
     ]
   },
@@ -341,7 +341,7 @@ export const portfolioItems: IPortfolioItem[] = [
     medias: [
       {
         mediaType: 'IMAGE',
-        src: './images/connected-points-video.gif',
+        src: './images/gif/connected-points-video.gif',
       },
     ]
   },
@@ -373,7 +373,7 @@ export const portfolioItems: IPortfolioItem[] = [
     medias: [
       {
         mediaType: 'IMAGE',
-        src: './images/cloth.gif',
+        src: './images/gif/cloth.gif',
       },
       {
         mediaType: 'IMAGE',
@@ -387,18 +387,18 @@ export const portfolioItems: IPortfolioItem[] = [
     longDescription: `TexMesh is a tool developed with OpengL where the user can paint and create textures. 
     The user can also navigate and choose paint brushes with an external android app.`,
     tags: [ Categories.GraphicsProgramming, Categories.MobileApp ],
-    coverImage: './images/texmesh.png',
+    coverImage: './images/texmesh.jpg',
     projectSourceUrl: 'https://github.com/Hedlundaren/opengl-remote-server',
     projectUrl: 'https://vimeo.com/212475647',
     weight: 2.0,
     medias: [
       {
         mediaType: 'IMAGE',
-        src: './images/texmesh-controls.gif',
+        src: './images/gif/texmesh-controls.gif',
       },
       {
         mediaType: 'IMAGE',
-        src: './images/texmesh-painting.gif',
+        src: './images/gif/texmesh-painting.gif',
       }
     ]
   },
@@ -407,12 +407,12 @@ export const portfolioItems: IPortfolioItem[] = [
     shortDescription: 'App for the board game Key Quest',
     longDescription: `App for Iphone and Android made for the popular board game Key Quest`,
     tags: [ Categories.MobileApp, Categories.Games ],
-    coverImage: './images/kq.png',
+    coverImage: './images/kq.jpg',
     weight: 1.35,
     medias: [
       {
         mediaType: 'IMAGE',
-        src: './images/kq.png',
+        src: './images/kq.jpg',
 
       },
     ]
@@ -439,29 +439,29 @@ export const portfolioItems: IPortfolioItem[] = [
     shortDescription: 'Visualize pvm data with raymarching in real time',
     longDescription: `Volume renderer implemented on the GPU using OpenGL. Load pvm data and render them using your own transfer functions.`,
     tags: [ Categories.GraphicsProgramming ],
-    coverImage: './images/vr1.png',
+    coverImage: './images/vr1.jpg',
     projectSourceUrl: 'https://github.com/Hedlundaren/raymarcher',
     weight: 1.7,
     medias: [
       {
         mediaType: 'IMAGE',
-        src: './images/vr1.png',
+        src: './images/vr1.jpg',
       },
       {
         mediaType: 'IMAGE',
-        src: './images/vr2.png',
+        src: './images/vr2.jpg',
       },
       {
         mediaType: 'IMAGE',
-        src: './images/vr3.png',
+        src: './images/vr3.jpg',
       },
       {
         mediaType: 'IMAGE',
-        src: './images/vr4.png',
+        src: './images/vr4.jpg',
       },
       {
         mediaType: 'IMAGE',
-        src: './images/vr5.png',
+        src: './images/vr5.jpg',
       }
     ]
   },
@@ -470,12 +470,12 @@ export const portfolioItems: IPortfolioItem[] = [
     shortDescription: 'List app for Android',
     longDescription: `List app for Android.`,
     tags: [ Categories.MobileApp ],
-    coverImage: './images/listig.png',
+    coverImage: './images/listig.jpg',
     weight: 1.1,
     medias: [
       {
         mediaType: 'IMAGE',
-        src: './images/listig.png',
+        src: './images/listig.jpg',
       },
     ]
   },

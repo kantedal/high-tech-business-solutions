@@ -14,7 +14,7 @@ export const StyledHeaderDiv: any = styled.div`
   background: linear-gradient(rgba(232, 21, 21, 0.5) 30%, rgba(126, 75, 192, 0.9) 80%);
   background: linear-gradient(to right, #11998e, #38ef7d);
   box-shadow: inset 0 0 200px rgba(0,0,0,0.2);
-  height: ${({isMobile}: any) => isMobile ? '100%' : (window.innerHeight) + 'px'};
+  height: ${({isMobile}: any) => window.innerHeight + 'px'};
   overflow: hidden;
   z-index: 0;
 `

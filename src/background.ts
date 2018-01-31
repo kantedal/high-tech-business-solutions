@@ -1,18 +1,25 @@
-import * as THREE from 'three'
+let gl
+let shaderProgram
+let vertexBuffer
+let indexBuffer
+let width: number
+let height: number
+let time: number = 0.0
 
-let camera
-let scene
-let renderer
-const clock = new THREE.Clock()
-const mouse = new THREE.Vector2(0, 0)
+const vertices = [
+  -1.0,  1.0, 0.0,
+  -1.0, -1.0, 0.0,
+   1.0, -1.0, 0.0,
+   1.0,  1.0, 0.0 
+]
+
+const indices = [3, 2, 1, 3, 1, 0]
+
+const mouse = [0, 0]
 let mouseHold = 0.0
-const mouseDelayed = new THREE.Vector2(0, 0)
+const mouseDelayed = [0, 0]
 let isMobile = false
-let mesh
-let uniforms
 let firstRender = true
-
-let initHeight: number = 0
 
 const onMouseDown = (e) => { 
   if (!e.target.className) {
@@ -23,16 +30,13 @@ const onMouseUp = (e) => {
   mouseHold = 0.0
 }
 const onMouseMove = (e) => { 
-  mouse.x = -e.clientX / (window.innerWidth)
-  mouse.y = -e.clientY / (window.innerHeight)
+  mouse[0] = -e.clientX / (window.innerWidth)
+  mouse[1] = -e.clientY / (window.innerHeight)
 }
 
 const onWindowResize = () => {
-  if (camera) {
-    camera.aspect = window.innerWidth / initHeight
-    camera.updateProjectionMatrix()
-    renderer.setSize(window.innerWidth, initHeight)
-  }
+  width = window.innerWidth
+  height = window.innerHeight
 }
 
 window.addEventListener('mousedown', onMouseDown, false)
@@ -46,53 +50,73 @@ const animate = () => {
   }
 
   if (window.pageYOffset === 0 || firstRender) {
-    mouseDelayed.x = mouseDelayed.x - 0.09 * (mouseDelayed.x - mouse.x)
-    mouseDelayed.y = mouseDelayed.y - 0.09 * (mouseDelayed.y - mouse.y)
-    camera.updateMatrixWorld()
-    const delta = 0.02 * clock.getDelta()
-    uniforms.time.value += delta * (1.0 + mouseHold * 10.0)
-    uniforms.mouse.value = mouse
-    uniforms.mouseHold.value = mouseHold
-    uniforms.mouseDelayed.value = mouseDelayed
-    renderer.render(scene, camera)
+    mouseDelayed[0] = mouseDelayed[0] - 0.09 * (mouseDelayed[0] - mouse[0])
+    mouseDelayed[1] = mouseDelayed[1] - 0.09 * (mouseDelayed[1] - mouse[1])
+
+    gl.useProgram(shaderProgram)
+  
+    gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer)
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer) 
+
+    const coord = gl.getAttribLocation(shaderProgram, 'coordinates')
+    gl.vertexAttribPointer(coord, 3, gl.FLOAT, false, 0, 0)
+    gl.enableVertexAttribArray(coord)
+
+    gl.uniform2fv(gl.getUniformLocation(shaderProgram, 'resolution'), [width, height])
+    gl.uniform2fv(gl.getUniformLocation(shaderProgram, 'mouse'), mouse)
+    gl.uniform2fv(gl.getUniformLocation(shaderProgram, 'mouseDelayed'), mouseDelayed)
+    gl.uniform1f(gl.getUniformLocation(shaderProgram, 'time'), time += 0.005)
+    gl.uniform1f(gl.getUniformLocation(shaderProgram, 'mouseHold'), 0.0)
+
+    /*============= Drawing the Quad ================*/
+    gl.clearColor(0.5, 0.5, 0.5, 0.9)
+    gl.enable(gl.DEPTH_TEST)
+    gl.clear(gl.COLOR_BUFFER_BIT)
+    gl.viewport(0, 0, width, height)
+    gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0)
+
     firstRender = false
   } 
 }
 
 export const initThreeBackground = (threeContainer: any, mobile: boolean) => {
   isMobile = mobile
-  camera = new THREE.PerspectiveCamera(10, window.innerWidth / window.innerHeight, 1, 1000 )
-  camera.position.z = 1
-  scene = new THREE.Scene()
-  const geometry = new THREE.PlaneGeometry(2.65, 2.375, 1)
+  gl = threeContainer.getContext('experimental-webgl')
 
-  uniforms = {
-    resolution: {
-      value: new THREE.Vector2(window.innerWidth, window.innerHeight)
-    },
-    mouse: { value: new THREE.Vector2(1, 0) },
-    mouseDelayed: { value: new THREE.Vector2(1, 0) },
-    time: { value: 1.0 },
-    mouseHold: { value: 0.0 }
-  }
+  width = threeContainer.width 
+  height = threeContainer.height
 
-  const shaderMaterial = new THREE.ShaderMaterial({
-    uniforms,
-    // Shader is located in index.html
-    fragmentShader: document.getElementById('fragmentShader3').textContent,
-    wireframe: false
-  })
+  vertexBuffer = gl.createBuffer()
+  gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer)
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW)
+  gl.bindBuffer(gl.ARRAY_BUFFER, null)
 
-  mesh = new THREE.Mesh(geometry, shaderMaterial)
+  indexBuffer = gl.createBuffer()
+  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer)
+  gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW)
+  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null)
 
-  scene.add(mesh)
-  renderer = new THREE.WebGLRenderer()
-  renderer.setPixelRatio(window.devicePixelRatio)
-  renderer.setSize(window.innerWidth, window.innerHeight)
+  const vertCode = `
+    attribute vec3 coordinates;
+    void main() {
+      gl_Position = vec4(coordinates, 1.0);
+    }
+  `
+  
+  const vertShader = gl.createShader(gl.VERTEX_SHADER)
+  gl.shaderSource(vertShader, vertCode)
+  gl.compileShader(vertShader)
 
-  threeContainer.appendChild(renderer.domElement)
+  const fragCode = document.getElementById('fragmentShader3').textContent
+  
+  const fragShader = gl.createShader(gl.FRAGMENT_SHADER)
+  gl.shaderSource(fragShader, fragCode)
+  gl.compileShader(fragShader)
 
-  initHeight = window.innerHeight
+  shaderProgram = gl.createProgram()
+  gl.attachShader(shaderProgram, vertShader)
+  gl.attachShader(shaderProgram, fragShader)
+  gl.linkProgram(shaderProgram)
 
   animate()
 }

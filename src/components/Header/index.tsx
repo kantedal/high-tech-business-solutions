@@ -24,7 +24,11 @@ export class Header extends React.Component<Header.Props, Header.State> {
     const { active, isMobile } = this.props
     return (
       <StyledHeaderDiv isMobile={isMobile}>
-        <div ref={(element) => this.threeContainer = element}/>
+        <canvas
+          style={{position: 'absolute', width: '100%', height: '100%'}}
+          width={window.innerWidth} height={window.innerHeight}
+          ref={(element) => this.threeContainer = element}
+        />
 
         {/* <div className={style.top} /> */}
         <Grid className={style.presentationGrid} fluid={true}>
@@ -67,7 +71,7 @@ export class Header extends React.Component<Header.Props, Header.State> {
           </StyledRow>
         </Grid>   
         <div className={style.arrowRow}>
-          <StyledHeaderArrow className='material-icons'>keyboard_arrow_down</StyledHeaderArrow>
+          <StyledHeaderArrow className='zmdi zmdi-chevron-down' />
         </div>
 
       </StyledHeaderDiv>

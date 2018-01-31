@@ -7,12 +7,6 @@ import { PortfolioItem } from '../PortfolioItem/index'
 import { MediaCarousel } from '../MediaCarousel/index'
 import Button from 'material-ui/Button'
 import { withStyles } from 'material-ui/styles'
-import FileUpload from 'material-ui-icons/FileUpload'
-import KeyboardVoice from 'material-ui-icons/KeyboardVoice'
-import Icon from 'material-ui/Icon'
-import Run from 'material-ui-icons/DirectionsRun'
-import Code from 'material-ui-icons/Code'
-import Clear from 'material-ui-icons/Clear'
 
 export namespace PortfolioItemModal {
   export interface Props {
@@ -61,13 +55,13 @@ export class PortfolioItemModal extends React.Component<PortfolioItemModal.Props
 
   private renderProjectSourceUrlButton(portfolioItem: IPortfolioItem) {
     if (portfolioItem.projectSourceUrl) {
-      return <Button className={style.modalButton} raised={true} color='primary' onClick={this.openProjectSourceUrl}> <Code style={{ marginRight: '3px' }} />  Source </Button>
+      return <Button className={style.modalButton} raised={true} color='primary' onClick={this.openProjectSourceUrl}><i style={{marginRight: '3px'}} className='zmdi zmdi-run'/>Source</Button>
     }
   }
 
   private renderProjectUrlButton(portfolioItem: IPortfolioItem) {
     if (portfolioItem.projectUrl) {
-      return <Button className={style.modalButton} raised={true} color='secondary' onClick={this.openProjectUrl}> <Run style={{ marginRight: '3px' }} /> Project  </Button>
+      return <Button className={style.modalButton} raised={true} color='secondary' onClick={this.openProjectUrl}> <i className='zmdi zmdi-link'/> /> Project  </Button>
     }
   }
 
@@ -75,7 +69,7 @@ export class PortfolioItemModal extends React.Component<PortfolioItemModal.Props
     if (isMobile) {
       return (
         <div className={style.closeButtonHolder}>
-          <Button className={style.modalCloseButton} raised={true} color='default' style={{ position: 'fixed'}} onClick={closeModal}> <Clear />  </Button>
+          <Button className={style.modalCloseButton} raised={true} color='default' style={{position: 'fixed'}} onClick={closeModal}><i className='zmdi zmdi-close'/></Button>
         </div>
       )
     }

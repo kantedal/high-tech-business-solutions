@@ -1,9 +1,6 @@
-// import React, { Component } from 'react'
-// import ReactDOM from 'react-dom'
 import * as React from 'react'
 import * as style from './style.css'
 import { Carousel } from 'react-responsive-carousel'
-import * as styles from 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { IMedia } from '../../portfolio'
 
 export namespace MediaCarousel {
