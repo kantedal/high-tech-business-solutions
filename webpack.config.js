@@ -13,15 +13,12 @@ module.exports = {
     main: './index.tsx',
     vendor: [
       'react',
-      'react-dom',
-      'react-redux',
-      'react-router',
-      'redux'
+      'react-dom'
     ]
   },
   output: {
     path: outPath,
-    publicPath: '/',
+    publicPath: isProduction ? './' : '/',
     filename: 'bundle.js',
   },
   target: 'web',

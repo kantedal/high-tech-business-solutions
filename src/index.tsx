@@ -2,16 +2,9 @@
 
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
-import { Router, Route, Switch } from 'react-router'
-import { createBrowserHistory } from 'history'
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
-import { configureStore } from './store'
 import App from './containers/App'
 import './background'
-
-const history = createBrowserHistory()
-const store = configureStore(history)
 
 const AppComponent: any = App
 
@@ -21,9 +14,7 @@ const theme = createMuiTheme({
     
 ReactDOM.render(
   <MuiThemeProvider theme={theme}>
-    <Provider store={store}>
-      <AppComponent />
-    </Provider>
+    <AppComponent />
   </MuiThemeProvider>,
   document.getElementById('root')
 )
