@@ -1,0 +1,9 @@
+.buttonContainer {
+  padding: 5px;
+  font-size: 18px;
+  border: 2px solid #38ef7d;
+  border-radius: 3px;
+  width: fit-content;
+  color: #38ef7d;
+  font-weight: 400;
+}

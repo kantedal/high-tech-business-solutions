@@ -43,7 +43,6 @@ export class PortfolioItemContent extends React.Component<PortfolioItemContent.P
   }
 
   componentDidMount() {
-    console.log(this.props.portfolioItem.header, 'loaded')
     this.props.onLoaded()
   }
 }

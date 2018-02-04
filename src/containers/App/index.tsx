@@ -7,6 +7,7 @@ import { MainSection } from '../../components/MainSection'
 import { MobileHeader } from '../../components/MobileHeader'
 import { Categories, IPortfolioItem, portfolioItems } from '../../portfolio'
 import * as style from './styles/style.css'
+import { PortfolioItemModal } from '../../components/PortfolioItemModal/index';
 
 export namespace App {
   export interface Props {}
@@ -46,9 +47,7 @@ export default class App extends React.Component<App.Props, App.State> {
 
     const mainSection = (
       <MainSection 
-        activePortfolioItem={activePortfolioItem}
         openPortfolioItem={(portfolioItem: IPortfolioItem) => this.setState({ ...this.state, activePortfolioItem: portfolioItem })}
-        closePortfolioItem={() => this.setState({ ...this.state, activePortfolioItem: null })}
         filterByPortfolioCategory={filterHandle}
         portfolioFilter={filterPortfolioItemBy}
         activePortfolioItems={activePortfolioItems}
@@ -60,6 +59,12 @@ export default class App extends React.Component<App.Props, App.State> {
     return (
       <ParallaxProvider>
         <div id='bodyHolder' className={style.appContainerStyle}>
+          <PortfolioItemModal 
+            portfolioItem={activePortfolioItem}
+            isOpen={activePortfolioItem != null}
+            closeModal={() => this.setState({ ...this.state, activePortfolioItem: null })}
+            isMobile={isMobile}
+          />
           {!isMobile && (
             <div>
               <Parallax offsetYMin={-100} offsetYMax={100} slowerScrollRate={true}>

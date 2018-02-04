@@ -12,11 +12,9 @@ import * as style from './style.css'
 
 export namespace MainSection {
   export interface Props {
-    activePortfolioItem: IPortfolioItem
     activePortfolioItems: IPortfolioItem[]
     openPortfolioItem: (portfolioItem: IPortfolioItem) => void
     filterByPortfolioCategory: (category: string) => void
-    closePortfolioItem: () => void 
     portfolioFilter: Categories
     isMobile: boolean
     allowedPortfolioItems: number
@@ -27,7 +25,7 @@ export namespace MainSection {
 export class MainSection extends React.Component<MainSection.Props, MainSection.State> {
   
   render() {
-    const { activePortfolioItem, activePortfolioItems, openPortfolioItem, closePortfolioItem, filterByPortfolioCategory, 
+    const { activePortfolioItems, openPortfolioItem, filterByPortfolioCategory, 
       portfolioFilter, allowedPortfolioItems, isMobile } = this.props
 
     const portfolioComponents = activePortfolioItems
@@ -38,7 +36,6 @@ export class MainSection extends React.Component<MainSection.Props, MainSection.
       
     return (
       <StyledMainSectionDiv>
-        <PortfolioItemModal portfolioItem={activePortfolioItem} isOpen={activePortfolioItem != null} closeModal={closePortfolioItem} isMobile={isMobile}/>
         <FilterPanel portfolioFilter={portfolioFilter} filterByPortfolioCategory={filterByPortfolioCategory} />
         <Grid fluid={true} className={style.main}>
           <Row className={style.presentationRow}>

@@ -12,6 +12,7 @@
   margin-right: auto; 
   max-width: 600px;
   padding-bottom: 20px;
+  pointer-events: all;
 }
 
 .topImageContent {
@@ -29,7 +30,7 @@
   opacity: 1;
 }
 
-.portfolioModalHeader{
+.portfolioModalHeader {
   font-family: 'Fugaz One';
   position: relative;
   top: calc(0.05vw + 7px);
@@ -43,6 +44,7 @@
 .modalDescription {
   font-family: 'Quicksand', 'Open Sans';
   padding: 20px;
+  padding-bottom: 5px;
   padding-top: 0px;
 }
 
