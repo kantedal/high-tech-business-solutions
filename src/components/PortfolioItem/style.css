@@ -3,6 +3,11 @@
   --rot-y: 0deg;
 }
 
+.portfolioItemPlaceholder {
+  height: 320px;
+  pointer-events: none;
+}
+
 .portfolioItemContainer {
   display: flex;
   float:left;

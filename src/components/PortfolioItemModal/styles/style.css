@@ -12,6 +12,7 @@
   margin-right: auto; 
   max-width: 600px;
   padding-bottom: 20px;
+  pointer-events: all;
 }
 
 .topImageContent {
@@ -29,7 +30,7 @@
   opacity: 1;
 }
 
-.portfolioModalHeader{
+.portfolioModalHeader {
   font-family: 'Fugaz One';
   position: relative;
   top: calc(0.05vw + 7px);
@@ -43,24 +44,12 @@
 .modalDescription {
   font-family: 'Quicksand', 'Open Sans';
   padding: 20px;
+  padding-bottom: 5px;
   padding-top: 0px;
 }
 
-.modalButton{
-  margin-left: 10px;
-}
-
 .closeButtonHolder {
- width: 100%;
- bottom: 0;
- height: fit-content;
-}
-
-.modalCloseButton {
   position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 10vh;
-  border-width: 50px;
+  bottom: 58px;
+  right: 10px;
 }
-

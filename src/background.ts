@@ -1,4 +1,5 @@
 let gl
+let renderCanvas
 let shaderProgram
 let vertexBuffer
 let indexBuffer
@@ -140,6 +141,8 @@ const onMouseMove = (e) => {
 const onWindowResize = () => {
   width = window.innerWidth
   height = window.innerHeight
+  renderCanvas.width = width
+  renderCanvas.height = height
 }
 
 window.addEventListener('mousedown', onMouseDown, false)
@@ -147,47 +150,50 @@ window.addEventListener('mouseup', onMouseUp, false)
 window.addEventListener('mousemove', onMouseMove, false)
 window.addEventListener('resize', onWindowResize, false)
 
+const render = () => {
+  mouseDelayed[0] = mouseDelayed[0] - 0.09 * (mouseDelayed[0] - mouse[0])
+  mouseDelayed[1] = mouseDelayed[1] - 0.09 * (mouseDelayed[1] - mouse[1])
+
+  gl.useProgram(shaderProgram)
+  
+  gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer)
+  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer) 
+
+  const coord = gl.getAttribLocation(shaderProgram, 'coordinates')
+  gl.vertexAttribPointer(coord, 3, gl.FLOAT, false, 0, 0)
+  gl.enableVertexAttribArray(coord)
+
+  gl.uniform2fv(gl.getUniformLocation(shaderProgram, 'resolution'), [width, height])
+  gl.uniform2fv(gl.getUniformLocation(shaderProgram, 'mouse'), mouse)
+  gl.uniform2fv(gl.getUniformLocation(shaderProgram, 'mouseDelayed'), mouseDelayed)
+  gl.uniform1f(gl.getUniformLocation(shaderProgram, 'time'), time += 0.005)
+  gl.uniform1f(gl.getUniformLocation(shaderProgram, 'mouseHold'), 0.0)
+
+  gl.clearColor(0.5, 0.5, 0.5, 0.9)
+  gl.enable(gl.DEPTH_TEST)
+  gl.clear(gl.COLOR_BUFFER_BIT)
+  gl.viewport(0, 0, width, height)
+  gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0)
+}
+
 const animate = () => {
   if (!isMobile) {
     requestAnimationFrame(animate)
   }
 
   if (window.pageYOffset === 0 || firstRender) {
-    mouseDelayed[0] = mouseDelayed[0] - 0.09 * (mouseDelayed[0] - mouse[0])
-    mouseDelayed[1] = mouseDelayed[1] - 0.09 * (mouseDelayed[1] - mouse[1])
-
-    gl.useProgram(shaderProgram)
-  
-    gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer)
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer) 
-
-    const coord = gl.getAttribLocation(shaderProgram, 'coordinates')
-    gl.vertexAttribPointer(coord, 3, gl.FLOAT, false, 0, 0)
-    gl.enableVertexAttribArray(coord)
-
-    gl.uniform2fv(gl.getUniformLocation(shaderProgram, 'resolution'), [width, height])
-    gl.uniform2fv(gl.getUniformLocation(shaderProgram, 'mouse'), mouse)
-    gl.uniform2fv(gl.getUniformLocation(shaderProgram, 'mouseDelayed'), mouseDelayed)
-    gl.uniform1f(gl.getUniformLocation(shaderProgram, 'time'), time += 0.005)
-    gl.uniform1f(gl.getUniformLocation(shaderProgram, 'mouseHold'), 0.0)
-
-    /*============= Drawing the Quad ================*/
-    gl.clearColor(0.5, 0.5, 0.5, 0.9)
-    gl.enable(gl.DEPTH_TEST)
-    gl.clear(gl.COLOR_BUFFER_BIT)
-    gl.viewport(0, 0, width, height)
-    gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0)
-
+    render()
     firstRender = false
   } 
 }
 
-export const initThreeBackground = (threeContainer: any, mobile: boolean) => {
+export const initThreeBackground = (canvas: any, mobile: boolean) => {
   isMobile = mobile
-  gl = threeContainer.getContext('experimental-webgl')
+  renderCanvas = canvas
+  gl = canvas.getContext('experimental-webgl')
 
-  width = threeContainer.width 
-  height = threeContainer.height
+  width = canvas.width 
+  height = canvas.height
 
   vertexBuffer = gl.createBuffer()
   gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer)

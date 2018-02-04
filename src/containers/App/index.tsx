@@ -1,4 +1,3 @@
-import * as _ from 'lodash'
 import * as React from 'react'
 import { isMobile } from 'react-device-detect'
 import { Parallax, ParallaxProvider } from 'react-scroll-parallax'
@@ -6,14 +5,15 @@ import { Parallax, ParallaxProvider } from 'react-scroll-parallax'
 import { Header } from '../../components/Header'
 import { MainSection } from '../../components/MainSection'
 import { MobileHeader } from '../../components/MobileHeader'
-import { Categories, IPortfolioItem, portfolioItems } from '../../portfolio'
-import { StyledLoadingComponent, StyledLoadingText } from './styles'
+import { Categories, IPortfolioItem, portfolioItems, defaultPortfolioItem } from '../../portfolio'
 import * as style from './styles/style.css'
+import { PortfolioItemModal } from '../../components/PortfolioItemModal/index';
 
 export namespace App {
   export interface Props {}
   export interface State {
     activePortfolioItem: IPortfolioItem
+    portfolioModalOpen: boolean
     filterPortfolioItemBy: Categories
     pageLoading: boolean
     portfolioItemsLoading: boolean
@@ -27,19 +27,20 @@ export default class App extends React.Component<App.Props, App.State> {
   constructor(props: App.Props) {
     super(props)
     this.state = {
-      activePortfolioItem: null,
+      activePortfolioItem: defaultPortfolioItem,
+      portfolioModalOpen: false,
       filterPortfolioItemBy: null,
       pageLoading: true,
       portfolioItemsLoading: false,
-      maxPortfolioItems: 6,
-      activePortfolioItems: [],
+      maxPortfolioItems: 26,
+      activePortfolioItems: this.filterPortfilioItems(null),
     }
   }
 
   render() {
     const { 
       pageLoading, maxPortfolioItems, activePortfolioItem, 
-      filterPortfolioItemBy, activePortfolioItems 
+      filterPortfolioItemBy, activePortfolioItems, portfolioModalOpen
     } = this.state
 
     const filterHandle = (category: Categories) => {
@@ -48,9 +49,7 @@ export default class App extends React.Component<App.Props, App.State> {
 
     const mainSection = (
       <MainSection 
-        activePortfolioItem={activePortfolioItem}
-        openPortfolioItem={(portfolioItem: IPortfolioItem) => this.setState({ ...this.state, activePortfolioItem: portfolioItem })}
-        closePortfolioItem={() => this.setState({ ...this.state, activePortfolioItem: null })}
+        openPortfolioItem={(portfolioItem: IPortfolioItem) => this.setState({ ...this.state, portfolioModalOpen: true, activePortfolioItem: portfolioItem })}
         filterByPortfolioCategory={filterHandle}
         portfolioFilter={filterPortfolioItemBy}
         activePortfolioItems={activePortfolioItems}
@@ -62,8 +61,12 @@ export default class App extends React.Component<App.Props, App.State> {
     return (
       <ParallaxProvider>
         <div id='bodyHolder' className={style.appContainerStyle}>
-          <StyledLoadingComponent isLoading={pageLoading} > <StyledLoadingText> LOADING </StyledLoadingText> </StyledLoadingComponent>
-
+          <PortfolioItemModal 
+            portfolioItem={activePortfolioItem}
+            isOpen={portfolioModalOpen}
+            closeModal={() => this.setState({ ...this.state, portfolioModalOpen: false })}
+            isMobile={isMobile}
+          />
           {!isMobile && (
             <div>
               <Parallax offsetYMin={-100} offsetYMax={100} slowerScrollRate={true}>
@@ -88,13 +91,9 @@ export default class App extends React.Component<App.Props, App.State> {
 
   filterPortfilioItems(category?: any, maxItems?: number) {
     const cat = category !== 'undefined' ? category : this.state.filterPortfolioItemBy
-    const max = maxItems ? maxItems : this.state.maxPortfolioItems
 
     let itemCount = 0
     const portfolioFilterHandle = (portfolioItem: IPortfolioItem) => {
-      if (itemCount >= max) {
-        return false
-      }
       if (cat != null) {
         for (const portfolioCat of portfolioItem.tags) {
           if (portfolioCat === Categories[cat]) {
@@ -118,34 +117,6 @@ export default class App extends React.Component<App.Props, App.State> {
     return portfolioItems.sort(portfolioSort).filter(portfolioFilterHandle)
   }
 
-  loadPortfolioItems() {
-    const newMax = Math.min(this.state.maxPortfolioItems + 3, portfolioItems.length)
-    const items = this.filterPortfilioItems(this.state.filterPortfolioItemBy, newMax)
-    this.setState({ 
-      ...this.state,
-      portfolioItemsLoading: true,
-      maxPortfolioItems: newMax,
-      activePortfolioItems: items
-    })
-  }
-
-  componentDidMount() {
-    setTimeout(() => this.setState({ ...this.state, pageLoading: false }), 2000)
-
-    const checkScroll = () => {
-      const windowHeight = 'innerHeight' in window ? window.innerHeight : document.documentElement.offsetHeight
-      const body = document.body
-      const html = document.documentElement
-      const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight)
-      const windowBottom = windowHeight + window.pageYOffset
-      if (windowBottom >= docHeight) {
-        this.loadPortfolioItems()
-      }
-    }
-
-    window.addEventListener('scroll', _.throttle(checkScroll, 200))
-    this.loadPortfolioItems()
-  }
 }
 
 const AppContainerStyle: React.CSSProperties = {

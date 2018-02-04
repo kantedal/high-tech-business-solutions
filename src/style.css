@@ -3,3 +3,7 @@ body {
   margin: 0px; 
   -webkit-font-smoothing: antialiased;
 }
+
+.ReactModal__Body--open {
+  overflow: hidden;
+}

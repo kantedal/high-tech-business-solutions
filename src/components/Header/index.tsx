@@ -14,16 +14,24 @@ export namespace Header {
     isMobile: boolean
   }
   export interface State {
+    opacity: number
   }
 }
 
 export class Header extends React.Component<Header.Props, Header.State> {
   private threeContainer: any
+
+  constructor(props: Header.Props) {
+    super(props)
+    this.state = {
+      opacity: 0
+    }
+  }
   
   render() {
     const { active, isMobile } = this.props
     return (
-      <StyledHeaderDiv isMobile={isMobile}>
+      <StyledHeaderDiv isMobile={isMobile} opacity={this.state.opacity}>
         <canvas
           style={{position: 'absolute', width: '100%', height: '100%'}}
           width={window.innerWidth} height={window.innerHeight}
@@ -79,6 +87,7 @@ export class Header extends React.Component<Header.Props, Header.State> {
   }
 
   componentDidMount() {
-    setTimeout(() => initThreeBackground(this.threeContainer, this.props.isMobile), 2000)
+    initThreeBackground(this.threeContainer, this.props.isMobile)
+    setTimeout(() => this.setState({ opacity: 1 }))
   }
 }
