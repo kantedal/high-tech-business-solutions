@@ -5,9 +5,11 @@ import styled, { keyframes } from 'styled-components'
 export const StyledModalContainer: any = styled.div`
   top: ${({isMobile}: any) => isMobile ? '0px' : ''};
   height: ${({isMobile}: any) => isMobile ? '100% !important' : 'fit-content'};
-  margin-top: ${({isMobile}: any) => isMobile ? '0' : '20vh'};
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
   opacity: ${({isOpen}: any) => isOpen ? '1' : '0'};
-  transform: ${({isOpen}: any) => isOpen ? 'translateY(0px)' : 'translateY(-100px)'};
+  /* transform: ${({isOpen}: any) => isOpen ? 'translateY(0px)' : 'translateY(-100px)'}; */
   transition: opacity 0.3s ease, transform 0.3s ease;
   position: absolute;
   width: calc(100%);

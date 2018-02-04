@@ -1,9 +1,0 @@
-body {
-  opacity:1.0;
-  margin: 0px; 
-  -webkit-font-smoothing: antialiased;
-}
-
-.ReactModal__Body--open {
-  overflow: hidden;
-}
