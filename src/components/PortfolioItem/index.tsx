@@ -1,10 +1,11 @@
 import * as React from 'react'
-import * as style from './style.css'
-import { portfolioItems, IPortfolioItem } from '../../portfolio'
-import { GridList, GridListTile } from 'material-ui'
-import { Grid, Row, Col } from 'react-flexbox-grid'
+import { Col } from 'react-flexbox-grid'
+import LazyLoad from 'react-lazyload'
 import { Transition } from 'react-transition-group'
-import * as Waypoint from 'react-waypoint'
+
+import { IPortfolioItem } from '../../portfolio'
+import { PortfolioItemContent } from './PortfolioItemContent'
+import * as style from './style.css'
 
 const defaultStyle = {
   transition: `opacity 500ms, transform 500ms`,
@@ -20,6 +21,21 @@ const transitionStyles = {
   exited:  { opacity: 0, transform: 'translateY(20px)' },
 }
 
+const foregroundDefaultStyle = {
+  transition: `opacity 500ms`,
+  opacity: 0,
+  width: 'calc(100% - 14px)',
+  position: 'absolute',
+  padding: '7px'
+}
+
+const transitionStylesForeground = {
+  entering: { opacity: 0 },
+  entered:  { opacity: 0 },
+  exiting: { opacity: 1 },
+  exited:  { opacity: 1 },
+}
+
 export namespace PortfolioItem {
   export interface Props {
     portfolioItem: IPortfolioItem
@@ -27,30 +43,57 @@ export namespace PortfolioItem {
     delay: number
     portfolioItemClick: (portfolioItem: IPortfolioItem) => void 
   }
-  export interface State {}
+  export interface State {
+    show: boolean
+  }
 }
 
 const Column: any = Col
 
+export const PorfolioItemLoader: React.SFC<any> = ({name, imgUrl, linkedInUrl, emailUrl, githubUrl, websiteUrl, isMobile}) => {
+  return <div style={{ padding: '5px', width: '200px' }} />
+}
+
 export class PortfolioItem extends React.Component<PortfolioItem.Props, PortfolioItem.State> {
+
+  constructor(props: PortfolioItem.Props) {
+    super(props)
+    this.state = { show: false }
+  }
+
   render() {
     const { portfolioItem, portfolioItemClick, delay, isMobile } = this.props
     const portfolioClick = () => portfolioItemClick(portfolioItem)
+    
+    const placeholder = (state) => {
+      return (
+        <div className={style.portfolioItemPlaceholder} style={{ ...foregroundDefaultStyle, ...transitionStylesForeground[state] }} >
+          <div style={{ borderRadius: '5px', background: '#ddd', height: 'calc(100% - 14px)' }} />
+        </div>
+      )
+    }
+
+    // if (this.state.visible) {
     return (
-      
-        <Transition timeout={delay} {...this.props} style={{ width: '100%' }}>
-          {(state) => (
-              <Column xs={12} sm={6} md={6} lg={6} xl={4} className={isMobile ? style.portfolioItemContainerMobile : style.portfolioItemContainer}
-                style={{ ...defaultStyle, ...transitionStyles[state] }}>
-                <Waypoint onEnter={() => console.log('enter')} onLeave={() => console.log('bye')} />                
-                <div className={style.portfolioItemForeground} />
-                <img className={style.portfolioItemImage} src={portfolioItem.coverImage} onClick={portfolioClick} />
-                <div className={style.header} onClick={portfolioClick}>{portfolioItem.header}</div>
-                <div className={style.portfolioItemDescription}>{portfolioItem.shortDescription}</div>
-              </Column>
-            
-          )}
-        </Transition>
+      <Transition in={this.state.show} timeout={100} style={{ width: '100%' }}>
+        {(state) => {
+          return (
+            <Column xs={12} sm={6} md={6} lg={6} xl={4} style={{ position: 'relative' }}>
+              {/* <Waypoint onEnter={() => this.setState({ ...this.state, show: true })} onLeave={() => console.log('bye')} />                                          */}
+              {placeholder(state)}
+              <LazyLoad offset={0} height={320} throttle={100} once={true}>
+                <PortfolioItemContent 
+                  portfolioItem={portfolioItem}
+                  portfolioItemClick={portfolioItemClick}
+                  isMobile={isMobile}
+                  animationState={state}
+                  onLoaded={() => this.setState({ show: true })}
+                />
+              </LazyLoad>
+            </Column>
+          )
+        }}
+      </Transition>
     )
   }
 }

@@ -1,4 +1,3 @@
-import IconButton from 'material-ui/IconButton'
 import * as React from 'react'
 import { CSSProperties } from 'react'
 import { Col, Grid, Row } from 'react-flexbox-grid'
@@ -53,24 +52,24 @@ export const PresentationBox: React.SFC<PresentationBox.Props> = ({name, imgUrl,
             <Col xs={12} sm={12} md={12}>
               <Row>
                 <Col xs={3} className={style.contactCol}>
-                  <IconButton aria-label='LinkedIn' onClick={linkedInClick}>
+                  <div aria-label='LinkedIn' onClick={linkedInClick}>
                     <i className={'zmdi zmdi-linkedin ' + style.contactIcon} />
-                  </IconButton>
+                  </div>
                 </Col>
                 <Col xs={3} className={style.contactCol}>
-                  <IconButton aria-label='Email' onClick={emailClick}>
+                  <div aria-label='Email' onClick={emailClick}>
                     <i className={'zmdi zmdi-email ' + style.contactIcon} />
-                  </IconButton>
+                  </div>
                 </Col>
                 <Col xs={3} className={style.contactCol}>
-                  <IconButton aria-label='Github' onClick={githubClick}>
+                  <div aria-label='Github' onClick={githubClick}>
                     <i className={'zmdi zmdi-github ' + style.contactIcon} />
-                  </IconButton>
+                  </div>
                 </Col>
                 <Col xs={3} className={style.contactCol}>
-                  <IconButton aria-label='Home' onClick={homeClick}>
+                  <div aria-label='Home' onClick={homeClick}>
                     <i className={'zmdi zmdi-home ' + style.contactIcon} />
-                  </IconButton>
+                  </div>
                 </Col>
               </Row>
             </Col>

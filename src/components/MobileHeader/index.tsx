@@ -7,7 +7,6 @@ import { Parallax } from 'react-scroll-parallax'
 import { PresentationBox } from '../PresentationBox/index'
 import * as style from './styles/style.css'
 import { initThreeBackground } from '../../background'
-import { IconButton } from 'material-ui';
 
 export namespace MobileHeader {
   export interface Props {
@@ -74,9 +73,9 @@ export class MobileHeader extends React.Component<MobileHeader.Props, MobileHead
 
               <Row center='xs'>
                 <Col xs={3}>
-                  <IconButton aria-label='Email'>
+                  <div aria-label='Email'>
                     <i style={{ fontSize: '30px', color: '#fff' }} className='zmdi zmdi-email' onClick={this.linkOurMails} />
-                  </IconButton>
+                  </div>
                 </Col>
               </Row>
             </Col>

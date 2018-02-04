@@ -17,6 +17,8 @@ export const StyledHeaderDiv: any = styled.div`
   height: ${({isMobile}: any) => isMobile ? '100%' : (window.innerHeight) + 'px'};
   overflow: hidden;
   z-index: 0;
+  opacity: ${({opacity}: any) => opacity};
+  transition: 0.5s ease;
 `
 
 const StyledArrowAnimation = keyframes`

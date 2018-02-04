@@ -171,7 +171,6 @@ const animate = () => {
     gl.uniform1f(gl.getUniformLocation(shaderProgram, 'time'), time += 0.005)
     gl.uniform1f(gl.getUniformLocation(shaderProgram, 'mouseHold'), 0.0)
 
-    /*============= Drawing the Quad ================*/
     gl.clearColor(0.5, 0.5, 0.5, 0.9)
     gl.enable(gl.DEPTH_TEST)
     gl.clear(gl.COLOR_BUFFER_BIT)

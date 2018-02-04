@@ -1,7 +1,6 @@
 import { Categories } from '../../portfolio'
 import * as React from 'react'
 import { CSSProperties } from 'react'
-import Chip from 'material-ui/Chip'
 import * as style from './style.css'
 
 export namespace FilterPanel {
