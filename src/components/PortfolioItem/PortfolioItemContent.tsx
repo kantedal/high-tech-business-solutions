@@ -6,7 +6,7 @@ const defaultStyle = {
   transition: `opacity 500ms, transform 500ms`,
   opacity: 0,
   transform: 'translateY(100px)',
-  width: '100%'
+  width: 'calc(100% - 14px)'
 }
 
 const transitionStyles = {

@@ -1,11 +1,11 @@
 import * as React from 'react'
-import * as style from './style.css'
 import * as ReactModal from 'react-modal'
-import { portfolioItems, IPortfolioItem } from '../../portfolio'
-import { Grid, Row, Col } from 'react-flexbox-grid'
-import { PortfolioItem } from '../PortfolioItem/index'
-import { MediaCarousel } from '../MediaCarousel/index'
-import { IconButton } from '../IconButton/index'
+
+import { IPortfolioItem } from '../../portfolio'
+import { IconButton } from '../IconButton'
+import { MediaCarousel } from '../MediaCarousel'
+import * as style from './styles/style.css'
+import { StyledModalContainer } from './styles/index'
 
 export namespace PortfolioItemModal {
   export interface Props {
@@ -14,51 +14,63 @@ export namespace PortfolioItemModal {
     isOpen: boolean
     closeModal: () => void
   }
-  export interface State { }
-}
-
-const customStyles = {
-  content : {
-    background: 'transparent',
-    border: 'none',
-    pointerEvents: 'none',
-    top: '0px',
-    left: '0px',
-    right: '0px',
-    bottom: '0px',
-  },
-  overlay: {
-    backgroundColor: 'rgba(0, 0, 0, 0.75)'
+  export interface State {
+    isVisible: boolean
   }
 }
-
 export class PortfolioItemModal extends React.Component<PortfolioItemModal.Props, PortfolioItemModal.State> {
+
+  constructor(props: PortfolioItemModal.Props) {
+    super(props)
+    this.state = { isVisible: false }
+  }
 
   render() {
     const { portfolioItem, isOpen, closeModal, isMobile } = this.props 
+
+    const bgAlpha = this.state.isVisible ? '0.5' : '0.0'
+    const customStyles = {
+      content : {
+        background: 'transparent',
+        border: 'none',
+        pointerEvents: 'none',
+        top: '0px',
+        left: '0px',
+        right: '0px',
+        bottom: '0px',
+      },
+      overlay: {
+        backgroundColor: 'rgba(0, 0, 0, ' + bgAlpha + ')',
+        transition: 'background-color 300ms ease'
+      }
+    }
+
+    const close = () => {
+      closeModal()
+      this.setState({ ...this.state, isVisible: false })
+    }
+
     return (
       <div>
          <ReactModal 
           isOpen={isOpen}
-          onRequestClose={closeModal}
+          onRequestClose={close}
+          onAfterOpen={() => this.setState({ ...this.state, isVisible: true })}
           shouldCloseOnOverlayClick={true}
           style={customStyles}
+          closeTimeoutMS={300}
           contentLabel='Modal'
         >
-          <div>
-            {portfolioItem && (
-              <div className={style.portfolioModalContent} style={{ height: isMobile ? '100%' : 'fit-content', marginTop: isMobile ? '0' : '20vh' }}>
-                <MediaCarousel medias={portfolioItem.medias} />
-                <h1 className={style.portfolioModalHeader}> {portfolioItem.header}</h1>
-                <p className={style.modalDescription}>{portfolioItem.longDescription}</p>
-                <div style={{marginLeft: '15px'}}>
-                  {this.renderProjectSourceUrlButton(portfolioItem)}
-                  {this.renderProjectUrlButton(portfolioItem)}
-                  {this.renderCloseButton(isMobile, closeModal)}
-                </div>
-              </div>
-            )}
-          </div>
+          <StyledModalContainer isOpen={this.state.isVisible} isMobile={isMobile} >
+            <MediaCarousel medias={portfolioItem.medias} />
+            <h1 className={style.portfolioModalHeader}> {portfolioItem.header}</h1>
+            <p className={style.modalDescription}>{portfolioItem.longDescription}</p>
+            <div style={{marginLeft: '15px'}}>
+              {this.renderProjectSourceUrlButton(portfolioItem)}
+              {this.renderProjectUrlButton(portfolioItem)}
+              {this.renderCloseButton(isMobile, closeModal)}
+            </div>
+          </StyledModalContainer>
         </ReactModal>
       </div>
     )
@@ -90,7 +102,7 @@ export class PortfolioItemModal extends React.Component<PortfolioItemModal.Props
     if (isMobile) {
       return (
         <div className={style.closeButtonHolder}>
-          <IconButton text={'Close'} icon={'zmdi zmdi-close'} onClick={closeModal} />
+          <IconButton text={'Close'} icon={'zmdi zmdi-close'} color={'#f00'} onClick={closeModal} />
         </div>
       )
     }

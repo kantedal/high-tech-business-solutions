@@ -11,7 +11,7 @@ const defaultStyle = {
   transition: `opacity 500ms, transform 500ms`,
   opacity: 0,
   transform: 'translateY(100px)',
-  width: '100%'
+  width: 'calc(100% - 14px)'
 }
 
 const transitionStyles = {
@@ -64,14 +64,6 @@ export class PortfolioItem extends React.Component<PortfolioItem.Props, Portfoli
   render() {
     const { portfolioItem, portfolioItemClick, delay, isMobile } = this.props
     const portfolioClick = () => portfolioItemClick(portfolioItem)
-    
-    const placeholder = (state) => {
-      return (
-        <div className={style.portfolioItemPlaceholder} style={{ ...foregroundDefaultStyle, ...transitionStylesForeground[state] }} >
-          <div style={{ borderRadius: '5px', background: '#ddd', height: 'calc(100% - 14px)' }} />
-        </div>
-      )
-    }
 
     // if (this.state.visible) {
     return (
@@ -79,8 +71,6 @@ export class PortfolioItem extends React.Component<PortfolioItem.Props, Portfoli
         {(state) => {
           return (
             <Column xs={12} sm={6} md={6} lg={6} xl={4} style={{ position: 'relative' }}>
-              {/* <Waypoint onEnter={() => this.setState({ ...this.state, show: true })} onLeave={() => console.log('bye')} />                                          */}
-              {placeholder(state)}
               <LazyLoad offset={0} height={320} throttle={100} once={true}>
                 <PortfolioItemContent 
                   portfolioItem={portfolioItem}

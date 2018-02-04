@@ -480,3 +480,13 @@ export const portfolioItems: IPortfolioItem[] = [
     ]
   },
 ]
+
+export const defaultPortfolioItem = {
+  header: '',
+  shortDescription: '',
+  longDescription: ``,
+  tags: [],
+  coverImage: '',
+  weight: 1.0,
+  medias: []
+}

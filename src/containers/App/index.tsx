@@ -5,7 +5,7 @@ import { Parallax, ParallaxProvider } from 'react-scroll-parallax'
 import { Header } from '../../components/Header'
 import { MainSection } from '../../components/MainSection'
 import { MobileHeader } from '../../components/MobileHeader'
-import { Categories, IPortfolioItem, portfolioItems } from '../../portfolio'
+import { Categories, IPortfolioItem, portfolioItems, defaultPortfolioItem } from '../../portfolio'
 import * as style from './styles/style.css'
 import { PortfolioItemModal } from '../../components/PortfolioItemModal/index';
 
@@ -13,6 +13,7 @@ export namespace App {
   export interface Props {}
   export interface State {
     activePortfolioItem: IPortfolioItem
+    portfolioModalOpen: boolean
     filterPortfolioItemBy: Categories
     pageLoading: boolean
     portfolioItemsLoading: boolean
@@ -26,7 +27,8 @@ export default class App extends React.Component<App.Props, App.State> {
   constructor(props: App.Props) {
     super(props)
     this.state = {
-      activePortfolioItem: null,
+      activePortfolioItem: defaultPortfolioItem,
+      portfolioModalOpen: false,
       filterPortfolioItemBy: null,
       pageLoading: true,
       portfolioItemsLoading: false,
@@ -38,7 +40,7 @@ export default class App extends React.Component<App.Props, App.State> {
   render() {
     const { 
       pageLoading, maxPortfolioItems, activePortfolioItem, 
-      filterPortfolioItemBy, activePortfolioItems 
+      filterPortfolioItemBy, activePortfolioItems, portfolioModalOpen
     } = this.state
 
     const filterHandle = (category: Categories) => {
@@ -47,7 +49,7 @@ export default class App extends React.Component<App.Props, App.State> {
 
     const mainSection = (
       <MainSection 
-        openPortfolioItem={(portfolioItem: IPortfolioItem) => this.setState({ ...this.state, activePortfolioItem: portfolioItem })}
+        openPortfolioItem={(portfolioItem: IPortfolioItem) => this.setState({ ...this.state, portfolioModalOpen: true, activePortfolioItem: portfolioItem })}
         filterByPortfolioCategory={filterHandle}
         portfolioFilter={filterPortfolioItemBy}
         activePortfolioItems={activePortfolioItems}
@@ -61,8 +63,8 @@ export default class App extends React.Component<App.Props, App.State> {
         <div id='bodyHolder' className={style.appContainerStyle}>
           <PortfolioItemModal 
             portfolioItem={activePortfolioItem}
-            isOpen={activePortfolioItem != null}
-            closeModal={() => this.setState({ ...this.state, activePortfolioItem: null })}
+            isOpen={portfolioModalOpen}
+            closeModal={() => this.setState({ ...this.state, portfolioModalOpen: false })}
             isMobile={isMobile}
           />
           {!isMobile && (
