@@ -40,33 +40,56 @@ export const defaultPortfolioItem = {
   medias: []
 }
 
-// const rp = require('request-promise')
-
-const loadDocument = async (doc: any) => {
+const queryGoogleSheets = async () => {
   return new Promise<any>((resolve, reject) => {
-    doc.getInfo((err, info) => resolve(info.worksheets[0]))
-  })
-}
+    const sheetId = '1psUEBs0saRcPAido3mL5Nrh_WvFVHOx0N1cwK5jEudc'
+    const apiKey = 'AIzaSyBNb8N5MZ_fu8e7cwk4Hj76pqC1pEcDJbg '
 
-const getRows = async (sheet) => {
-  return new Promise<any>((resolve, reject) => {
-    sheet.getRows({ offset: 1, limit: 200, orderby: 'weight' }, (err, rows) => resolve(rows))
+    const xhttp = new XMLHttpRequest()
+    xhttp.open('GET', `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Sheet1!A1:Z50?key=${apiKey}`, true)
+    xhttp.setRequestHeader('Content-type', 'application/json')
+
+    xhttp.onreadystatechange = () => {                                                  
+      if (xhttp.readyState === XMLHttpRequest.DONE && xhttp.status === 200) {
+        const rawdata = xhttp.responseText
+        const json = JSON.parse(rawdata).values
+        resolve(json)
+      }
+    }
+
+    xhttp.send()
   })
-}
+} 
 
 export const loadPortfolioItems = async () => {
-  const sheetId = '1psUEBs0saRcPAido3mL5Nrh_WvFVHOx0N1cwK5jEudc'
-  const apiKey = 'AIzaSyBNb8N5MZ_fu8e7cwk4Hj76pqC1pEcDJbg '
-  // const data = await rp(`)
-  // console.log(JSON.parse(data))
+  const values = await queryGoogleSheets()
+  const header = values[0]
 
-  const xhttp = new XMLHttpRequest()
-  xhttp.open('GET', `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Sheet1!A1:Z50?key=${apiKey}`, true)
-  xhttp.setRequestHeader('Content-type', 'application/json')
-  xhttp.send()
-
-  setTimeout(() => console.log(JSON.parse(xhttp.responseText)), 2000)
-  // const response = JSON.parse(xhttp.responseText)
-
+  for (let i = 1; i < values.length; i++) {
+    const newItem = { ...defaultPortfolioItem }
+    for (let j = 0; j < header.length; j++) {
+      const headerKey = header[j]
+      try {
+        switch (headerKey) {
+          case 'medias':
+            newItem.medias = JSON.parse(values[i][j])
+            break
+          case 'tags':
+            newItem.tags = JSON.parse(values[i][j])
+            break
+          case 'weight':
+            newItem.weight = Number(values[i][j])
+            break
+          default:
+            newItem[headerKey] = values[i][j]
+        }
+        
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    portfolioItems.push(newItem as IPortfolioItem)
+  }
+  
   return
 }
