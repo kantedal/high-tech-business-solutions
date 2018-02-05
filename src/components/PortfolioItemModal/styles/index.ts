@@ -10,7 +10,7 @@ export const StyledModalContainer: any = styled.div`
   transform: translateY(-50%);
   opacity: ${({isOpen}: any) => isOpen ? '1' : '0'};
   /* transform: ${({isOpen}: any) => isOpen ? 'translateY(0px)' : 'translateY(-100px)'}; */
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.1s ease, transform 0.1s ease;
   position: absolute;
   width: calc(100%);
   height: fit-content;

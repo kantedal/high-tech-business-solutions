@@ -58,7 +58,7 @@ export class PortfolioItemModal extends React.Component<PortfolioItemModal.Props
           onAfterOpen={() => this.setState({ ...this.state, isVisible: true })}
           shouldCloseOnOverlayClick={true}
           style={customStyles}
-          closeTimeoutMS={300}
+          closeTimeoutMS={100}
           contentLabel='Modal'
         >
           <StyledModalContainer isOpen={this.state.isVisible} isMobile={isMobile} >
@@ -104,7 +104,7 @@ export class PortfolioItemModal extends React.Component<PortfolioItemModal.Props
     if (isMobile) {
       return (
         <div className={style.closeButtonHolder}>
-          <IconButton icon={'zmdi zmdi-close'} round={true} color={'#ff001f'} onClick={closeModal} />
+          <IconButton icon={'zmdi zmdi-close'} round={true} color={'#e24364'} onClick={closeModal} />
         </div>
       )
     }
