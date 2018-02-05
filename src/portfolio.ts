@@ -40,7 +40,7 @@ export const defaultPortfolioItem = {
   medias: []
 }
 
-const GoogleSpreadsheet = require('google-spreadsheet')
+// const rp = require('request-promise')
 
 const loadDocument = async (doc: any) => {
   return new Promise<any>((resolve, reject) => {
@@ -55,26 +55,18 @@ const getRows = async (sheet) => {
 }
 
 export const loadPortfolioItems = async () => {
-  const doc =  new GoogleSpreadsheet('1psUEBs0saRcPAido3mL5Nrh_WvFVHOx0N1cwK5jEudc')
-  const sheet = await loadDocument(doc)
-  const rows = await getRows(sheet)
+  const sheetId = '1psUEBs0saRcPAido3mL5Nrh_WvFVHOx0N1cwK5jEudc'
+  const apiKey = 'AIzaSyBNb8N5MZ_fu8e7cwk4Hj76pqC1pEcDJbg '
+  // const data = await rp(`)
+  // console.log(JSON.parse(data))
 
-  for (const row of rows) {
-    try {
-      portfolioItems.push({
-        ...row,
-        shortDescription: row.shortdescription,
-        coverImage: row.coverimage,
-        longDescription: row.longdescription,
-        projectUrl: row.projecturl,
-        projectSourceUrl: row.projectsourceurl,
-        tags: JSON.parse(row.tags), 
-        medias: JSON.parse(row.medias),
-        weight: Number(row.weight)
-      })
-    } catch (err) {
-      console.log(row)
-    }
-  }
+  const xhttp = new XMLHttpRequest()
+  xhttp.open('GET', `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Sheet1!A1:Z50?key=${apiKey}`, true)
+  xhttp.setRequestHeader('Content-type', 'application/json')
+  xhttp.send()
+
+  setTimeout(() => console.log(JSON.parse(xhttp.responseText)), 2000)
+  // const response = JSON.parse(xhttp.responseText)
+
   return
 }
