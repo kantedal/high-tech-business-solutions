@@ -45,7 +45,6 @@
     "webpack-dev-server": "^2.9.2"
   },
   "dependencies": {
-    "lodash": "^4.17.4",
     "react": "^16.0.0",
     "react-device-detect": "^0.1.0",
     "react-dom": "^16.0.0",
@@ -55,7 +54,6 @@
     "react-responsive-carousel": "^3.1.33",
     "react-scroll-parallax": "^1.1.2",
     "react-transition-group": "^2.2.1",
-    "react-waypoint": "^8.0.0",
     "styled-components": "^2.4.0"
   }
 }

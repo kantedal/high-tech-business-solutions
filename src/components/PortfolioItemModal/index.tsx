@@ -65,11 +65,13 @@ export class PortfolioItemModal extends React.Component<PortfolioItemModal.Props
             <MediaCarousel medias={portfolioItem.medias} />
             <h1 className={style.portfolioModalHeader}> {portfolioItem.header}</h1>
             <p className={style.modalDescription}>{portfolioItem.longDescription}</p>
-            <div style={{marginLeft: '15px'}}>
+            <div style={{ marginLeft: '15px', marginTop: '10px' }}>
               {this.renderProjectSourceUrlButton(portfolioItem)}
               {this.renderProjectUrlButton(portfolioItem)}
-              {this.renderCloseButton(isMobile, closeModal)}
             </div>
+
+            {this.renderCloseButton(isMobile, closeModal)}
+            
           </StyledModalContainer>
         </ReactModal>
       </div>
@@ -88,13 +90,13 @@ export class PortfolioItemModal extends React.Component<PortfolioItemModal.Props
 
   private renderProjectSourceUrlButton(portfolioItem: IPortfolioItem) {
     if (portfolioItem.projectSourceUrl) {
-      return <IconButton text={'Source'} icon={'zmdi zmdi-run'} onClick={this.openProjectSourceUrl} />
+      return <IconButton text={'Source'} icon={'zmdi zmdi-github-alt'} color={'#4277e2'}  onClick={this.openProjectSourceUrl} />
     }
   }
 
   private renderProjectUrlButton(portfolioItem: IPortfolioItem) {
     if (portfolioItem.projectUrl) {
-      return <IconButton text={'Project'} icon={'zmdi zmdi-link'} onClick={this.openProjectUrl} />
+      return <IconButton text={'Project'} icon={'zmdi zmdi-run'} color={'#44a07c'} onClick={this.openProjectUrl} />
     }
   }
 
@@ -102,7 +104,7 @@ export class PortfolioItemModal extends React.Component<PortfolioItemModal.Props
     if (isMobile) {
       return (
         <div className={style.closeButtonHolder}>
-          <IconButton text={'Close'} icon={'zmdi zmdi-close'} color={'#f00'} onClick={closeModal} />
+          <IconButton icon={'zmdi zmdi-close'} round={true} color={'#ff001f'} onClick={closeModal} />
         </div>
       )
     }

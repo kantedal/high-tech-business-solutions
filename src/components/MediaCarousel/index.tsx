@@ -40,9 +40,10 @@ export class MediaCarousel extends React.Component<MediaCarousel.Props, MediaCar
   private carouselItem(media: IMedia) {
     if (media.mediaType === 'IMAGE') {
       return <img src={media.src} />
-    } else {
-      return <iframe className={style.modalVideo} src={media.src} />
     }
+    
+    // const url = media.src.replace('watch?v=', 'v/')
+    return <iframe className={style.modalVideo} src={media.src} />
   }
 
 }

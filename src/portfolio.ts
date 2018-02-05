@@ -246,7 +246,7 @@ export const portfolioItems: IPortfolioItem[] = [
     medias: [
       {
         mediaType: 'VIDEO',
-        src: 'https://www.youtube.com/watch?v=15oeGll4-80',
+        src: 'https://www.youtube.com/embed/15oeGll4-80',
       },
       {
         mediaType: 'IMAGE',
