@@ -1,3 +1,6 @@
+
+export const portfolioItems: IPortfolioItem[] = []
+
 export enum Categories {
   Web = 'Web',
   Animation = '3d\xa0animation',
@@ -27,460 +30,6 @@ export interface IPortfolioItem {
   weight: number
 }
 
-export const portfolioItems: IPortfolioItem[] = [
-  {
-    header: 'Looking for host',
-    shortDescription: '3D animated film that was created as a hobby project.',
-    longDescription: 'Long 3D animated film that was created as a hobby project.',
-    tags: [ Categories.Animation ],
-    coverImage: './images/lfh.jpg',
-    weight: 1.0,
-    medias: [
-      {
-        mediaType: 'VIDEO',
-        src: 'https://www.youtube.com/embed/xwJPhZyZ-6A',
-        description: ''
-      },
-      {
-        mediaType: 'IMAGE',
-        src: './images/lfh.jpg',
-        description: 'Looking for host'
-      },
-    ]
-  },
-  {
-    header: 'Rob`s Vengeance',
-    shortDescription: '3D animated film that was created as a hobby project.',
-    longDescription: '3D animated film that was created as a hobby project.',
-    tags: [ Categories.Animation ],
-    coverImage: './images/rv.jpg',
-    weight: 1.0,
-    medias: [
-      {
-        mediaType: 'VIDEO',
-        src: 'https://www.youtube.com/embed/Hiiruh8nHKQ',
-        description: ''
-      },
-      {
-        mediaType: 'IMAGE',
-        src: './images/rv.jpg',
-        description: 'Robs Vengeance'
-      },
-    ]
-  },
-  {
-    header: 'Pathtracing in WebGL',
-    shortDescription: 'Path tracing rendering engine for the web',
-    longDescription: 'Path tracing rendering engine for the web',
-    tags: [ Categories.Web, Categories.GraphicsProgramming ],
-    coverImage: './images/pathtracer.jpg',
-    projectUrl: 'https://kantedal.github.io/pathtracer-webgl2/',
-    projectSourceUrl: 'https://github.com/kantedal/pathtracer-webgl2',
-    weight: 2.0,
-    medias: [
-      {
-        mediaType: 'VIDEO',
-        src: 'https://www.youtube.com/embed/AGrCNlCXXfY',
-      },
-      {
-        mediaType: 'IMAGE',
-        src: './images/pathtracer.jpg',
-      },
-    ]
-  },
-  {
-    header: 'Flight visualization',
-    shortDescription: 'Visualization of thousands of flights in realtime',
-    longDescription: 'Visualization of thousands of flights in realtime',
-    projectUrl: 'https://kantedal.github.io/flight-visualization-gpu/',
-    projectSourceUrl: 'https://github.com/kantedal/flight-visualization-gpu',
-    tags: [ Categories.Web, Categories.GraphicsProgramming ],
-    coverImage: './images/flight-vis.jpg',
-    weight: 1.5,
-    medias: [
-      {
-        mediaType: 'IMAGE',
-        src: './images/flight-vis.jpg',
-      },
-    ]
-  },
-  {
-    header: 'Heja Blåvitt',
-    shortDescription: 'Native Android app collecting and presenting news',
-    longDescription: 'Native Android app collecting and presenting news',
-    tags: [ Categories.MobileApp ],
-    projectSourceUrl: 'https://github.com/kantedal/heja-blavitt',
-    coverImage: './images/blavitt.jpg',
-    weight: 1.4,
-    medias: [
-      {
-        mediaType: 'IMAGE',
-        src: './images/blavitt.jpg',
-      },
-    ]
-  },
-  {
-    header: 'Self balancing robot',
-    shortDescription: 'Two wheeled Arduino robot balancing using PID',
-    longDescription: 'Two wheeled Arduino robot balancing using PID',
-    tags: [ Categories.Hardware ],
-    coverImage: './images/pid.jpg',
-    weight: 1.45,
-    medias: [
-      {
-        mediaType: 'IMAGE',
-        src: './images/pid.jpg',
-      },
-    ]
-  },
-  {
-    header: 'micfx',
-    shortDescription: 'App for real time modification of input sound',
-    longDescription: 'App for real time modification of input sound',
-    projectSourceUrl: 'https://github.com/kantedal/MicrophoneModifier',
-    tags: [ Categories.MobileApp ],
-    coverImage: './images/micfx.jpg',
-    weight: 1.1,
-    medias: [
-      {
-        mediaType: 'IMAGE',
-        src: './images/micfx.jpg',
-      },
-    ]
-  },
-  {
-    header: 'Give Blood',
-    shortDescription: '3d animation created as school project',
-    longDescription: `During exchange in Singapore Simon created this short 
-    animated film about a mosquito donating blood. 
-    Blender was used for modelling and animating. Cycles was used for rendering.`,
-    tags: [ Categories.Animation ],
-    coverImage: './images/giveblood.jpg',
-    weight: 1.2,
-    medias: [
-      {
-        mediaType: 'VIDEO',
-        src: 'https://www.youtube.com/embed/F3LkmUsgyb4',
-      },
-      {
-        mediaType: 'IMAGE',
-        src: './images/giveblood.jpg',
-      },
-    ]
-  },
-  {
-    header: 'WebGL Water',
-    shortDescription: 'Displacement water with perlin noise',
-    longDescription: `Perlin noise is used to creta displacement, a 
-      bumpmap and colors for a grid generated in the browser using three js.`,
-    tags: [ Categories.Web, Categories.GraphicsProgramming ],
-    coverImage: './images/webglwater.jpg',
-    weight: 1.4,
-    projectUrl: 'http://hedlundaren.github.io/displacementWater/',
-    projectSourceUrl: 'https://github.com/Hedlundaren/displacementWater',
-    medias: [
-      {
-        mediaType: 'IMAGE',
-        src: './images/webglwater.jpg',
-      },
-    ]
-  },
-  {
-    header: 'Intelligent Agent',
-    shortDescription: 'Path finder using the Bell equation',
-    longDescription: `Agent recieves points for finding green squares and looses points on red squares. 
-      The agent expands a tree of options and calculates the most beneficial.`,
-    tags: [ Categories.AI, Categories.Web ],
-    coverImage: './images/pathfinder.jpg',
-    projectUrl: 'https://hedlundaren.github.io/hide-and-seek/',
-    projectSourceUrl: 'https://github.com/Hedlundaren/hide-and-seek/',
-    weight: 1.0,
-    medias: [
-      {
-        mediaType: 'IMAGE',
-        src: './images/pathfinder.jpg',
-      },
-    ]
-  },
-  {
-    header: 'Temojano',
-    shortDescription: 'Tower defence in 3d made with Unity',
-    longDescription: `Procedurally generated terrain, intelligent bots, physically correct animations, tower defence. 
-      Won price for best project in class at Nanyang Technological University, Singapore.`,
-    tags: [ Categories.Games, Categories.GraphicsProgramming, Categories.AI ],
-    coverImage: './images/temojano.jpg',
-    projectSourceUrl: 'https://github.com/Grahnen92/Temoji',
-    weight: 1.0,
-    medias: [
-      {
-        mediaType: 'IMAGE',
-        src: './images/temojano.jpg',
-      },
-    ]
-  },
-  {
-    header: 'Web Clock',
-    shortDescription: 'Interactive 3d web clock',
-    longDescription: `Clock made in WebGL using three js.`,
-    tags: [ Categories.Web, Categories.GraphicsProgramming],
-    coverImage: './images/webclock.jpg',
-    projectUrl: 'http://hedlundaren.github.io/clock/',
-    projectSourceUrl: 'https://github.com/Hedlundaren/Clock',
-    weight: 1.38,
-    medias: [
-      {
-        mediaType: 'IMAGE',
-        src: './images/webclock.jpg',
-      },
-    ]
-  },
-  {
-    header: 'SPH Simulation',
-    shortDescription: 'Particle based water simulation on the GPU',
-    longDescription: `Particle simulation using Navier-stokes smoothed particle hydrodynamics approach. 
-      OpenGL is used for graphics and OpenCL for GPU computations.`,
-    tags: [ Categories.Simulation, Categories.GraphicsProgramming ],
-    coverImage: './images/sph.jpg',
-    projectSourceUrl: 'https://github.com/Hedlundaren/vattenoverhuvudet',
-    weight: 1.6,
-    medias: [
-      {
-        mediaType: 'VIDEO',
-        src: 'https://www.youtube.com/embed/15oeGll4-80',
-      },
-      {
-        mediaType: 'IMAGE',
-        src: './images/sph.jpg',
-      },
-    ]
-  },
-  {
-    header: 'Fireworks',
-    shortDescription: 'Interactive fireworks in WebGL',
-    longDescription: `Click the screen to send fireworks. Implemented in WebGL using three js. It is basically particles emitting new particles`,
-    tags: [ Categories.Web, Categories.Simulation ],
-    coverImage: './images/fireworks.jpg',
-    projectUrl: 'http://hedlundaren.github.io/fireworks2/',
-    projectSourceUrl: 'https://github.com/Hedlundaren/Fireworks',
-    weight: 1.3,
-    medias: [
-      {
-        mediaType: 'IMAGE',
-        src: './images/fireworks.jpg',
-      },
-    ]
-  },
-  {
-    header: 'Soft body physics',
-    shortDescription: 'Soft body phyisics in WebGL',
-    longDescription: `Simulation of soft body physics written in Typescript and WebGL. The integration method used is position based and fits the purpose well.`,
-    tags: [ Categories.GraphicsProgramming, Categories.Simulation, Categories.Web ],
-    coverImage: './images/softbody_small.jpg',
-    projectUrl: 'http://kantedal.github.io/soft-body-app/',
-    weight: 1.3,
-    medias: [
-      {
-        mediaType: 'IMAGE',
-        src: './images/softbody_small.jpg',
-      },
-    ]
-  },
-  {
-    header: 'Mandelbrot visualization',
-    shortDescription: 'Mandelbrot visualization in WebGL 2',
-    longDescription: `Mandelbrot visualziation run on the GPU. Works well as long as the 32 bit precision float in enough.`,
-    tags: [ Categories.GraphicsProgramming, Categories.Web ],
-    coverImage: './images/mandelbrot.jpg',
-    projectUrl: 'https://kantedal.github.io/mandelbrot-webgl2/',
-    weight: 1.1,
-    medias: [
-      {
-        mediaType: 'IMAGE',
-        src: './images/mandelbrot.jpg',
-      },
-    ]
-  },
-  {
-    header: 'Car simulation',
-    shortDescription: 'Car simulation with self written physics engine',
-    longDescription: `Car simulation with self written physics engine.`,
-    tags: [ Categories.GraphicsProgramming, Categories.Web, Categories.Games, Categories.Simulation ],
-    coverImage: './images/carsim.jpg',
-    projectUrl: 'http://kantedal.github.io/car-simulator/',
-    weight: 1.0,
-    medias: [
-      {
-        mediaType: 'IMAGE',
-        src: './images/carsim.jpg',
-      },
-    ]
-  },
-  {
-    header: 'Cloth simulation',
-    shortDescription: 'Cloth simulation with verlet integration',
-    longDescription: `Cloth simulation with verlet integration.`,
-    tags: [ Categories.GraphicsProgramming, Categories.Web, Categories.Simulation ],
-    coverImage: './images/cloth2.jpg',
-    projectUrl: 'http://kantedal.github.io/cloth-simulation/',
-    weight: 1.0,
-    medias: [
-      {
-        mediaType: 'IMAGE',
-        src: './images/cloth2.jpg',
-      },
-    ]
-  },
-  {
-    header: 'Connected points',
-    shortDescription: 'Weird WebGL visualization/simulation',
-    longDescription: `Weird WebGL visualization similar to particles.js, but with physics. On the GPU.`,
-    tags: [ Categories.GraphicsProgramming, Categories.Web, Categories.Simulation ],
-    coverImage: './images/connected-particles.jpg',
-    projectSourceUrl: 'https://github.com/kantedal/connected-particles-webgl',
-    weight: 1.3,
-    medias: [
-      {
-        mediaType: 'IMAGE',
-        src: './images/gif/connected-points-video.gif',
-      },
-    ]
-  },
-  {
-    header: 'The Lake',
-    shortDescription: 'Lake with reflection and refraction in OpenGL',
-    longDescription: `Refraction and reflection implemented along with caustics using 
-      animated textures. Everything is implemented using OpenGL.`,
-    tags: [ Categories.GraphicsProgramming ],
-    coverImage: './images/theLake.jpg',
-    projectUrl: 'http://hedlundaren.github.io/fireworks2/',
-    projectSourceUrl: 'https://github.com/Hedlundaren/Fireworks',
-    weight: 1.0,
-    medias: [
-      {
-        mediaType: 'IMAGE',
-        src: './images/theLake.jpg',
-      },
-    ]
-  },
-  {
-    header: 'Cloth Simulation',
-    shortDescription: 'Cloth simulated in OpenGL',
-    longDescription: `Cloth simulated in OpenGL using a mass-spring system.`,
-    tags: [ Categories.Simulation, Categories.GraphicsProgramming ],
-    coverImage: './images/cloth.jpg',
-    projectSourceUrl: 'https://github.com/Hedlundaren/cloth-simulation',
-    weight: 1.0,
-    medias: [
-      {
-        mediaType: 'IMAGE',
-        src: './images/gif/cloth.gif',
-      },
-      {
-        mediaType: 'IMAGE',
-        src: './images/cloth.jpg',
-      },
-    ]
-  },
-  {
-    header: 'TexMesh',
-    shortDescription: 'Drawing tool controlled with android app',
-    longDescription: `TexMesh is a tool developed with OpengL where the user can paint and create textures. 
-    The user can also navigate and choose paint brushes with an external android app.`,
-    tags: [ Categories.GraphicsProgramming, Categories.MobileApp ],
-    coverImage: './images/texmesh.jpg',
-    projectSourceUrl: 'https://github.com/Hedlundaren/opengl-remote-server',
-    projectUrl: 'https://vimeo.com/212475647',
-    weight: 2.0,
-    medias: [
-      {
-        mediaType: 'IMAGE',
-        src: './images/gif/texmesh-controls.gif',
-      },
-      {
-        mediaType: 'IMAGE',
-        src: './images/gif/texmesh-painting.gif',
-      }
-    ]
-  },
-  {
-    header: 'Key Quest',
-    shortDescription: 'App for the board game Key Quest',
-    longDescription: `App for Iphone and Android made for the popular board game Key Quest`,
-    tags: [ Categories.MobileApp, Categories.Games ],
-    coverImage: './images/kq.jpg',
-    weight: 1.35,
-    medias: [
-      {
-        mediaType: 'IMAGE',
-        src: './images/kq.jpg',
-
-      },
-    ]
-  },
-  {
-    header: 'Unemployment Vis',
-    shortDescription: 'Web app for visualizing unemployment',
-    longDescription: `Web app for visualizing unemployment using WebGL.`,
-    tags: [ Categories.Web, Categories.GraphicsProgramming ],
-    coverImage: './images/swevis.jpg',
-    projectUrl: 'http://sofiekhullar.github.io/hack4swe/',
-    projectSourceUrl: 'https://github.com/sofiekhullar/hack4swe',
-    weight: 0.95,
-    medias: [
-      {
-        mediaType: 'IMAGE',
-        src: './images/swevis.jpg',
-
-      },
-    ]
-  },
-  {
-    header: 'Volume Renderer',
-    shortDescription: 'Visualize pvm data with raymarching in real time',
-    longDescription: `Volume renderer implemented on the GPU using OpenGL. Load pvm data and render them using your own transfer functions.`,
-    tags: [ Categories.GraphicsProgramming ],
-    coverImage: './images/vr1.jpg',
-    projectSourceUrl: 'https://github.com/Hedlundaren/raymarcher',
-    weight: 1.7,
-    medias: [
-      {
-        mediaType: 'IMAGE',
-        src: './images/vr1.jpg',
-      },
-      {
-        mediaType: 'IMAGE',
-        src: './images/vr2.jpg',
-      },
-      {
-        mediaType: 'IMAGE',
-        src: './images/vr3.jpg',
-      },
-      {
-        mediaType: 'IMAGE',
-        src: './images/vr4.jpg',
-      },
-      {
-        mediaType: 'IMAGE',
-        src: './images/vr5.jpg',
-      }
-    ]
-  },
-  {
-    header: 'Listig',
-    shortDescription: 'List app for Android',
-    longDescription: `List app for Android.`,
-    tags: [ Categories.MobileApp ],
-    coverImage: './images/listig.jpg',
-    weight: 1.1,
-    medias: [
-      {
-        mediaType: 'IMAGE',
-        src: './images/listig.jpg',
-      },
-    ]
-  },
-]
-
 export const defaultPortfolioItem = {
   header: '',
   shortDescription: '',
@@ -489,4 +38,43 @@ export const defaultPortfolioItem = {
   coverImage: '',
   weight: 1.0,
   medias: []
+}
+
+const GoogleSpreadsheet = require('google-spreadsheet')
+
+const loadDocument = async (doc: any) => {
+  return new Promise<any>((resolve, reject) => {
+    doc.getInfo((err, info) => resolve(info.worksheets[0]))
+  })
+}
+
+const getRows = async (sheet) => {
+  return new Promise<any>((resolve, reject) => {
+    sheet.getRows({ offset: 1, limit: 200, orderby: 'weight' }, (err, rows) => resolve(rows))
+  })
+}
+
+export const loadPortfolioItems = async () => {
+  const doc =  new GoogleSpreadsheet('1psUEBs0saRcPAido3mL5Nrh_WvFVHOx0N1cwK5jEudc')
+  const sheet = await loadDocument(doc)
+  const rows = await getRows(sheet)
+
+  for (const row of rows) {
+    try {
+      portfolioItems.push({
+        ...row,
+        shortDescription: row.shortdescription,
+        coverImage: row.coverimage,
+        longDescription: row.longdescription,
+        projectUrl: row.projecturl,
+        projectSourceUrl: row.projectsourceurl,
+        tags: JSON.parse(row.tags), 
+        medias: JSON.parse(row.medias),
+        weight: Number(row.weight)
+      })
+    } catch (err) {
+      console.log(row)
+    }
+  }
+  return
 }
