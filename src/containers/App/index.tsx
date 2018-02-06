@@ -15,6 +15,7 @@ export namespace App {
   export interface State {
     activePortfolioItem: IPortfolioItem
     portfolioModalOpen: boolean
+    aboutModalOpen: boolean
     filterPortfolioItemBy: Categories
     pageLoading: boolean
     portfolioItemsLoading: boolean
@@ -30,6 +31,7 @@ export default class App extends React.Component<App.Props, App.State> {
     this.state = {
       activePortfolioItem: defaultPortfolioItem,
       portfolioModalOpen: false,
+      aboutModalOpen: false,
       filterPortfolioItemBy: null,
       pageLoading: true,
       portfolioItemsLoading: true,
@@ -41,7 +43,7 @@ export default class App extends React.Component<App.Props, App.State> {
   render() {
     const { 
       pageLoading, maxPortfolioItems, activePortfolioItem, portfolioItemsLoading,
-      filterPortfolioItemBy, activePortfolioItems, portfolioModalOpen
+      filterPortfolioItemBy, activePortfolioItems, portfolioModalOpen, aboutModalOpen
     } = this.state
 
     const filterHandle = (category: Categories) => {
@@ -97,18 +99,15 @@ export default class App extends React.Component<App.Props, App.State> {
   filterPortfilioItems(category?: any, maxItems?: number) {
     const cat = category !== 'undefined' ? category : this.state.filterPortfolioItemBy
 
-    let itemCount = 0
     const portfolioFilterHandle = (portfolioItem: IPortfolioItem) => {
       if (cat != null) {
         for (const portfolioCat of portfolioItem.tags) {
           if (Categories[portfolioCat] === Categories[cat]) {
-            itemCount++
             return true
           }
         }
         return false
       }
-      itemCount++
       return true
     }
 
@@ -119,7 +118,7 @@ export default class App extends React.Component<App.Props, App.State> {
       return a.weight > b.weight ? -1.0 : 1.0
     }
 
-    return portfolioItems.sort(portfolioSort).filter(portfolioFilterHandle)
+    return portfolioItems.filter(portfolioFilterHandle).sort(portfolioSort)
   }
 
 }

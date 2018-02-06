@@ -7,6 +7,7 @@ import { Parallax } from 'react-scroll-parallax'
 import { PresentationBox } from '../PresentationBox/index'
 import * as style from './styles/style.css'
 import { initThreeBackground } from '../../background'
+import { IconButton } from '../IconButton/index'
 
 export namespace Header {
   export interface Props {
@@ -51,6 +52,11 @@ export class Header extends React.Component<Header.Props, Header.State> {
                   </p>
                 </Col>
               </Row>
+              <Row center='xs'>
+                <Col xs={0}>
+                  <IconButton text={'More Info'} icon={'zmdi zmdi-unfold-more'} color={'#44a07c'} onClick={this.openAboutModal} />
+                </Col>
+              </Row>
               <Row around='xs'>
                 <Col sm={6} md={3}>
                   <PresentationBox
@@ -75,6 +81,7 @@ export class Header extends React.Component<Header.Props, Header.State> {
                   />
                 </Col>
               </Row>
+              
             </Col>
           </StyledRow>
         </Grid>   
@@ -84,6 +91,10 @@ export class Header extends React.Component<Header.Props, Header.State> {
 
       </StyledHeaderDiv>
     )
+  }
+
+  private openAboutModal = () => {
+      alert("tja")
   }
 
   componentDidMount() {
