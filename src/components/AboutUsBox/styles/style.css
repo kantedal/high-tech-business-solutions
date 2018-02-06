@@ -44,6 +44,9 @@
   cursor: pointer;
 }
 
+.skillsList {
+  padding: 0;
+}
 .skillItem {
   min-width: 100px;
   list-style-type: none;
@@ -54,21 +57,22 @@
 
 .skillMeterContainer {
   height: 10px;
-  width: 200px;
+  width: 25vw;
   background: gray;
+  margin: 5px;
   margin-bottom: 10px;
 }
 
 @keyframes mymove {
   0% {transform: scale(1, 1);}
-  50% {transform: scale(-100, 1);}
+  50% {transform: scale(100, 1);}
   100% {transform: scale(1, 1);}
 }
 
 .skillMeter {
   height: 10px;
   width: 1px;
-  transform-origin: 1px 0px;
+  transform-origin: 0px 0px;
   background: red;
   animation: mymove 5s infinite;
 }

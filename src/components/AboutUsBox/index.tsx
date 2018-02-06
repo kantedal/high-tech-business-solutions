@@ -74,11 +74,10 @@ export const AboutUsBox: React.SFC<AboutUsBox.Props> = ({ about, isMobile }) => 
                 <div className={style.nameText}>Skills</div>
               </Row>
               <Row>
-                <ul>
+                <ul className={style.skillsList}>
                   {about.skills.map((skill: ISkill, index: number) => {
                     return <li className={style.skillItem} key={index}>  
-                    <div> {skill.skillName}: 
-                      {skill.skillWeight}/10 
+                    <div> {skill.skillName}
                     </div> 
                     <div className={style.skillMeterContainer}> 
                       <div className={style.skillMeter}/> 
