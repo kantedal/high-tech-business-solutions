@@ -6,7 +6,23 @@ const StyledHeaderAnimation = keyframes`
   to { filter: hue-rotate(360deg) grayscale(50%); }
 `
 
-export const StyledPresentationImage: any = styled.div`
+const Div = ({children, imagePositionUpdated, isMobile, ...props}: any) => (
+  <div 
+    ref={(element) => {
+      if (element) {
+        const rect = element.getBoundingClientRect()
+        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+        imagePositionUpdated(rect.left + scrollLeft, rect.top + scrollTop)
+      }
+    }}
+    {...props}
+  >
+    {children}
+  </div>
+)
+
+export const StyledPresentationImage: any = styled(Div)`
   border-radius: 50%;
   min-width: ${({ isMobile }: any) => isMobile ? '120px' : '150px'};  
   min-height: ${({ isMobile }: any) => isMobile ? '120px' : '150px'};

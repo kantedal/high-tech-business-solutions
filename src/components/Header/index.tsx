@@ -67,6 +67,7 @@ export class Header extends React.Component<Header.Props, Header.State> {
                     githubUrl={'https://github.com/Hedlundaren'}
                     websiteUrl={'http://simonhedlund.github.io'}
                     isMobile={false}
+                    imagePositionUpdated={(x: number, y: number) => console.log('Simon', x, y)}    
                   />
                 </Col>
                 <Col sm={6} md={3}>
@@ -77,7 +78,8 @@ export class Header extends React.Component<Header.Props, Header.State> {
                     emailUrl={'kantedal@gmail.com'}
                     githubUrl={'https://github.com/kantedal'}
                     websiteUrl={'http://kantedal.se'}
-                    isMobile={false}                    
+                    isMobile={false} 
+                    imagePositionUpdated={(x: number, y: number) => console.log('Filip', x, y)}               
                   />
                 </Col>
               </Row>

@@ -3,7 +3,7 @@ import { CSSProperties } from 'react'
 import { Col, Grid, Row } from 'react-flexbox-grid'
 
 import * as style from './styles/style.css'
-import { StyledPresentationImage, StyledPresentationImageContainer } from './styles/index'
+import { StyledPresentationImage, StyledPresentationImageContainer } from './styles'
 
 export namespace PresentationBox {
   export interface Props {
@@ -14,12 +14,14 @@ export namespace PresentationBox {
     githubUrl: string
     websiteUrl: string
     isMobile: boolean
+    imagePositionUpdated: (x: number, y: number) => void
   }
 }
 
 const GridComponent: any = Grid as any
 
-export const PresentationBox: React.SFC<PresentationBox.Props> = ({name, imgUrl, linkedInUrl, emailUrl, githubUrl, websiteUrl, isMobile}) => {
+export const PresentationBox: React.SFC<PresentationBox.Props> = ({name, imgUrl, linkedInUrl, emailUrl, githubUrl, websiteUrl, isMobile, imagePositionUpdated}) => { 
+
   const linkedInClick = () => {
     window.open(linkedInUrl, '_blank')
   }
@@ -40,7 +42,11 @@ export const PresentationBox: React.SFC<PresentationBox.Props> = ({name, imgUrl,
     <div className={style.presentationContent}>
       <GridComponent fluid={true}>
         <Row>
-          <StyledPresentationImage isMobile={isMobile} style={{ backgroundImage: 'url(' + imgUrl + ')' }} />
+          <StyledPresentationImage
+            isMobile={isMobile}
+            style={{ backgroundImage: 'url(' + imgUrl + ')' }}
+            imagePositionUpdated={imagePositionUpdated}
+          />
         </Row>
         {!isMobile && (
           <Row> 

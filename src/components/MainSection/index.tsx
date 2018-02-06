@@ -41,7 +41,6 @@ export class MainSection extends React.Component<MainSection.Props, MainSection.
           <Row className={style.presentationRow}>
             {portfolioComponents}
           </Row>
-          {/* <Row>Loading</Row> */}
         </Grid>
       </StyledMainSectionDiv>
     )

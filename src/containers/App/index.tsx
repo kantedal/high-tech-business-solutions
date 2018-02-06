@@ -6,6 +6,7 @@ import { Header } from '../../components/Header'
 import { MainSection } from '../../components/MainSection'
 import { MobileHeader } from '../../components/MobileHeader'
 import { Categories, IPortfolioItem, portfolioItems, defaultPortfolioItem, loadPortfolioItems } from '../../portfolio'
+import { loadAboutData } from '../../about'
 import * as style from './styles/style.css'
 import { PortfolioItemModal } from '../../components/PortfolioItemModal/index'
 import { StyledLoadingText, StyledLoadingComponent } from './styles/index'
@@ -94,6 +95,7 @@ export default class App extends React.Component<App.Props, App.State> {
 
   componentWillMount() {
     loadPortfolioItems().then(() => this.setState({ ...this.state, portfolioItemsLoading: false, activePortfolioItems: this.filterPortfilioItems(null) }))
+    loadAboutData()
   }
 
   filterPortfilioItems(category?: any, maxItems?: number) {
