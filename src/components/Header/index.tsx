@@ -9,15 +9,19 @@ import * as style from './styles/style.css'
 import { initThreeBackground } from '../../background'
 import { IconButton } from '../IconButton/index'
 
+export let headerImage1
+export let headerImage2
+
 export namespace Header {
   export interface Props {
     active: boolean
     isMobile: boolean
+    aboutModalOpen: boolean
     openAboutUsModal: () => void
-    headerPositionsUpdated: (index: number, x: number, y: number) => void
   }
   export interface State {
     opacity: number
+    hideImage: boolean
   }
 }
 
@@ -26,13 +30,16 @@ export class Header extends React.Component<Header.Props, Header.State> {
 
   constructor(props: Header.Props) {
     super(props)
-    this.state = {
-      opacity: 0
-    }
+    this.state = { opacity: 0, hideImage: false }
   }
   
   render() {
-    const { active, isMobile, openAboutUsModal, headerPositionsUpdated } = this.props
+    const { active, isMobile, openAboutUsModal, aboutModalOpen } = this.props
+
+    // if (this.state.hideImage || !aboutModalOpen) {
+    //   setTimeout(() => this.setState({ ...this.state, hideImage: false }), 500)
+    // }
+
     return (
       <StyledHeaderDiv isMobile={isMobile} opacity={this.state.opacity}>
         <canvas
@@ -69,7 +76,8 @@ export class Header extends React.Component<Header.Props, Header.State> {
                     githubUrl={'https://github.com/Hedlundaren'}
                     websiteUrl={'http://simonhedlund.github.io'}
                     isMobile={false}
-                    imagePositionUpdated={(x: number, y: number) => headerPositionsUpdated(0, x, y)}    
+                    hideImage={this.state.hideImage}
+                    getRef={(ref) => headerImage1 = ref} 
                   />
                 </Col>
                 <Col sm={6} md={3}>
@@ -80,8 +88,9 @@ export class Header extends React.Component<Header.Props, Header.State> {
                     emailUrl={'kantedal@gmail.com'}
                     githubUrl={'https://github.com/kantedal'}
                     websiteUrl={'http://kantedal.se'}
-                    isMobile={false} 
-                    imagePositionUpdated={(x: number, y: number) => headerPositionsUpdated(1, x, y)}               
+                    hideImage={this.state.hideImage}
+                    isMobile={false}      
+                    getRef={(ref) => headerImage2 = ref}                         
                   />
                 </Col>
               </Row>
@@ -95,6 +104,15 @@ export class Header extends React.Component<Header.Props, Header.State> {
 
       </StyledHeaderDiv>
     )
+  }
+
+  componentWillReceiveProps(nextProps: Header.Props) {
+    if (!nextProps.aboutModalOpen && this.props.aboutModalOpen) {
+      setTimeout(() => this.setState({ ...this.state, hideImage: false }), 500)
+    }
+    else if (nextProps.aboutModalOpen && !this.props.aboutModalOpen) {
+      this.setState({ ...this.state, hideImage: true })
+    }
   }
 
   componentDidMount() {

@@ -10,20 +10,30 @@ import { StyledPresentationImage } from '../PresentationBox/styles/index'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import { StyledRow } from '../Header/styles/index'
 import { PresentationBox } from '../PresentationBox/index'
+import { headerImage1, headerImage2 } from '../Header/index'
+
+const calculateAbsolutePostion = (element: any, scale?: number): { x: number, y: number }  => {
+  const rect = element.getBoundingClientRect()
+
+  if (scale) {
+    rect.x = rect.x + (scale * 154 - 154) / 2
+    rect.y = rect.y + (scale * 154 - 154) / 2
+  }
+
+  const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+  return { x: rect.x + scrollLeft, y: rect.y + scrollTop}
+}
 
 export namespace AboutUsModal {
   export interface Props {
     isMobile: boolean,
     isOpen: boolean
     closeModal: () => void
-    originalImgPos: Array<{ x: number, y: number }>
   }
   export interface State {
     isVisible: boolean
-    imagePos: Array<{ x: number, y: number }>
     inited: boolean
-    translationImg1: { x: number, y: number }
-    translationImg2: { x: number, y: number }
   }
 }
 export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsModal.State> {
@@ -32,63 +42,51 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
   private _translation1: { x: number, y: number } = { x: 0, y: 0 }
   private _translation2: { x: number, y: number }
   private _imageElement1: any
+  private _imageElement2: any
 
   constructor(props: AboutUsModal.Props) {
     super(props)
     this.state = { 
       isVisible: false,
-      imagePos: [ { x: 1, y: 0 }, { x: 0, y: 0 } ],
-      translationImg1: { x: 0, y: 0 },
-      translationImg2: { x: 0, y: 0 },
       inited: false
     }
   }
 
   render() {
-    const { isOpen, closeModal, isMobile, originalImgPos } = this.props
-    const { imagePos, inited, translationImg1, translationImg2 } = this.state
+    const { isOpen, closeModal, isMobile } = this.props
+    const { inited } = this.state
 
-    const bgAlpha = this.state.isVisible ? '0.5' : '0.0'
+    const bgAlpha = this.state.isVisible ? '0.9' : '0.0'
     const customStyles = {
-      content: {
-        background: 'transparent',
-        border: 'none',
-        pointerEvents: 'none',
-        top: '0px',
-        left: '0px',
-        right: '0px',
-        bottom: '0px',
-      },
-      overlay: {
-        backgroundColor: 'rgba(0, 0, 0, ' + bgAlpha + ')',
-        transition: 'background-color 300ms ease'
-      }
+      content: { background: 'transparent', border: 'none', pointerEvents: 'none', top: '0px', left: '0px', right: '0px', bottom: '0px', },
+      overlay: { backgroundColor: 'rgba(0, 0, 0, ' + bgAlpha + ')', transition: 'background-color 500ms ease' }
     }
 
     const close = () => {
       closeModal()
-      // this._translation1 = { x: 0, y: 0 }
-      setTimeout(() => this.setState({ ...this.state, isVisible: false, inited: false }), 500)
+      this.setState({ ...this.state, isVisible: false, inited: false })
+      
+      const pos1 = calculateAbsolutePostion(this._imageElement1, 1.3)
+      const origPos1 = calculateAbsolutePostion(headerImage1)
+      const pos2 = calculateAbsolutePostion(this._imageElement2, 1.3)
+      const origPos2 = calculateAbsolutePostion(headerImage2)
 
-      const rect = this._imageElement1.getBoundingClientRect()
-      const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+      this._translation1 = { x: origPos1.x - pos1.x, y: origPos1.y - pos1.y }
+      this._translation2 = { x: origPos2.x - pos2.x, y: origPos2.y - pos2.y }
 
-      const left = rect.x + scrollLeft
-      const top = rect.y + scrollTop
-
-      this._translation1 = { x: this.props.originalImgPos[0].x - left, y: this.props.originalImgPos[0].y - top }
-      this._imageElement1.style.transform = `translate(${this._translation1.x}px, ${this._translation1.y}px)`
-      this._imageElement1.style.opacity = `1`
+      this._imageElement1.style.transform = `scale(1.0) translate(${this._translation1.x}px, ${this._translation1.y}px)`
+      this._imageElement2.style.transform = `scale(1.0) translate(${this._translation2.x}px, ${this._translation2.y}px)`
     }
 
     if (isOpen && !inited) {
       if (this._imageElement1) {
         setTimeout(() => {
-          this._imageElement1.style.transition = `transform 500ms ease`
-          this._imageElement1.style.transform = `translate(0px, 0px)`
-          this.setState({ ...this.state, inited: true })
-        }, 500)
+          this._imageElement1.style.transition = `transform 500ms ease-in-out`
+          this._imageElement1.style.transform = `translate(0px, 0px) scale(1.3)`
+          this._imageElement2.style.transition = `transform 500ms ease-in-out`
+          this._imageElement2.style.transform = `translate(0px, 0px) scale(1.3)`
+          this.setState({ ...this.state, inited: true,  isVisible: true })
+        }, 50)
       }
     }
 
@@ -97,7 +95,7 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
         <ReactModal
           isOpen={isOpen}
           onRequestClose={close}
-          onAfterOpen={() => this.setState({ ...this.state, isVisible: true })}
+          onAfterOpen={() => this.setState({ ...this.state })}
           shouldCloseOnOverlayClick={true}
           style={customStyles}
           closeTimeoutMS={500}
@@ -110,8 +108,7 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
                   <StyledPresentationImage
                     isMobile={isMobile}
                     inited={inited}
-                    style={{ backgroundImage: 'url(./images/simon.jpg)', width: '150px', height: '150px', transform: `translate(${translationImg1.x}px, ${translationImg1.y}px)`}}
-                    imagePositionUpdated={(x: number, y: number) => this._imagePos1 = { x, y }}
+                    style={{ backgroundImage: 'url(./images/simon.jpg)', width: '150px', height: '150px' }}
                     getRef={(ref: any) => this._imageElement1 = ref}
                   />
                 </Col>
@@ -119,8 +116,8 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
                   <StyledPresentationImage
                     isMobile={isMobile}
                     inited={inited}
-                    style={{ backgroundImage: 'url(./images/filip.jpg)', width: '154px', height: '154px',  transform: `translate(${translationImg2.x}px, ${translationImg2.y}px)`}}
-                    imagePositionUpdated={(x: number, y: number) => this._imagePos2 = { x, y }}
+                    style={{ backgroundImage: 'url(./images/filip.jpg)', width: '150px', height: '150px' }}
+                    getRef={(ref: any) => this._imageElement2 = ref}
                   />
                 </Col>
               </Row>
@@ -139,44 +136,20 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
       if (this._imageElement1) {
         this._imageElement1.style.transition = ``
 
-        const rect = this._imageElement1.getBoundingClientRect()
-        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+        const pos1 = calculateAbsolutePostion(this._imageElement1)
+        const origPos1 = calculateAbsolutePostion(headerImage1)
 
-        const left = rect.x + scrollLeft - this._translation1.x
-        const top = rect.y + scrollTop - this._translation1.y
+        const pos2 = calculateAbsolutePostion(this._imageElement2)
+        const origPos2 = calculateAbsolutePostion(headerImage2)
+        
+        if (pos1.x !== origPos1.x && pos1.y !== origPos1.y) {
+          this._translation1 = { x: origPos1.x - pos1.x, y: origPos1.y - pos1.y }
+          this._imageElement1.style.transform = `translate(${this._translation1.x}px, ${this._translation1.y}px)`
 
-        this._translation1 = { x: this.props.originalImgPos[0].x - left, y: this.props.originalImgPos[0].y - top }
-        this._imageElement1.style.transform = `translate(${this._translation1.x}px, ${this._translation1.y}px)`
-        this._imageElement1.style.opacity = `1`
+          this._translation2 = { x: origPos2.x - pos2.x, y: origPos2.y - pos2.y }
+          this._imageElement2.style.transform = `translate(${this._translation2.x}px, ${this._translation2.y}px)`
+        }
       }
     }
-    // if (this.props.isOpen && this.state.inited === false) {
-    //   setTimeout(() => {
-    //     const { inited } = this.state
-    //     const { originalImgPos } = this.props
-
-    //     this._translation1 = { 
-    //       x: inited ? originalImgPos[0].x - this._imagePos1.x + 3 : 0,
-    //       y: inited ? originalImgPos[0].y - this._imagePos1.y : 0
-    //     }
-    
-    //     this._translation2 = { 
-    //       x: inited ? originalImgPos[1].x - this._imagePos2.x + 6 : 0,
-    //       y: inited ? originalImgPos[1].y - this._imagePos2.y : 0
-    //     }
-
-    //     this.setState({ ...this.state, inited: true, translationImg1: this._translation1, translationImg2: this._translation2 })
-    //   }, 100)
-
-    //   setTimeout(() => {
-    //     const translationImg1 = { x: 0, y: 0 }
-    //     const translationImg2 = { x: 0, y: 0 }
-
-    //     this.setState({ ...this.state, translationImg1, translationImg2 })
-    //   }, 500)
-    // }
   }
 }
-
-// transform: `translate(${translationImg1.x}px, ${translationImg1.y}px)`

@@ -6,26 +6,9 @@ const StyledHeaderAnimation = keyframes`
   to { filter: hue-rotate(360deg) grayscale(50%); }
 `
 
-const Div = ({children, imagePositionUpdated, isMobile, ...props}: any) => (
-  <div 
-    ref={(element) => {
-      if (element) {
-        const rect = element.getBoundingClientRect()
-        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-        imagePositionUpdated(rect.left + scrollLeft, rect.top + scrollTop)
-      }
-    }}
-    {...props}
-  >
-    {children}
-  </div>
-)
-
 namespace ImageDiv {
   export interface Props {
     isMobile?: boolean
-    imagePositionUpdated: (x: number, y: number) => void
     inited?: boolean
     getRef?: (ref: any) => void
   }
@@ -33,26 +16,15 @@ namespace ImageDiv {
 
 export class ImageDiv extends React.Component<ImageDiv.Props, any> {
   private _element: any
-  private _top: number
-  private _left: number
-
-  constructor(props: any) {
-    super(props)
-    this.state = {
-      hasMounted: false
-    }
-  }
 
   render() {
-    const { imagePositionUpdated, children, isMobile, inited, getRef, ...rest } = this.props
-    const { hasMounted } = this.state
+    const { children, isMobile, inited, getRef, ...rest } = this.props
 
     return (
       <div 
         ref={(element) => {
           if (element && !this._element) {
             this._element = element
-            console.log(this._element.style)
             if (getRef) {
               getRef(element)
             }
@@ -64,26 +36,7 @@ export class ImageDiv extends React.Component<ImageDiv.Props, any> {
       </div>
     )
   }
-  
-  componentWillUpdate() {
-    if (this._element) {
-      const rect = this._element.getBoundingClientRect()
-      const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
 
-      const top = rect.left + scrollLeft
-      const left = rect.top + scrollTop
-      if (this._top !== top || this._left !== left) {
-        this._top = top
-        this._left = left
-        this.props.imagePositionUpdated(rect.left + scrollLeft, rect.top + scrollTop)              
-      }
-    }
-  }
-
-  componentDidMount() {
-    this.setState({ ...this.state, hasMounted: true })
-  }
 }
 
 export const StyledPresentationImage: any = styled(ImageDiv)`
