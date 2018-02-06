@@ -14,13 +14,14 @@ export namespace PresentationBox {
     githubUrl: string
     websiteUrl: string
     isMobile: boolean
-    imagePositionUpdated: (x: number, y: number) => void
+    hideImage?: boolean
+    getRef: (ref: any) => void
   }
 }
 
 const GridComponent: any = Grid as any
 
-export const PresentationBox: React.SFC<PresentationBox.Props> = ({name, imgUrl, linkedInUrl, emailUrl, githubUrl, websiteUrl, isMobile, imagePositionUpdated}) => { 
+export const PresentationBox: React.SFC<PresentationBox.Props> = ({name, imgUrl, linkedInUrl, emailUrl, githubUrl, websiteUrl, isMobile, hideImage, getRef}) => { 
 
   const linkedInClick = () => {
     window.open(linkedInUrl, '_blank')
@@ -44,8 +45,8 @@ export const PresentationBox: React.SFC<PresentationBox.Props> = ({name, imgUrl,
         <Row>
           <StyledPresentationImage
             isMobile={isMobile}
-            style={{ backgroundImage: 'url(' + imgUrl + ')' }}
-            imagePositionUpdated={imagePositionUpdated}
+            style={{ backgroundImage: 'url(' + imgUrl + ')', opacity: hideImage ? 0.0 : 1.0 }}
+            getRef={getRef}
           />
         </Row>
         {!isMobile && (

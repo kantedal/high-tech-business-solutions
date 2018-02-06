@@ -53,6 +53,7 @@ export default class App extends React.Component<App.Props, App.State> {
       this.setState({ ...this.state, filterPortfolioItemBy: category, activePortfolioItems: this.filterPortfilioItems(category) })
     }
 
+
     const mainSection = !portfolioItemsLoading ? (
       <MainSection
         openPortfolioItem={(portfolioItem: IPortfolioItem) => this.setState({ ...this.state, portfolioModalOpen: true, activePortfolioItem: portfolioItem })}
@@ -80,12 +81,14 @@ export default class App extends React.Component<App.Props, App.State> {
             isMobile={isMobile}
             aboutData={aboutItems}
           />
+
           {!isMobile && (
             <div>
               <Parallax offsetYMin={-100} offsetYMax={100} slowerScrollRate={true}>
                 <Header
                   active={true}
                   isMobile={isMobile}
+                  aboutModalOpen={aboutUsModalOpen}
                   openAboutUsModal={() => this.setState({ ...this.state, aboutUsModalOpen: true })}
                 />
               </Parallax>

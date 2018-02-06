@@ -47,7 +47,7 @@ export class MobileHeader extends React.Component<MobileHeader.Props, MobileHead
                     githubUrl={'https://github.com/Hedlundaren'}
                     websiteUrl={'http://simonhedlund.github.io'}
                     isMobile={true}
-                    imagePositionUpdated={(x: number, y: number) => console.log('Simon', x, y)}
+                    getRef={(ref: any) => {}}
                   />
                 </Col>
                 <Col xs={6}>
@@ -59,7 +59,7 @@ export class MobileHeader extends React.Component<MobileHeader.Props, MobileHead
                     githubUrl={'https://github.com/kantedal'}
                     websiteUrl={'http://kantedal.se'}
                     isMobile={true}
-                    imagePositionUpdated={(x: number, y: number) => console.log('Filip', x, y)}                    
+                    getRef={(ref: any) => {}}            
                   />
                 </Col>
               </Row>
