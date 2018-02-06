@@ -5,7 +5,11 @@ import { IPortfolioItem } from '../../portfolio'
 import { IconButton } from '../IconButton'
 import { MediaCarousel } from '../MediaCarousel'
 import * as style from './styles/style.css'
-import { StyledModalContainer } from './styles/index'
+import { AboutUsContainer } from './styles/index'
+import { StyledPresentationImage } from '../PresentationBox/styles/index';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+import { StyledRow } from '../Header/styles/index';
+import { PresentationBox } from '../PresentationBox/index';
 
 export namespace AboutUsModal {
   export interface Props {
@@ -25,11 +29,11 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
   }
 
   render() {
-    const { isOpen, closeModal, isMobile } = this.props 
+    const { isOpen, closeModal, isMobile } = this.props
 
     const bgAlpha = this.state.isVisible ? '0.5' : '0.0'
     const customStyles = {
-      content : {
+      content: {
         background: 'transparent',
         border: 'none',
         pointerEvents: 'none',
@@ -51,7 +55,7 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
 
     return (
       <div>
-         <ReactModal 
+        <ReactModal
           isOpen={isOpen}
           onRequestClose={close}
           onAfterOpen={() => this.setState({ ...this.state, isVisible: true })}
@@ -60,10 +64,37 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
           closeTimeoutMS={100}
           contentLabel='Modal'
         >
-          <StyledModalContainer isOpen={this.state.isVisible} isMobile={isMobile} >
-            Hej
-            
-          </StyledModalContainer>
+          <AboutUsContainer isOpen={this.state.isVisible} isMobile={isMobile} >
+            <Grid className={style.presentationGrid} fluid={true}>
+
+              <Row around='xs'>
+                <Col sm={6} md={3}>
+                  <PresentationBox
+                    name={'Simon Hedlund'}
+                    imgUrl={'./images/simon.jpg'}
+                    linkedInUrl={'https://www.linkedin.com/in/simon-hedlund-a1a656128/'}
+                    emailUrl={'sermonhedlund@gmail.com'}
+                    githubUrl={'https://github.com/Hedlundaren'}
+                    websiteUrl={'http://simonhedlund.github.io'}
+                    isMobile={false}
+                    imagePositionUpdated={(x: number, y: number) => console.log('Simon', x, y)}
+                  />
+                </Col>
+                <Col sm={6} md={3}>
+                  <PresentationBox
+                    name={'Filip Kantedal'}
+                    imgUrl={'./images/filip.jpg'}
+                    linkedInUrl={'https://www.linkedin.com/in/filip-kantedal-33b84240/'}
+                    emailUrl={'kantedal@gmail.com'}
+                    githubUrl={'https://github.com/kantedal'}
+                    websiteUrl={'http://kantedal.se'}
+                    isMobile={false}
+                    imagePositionUpdated={(x: number, y: number) => console.log('Filip', x, y)}
+                  />
+                </Col>
+              </Row>
+            </Grid>
+          </AboutUsContainer>
         </ReactModal>
       </div>
     )
