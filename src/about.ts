@@ -9,7 +9,11 @@ export interface IAbout {
   name: string
   shortDescription: string
   skills: ISkill[]
-  image: string
+  imgUrl: string
+  emailUrl: string
+  linkedInUrl: string
+  githubUrl: string
+  websiteUrl: string
 }
 
 const queryGoogleSheets = async () => {
@@ -38,7 +42,7 @@ export const loadAboutData = async () => {
   const header = values[0]
 
   for (let i = 1; i < values.length; i++) {
-    const newItem = { name: '', shortDescription: '', skills: [], image: '' }
+    const newItem = { name: '', shortDescription: '', skills: [], imgUrl: '', emailUrl: '', linkedInUrl: '', githubUrl: '', websiteUrl: ''}
     for (let j = 0; j < header.length; j++) {
       const headerKey = header[j]
       try {

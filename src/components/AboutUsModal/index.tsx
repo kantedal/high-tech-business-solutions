@@ -6,16 +6,18 @@ import { IconButton } from '../IconButton'
 import { MediaCarousel } from '../MediaCarousel'
 import * as style from './styles/style.css'
 import { AboutUsContainer } from './styles/index'
-import { StyledPresentationImage } from '../PresentationBox/styles/index';
-import { Grid, Row, Col } from 'react-flexbox-grid';
-import { StyledRow } from '../Header/styles/index';
-import { PresentationBox } from '../PresentationBox/index';
+import { StyledPresentationImage } from '../PresentationBox/styles/index'
+import { Grid, Row, Col } from 'react-flexbox-grid'
+import { StyledRow } from '../Header/styles/index'
+import { AboutUsBox } from '../AboutUsBox/index'
+import { IAbout, ISkill } from '../../about'
 
 export namespace AboutUsModal {
   export interface Props {
     isMobile: boolean,
     isOpen: boolean
     closeModal: () => void
+    aboutData: IAbout[]
   }
   export interface State {
     isVisible: boolean
@@ -29,8 +31,7 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
   }
 
   render() {
-    const { isOpen, closeModal, isMobile } = this.props
-
+    const { isOpen, closeModal, isMobile, aboutData } = this.props
     const bgAlpha = this.state.isVisible ? '0.5' : '0.0'
     const customStyles = {
       content: {
@@ -66,38 +67,37 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
         >
           <AboutUsContainer isOpen={this.state.isVisible} isMobile={isMobile} >
             <Grid className={style.presentationGrid} fluid={true}>
-
-              <Row around='xs'>
-                <Col sm={6} md={3}>
-                  <PresentationBox
-                    name={'Simon Hedlund'}
-                    imgUrl={'./images/simon.jpg'}
-                    linkedInUrl={'https://www.linkedin.com/in/simon-hedlund-a1a656128/'}
-                    emailUrl={'sermonhedlund@gmail.com'}
-                    githubUrl={'https://github.com/Hedlundaren'}
-                    websiteUrl={'http://simonhedlund.github.io'}
-                    isMobile={false}
-                    imagePositionUpdated={(x: number, y: number) => console.log('Simon', x, y)}
-                  />
-                </Col>
-                <Col sm={6} md={3}>
-                  <PresentationBox
-                    name={'Filip Kantedal'}
-                    imgUrl={'./images/filip.jpg'}
-                    linkedInUrl={'https://www.linkedin.com/in/filip-kantedal-33b84240/'}
-                    emailUrl={'kantedal@gmail.com'}
-                    githubUrl={'https://github.com/kantedal'}
-                    websiteUrl={'http://kantedal.se'}
-                    isMobile={false}
-                    imagePositionUpdated={(x: number, y: number) => console.log('Filip', x, y)}
-                  />
-                </Col>
-              </Row>
+              {this.renderAboutUsBoxes(aboutData)}
             </Grid>
           </AboutUsContainer>
         </ReactModal>
       </div>
     )
+  }
+
+  private renderAboutUsBoxes(aboutData: IAbout[]) {
+
+    if (aboutData.length !== 0) {
+      return (
+        <Row around='xs'>
+          <Col sm={6} md={3}>
+            <AboutUsBox
+              about={aboutData[0]}
+              isMobile={false}
+              imagePositionUpdated={(x: number, y: number) => console.log('About us: Simon', x, y)}
+            />
+          </Col>
+          <Col sm={6} md={3}>
+            <AboutUsBox
+              about={aboutData[1]}
+              isMobile={false}
+              imagePositionUpdated={(x: number, y: number) => console.log('About us: Filip', x, y)}
+            />
+          </Col>
+        </Row>
+
+      )
+    }
   }
 }
 

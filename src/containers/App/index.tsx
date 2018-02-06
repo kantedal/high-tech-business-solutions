@@ -6,12 +6,11 @@ import { Header } from '../../components/Header'
 import { MainSection } from '../../components/MainSection'
 import { MobileHeader } from '../../components/MobileHeader'
 import { Categories, IPortfolioItem, portfolioItems, defaultPortfolioItem, loadPortfolioItems } from '../../portfolio'
-import { loadAboutData } from '../../about'
+import { loadAboutData, IAbout, aboutItems } from '../../about'
 import * as style from './styles/style.css'
 import { PortfolioItemModal } from '../../components/PortfolioItemModal/index'
 import { AboutUsModal } from '../../components/AboutUsModal/index'
 import { StyledLoadingText, StyledLoadingComponent } from './styles/index'
-
 export namespace App {
   export interface Props { }
   export interface State {
@@ -23,6 +22,7 @@ export namespace App {
     portfolioItemsLoading: boolean
     maxPortfolioItems: number
     activePortfolioItems: IPortfolioItem[]
+    aboutData: IAbout[]
   }
 }
 
@@ -39,6 +39,7 @@ export default class App extends React.Component<App.Props, App.State> {
       portfolioItemsLoading: true,
       maxPortfolioItems: 26,
       activePortfolioItems: this.filterPortfilioItems(null),
+      aboutData: []
     }
   }
 
@@ -77,6 +78,7 @@ export default class App extends React.Component<App.Props, App.State> {
             isOpen={aboutUsModalOpen}
             closeModal={() => this.setState({ ...this.state, aboutUsModalOpen: false })}
             isMobile={isMobile}
+            aboutData={aboutItems}
           />
           {!isMobile && (
             <div>
@@ -105,8 +107,16 @@ export default class App extends React.Component<App.Props, App.State> {
   }
 
   componentWillMount() {
-    loadPortfolioItems().then(() => this.setState({ ...this.state, portfolioItemsLoading: false, activePortfolioItems: this.filterPortfilioItems(null) }))
-    loadAboutData()
+    const promises = [loadPortfolioItems(), loadAboutData()]
+    Promise.all(promises).then(() => {
+      console.log('data loaded')
+      this.setState({ 
+        ...this.state, 
+        portfolioItemsLoading: false, 
+        activePortfolioItems: this.filterPortfilioItems(null),
+        aboutData: aboutItems
+      })
+    })
   }
 
   filterPortfilioItems(category?: any, maxItems?: number) {
