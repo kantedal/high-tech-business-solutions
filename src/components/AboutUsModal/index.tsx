@@ -54,9 +54,9 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
 
   render() {
     const { isOpen, closeModal, isMobile, aboutData } = this.props
-    const { inited } = this.state
+    const { inited, isVisible } = this.state
 
-    const bgAlpha = this.state.isVisible ? '0.8' : '0.0'
+    const bgAlpha = this.state.isVisible ? '0.9' : '0.0'
     const customStyles = {
       content: {
         background: 'transparent',
@@ -136,7 +136,9 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
                   />
                 </Col>
               </RowComp>
-              {this.renderAboutUsBoxes(aboutData)}
+              <div style={{ opacity: isVisible ? 1.0 : 0.0, transition: 'opacity 0.5s ease', transitionDelay: isVisible ? '0.3s' : '0.0s' }}>
+                {this.renderAboutUsBoxes(aboutData)}
+              </div>
             </Grid>
           </AboutUsContainer>
         </ReactModal>
@@ -186,7 +188,6 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
             />
           </Col>
         </RowComp>
-
       )
     }
   }
