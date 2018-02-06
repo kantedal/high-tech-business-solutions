@@ -13,6 +13,8 @@ export namespace Header {
   export interface Props {
     active: boolean
     isMobile: boolean
+    openAboutUsModal: () => void
+
   }
   export interface State {
     opacity: number
@@ -30,7 +32,7 @@ export class Header extends React.Component<Header.Props, Header.State> {
   }
   
   render() {
-    const { active, isMobile } = this.props
+    const { active, isMobile, openAboutUsModal } = this.props
     return (
       <StyledHeaderDiv isMobile={isMobile} opacity={this.state.opacity}>
         <canvas
@@ -54,7 +56,7 @@ export class Header extends React.Component<Header.Props, Header.State> {
               </Row>
               <Row center='xs'>
                 <Col xs={0}>
-                  <IconButton text={'More Info'} icon={'zmdi zmdi-unfold-more'} color={'#44a07c'} onClick={this.openAboutModal} />
+                  <IconButton text={'More Info'} icon={'zmdi zmdi-unfold-more'} color={'#44a07c'} onClick={openAboutUsModal} />
                 </Col>
               </Row>
               <Row around='xs'>
@@ -91,10 +93,6 @@ export class Header extends React.Component<Header.Props, Header.State> {
 
       </StyledHeaderDiv>
     )
-  }
-
-  private openAboutModal = () => {
-      alert("tja")
   }
 
   componentDidMount() {
