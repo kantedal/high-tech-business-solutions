@@ -23,10 +23,15 @@ export namespace App {
     portfolioItemsLoading: boolean
     maxPortfolioItems: number
     activePortfolioItems: IPortfolioItem[]
+    headerImagePositions: Array<{ x: number, y: number }>
+    headerImagePos1: { x: number, y: number }
+    headerImagePos2: { x: number, y: number }
   }
 }
 
 export default class App extends React.Component<App.Props, App.State> {
+  private _headerImgPos1: { x: number, y: number }
+  private _headerImgPos2: { x: number, y: number }
 
   constructor(props: App.Props) {
     super(props)
@@ -39,18 +44,22 @@ export default class App extends React.Component<App.Props, App.State> {
       portfolioItemsLoading: true,
       maxPortfolioItems: 26,
       activePortfolioItems: this.filterPortfilioItems(null),
+      headerImagePositions: [ {x: 0, y: 0}, { x: 0, y: 0 } ],
+      headerImagePos1: { x: 0, y: 0 },
+      headerImagePos2: { x: 0, y: 0 }
     }
   }
 
   render() {
     const {
-      pageLoading, maxPortfolioItems, activePortfolioItem, portfolioItemsLoading,
-      filterPortfolioItemBy, activePortfolioItems, portfolioModalOpen, aboutUsModalOpen
+      pageLoading, maxPortfolioItems, activePortfolioItem, portfolioItemsLoading, headerImagePositions,
+      filterPortfolioItemBy, activePortfolioItems, portfolioModalOpen, aboutUsModalOpen, headerImagePos1, headerImagePos2
     } = this.state
 
     const filterHandle = (category: Categories) => {
       this.setState({ ...this.state, filterPortfolioItemBy: category, activePortfolioItems: this.filterPortfilioItems(category) })
     }
+
 
     const mainSection = !portfolioItemsLoading ? (
       <MainSection
@@ -77,7 +86,9 @@ export default class App extends React.Component<App.Props, App.State> {
             isOpen={aboutUsModalOpen}
             closeModal={() => this.setState({ ...this.state, aboutUsModalOpen: false })}
             isMobile={isMobile}
+            originalImgPos={[ headerImagePos1, headerImagePos2 ]}
           />
+
           {!isMobile && (
             <div>
               <Parallax offsetYMin={-100} offsetYMax={100} slowerScrollRate={true}>
@@ -85,6 +96,13 @@ export default class App extends React.Component<App.Props, App.State> {
                   active={true}
                   isMobile={isMobile}
                   openAboutUsModal={() => this.setState({ ...this.state, aboutUsModalOpen: true })}
+                  headerPositionsUpdated={(index, x, y) => {
+                    if (index === 0) {
+                      this._headerImgPos1 = { x, y }
+                    } else {
+                      this._headerImgPos2 = { x, y }
+                    }
+                  }}
                 />
               </Parallax>
               <Parallax>
@@ -102,6 +120,10 @@ export default class App extends React.Component<App.Props, App.State> {
         </div>
       </ParallaxProvider>
     )
+  }
+
+  componentDidMount() {
+    setTimeout(() => this.setState({ ...this.state, headerImagePos1: this._headerImgPos1, headerImagePos2: this._headerImgPos2 }), 1000)
   }
 
   componentWillMount() {

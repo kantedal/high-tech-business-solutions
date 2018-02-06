@@ -14,7 +14,7 @@ export namespace Header {
     active: boolean
     isMobile: boolean
     openAboutUsModal: () => void
-
+    headerPositionsUpdated: (index: number, x: number, y: number) => void
   }
   export interface State {
     opacity: number
@@ -32,7 +32,7 @@ export class Header extends React.Component<Header.Props, Header.State> {
   }
   
   render() {
-    const { active, isMobile, openAboutUsModal } = this.props
+    const { active, isMobile, openAboutUsModal, headerPositionsUpdated } = this.props
     return (
       <StyledHeaderDiv isMobile={isMobile} opacity={this.state.opacity}>
         <canvas
@@ -69,7 +69,7 @@ export class Header extends React.Component<Header.Props, Header.State> {
                     githubUrl={'https://github.com/Hedlundaren'}
                     websiteUrl={'http://simonhedlund.github.io'}
                     isMobile={false}
-                    imagePositionUpdated={(x: number, y: number) => console.log('Simon', x, y)}    
+                    imagePositionUpdated={(x: number, y: number) => headerPositionsUpdated(0, x, y)}    
                   />
                 </Col>
                 <Col sm={6} md={3}>
@@ -81,7 +81,7 @@ export class Header extends React.Component<Header.Props, Header.State> {
                     githubUrl={'https://github.com/kantedal'}
                     websiteUrl={'http://kantedal.se'}
                     isMobile={false} 
-                    imagePositionUpdated={(x: number, y: number) => console.log('Filip', x, y)}               
+                    imagePositionUpdated={(x: number, y: number) => headerPositionsUpdated(1, x, y)}               
                   />
                 </Col>
               </Row>
@@ -99,6 +99,6 @@ export class Header extends React.Component<Header.Props, Header.State> {
 
   componentDidMount() {
     initThreeBackground(this.threeContainer, this.props.isMobile)
-    setTimeout(() => this.setState({ opacity: 1 }))
+    setTimeout(() => this.setState({ opacity: 1 }), 500)
   }
 }

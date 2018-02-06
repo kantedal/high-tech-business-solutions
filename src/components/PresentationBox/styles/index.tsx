@@ -22,7 +22,66 @@ const Div = ({children, imagePositionUpdated, isMobile, ...props}: any) => (
   </div>
 )
 
-export const StyledPresentationImage: any = styled(Div)`
+namespace ImageDiv {
+  export interface Props {
+    isMobile?: boolean
+    imagePositionUpdated: (x: number, y: number) => void
+    inited?: boolean
+  }
+}
+
+export class ImageDiv extends React.Component<ImageDiv.Props, any> {
+  private _element: any
+  private _top: number
+  private _left: number
+
+  constructor(props: any) {
+    super(props)
+    this.state = {
+      hasMounted: false
+    }
+  }
+
+  render() {
+    const { imagePositionUpdated, children, isMobile, inited, ...rest } = this.props
+    const { hasMounted } = this.state
+
+    return (
+      <div 
+        ref={(element) => {
+          if (element && !this._element) {
+            this._element = element
+          }
+        }}
+        {...rest}
+      >
+        {children}
+      </div>
+    )
+  }
+  
+  componentWillUpdate() {
+    if (this._element) {
+      const rect = this._element.getBoundingClientRect()
+      const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+
+      const top = rect.left + scrollLeft
+      const left = rect.top + scrollTop
+      if (this._top !== top || this._left !== left) {
+        this._top = top
+        this._left = left
+        this.props.imagePositionUpdated(rect.left + scrollLeft, rect.top + scrollTop)              
+      }
+    }
+  }
+
+  componentDidMount() {
+    this.setState({ ...this.state, hasMounted: true })
+  }
+}
+
+export const StyledPresentationImage: any = styled(ImageDiv)`
   border-radius: 50%;
   min-width: ${({ isMobile }: any) => isMobile ? '120px' : '150px'};  
   min-height: ${({ isMobile }: any) => isMobile ? '120px' : '150px'};
@@ -34,6 +93,7 @@ export const StyledPresentationImage: any = styled(Div)`
   border: 2px solid #fff;
   margin-top: ${({ isMobile }: any) => isMobile ? '0px' : '30px'};  
   margin-bottom: ${({ isMobile }: any) => isMobile ? '10px' : '15px'};  
+  transition: ${({ inited }: any) => inited ? 'transform 500ms ease' : 'transform 500ms ease' };
 `
 
 export const StyledPresentationImageContainer: any = styled.div`

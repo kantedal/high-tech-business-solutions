@@ -6,30 +6,46 @@ import { IconButton } from '../IconButton'
 import { MediaCarousel } from '../MediaCarousel'
 import * as style from './styles/style.css'
 import { AboutUsContainer } from './styles/index'
-import { StyledPresentationImage } from '../PresentationBox/styles/index';
-import { Grid, Row, Col } from 'react-flexbox-grid';
-import { StyledRow } from '../Header/styles/index';
-import { PresentationBox } from '../PresentationBox/index';
+import { StyledPresentationImage } from '../PresentationBox/styles/index'
+import { Grid, Row, Col } from 'react-flexbox-grid'
+import { StyledRow } from '../Header/styles/index'
+import { PresentationBox } from '../PresentationBox/index'
 
 export namespace AboutUsModal {
   export interface Props {
     isMobile: boolean,
     isOpen: boolean
     closeModal: () => void
+    originalImgPos: Array<{ x: number, y: number }>
   }
   export interface State {
     isVisible: boolean
+    imagePos: Array<{ x: number, y: number }>
+    inited: boolean
+    translationImg1: { x: number, y: number }
+    translationImg2: { x: number, y: number }
   }
 }
 export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsModal.State> {
+  private _imagePos1: { x: number, y: number }
+  private _imagePos2: { x: number, y: number }
+  private _translation1: { x: number, y: number }
+  private _translation2: { x: number, y: number }
 
   constructor(props: AboutUsModal.Props) {
     super(props)
-    this.state = { isVisible: false }
+    this.state = { 
+      isVisible: false,
+      imagePos: [ { x: 1, y: 0 }, { x: 0, y: 0 } ],
+      translationImg1: { x: 0, y: 0 },
+      translationImg2: { x: 0, y: 0 },
+      inited: false
+    }
   }
 
   render() {
-    const { isOpen, closeModal, isMobile } = this.props
+    const { isOpen, closeModal, isMobile, originalImgPos } = this.props
+    const { imagePos, inited, translationImg1, translationImg2 } = this.state
 
     const bgAlpha = this.state.isVisible ? '0.5' : '0.0'
     const customStyles = {
@@ -50,7 +66,7 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
 
     const close = () => {
       closeModal()
-      this.setState({ ...this.state, isVisible: false })
+      this.setState({ ...this.state, isVisible: false, translationImg1: this._translation1, translationImg2: this._translation2, inited: false })
     }
 
     return (
@@ -61,35 +77,26 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
           onAfterOpen={() => this.setState({ ...this.state, isVisible: true })}
           shouldCloseOnOverlayClick={true}
           style={customStyles}
-          closeTimeoutMS={100}
+          closeTimeoutMS={500}
           contentLabel='Modal'
         >
-          <AboutUsContainer isOpen={this.state.isVisible} isMobile={isMobile} >
+          <AboutUsContainer inited={inited} isOpen={this.state.isVisible} isMobile={isMobile} >
             <Grid className={style.presentationGrid} fluid={true}>
-
               <Row around='xs'>
                 <Col sm={6} md={3}>
-                  <PresentationBox
-                    name={'Simon Hedlund'}
-                    imgUrl={'./images/simon.jpg'}
-                    linkedInUrl={'https://www.linkedin.com/in/simon-hedlund-a1a656128/'}
-                    emailUrl={'sermonhedlund@gmail.com'}
-                    githubUrl={'https://github.com/Hedlundaren'}
-                    websiteUrl={'http://simonhedlund.github.io'}
-                    isMobile={false}
-                    imagePositionUpdated={(x: number, y: number) => console.log('Simon', x, y)}
+                  <StyledPresentationImage
+                    isMobile={isMobile}
+                    inited={inited}
+                    style={{ backgroundImage: 'url(./images/simon.jpg)', width: '150px', height: '150px', transform: `translate(${translationImg1.x}px, ${translationImg1.y}px)`}}
+                    imagePositionUpdated={(x: number, y: number) => this._imagePos1 = { x, y }}
                   />
                 </Col>
                 <Col sm={6} md={3}>
-                  <PresentationBox
-                    name={'Filip Kantedal'}
-                    imgUrl={'./images/filip.jpg'}
-                    linkedInUrl={'https://www.linkedin.com/in/filip-kantedal-33b84240/'}
-                    emailUrl={'kantedal@gmail.com'}
-                    githubUrl={'https://github.com/kantedal'}
-                    websiteUrl={'http://kantedal.se'}
-                    isMobile={false}
-                    imagePositionUpdated={(x: number, y: number) => console.log('Filip', x, y)}
+                  <StyledPresentationImage
+                    isMobile={isMobile}
+                    inited={inited}
+                    style={{ backgroundImage: 'url(./images/filip.jpg)', width: '154px', height: '154px',  transform: `translate(${translationImg2.x}px, ${translationImg2.y}px)`}}
+                    imagePositionUpdated={(x: number, y: number) => this._imagePos2 = { x, y }}
                   />
                 </Col>
               </Row>
@@ -99,6 +106,35 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
       </div>
     )
   }
+
+
+  componentDidUpdate() {
+    if (this.props.isOpen && this.state.inited === false) {
+      setTimeout(() => {
+        const { inited } = this.state
+        const { originalImgPos } = this.props
+
+        this._translation1 = { 
+          x: inited ? originalImgPos[0].x - this._imagePos1.x + 3 : 0,
+          y: inited ? originalImgPos[0].y - this._imagePos1.y : 0
+        }
+    
+        this._translation2 = { 
+          x: inited ? originalImgPos[1].x - this._imagePos2.x + 6 : 0,
+          y: inited ? originalImgPos[1].y - this._imagePos2.y : 0
+        }
+
+        this.setState({ ...this.state, inited: true, translationImg1: this._translation1, translationImg2: this._translation2 })
+      }, 100)
+
+      setTimeout(() => {
+        const translationImg1 = { x: 0, y: 0 }
+        const translationImg2 = { x: 0, y: 0 }
+
+        this.setState({ ...this.state, translationImg1, translationImg2 })
+      }, 500)
+    }
+  }
 }
 
-ReactModal.setAppElement('#root')
+// transform: `translate(${translationImg1.x}px, ${translationImg1.y}px)`
