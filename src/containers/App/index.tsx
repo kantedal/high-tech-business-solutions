@@ -112,7 +112,6 @@ export default class App extends React.Component<App.Props, App.State> {
   componentWillMount() {
     const promises = [loadPortfolioItems(), loadAboutData()]
     Promise.all(promises).then(() => {
-      console.log('data loaded')
       this.setState({ 
         ...this.state, 
         portfolioItemsLoading: false, 

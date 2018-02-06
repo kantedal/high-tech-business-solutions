@@ -39,3 +39,17 @@ export const StyledPresentationImage: any = styled(Div)`
 export const StyledPresentationImageContainer: any = styled.div`
   height: ${({ isMobile }: any) => isMobile ? '130px' : '200px'};
 `
+
+// @keyframes mymove {
+//   0% {transform: scale(1, 1);}
+//   50% {transform: scale(-100, 1);}
+//   100% {transform: scale(1, 1);}
+// }
+
+// export const SkillMeter: any = styled.div`
+//  height: 10px;
+//   width: 1px;
+//   transform-origin: 1px 0px;
+//   background: red;
+//   animation: mymove 5s infinite;
+// `

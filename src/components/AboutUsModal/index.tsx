@@ -1,18 +1,15 @@
 import * as React from 'react'
+import { Col, Grid, Row } from 'react-flexbox-grid'
 import * as ReactModal from 'react-modal'
 
-import { IPortfolioItem } from '../../portfolio'
-import { IconButton } from '../IconButton'
-import { MediaCarousel } from '../MediaCarousel'
+import { IAbout } from '../../about'
+import { AboutUsBox } from '../AboutUsBox'
+import { headerImage1, headerImage2 } from '../Header'
+import { StyledPresentationImage } from '../PresentationBox/styles'
+import { AboutUsContainer } from './styles'
 import * as style from './styles/style.css'
-import { AboutUsContainer } from './styles/index'
-import { StyledPresentationImage } from '../PresentationBox/styles/index'
-import { Grid, Row, Col } from 'react-flexbox-grid'
-import { StyledRow } from '../Header/styles/index'
-import { AboutUsBox } from '../AboutUsBox/index'
-import { IAbout, ISkill } from '../../about'
-import { PresentationBox } from '../PresentationBox/index'
-import { headerImage1, headerImage2 } from '../Header/index'
+
+const RowComp: any = Row
 
 const calculateAbsolutePostion = (element: any, scale?: number): { x: number, y: number }  => {
   const rect = element.getBoundingClientRect()
@@ -56,13 +53,28 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
   }
 
   render() {
-    const { isOpen, closeModal, isMobile } = this.props
+    const { isOpen, closeModal, isMobile, aboutData } = this.props
     const { inited } = this.state
 
     const bgAlpha = this.state.isVisible ? '0.8' : '0.0'
     const customStyles = {
-      content: { background: 'transparent', border: 'none', pointerEvents: 'none', top: '0px', left: '0px', right: '0px', bottom: '0px', },
-      overlay: { backgroundColor: 'rgba(0, 0, 0, ' + bgAlpha + ')', transition: 'background-color 500ms ease' }
+      content: {
+        background: 'transparent',
+        border: 'none',
+        top: '0px',
+        left: '0px',
+        right: '0px',
+        bottom: '0px',
+        margin: '0px',
+        padding: '0px',
+        width: '100%',
+        height: '100%',
+
+      },
+      overlay: {
+        backgroundColor: 'rgba(0, 0, 0, ' + bgAlpha + ')',
+        transition: 'background-color 300ms ease'
+      }
     }
 
     const close = () => {
@@ -106,8 +118,7 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
         >
           <AboutUsContainer inited={inited} isOpen={this.state.isVisible} isMobile={isMobile} >
             <Grid className={style.presentationGrid} fluid={true}>
-
-              <Row around='xs'>
+              <RowComp around='xs' style={{ marginTop: '20px'}}>
                 <Col sm={6} md={3}>
                   <StyledPresentationImage
                     isMobile={isMobile}
@@ -124,7 +135,8 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
                     getRef={(ref: any) => this._imageElement2 = ref}
                   />
                 </Col>
-              </Row>
+              </RowComp>
+              {this.renderAboutUsBoxes(aboutData)}
             </Grid>
           </AboutUsContainer>
         </ReactModal>
@@ -154,6 +166,28 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
           this._imageElement2.style.transform = `translate(${this._translation2.x}px, ${this._translation2.y}px)`
         }
       }
+    }
+  }
+
+  private renderAboutUsBoxes(aboutData: IAbout[]) {
+    if (aboutData.length !== 0) {
+      return (
+        <RowComp style={{ marginTop: '30px' }} around='xl'>
+          <Col sm={6}>
+            <AboutUsBox
+              about={aboutData[0]}
+              isMobile={false}
+            />
+          </Col>
+          <Col sm={6}>
+            <AboutUsBox
+              about={aboutData[1]}
+              isMobile={false}
+            />
+          </Col>
+        </RowComp>
+
+      )
     }
   }
 }
