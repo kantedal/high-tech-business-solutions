@@ -37,11 +37,15 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
       content: {
         background: 'transparent',
         border: 'none',
-        pointerEvents: 'none',
         top: '0px',
         left: '0px',
         right: '0px',
         bottom: '0px',
+        margin: '0px',
+        padding: '0px',
+        width: '100%',
+        height: '100%',
+
       },
       overlay: {
         backgroundColor: 'rgba(0, 0, 0, ' + bgAlpha + ')',
@@ -79,15 +83,15 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
 
     if (aboutData.length !== 0) {
       return (
-        <Row around='xs'>
-          <Col sm={6} md={3}>
+        <Row around='xl'>
+          <Col sm={6}>
             <AboutUsBox
               about={aboutData[0]}
               isMobile={false}
               imagePositionUpdated={(x: number, y: number) => console.log('About us: Simon', x, y)}
             />
           </Col>
-          <Col sm={6} md={3}>
+          <Col sm={6}>
             <AboutUsBox
               about={aboutData[1]}
               isMobile={false}

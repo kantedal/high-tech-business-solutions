@@ -37,20 +37,13 @@ export const AboutUsBox: React.SFC<AboutUsBox.Props> = ({ about, isMobile, image
   return (
     <div className={style.presentationContent}>
       <GridComponent fluid={true}>
-        <Row>
-          <StyledPresentationImage
-            isMobile={isMobile}
-            style={{ backgroundImage: 'url(' + about.imgUrl + ')' }}
-            imagePositionUpdated={imagePositionUpdated}
-          />
-        </Row>
         {!isMobile && (
           <Row>
             <div className={style.nameText}>{about.name}</div>
           </Row>
         )}
         {!isMobile && (
-          <Row center={'xs'} className={style.contactRow}>
+          <Row center={'xl'} className={style.contactRow}>
             <Col xs={12} sm={12} md={12}>
               <Row>
                 <Col xs={3} className={style.contactCol}>
@@ -75,14 +68,29 @@ export const AboutUsBox: React.SFC<AboutUsBox.Props> = ({ about, isMobile, image
                 </Col>
               </Row>
               <Row>
-                <p> {about.emailUrl} </p>
                 <p> {about.shortDescription} </p>
-                {about.skills.map((skill: ISkill, index: number) => {
-                  return <li key={index}> {skill.skillName} </li>
-                })
-                }
+
+              </Row>
+              <Row>
+                <div className={style.nameText}>Skills</div>
+              </Row>
+              <Row>
+                <ul>
+                  {about.skills.map((skill: ISkill, index: number) => {
+                    return <li className={style.skillItem} key={index}>  
+                    <div> {skill.skillName}: 
+                      {skill.skillWeight}/10 
+                    </div> 
+                    <div className={style.skillMeterContainer}> 
+                      <div className={style.skillMeter}/> 
+                    </div>
+                    </li>
+                  })
+                  }
+                </ul>
               </Row>
             </Col>
+
           </Row>
         )}
 
