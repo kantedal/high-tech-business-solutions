@@ -27,6 +27,7 @@ namespace ImageDiv {
     isMobile?: boolean
     imagePositionUpdated: (x: number, y: number) => void
     inited?: boolean
+    getRef?: (ref: any) => void
   }
 }
 
@@ -43,7 +44,7 @@ export class ImageDiv extends React.Component<ImageDiv.Props, any> {
   }
 
   render() {
-    const { imagePositionUpdated, children, isMobile, inited, ...rest } = this.props
+    const { imagePositionUpdated, children, isMobile, inited, getRef, ...rest } = this.props
     const { hasMounted } = this.state
 
     return (
@@ -51,6 +52,10 @@ export class ImageDiv extends React.Component<ImageDiv.Props, any> {
         ref={(element) => {
           if (element && !this._element) {
             this._element = element
+            console.log(this._element.style)
+            if (getRef) {
+              getRef(element)
+            }
           }
         }}
         {...rest}
@@ -93,7 +98,7 @@ export const StyledPresentationImage: any = styled(ImageDiv)`
   border: 2px solid #fff;
   margin-top: ${({ isMobile }: any) => isMobile ? '0px' : '30px'};  
   margin-bottom: ${({ isMobile }: any) => isMobile ? '10px' : '15px'};  
-  transition: ${({ inited }: any) => inited ? 'transform 500ms ease' : 'transform 500ms ease' };
+  // transition: ${({ inited }: any) => inited ? 'transform 500ms ease' : 'transform 500ms ease' };
 `
 
 export const StyledPresentationImageContainer: any = styled.div`
