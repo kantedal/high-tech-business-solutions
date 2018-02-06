@@ -7,6 +7,13 @@ let width: number
 let height: number
 let time: number = 0.0
 
+let pause: boolean = false
+
+export const pauseRender = (shouldPause: boolean) => {
+  console.log('pasue', shouldPause)
+  pause = shouldPause
+}
+
 const frag = `
   precision highp float;
   uniform vec2 mouseDelayed;
@@ -181,7 +188,7 @@ const animate = () => {
     requestAnimationFrame(animate)
   }
 
-  if (window.pageYOffset === 0 || firstRender) {
+  if ((window.pageYOffset === 0 || firstRender) && !pause) {
     render()
     firstRender = false
   } 

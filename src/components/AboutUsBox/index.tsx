@@ -10,13 +10,12 @@ export namespace AboutUsBox {
   export interface Props {
     about: IAbout
     isMobile: boolean
-    imagePositionUpdated: (x: number, y: number) => void
   }
 }
 
 const GridComponent: any = Grid as any
 
-export const AboutUsBox: React.SFC<AboutUsBox.Props> = ({ about, isMobile, imagePositionUpdated }) => {
+export const AboutUsBox: React.SFC<AboutUsBox.Props> = ({ about, isMobile }) => {
 
   const linkedInClick = () => {
     window.open(about.linkedInUrl, '_blank')

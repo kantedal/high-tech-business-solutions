@@ -6,23 +6,40 @@ const StyledHeaderAnimation = keyframes`
   to { filter: hue-rotate(360deg) grayscale(50%); }
 `
 
-const Div = ({children, imagePositionUpdated, isMobile, ...props}: any) => (
-  <div 
-    ref={(element) => {
-      if (element) {
-        const rect = element.getBoundingClientRect()
-        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-        imagePositionUpdated(rect.left + scrollLeft, rect.top + scrollTop)
-      }
-    }}
-    {...props}
-  >
-    {children}
-  </div>
-)
+namespace ImageDiv {
+  export interface Props {
+    isMobile?: boolean
+    inited?: boolean
+    getRef?: (ref: any) => void
+  }
+}
 
-export const StyledPresentationImage: any = styled(Div)`
+export class ImageDiv extends React.Component<ImageDiv.Props, any> {
+  private _element: any
+
+  render() {
+    const { children, isMobile, inited, getRef, ...rest } = this.props
+
+    return (
+      <div 
+        ref={(element) => {
+          if (element && !this._element) {
+            this._element = element
+            if (getRef) {
+              getRef(element)
+            }
+          }
+        }}
+        {...rest}
+      >
+        {children}
+      </div>
+    )
+  }
+
+}
+
+export const StyledPresentationImage: any = styled(ImageDiv)`
   border-radius: 50%;
   min-width: ${({ isMobile }: any) => isMobile ? '120px' : '150px'};  
   min-height: ${({ isMobile }: any) => isMobile ? '120px' : '150px'};
@@ -34,6 +51,7 @@ export const StyledPresentationImage: any = styled(Div)`
   border: 2px solid #fff;
   margin-top: ${({ isMobile }: any) => isMobile ? '0px' : '30px'};  
   margin-bottom: ${({ isMobile }: any) => isMobile ? '10px' : '15px'};  
+  // transition: ${({ inited }: any) => inited ? 'transform 500ms ease' : 'transform 500ms ease' };
 `
 
 export const StyledPresentationImageContainer: any = styled.div`
