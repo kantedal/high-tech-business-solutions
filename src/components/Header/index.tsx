@@ -56,7 +56,7 @@ export class Header extends React.Component<Header.Props, Header.State> {
               </Row>
               <Row center='xs'>
                 <Col xs={0}>
-                  <IconButton text={'More Info'} icon={'zmdi zmdi-unfold-more'} color={'#44a07c'} onClick={openAboutUsModal} />
+                  <IconButton text={'More Info'} icon={'zmdi zmdi-info'} styles={{ marginRight: '3px' }} color={'#44a07c'} onClick={openAboutUsModal} />
                 </Col>
               </Row>
               <Row around='xs'>

@@ -10,15 +10,17 @@ export namespace IconButton {
     icon: string
     color?: string
     round?: boolean
+    styles?: CSSProperties
     onClick: () => void
   }
 }
 
-export const IconButton: React.SFC<IconButton.Props> = ({ text, icon, color, onClick, round }) => {
+export const IconButton: React.SFC<IconButton.Props> = ({ text, icon, color, onClick, round, styles }) => {
   const textColor = color ? color : '#38ef7d'
+  const stylings = styles ? styles : {}
   return (
     <StyledButtonDiv round={round} color={textColor} onClick={onClick}>
-      <i style={{ marginRight: text ? '3px' : '0px', lineHeight: round ? '50px' : '' }} className={icon}/>
+      <i style={{ marginRight: text ? '3px' : '0px', lineHeight: round ? '50px' : '', ...stylings }} className={icon}/>
       {text && <span>{text}</span>}
     </StyledButtonDiv>
   )
