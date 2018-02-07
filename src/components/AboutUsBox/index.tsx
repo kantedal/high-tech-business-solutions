@@ -3,7 +3,7 @@ import { CSSProperties } from 'react'
 import { Col, Grid, Row } from 'react-flexbox-grid'
 
 import * as style from './styles/style.css'
-import { StyledPresentationImage, StyledPresentationImageContainer } from './styles'
+import { StyledPresentationImage, StyledPresentationImageContainer, SkillMeter, SkillMeterContainer } from './styles'
 import { IAbout, ISkill } from '../../about'
 
 export namespace AboutUsBox {
@@ -33,6 +33,18 @@ export const AboutUsBox: React.SFC<AboutUsBox.Props> = ({ about, isMobile }) => 
     window.open(about.websiteUrl, '_blank')
   }
 
+  const sortSkills = (skillA: ISkill, skillB: ISkill) => {
+    if (skillA.skillWeight !== skillB.skillWeight) {
+      if (skillA.skillWeight > skillB.skillWeight) {
+        return -1
+      }
+      else {
+        return 1
+      }
+    }
+
+    return 0
+  }
   return (
     <div className={style.presentationContent}>
       <GridComponent fluid={true}>
@@ -73,15 +85,15 @@ export const AboutUsBox: React.SFC<AboutUsBox.Props> = ({ about, isMobile }) => 
               <Row>
                 <div className={style.nameText}>Skills</div>
               </Row>
-              <Row>
+              <Row className={style.skillRow}>
                 <ul className={style.skillsList}>
-                  {about.skills.map((skill: ISkill, index: number) => {
-                    return <li className={style.skillItem} key={index}>  
-                    <div> {skill.skillName}
-                    </div> 
-                    <div className={style.skillMeterContainer}> 
-                      <div className={style.skillMeter}/> 
-                    </div>
+                  {about.skills.sort(sortSkills).map((skill: ISkill, index: number) => {
+                    return <li className={style.skillItem} key={index}>
+                      <div> {skill.skillName}
+                      </div>
+                      <SkillMeterContainer>
+                        <SkillMeter skillWeight={skill.skillWeight} />
+                      </SkillMeterContainer>
                     </li>
                   })
                   }

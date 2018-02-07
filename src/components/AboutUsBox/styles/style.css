@@ -55,24 +55,5 @@
   margin: 0;
 }
 
-.skillMeterContainer {
-  height: 10px;
-  width: 25vw;
-  background: gray;
-  margin: 5px;
-  margin-bottom: 10px;
-}
 
-@keyframes mymove {
-  0% {transform: scale(1, 1);}
-  50% {transform: scale(100, 1);}
-  100% {transform: scale(1, 1);}
-}
 
-.skillMeter {
-  height: 10px;
-  width: 1px;
-  transform-origin: 0px 0px;
-  background: red;
-  animation: mymove 5s infinite;
-}
