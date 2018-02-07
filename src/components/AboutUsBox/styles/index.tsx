@@ -45,20 +45,22 @@ const skillBarAnimation = keyframes`
   to {transform: scale(1, 1);}
 `
 export const SkillMeter: any = styled.div`
-  height: 10px;
+  height: 5px;
   width: ${({skillWeight}: any) => skillWeight ? (skillWeight + 'vw') : '200px'};
   transform-origin: 0px 0px;
   background: red;
   animation: ${skillBarAnimation} 2s;
   padding: 0;
   margin: 0;
+  border-radius: 10px;
 `
 
 export const SkillMeterContainer: any = styled.div`
-  height: 10px;
+  height: 5px;
   width: 10vw;
   background: gray;
   margin: 5px;
   margin-bottom: 10px;
   padding: 0;
+  border-radius: 10px;
   `
