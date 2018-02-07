@@ -10,22 +10,22 @@ const skillBarAnimation = keyframes`
   to {transform: scale(1, 1);}
 `
 export const SkillMeter: any = styled.div`
-  height: 10px;
-  width: ${({skillWeight}: any) => skillWeight ? (skillWeight * 10 + '%') : '0px'};
+  height: 5px;
+  width: ${({skillWeight}: any) => skillWeight ? (skillWeight * 100 + '%') : '0px'};
   transform-origin: 0px 0px;
-  background: red;
+  background: ${({skillWeight}: any) => 'rgba(skillWeight * 255, skill)' };
   animation: ${skillBarAnimation} 2s;
   padding: 0;
   margin: 0;
-  
+  border-radius: 3px;
 `
 
 export const SkillMeterContainer: any = styled.div`
-  height: 10px;
-  width: 10vw;
+  height: 5px;
   background: gray;
   margin: 5px;
   margin-bottom: 10px;
   padding: 0;
   width: 100%;
+  border-radius: 3px;
 `
