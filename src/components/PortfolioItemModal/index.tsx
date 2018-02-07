@@ -4,8 +4,8 @@ import * as ReactModal from 'react-modal'
 import { IPortfolioItem } from '../../portfolio'
 import { IconButton } from '../IconButton'
 import { MediaCarousel } from '../MediaCarousel'
+import { StyledModalContainer } from './styles'
 import * as style from './styles/style.css'
-import { StyledModalContainer } from './styles/index'
 
 export namespace PortfolioItemModal {
   export interface Props {

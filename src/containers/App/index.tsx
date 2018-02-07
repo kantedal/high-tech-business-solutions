@@ -2,15 +2,16 @@ import * as React from 'react'
 import { isMobile } from 'react-device-detect'
 import { Parallax, ParallaxProvider } from 'react-scroll-parallax'
 
+import { aboutItems, IAbout, loadAboutData } from '../../about'
+import { AboutUsModal } from '../../components/AboutUsModal'
 import { Header } from '../../components/Header'
 import { MainSection } from '../../components/MainSection'
 import { MobileHeader } from '../../components/MobileHeader'
-import { Categories, IPortfolioItem, portfolioItems, defaultPortfolioItem, loadPortfolioItems } from '../../portfolio'
-import { loadAboutData, IAbout, aboutItems } from '../../about'
+import { PortfolioItemModal } from '../../components/PortfolioItemModal'
+import { Categories, defaultPortfolioItem, IPortfolioItem, loadPortfolioItems, portfolioItems } from '../../portfolio'
+import { StyledLoadingComponent, StyledLoadingText } from './styles'
 import * as style from './styles/style.css'
-import { PortfolioItemModal } from '../../components/PortfolioItemModal/index'
-import { AboutUsModal } from '../../components/AboutUsModal/index'
-import { StyledLoadingText, StyledLoadingComponent } from './styles/index'
+
 export namespace App {
   export interface Props { }
   export interface State {

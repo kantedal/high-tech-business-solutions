@@ -38,7 +38,8 @@
   width:100%;
   padding: 0px;
   padding-left: 20px;
-  font-size: calc(0.8vw + 22px);
+  font-size: 22px;
+  margin-bottom: 22px;
 }
 
 .modalDescription {
@@ -46,6 +47,7 @@
   padding: 20px;
   padding-bottom: 5px;
   padding-top: 0px;
+  margin-bottom: 22px;
 }
 
 .closeButtonHolder {

@@ -1,5 +1,6 @@
-import { IPortfolioItem } from '../../portfolio'
 import * as React from 'react'
+
+import { IPortfolioItem } from '../../portfolio'
 import * as style from './style.css'
 
 const defaultStyle = {

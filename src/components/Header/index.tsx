@@ -1,13 +1,12 @@
-import { StyledHeaderArrow, StyledHeaderDiv, StyledRow } from './styles'
 import * as React from 'react'
 import { CSSProperties } from 'react'
 import { Col, Grid, Row } from 'react-flexbox-grid'
-import styled, { keyframes } from 'styled-components'
-import { Parallax } from 'react-scroll-parallax'
-import { PresentationBox } from '../PresentationBox/index'
-import * as style from './styles/style.css'
+
 import { initThreeBackground, pauseRender } from '../../background'
-import { IconButton } from '../IconButton/index'
+import { IconButton } from '../IconButton'
+import { PresentationBox } from '../PresentationBox'
+import { StyledHeaderArrow, StyledHeaderDiv, StyledRow } from './styles'
+import * as style from './styles/style.css'
 
 export let headerImage1
 export let headerImage2

@@ -60,7 +60,7 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
 
     const bgAlpha = this.state.isVisible ? '0.9' : '0.0'
     const customStyles = {
-      content: { background: 'transparent', border: 'none', top: '0px', left: '0px', right: '0px', bottom: '0px', margin: '0px', padding: '0px', width: '100%', height: '100%', pointerEvents: 'none' },
+      content: { background: 'transparent', border: 'none', top: '0px', left: '0px', right: '0px', bottom: '0px', margin: '0px', padding: '0px', width: '100%', height: '100%' },
       overlay: { backgroundColor: 'rgba(0, 0, 0, ' + bgAlpha + ')', transition: 'background-color 300ms ease' }
     }
 
@@ -104,7 +104,7 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
           closeTimeoutMS={500}
           contentLabel='Modal'
         >
-          <AboutUsContainer inited={inited} isOpen={this.state.isVisible} isMobile={isMobile} >
+          <AboutUsContainer inited={inited} isOpen={this.state.isVisible} isMobile={isMobile} onClick={close}>
             <Grid className={style.presentationGrid} fluid={true}>
               <RowComp around='xs' style={{ marginTop: '20px'}}>
                 <Col sm={6} md={3}>

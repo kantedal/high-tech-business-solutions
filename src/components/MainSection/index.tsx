@@ -1,14 +1,12 @@
-import { StyledMainSectionDiv } from './styles'
 import * as React from 'react'
 import { CSSProperties } from 'react'
 import { Grid, Row } from 'react-flexbox-grid'
-import { TransitionGroup } from 'react-transition-group'
 
-import { Categories, IPortfolioItem, portfolioItems } from '../../portfolio'
+import { Categories, IPortfolioItem } from '../../portfolio'
 import { FilterPanel } from '../FilterPanel'
 import { PortfolioItem } from '../PortfolioItem'
-import { PortfolioItemModal } from '../PortfolioItemModal'
 import * as style from './style.css'
+import { StyledMainSectionDiv } from './styles'
 
 export namespace MainSection {
   export interface Props {

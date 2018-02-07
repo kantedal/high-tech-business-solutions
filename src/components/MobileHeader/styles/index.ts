@@ -1,5 +1,5 @@
-import { Row } from 'react-flexbox-grid'
 import * as React from 'react'
+import { Row } from 'react-flexbox-grid'
 import styled, { keyframes } from 'styled-components'
 
 const StyledHeaderAnimation = keyframes`

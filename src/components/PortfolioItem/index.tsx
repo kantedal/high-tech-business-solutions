@@ -70,7 +70,7 @@ export class PortfolioItem extends React.Component<PortfolioItem.Props, Portfoli
       <Transition in={this.state.show} timeout={100} style={{ width: '100%' }}>
         {(state) => {
           return (
-            <Column xs={12} sm={6} md={6} lg={6} xl={4} style={{ position: 'relative' }}>
+            <Column xs={12} sm={6} md={6} lg={6} xl={4} style={{ position: 'relative', paddingLeft: '1px', paddingRight: '1px' }}>
               <LazyLoad offset={0} height={320} throttle={100} once={true}>
                 <PortfolioItemContent 
                   portfolioItem={portfolioItem}

@@ -54,9 +54,6 @@
     "react-responsive-carousel": "^3.1.33",
     "react-scroll-parallax": "^1.1.2",
     "react-transition-group": "^2.2.1",
-    "request": "^2.83.0",
-    "request-promise": "^4.2.2",
-    "styled-components": "^2.4.0",
-    "tls": "^0.0.1"
+    "styled-components": "^2.4.0"
   }
 }
