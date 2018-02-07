@@ -34,6 +34,7 @@ export namespace AboutUsModal {
   export interface State {
     isVisible: boolean
     inited: boolean
+    showAboutUsBox: boolean
   }
 }
 export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsModal.State> {
@@ -48,38 +49,24 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
     super(props)
     this.state = { 
       isVisible: false,
-      inited: false
+      inited: false,
+      showAboutUsBox: false,
     }
   }
 
   render() {
     const { isOpen, closeModal, isMobile, aboutData } = this.props
-    const { inited, isVisible } = this.state
+    const { inited, isVisible, showAboutUsBox } = this.state
 
     const bgAlpha = this.state.isVisible ? '0.9' : '0.0'
     const customStyles = {
-      content: {
-        background: 'transparent',
-        border: 'none',
-        top: '0px',
-        left: '0px',
-        right: '0px',
-        bottom: '0px',
-        margin: '0px',
-        padding: '0px',
-        width: '100%',
-        height: '100%',
-
-      },
-      overlay: {
-        backgroundColor: 'rgba(0, 0, 0, ' + bgAlpha + ')',
-        transition: 'background-color 300ms ease'
-      }
+      content: { background: 'transparent', border: 'none', top: '0px', left: '0px', right: '0px', bottom: '0px', margin: '0px', padding: '0px', width: '100%', height: '100%', pointerEvents: 'none' },
+      overlay: { backgroundColor: 'rgba(0, 0, 0, ' + bgAlpha + ')', transition: 'background-color 300ms ease' }
     }
 
     const close = () => {
       closeModal()
-      this.setState({ ...this.state, isVisible: false, inited: false })
+      this.setState({ ...this.state, isVisible: false, inited: false, showAboutUsBox: false })
       
       const pos1 = calculateAbsolutePostion(this._imageElement1, 1.3)
       const origPos1 = calculateAbsolutePostion(headerImage1)
@@ -102,6 +89,7 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
           this._imageElement2.style.transform = `translate(0px, 0px) scale(1.3)`
           this.setState({ ...this.state, inited: true,  isVisible: true })
         }, 50)
+        setTimeout(() => this.setState({ ...this.state, showAboutUsBox: true }), 550)
       }
     }
 
@@ -136,9 +124,9 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
                   />
                 </Col>
               </RowComp>
-              <div style={{ opacity: isVisible ? 1.0 : 0.0, transition: 'opacity 0.5s ease', transitionDelay: isVisible ? '0.3s' : '0.0s' }}>
+              {showAboutUsBox && <div>
                 {this.renderAboutUsBoxes(aboutData)}
-              </div>
+              </div>}
             </Grid>
           </AboutUsContainer>
         </ReactModal>
