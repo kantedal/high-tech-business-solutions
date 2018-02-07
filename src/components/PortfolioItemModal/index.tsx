@@ -41,7 +41,7 @@ export class PortfolioItemModal extends React.Component<PortfolioItemModal.Props
       },
       overlay: {
         backgroundColor: 'rgba(0, 0, 0, ' + bgAlpha + ')',
-        transition: 'background-color 300ms ease'
+        transition: 'background-color 500ms ease'
       }
     }
 
@@ -58,7 +58,7 @@ export class PortfolioItemModal extends React.Component<PortfolioItemModal.Props
           onAfterOpen={() => this.setState({ ...this.state, isVisible: true })}
           shouldCloseOnOverlayClick={true}
           style={customStyles}
-          closeTimeoutMS={100}
+          closeTimeoutMS={isMobile ? 100 : 500}
           contentLabel='Modal'
         >
           <StyledModalContainer isOpen={this.state.isVisible} isMobile={isMobile} >
