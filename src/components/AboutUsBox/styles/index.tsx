@@ -13,7 +13,7 @@ export const SkillMeter: any = styled.div`
   height: 5px;
   width: ${({skillWeight}: any) => skillWeight ? (skillWeight * 100 + '%') : '0px'};
   transform-origin: 0px 0px;
-  background: ${({skillWeight}: any) => 'rgba(skillWeight * 255, skill)' };
+  background: ${({skillWeight}: any) => 'red'};
   animation: ${skillBarAnimation} 2s;
   padding: 0;
   margin: 0;
@@ -23,7 +23,7 @@ export const SkillMeter: any = styled.div`
 export const SkillMeterContainer: any = styled.div`
   height: 5px;
   background: gray;
-  margin: 5px;
+  margin-top: 5px;
   margin-bottom: 10px;
   padding: 0;
   width: 100%;
