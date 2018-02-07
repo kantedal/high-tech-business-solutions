@@ -2,9 +2,9 @@ import * as React from 'react'
 import { CSSProperties } from 'react'
 import { Col, Grid, Row } from 'react-flexbox-grid'
 
-import * as style from './styles/style.css'
-import { StyledPresentationImage, StyledPresentationImageContainer, SkillMeter, SkillMeterContainer } from './styles'
 import { IAbout, ISkill } from '../../about'
+import { SkillMeter, SkillMeterContainer } from './styles'
+import * as style from './styles/style.css'
 
 export namespace AboutUsBox {
   export interface Props {
@@ -89,8 +89,7 @@ export const AboutUsBox: React.SFC<AboutUsBox.Props> = ({ about, isMobile }) => 
                 <ul className={style.skillsList}>
                   {about.skills.sort(sortSkills).map((skill: ISkill, index: number) => {
                     return <li className={style.skillItem} key={index}>
-                      <div> {skill.skillName}
-                      </div>
+                      <div>{skill.skillName}</div>
                       <SkillMeterContainer>
                         <SkillMeter skillWeight={skill.skillWeight} />
                       </SkillMeterContainer>
