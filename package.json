@@ -1,8 +1,8 @@
 {
-  "name": "typescript-react-redux-boilerplate",
+  "name": "high-tech-business-solutions",
   "version": "1.0.0",
   "private": true,
-  "description": "A frontend boilerplate with React, Redux and Typescript",
+  "description": "Portfolio page",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
