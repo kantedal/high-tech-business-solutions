@@ -11,7 +11,7 @@ import * as style from './styles/style.css'
 
 const RowComp: any = Row
 
-const calculateAbsolutePostion = (element: any, scale?: number): { x: number, y: number }  => {
+const calculateAbsolutePostion = (element: any, scale?: number, yOffet?: number): { x: number, y: number }  => {
   const rect = element.getBoundingClientRect()
 
   if (scale) {
@@ -20,8 +20,9 @@ const calculateAbsolutePostion = (element: any, scale?: number): { x: number, y:
   }
 
   const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-  return { x: rect.x + scrollLeft, y: rect.y + scrollTop}
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop + (yOffet ? yOffet : 0)
+
+  return { x: rect.x + scrollLeft, y: rect.y + scrollTop }
 }
 
 export namespace AboutUsModal {
@@ -40,10 +41,9 @@ export namespace AboutUsModal {
 export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsModal.State> {
   private _imagePos1: { x: number, y: number }
   private _imagePos2: { x: number, y: number }
-  private _translation1: { x: number, y: number } = { x: 0, y: 0 }
-  private _translation2: { x: number, y: number }
   private _imageElement1: any
   private _imageElement2: any
+  private _modalElement: any
 
   constructor(props: AboutUsModal.Props) {
     super(props)
@@ -60,7 +60,10 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
 
     const bgAlpha = this.state.isVisible ? '0.9' : '0.0'
     const customStyles = {
-      content: { background: 'transparent', border: 'none', top: '0px', left: '0px', right: '0px', bottom: '0px', margin: '0px', padding: '0px', width: '100%', height: '100%' },
+      content: { 
+        background: 'transparent',border: 'none', top: '0px', left: '0px', right: '0px', bottom: '0px',
+        margin: '0px', padding: '0px', width: '100%', height: '100%', overflow: 'hidden' 
+      },
       overlay: { backgroundColor: 'rgba(0, 0, 0, ' + bgAlpha + ')', transition: 'background-color 300ms ease' }
     }
 
@@ -68,16 +71,16 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
       closeModal()
       this.setState({ ...this.state, isVisible: false, inited: false, showAboutUsBox: false })
       
-      const pos1 = calculateAbsolutePostion(this._imageElement1, 1.3)
+      const pos1 = calculateAbsolutePostion(this._imageElement1, 1.3, this._modalElement.scrollTop)
       const origPos1 = calculateAbsolutePostion(headerImage1)
-      const pos2 = calculateAbsolutePostion(this._imageElement2, 1.3)
+      const pos2 = calculateAbsolutePostion(this._imageElement2, 1.3, this._modalElement.scrollTop)
       const origPos2 = calculateAbsolutePostion(headerImage2)
 
-      this._translation1 = { x: origPos1.x - pos1.x, y: origPos1.y - pos1.y }
-      this._translation2 = { x: origPos2.x - pos2.x, y: origPos2.y - pos2.y }
+      const translation1 = { x: origPos1.x - pos1.x, y: origPos1.y - pos1.y }
+      const translation2 = { x: origPos2.x - pos2.x, y: origPos2.y - pos2.y }
 
-      this._imageElement1.style.transform = `scale(1.0) translate(${this._translation1.x}px, ${this._translation1.y}px)`
-      this._imageElement2.style.transform = `scale(1.0) translate(${this._translation2.x}px, ${this._translation2.y}px)`
+      this._imageElement1.style.transform = `scale(1.0) translate(${translation1.x}px, ${translation1.y}px)`
+      this._imageElement2.style.transform = `scale(1.0) translate(${translation2.x}px, ${translation2.y}px)`
     }
 
     if (isOpen && !inited) {
@@ -104,7 +107,14 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
           closeTimeoutMS={500}
           contentLabel='Modal'
         >
-          <AboutUsContainer inited={inited} isOpen={this.state.isVisible} isMobile={isMobile} onClick={close}>
+          <AboutUsContainer 
+            inited={inited}
+            isOpen={this.state.isVisible}
+            isMobile={isMobile}
+            onClick={close}
+            getRef={(ref: any) => this._modalElement = ref}
+            style={{ overflowY: 'scroll'}}
+          >
             <Grid className={style.presentationGrid} fluid={true}>
               <RowComp around='xs' style={{ marginTop: '20px'}}>
                 <Col sm={6} md={3}>
@@ -149,11 +159,11 @@ export class AboutUsModal extends React.Component<AboutUsModal.Props, AboutUsMod
         const origPos2 = calculateAbsolutePostion(headerImage2)
         
         if (pos1.x !== origPos1.x && pos1.y !== origPos1.y) {
-          this._translation1 = { x: origPos1.x - pos1.x, y: origPos1.y - pos1.y }
-          this._imageElement1.style.transform = `translate(${this._translation1.x}px, ${this._translation1.y}px)`
+          const translation1 = { x: origPos1.x - pos1.x, y: origPos1.y - pos1.y }
+          this._imageElement1.style.transform = `translate(${translation1.x}px, ${translation1.y}px)`
 
-          this._translation2 = { x: origPos2.x - pos2.x, y: origPos2.y - pos2.y }
-          this._imageElement2.style.transform = `translate(${this._translation2.x}px, ${this._translation2.y}px)`
+          const translation2 = { x: origPos2.x - pos2.x, y: origPos2.y - pos2.y }
+          this._imageElement2.style.transform = `translate(${translation2.x}px, ${translation2.y}px)`
         }
       }
     }

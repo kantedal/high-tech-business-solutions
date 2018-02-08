@@ -187,10 +187,9 @@ const animate = () => {
   if (!isMobile) {
     requestAnimationFrame(animate)
   }
-
+  
   if ((window.pageYOffset === 0 || firstRender) && !pause) {
     render()
-    firstRender = false
   } 
 }
 
@@ -235,4 +234,6 @@ export const initThreeBackground = (canvas: any, mobile: boolean) => {
   gl.linkProgram(shaderProgram)
 
   animate()
+
+  setTimeout(() => firstRender = false, 1000)
 }
