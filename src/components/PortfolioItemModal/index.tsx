@@ -10,7 +10,7 @@ import * as style from './styles/style.css'
 export namespace PortfolioItemModal {
   export interface Props {
     portfolioItem: IPortfolioItem
-    isMobile: boolean,
+    isMobile: boolean
     isOpen: boolean
     closeModal: () => void
   }
@@ -26,11 +26,11 @@ export class PortfolioItemModal extends React.Component<PortfolioItemModal.Props
   }
 
   render() {
-    const { portfolioItem, isOpen, closeModal, isMobile } = this.props 
+    const { portfolioItem, isOpen, closeModal, isMobile } = this.props
 
     const bgAlpha = this.state.isVisible ? '0.5' : '0.0'
     const customStyles = {
-      content : {
+      content: {
         background: 'transparent',
         border: 'none',
         pointerEvents: 'none',
@@ -52,7 +52,7 @@ export class PortfolioItemModal extends React.Component<PortfolioItemModal.Props
 
     return (
       <div>
-         <ReactModal 
+        <ReactModal
           isOpen={isOpen}
           onRequestClose={close}
           onAfterOpen={() => this.setState({ ...this.state, isVisible: true })}
@@ -71,7 +71,7 @@ export class PortfolioItemModal extends React.Component<PortfolioItemModal.Props
             </div>
 
             {this.renderCloseButton(isMobile, closeModal)}
-            
+
           </StyledModalContainer>
         </ReactModal>
       </div>
@@ -90,7 +90,7 @@ export class PortfolioItemModal extends React.Component<PortfolioItemModal.Props
 
   private renderProjectSourceUrlButton(portfolioItem: IPortfolioItem) {
     if (portfolioItem.projectSourceUrl) {
-      return <IconButton text={'Source'} icon={'zmdi zmdi-github-alt'} color={'#4277e2'}  onClick={this.openProjectSourceUrl} />
+      return <IconButton text={'Source'} icon={'zmdi zmdi-github-alt'} color={'#4277e2'} onClick={this.openProjectSourceUrl} />
     }
   }
 

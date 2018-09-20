@@ -5,7 +5,7 @@ export enum Categories {
   Web = 'Web',
   Animation = '3d\xa0animation',
   GraphicsProgramming = 'Graphics\xa0programming',
-  Simulation =  'Simulation',
+  Simulation = 'Simulation',
   MobileApp = 'Mobile\xa0app',
   Hardware = 'Hardware',
   AI = 'AI',
@@ -42,14 +42,14 @@ export const defaultPortfolioItem = {
 
 const queryGoogleSheets = async () => {
   return new Promise<any>((resolve, reject) => {
-    const sheetId = '1psUEBs0saRcPAido3mL5Nrh_WvFVHOx0N1cwK5jEudc'
-    const apiKey = 'AIzaSyBNb8N5MZ_fu8e7cwk4Hj76pqC1pEcDJbg '
+    const sheetId = '1pEr1iwBioZIBYd_JAQqvwnCy5ij77NVpjRb1a-hLGqY'
+    const apiKey = 'AIzaSyDjAzVuG0GXjOkYJ6PTjpmw6yGFnRNreXQ'
 
     const xhttp = new XMLHttpRequest()
     xhttp.open('GET', `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Sheet1!A1:Z50?key=${apiKey}`, true)
     xhttp.setRequestHeader('Content-type', 'application/json')
 
-    xhttp.onreadystatechange = () => {                                                  
+    xhttp.onreadystatechange = () => {
       if (xhttp.readyState === XMLHttpRequest.DONE && xhttp.status === 200) {
         const rawdata = xhttp.responseText
         const json = JSON.parse(rawdata).values
@@ -59,7 +59,7 @@ const queryGoogleSheets = async () => {
 
     xhttp.send()
   })
-} 
+}
 
 export const loadPortfolioItems = async () => {
   const values = await queryGoogleSheets()
@@ -83,13 +83,13 @@ export const loadPortfolioItems = async () => {
           default:
             newItem[headerKey] = values[i][j]
         }
-        
+
       } catch (err) {
         console.log(err)
       }
     }
     portfolioItems.push(newItem as IPortfolioItem)
   }
-  
+
   return
 }
